@@ -1,0 +1,16 @@
+{
+  "domains": [
+    {
+      "id": 1,
+      "nombre": "Proceso"
+    },
+    {
+      "id": 4,
+      "nombre": "Personas"
+    },
+    {
+      "id": 5,
+      "nombre": "Entorno empresarial"
+    }
+  ]
+}

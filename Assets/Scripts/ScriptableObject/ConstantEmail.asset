@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a812f21ca78ddc44b912e1662ae9bf93, type: 3}
+  m_Name: ConstantEmail
+  m_EditorClassIdentifier: 
+  errorFormatEmailField: El campo tiene que ser un correo (example@example.com)
+  emailFieldEmpty: "Ingresa tu correo electr\xF3nico"
+  passwordFieldEmpty: "Ingresa tu contrase\xF1a"

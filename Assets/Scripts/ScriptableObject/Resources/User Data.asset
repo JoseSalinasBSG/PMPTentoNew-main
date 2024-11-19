@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f78b2450c1eb1144f89914826d7b2cd2, type: 3}
+  m_Name: User Data
+  m_EditorClassIdentifier: 
+  userInfo:
+    user:
+      id: 
+      idProveedor: 0
+      cursos: 282
+      idAlumno: 9818325
+      idContacto: 0
+      clave: 
+      userName: pruebaxjrivera@bsginstitute.net
+      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.p48e3QlyBkVjVS9usxAwbV737_YyBYqcXQwl3zfHIReXSxnc5Mbz4g.oJ7v0XHx9kojempGu3uZXQ.sHrKeahxysJ7tECROcf3_sWouqmPIcaeJEA-02ZwAbwQrieLZdm7WT-hl8rItedohrZbSCO_5-NJzydRx71px9zxr3fKC5VrEgzI_ytw_Ooi9040yTSyrbByTcAaQ_qoKv2_FATDL-_wcF6vOi6JNUmQ0Hv8AYj4SwUGWIdO60Tt5sdapYF586viSod1yWozR-rZty_C5nVQ9nyXEw-IoENsUdhBqBbCS0FHLGqaWdiFF8v7HajhqebQZaTtE7YGOZrYzR5qQ-PwnzihuRprefqpns1DBirvx2227cnnJ4toSghPbrzmupTgQo2LO0lNI8JEX5kdkWB_7eKiw17ho2012u4wKbQtbNbKjUmnF485LzL7waYLpotrd7KuceQQ8HLRxRjdZD0kYvLa4diGAn1B75wa35kGspL0LhS2a8TvJPUjDinakQfm2fHdAkCx0A5nKr672Gcl7kX5eQX-qRT7IRdblVxvqB4vwEG2eyd4mbLY-_7pp_BlGZyHAqvekQeFjsElJHCAkBeAUTW5I0CPWEHn-YpuTZuV_gujxbTls_T4adj8sRL7chHhS7M3qEWYsIqIjt_lJtK4DOs61YBo9vajIFwwwaSORUuEFXm_sKT4MFd2tvV4F5GSF6gE.1BHfQxdJo6seeBLD6-gK2g
+      tipoCarrera: 1
+      correoEnc: 
+      telEnc: 
+      userAgent: 
+      userIp: 
+      detail:
+        idCaracteristicaGamificacion: 1
+        idAlumno: 9818325
+        usernameG: testT
+        instructorID: 1
+        totalCoins: 947
+        totalExperience: 15835
+        discardOption: 62
+        skipQuestion: 391
+        findCorrectAnswer: 281
+        increaseTime: 415
+        secondChance: 6
+      achievements:
+        id: 1
+        idAlumno: 9818325
+        streak4: 54
+        streak6: 25
+        streak8: 14
+        streak10: 11
+        streak4Date: 16/11/2024 10:48:44 a. m.
+        streak6Date: 16/11/2024 10:48:00 a. m.
+        streak8Date: 16/11/2024 10:48:06 a. m.
+        streak10Date: 16/11/2024 10:48:16 a. m.
+        streak4Origin: "Modo Categor\xEDa"
+        streak6Origin: "Modo Categor\xEDa"
+        streak8Origin: "Modo Categor\xEDa"
+        streak10Origin: "Modo Categor\xEDa"
+        usuario: 
+      excepcion:
+        excepcionGenerada: 0
+        descripcionGeneral: 
+    LearningModeState:
+      ItemStates:
+      - id: 14
+    haveUser: 1
+    haveUsername: 1
+    haveInstructor: 1
+    idInstructor: 1
+    haveAvatar: 1
+    urlAvatar: https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Round&hairColor=Black&facialHairType=BeardMedium&facialHairColor=Black&clotheType=ShirtVNeck&clotheColor=Red&eyeType=Side&eyebrowType=DefaultNatural&mouthType=Disbelief&skinColor=Light
+    spriteAvatar: {fileID: 0}

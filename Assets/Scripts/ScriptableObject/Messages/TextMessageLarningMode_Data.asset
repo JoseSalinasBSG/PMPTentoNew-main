@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fda8da81533c194d825eb7826995fe8, type: 3}
+  m_Name: TextMessageLarningMode_Data
+  m_EditorClassIdentifier: 
+  nextQuestionMessage: []
+  correctQuestionMessage:
+  - "\xA1Correcto! \xBFQuieres m\xE1s?"
+  - "\xA1Bien hecho! \xBFOtra pregunta?"
+  - "\xA1Mejorando! \xBFListo para m\xE1s?"
+  - "\xA1Aciertos tras aciertos! \xBFSiguiente?"
+  - "\xA1Correcto y seguro! \xBFOtro desaf\xEDo?"
+  - "\xA1Est\xE1s en camino! \xBFLa siguiente?"
+  - "\xA1Correcto de nuevo! \xBFOtro intento?"
+  - "\xA1Est\xE1s brillando! \xBFM\xE1s preguntas?"
+  - "\xA1Golpe maestro! \xBFSuperar logros?"
+  incorrectQuestionMessage: []
+  wonMessage:
+  - "\xA1Felicidades! \xA1Completaste el desaf\xEDo con \xE9xito!"
+  - "\xA1Excelente trabajo! Has superado todas las preguntas."
+  - "\xA1Genial! \xA1Concluiste el conjunto de preguntas!"
+  - "\xA1Incre\xEDble rendimiento! \xA1Todas las respuestas correctas!"
+  - "\xA1Mis felicitaciones! Has dominado este conjunto."
+  - "\xA1Est\xE1s en fuego! \xA1Todas correctas, gran trabajo!"
+  - "\xA1Impresionante! \xA1Concluiste el desaf\xEDo con maestr\xEDa!"
+  - "\xA1Bravo! \xA1Terminaste todas las preguntas exitosamente!"
+  - "\xA1Eres un maestro! Todas correctas, \xA1incre\xEDble!"
+  - "\xA1Perfecto! \xA1Concluiste el conjunto con perfecci\xF3n!"
+  - "\xA1Incre\xEDble precisi\xF3n! \xA1Todo correcto, felicidades!"
+  - "\xA1Lo bordaste! \xA1Todas correctas, espectacular!"
+  - "\xA1Exactitud impecable! \xA1Completaste el desaf\xEDo!"
+  - "\xA1Maravilloso! \xA1Concluiste todas las preguntas!"
+  - "\xA1Eres un h\xE9roe! \xA1Terminaste el conjunto victorioso!"
+  lostMessage:
+  - "\xA1Tranquilo/a! A veces, los errores son oportunidades de aprendizaje."
+  - "\xA1No te preocupes! Cada intento cuenta, \xA1sigue adelante!"
+  - "\xA1Ups! Todos cometemos errores, sigue practicando."
+  - "\xA1\xC1nimo! La pr\xE1ctica constante te llevar\xE1 al \xE9xito."
+  - "\xA1Buen esfuerzo! Int\xE9ntalo de nuevo cuando te sientas listo/a."
+  - "\xA1No pasa nada! El aprendizaje lleva tiempo, sigue practicando."
+  - "\xA1Bien jugado! Los errores son parte del proceso, sigue intent\xE1ndolo."
+  - "\xA1Rel\xE1jate! La mejora viene con la pr\xE1ctica constante."
+  - "\xA1No te desanimes! Cada error es una oportunidad de mejora."
+  - "\xA1Vamos! Todos cometemos errores, sigue adelante con confianza."

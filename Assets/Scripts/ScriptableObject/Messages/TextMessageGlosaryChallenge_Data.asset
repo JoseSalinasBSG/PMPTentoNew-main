@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fda8da81533c194d825eb7826995fe8, type: 3}
+  m_Name: TextMessageGlosaryChallenge_Data
+  m_EditorClassIdentifier: 
+  nextQuestionMessage: []
+  correctQuestionMessage: []
+  incorrectQuestionMessage: []
+  wonMessage:
+  - "\xA1Felicidades! Has emparejado todas las definiciones con sus conceptos de
+    manera impecable."
+  - "\xA1Excelente trabajo! Cada emparejamiento correcto demuestra tu conocimiento
+    s\xF3lido."
+  - "\xA1Brillante! Has completado el desaf\xEDo de emparejamiento con precisi\xF3n
+    y destreza."
+  - "\xA1Mis felicitaciones! Tu habilidad para vincular conceptos y definiciones
+    es impresionante."
+  - "\xA1Maestro del emparejamiento! Cada combinaci\xF3n correcta es un paso hacia
+    la maestr\xEDa."
+  - "\xA1Perfecto! Has demostrado un entendimiento profundo al emparejar todas las
+    definiciones."
+  - "\xA1Incre\xEDble precisi\xF3n! Has superado el desaf\xEDo con una exactitud
+    admirable."
+  - "\xA1Bravo! Cada emparejamiento correcto es un testimonio de tu dominio en el
+    tema."
+  - "\xA1Impecable ejecuci\xF3n! Tu habilidad para relacionar conceptos y definiciones
+    es destacable."
+  - "\xA1Maravilloso! Has demostrado una comprensi\xF3n completa al emparejar todas
+    las definiciones."
+  lostMessage:
+  - "\xA1Tiempo agotado! La precisi\xF3n en el emparejamiento es clave, incluso con
+    limitaciones de tiempo."
+  - "\xA1Oops! El cron\xF3metro marca el final, pero cada emparejamiento correcto
+    muestra tu conocimiento."
+  - "\xA1Se acab\xF3 el tiempo! En el \xE1mbito profesional, la rapidez a veces es
+    esencial. Reflexiona sobre tus elecciones y contin\xFAa tu jornada."
+  - "\xA1Cron\xF3metros vencidos! Aunque el tiempo sea limitado, tu habilidad para
+    emparejar conceptos es evidente."
+  - "\xA1Oh cielos! El tiempo fue fugaz, pero tu determinaci\xF3n y profesionalismo
+    son notables."
+  - "\xA1Tiempo agotado! En el mundo laboral, los plazos son ineludibles. Considera
+    esta experiencia al seguir adelante."
+  - "\xA1Se nos fue el tiempo! Tu capacidad de emparejamiento es destacada, incluso
+    bajo presi\xF3n."
+  - "\xA1Ups, el reloj nos gan\xF3! Aunque el tiempo se agote, tus habilidades profesionales
+    siguen intactas."
+  - "\xA1Tiempo fuera! Haz una pausa breve y reflexiva antes de continuar con tus
+    desaf\xEDos profesionales."
+  - "\xA1El tiempo vol\xF3! Aunque la limitaci\xF3n de tiempo sea una barrera, cada
+    emparejamiento correcto es un logro."

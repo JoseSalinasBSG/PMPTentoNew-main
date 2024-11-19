@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f56b3f574e1bfb47bf027c10e95b0c5, type: 3}
+  m_Name: PathDataRankingToStore
+  m_EditorClassIdentifier: 
+  controlPoints:
+  - startPoint: {x: -8.166532, y: 2.5371094, z: 10.721927}
+    haveModification: 0
+    startTangent: {x: -7.9093466, y: 2.4647608, z: 10.715235}
+    startRotation: {x: 0.0063953083, y: -0.66746485, z: -0.0059374133, w: 0.7445902}
+    endPoint: {x: -3.2044513, y: 2.4038363, z: 7.971387}
+    endRotation: {x: 0.03354016, y: 0.9934019, z: -0.015436869, w: 0.10857986}
+    endTangent: {x: -3.3464434, y: 2.7279336, z: 8.651118}
+  colorPath: {r: 0.6132076, g: 0.046514098, b: 0, a: 1}

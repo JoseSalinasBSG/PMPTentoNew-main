@@ -1,0 +1,844 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db89d309e1f2846198344a74ff30af82, type: 3}
+  m_Name: ConceptAndDefinitionData
+  m_EditorClassIdentifier: 
+  list:
+  - id: 1
+    concept: Riesgo mitigado
+    definition: ' Un riesgo que ha sido reducido en su probabilidad o impacto mediante
+      acciones preventivas'
+  - id: 2
+    concept: "Planificaci\xF3n de recursos"
+    definition: "Determinaci\xF3n de los recursos necesarios para llevar a cabo las
+      actividades del proyecto."
+  - id: 3
+    concept: Stakeholder engagement
+    definition: El proceso de involucrar activamente a las partes interesadas en
+      el proyecto.
+  - id: 4
+    concept: Flujo de caja
+    definition: Entradas y salidas de efectivo durante el curso de un proyecto.
+  - id: 5
+    concept: "Estrategia de comunicaci\xF3n"
+    definition: "Enfoque planificado para compartir informaci\xF3n relevante con
+      las partes interesadas."
+  - id: 6
+    concept: Matriz de probabilidad vs. impacto
+    definition: "Herramienta utilizada para evaluar y priorizar los riesgos seg\xFAn
+      su probabilidad e impacto."
+  - id: 7
+    concept: "Plan de gesti\xF3n de adquisiciones"
+    definition: "Documento que describe c\xF3mo se adquirir\xE1n y gestionar\xE1n
+      los bienes y servicios necesarios para el proyecto."
+  - id: 8
+    concept: Valor ganado (Earned Value)
+    definition: "M\xE9todo para medir el rendimiento del proyecto comparando el trabajo
+      realizado con el trabajo planificado."
+  - id: 9
+    concept: Restricciones de calidad
+    definition: Limitaciones que afectan la calidad del resultado del proyecto.
+  - id: 10
+    concept: Diagrama de Pareto
+    definition: "Gr\xE1fico que muestra la distribuci\xF3n de los problemas o causas
+      en funci\xF3n de su importancia relativa."
+  - id: 11
+    concept: Matriz de Riesgos
+    definition: "Una herramienta que identifica y prioriza los riesgos del proyecto
+      en funci\xF3n de su probabilidad e impacto."
+  - id: 12
+    concept: "Planificaci\xF3n de Recursos Humanos"
+    definition: "Proceso de identificaci\xF3n, adquisici\xF3n y gesti\xF3n del personal
+      del proyecto."
+  - id: 13
+    concept: "Plan de Gesti\xF3n del Tiempo"
+    definition: "Documento que define c\xF3mo se gestionar\xE1n y controlar\xE1n
+      las actividades y los plazos del proyecto."
+  - id: 14
+    concept: Activo
+    definition: Recurso controlado por la empresa y que se espera que proporcione
+      beneficios futuros.
+  - id: 15
+    concept: Costo indirecto
+    definition: "Costos que no se pueden atribuir directamente a un producto o actividad
+      espec\xEDfica."
+  - id: 16
+    concept: Entregable
+    definition: Producto, resultado o servicio generado por el proyecto y entregado
+      al cliente o a las partes interesadas.
+  - id: 17
+    concept: "Reuni\xF3n de Retroalimentaci\xF3n"
+    definition: "Sesi\xF3n en la que se revisa el rendimiento del proyecto y se identifican
+      \xE1reas de mejora."
+  - id: 18
+    concept: "Planificaci\xF3n de la Comunicaci\xF3n"
+    definition: "Proceso de determinar qu\xE9 informaci\xF3n se comunicar\xE1, a
+      qui\xE9n, cu\xE1ndo y con qu\xE9 m\xE9todo."
+  - id: 19
+    concept: "Revisi\xF3n de alcance"
+    definition: "Evaluaci\xF3n peri\xF3dica del alcance del proyecto para garantizar
+      que se mantenga alineado con los objetivos."
+  - id: 20
+    concept: "Planificaci\xF3n de la Calidad"
+    definition: "Actividades y procesos para asegurar que los productos y servicios
+      del proyecto cumplan con los est\xE1ndares de calidad."
+  - id: 21
+    concept: "Matriz de Asignaci\xF3n de Recursos"
+    definition: "Herramienta que asigna recursos a las actividades del proyecto seg\xFAn
+      su disponibilidad y necesidades."
+  - id: 22
+    concept: "Plan de Gesti\xF3n del Riesgo"
+    definition: "Documento que identifica, analiza y responde a los riesgos del proyecto
+      de manera sistem\xE1tica."
+  - id: 23
+    concept: Diagrama de Ishikawa
+    definition: "M\xE9todo de an\xE1lisis que identifica las causas ra\xEDz de un
+      problema organizando las causas en categor\xEDas."
+  - id: 24
+    concept: "Matriz de Comunicaci\xF3n"
+    definition: "Registro que especifica qui\xE9n debe comunicarse con qui\xE9n,
+      cu\xE1ndo y sobre qu\xE9 temas durante el proyecto."
+  - id: 25
+    concept: "Estimaci\xF3n PERT"
+    definition: "T\xE9cnica de estimaci\xF3n que utiliza tres valores para calcular
+      una estimaci\xF3n m\xE1s precisa basada en el optimismo, la pesimismo y la
+      estimaci\xF3n m\xE1s probable."
+  - id: 26
+    concept: "Punto de Inflexi\xF3n"
+    definition: "Punto en el proyecto en el que se produce un cambio significativo
+      en la direcci\xF3n o el rendimiento."
+  - id: 27
+    concept: Diagrama de Flujo de Procesos
+    definition: "Representaci\xF3n visual de los pasos y actividades de un proceso
+      o sistema."
+  - id: 28
+    concept: Ciclo de Deming (PDCA)
+    definition: "Metodolog\xEDa de mejora continua compuesta por cuatro etapas: Planificar,
+      Hacer, Verificar y Actuar."
+  - id: 29
+    concept: "\xCDndice de Desempe\xF1o del Trabajo (CPI)"
+    definition: "Medida que indica si un proyecto est\xE1 dentro, por debajo o por
+      encima del presupuesto en funci\xF3n del valor ganado."
+  - id: 30
+    concept: "Revisi\xF3n Post-Implementaci\xF3n"
+    definition: "Evaluaci\xF3n realizada despu\xE9s de completar un proyecto para
+      identificar lecciones aprendidas y \xE1reas de mejora."
+  - id: 31
+    concept: "Plan de Gesti\xF3n del Alcance"
+    definition: "Documento que describe c\xF3mo se definir\xE1, desarrollar\xE1 y
+      controlar\xE1 el alcance del proyecto."
+  - id: 32
+    concept: Estructura de Desglose del Trabajo (EDT)
+    definition: "Descomposici\xF3n jer\xE1rquica de las actividades del proyecto
+      en elementos m\xE1s peque\xF1os y manejables."
+  - id: 33
+    concept: Cronograma del Proyecto
+    definition: "Representaci\xF3n gr\xE1fica de las actividades del proyecto y su
+      secuencia temporal."
+  - id: 34
+    concept: Diagrama de Gantt
+    definition: "Herramienta de gesti\xF3n de proyectos que muestra las actividades
+      del proyecto en forma de gr\xE1fico de barras."
+  - id: 35
+    concept: "Restricci\xF3n de Tiempo"
+    definition: Factor que limita la cantidad de tiempo disponible para completar
+      el proyecto.
+  - id: 36
+    concept: Control de Cambios
+    definition: Proceso para gestionar y documentar cambios en el alcance, el cronograma
+      y el presupuesto del proyecto.
+  - id: 37
+    concept: Equipo del Proyecto
+    definition: Grupo de personas asignadas para trabajar en el proyecto y alcanzar
+      sus objetivos.
+  - id: 38
+    concept: Supervisor del Proyecto
+    definition: Individuo responsable de supervisar y dirigir el trabajo del equipo
+      del proyecto.
+  - id: 39
+    concept: "Gesti\xF3n de Riesgos"
+    definition: Proceso de identificar, analizar y responder a los riesgos del proyecto.
+  - id: 40
+    concept: Control de Calidad
+    definition: Actividades y procesos para garantizar que los productos y servicios
+      del proyecto cumplan con los requisitos de calidad.
+  - id: 41
+    concept: "Acta de Constituci\xF3n del Proyecto"
+    definition: Documento que autoriza formalmente el inicio de un proyecto y define
+      sus objetivos y alcance.
+  - id: 42
+    concept: Cliente
+    definition: La persona o entidad que solicita y recibe el resultado final del
+      proyecto.
+  - id: 43
+    concept: "Gesti\xF3n del Valor Ganado (EV)"
+    definition: "M\xE9todo para medir y controlar el rendimiento del proyecto mediante
+      la comparaci\xF3n del valor ganado con el costo real y el presupuesto."
+  - id: 44
+    concept: "Plan de Gesti\xF3n de Riesgos"
+    definition: "Documento que establece c\xF3mo se identificar\xE1n, evaluar\xE1n
+      y responder\xE1n a los riesgos del proyecto."
+  - id: 45
+    concept: Matriz de Responsabilidades (RACI)
+    definition: "Herramienta que clarifica qui\xE9n es responsable, qui\xE9n es el
+      responsable, qui\xE9n debe ser consultado y qui\xE9n debe ser informado en
+      cada actividad."
+  - id: 46
+    concept: Plan de Respuesta a Riesgos
+    definition: Documento que describe las estrategias y acciones para responder
+      a los riesgos identificados en el proyecto.
+  - id: 47
+    concept: Margen de Reserva
+    definition: Cantidad adicional de tiempo o dinero incluida en el cronograma o
+      presupuesto para cubrir incertidumbres.
+  - id: 48
+    concept: "M\xE9tricas de Proyecto"
+    definition: "Medidas cuantitativas utilizadas para evaluar el desempe\xF1o del
+      proyecto y el cumplimiento de los objetivos."
+  - id: 49
+    concept: "Estimaci\xF3n de Tama\xF1o"
+    definition: "Proceso de determinar el tama\xF1o de un producto o componente del
+      proyecto, generalmente en t\xE9rminos de l\xEDneas de c\xF3digo, puntos de
+      funci\xF3n, o tama\xF1o relativo."
+  - id: 50
+    concept: Responsable
+    definition: "Persona asignada para llevar a cabo una actividad o tarea espec\xEDfica
+      en el proyecto."
+  - id: 51
+    concept: "Planificaci\xF3n Iterativa"
+    definition: "Enfoque de planificaci\xF3n en el que se desarrollan y refinan los
+      detalles del proyecto en ciclos sucesivos de trabajo."
+  - id: 52
+    concept: "An\xE1lisis Costo-Beneficio"
+    definition: "Proceso para evaluar los costos y beneficios esperados de un proyecto
+      o una acci\xF3n, para determinar su viabilidad."
+  - id: 53
+    concept: "Estimaci\xF3n de Costos"
+    definition: Proceso de determinar el costo estimado de los recursos necesarios
+      para completar las actividades del proyecto.
+  - id: 54
+    concept: "Gesti\xF3n de la Integraci\xF3n del Proyecto"
+    definition: "\xC1rea de conocimiento que incluye los procesos para coordinar
+      y controlar todos los aspectos del proyecto."
+  - id: 55
+    concept: Diagrama de Ishikawa (Espina de Pescado)
+    definition: Herramienta utilizada para identificar y visualizar las posibles
+      causas de un problema o efecto.
+  - id: 56
+    concept: Costo Fijo
+    definition: "Costo que no var\xEDa con el volumen de producci\xF3n o ventas,
+      permaneciendo constante en un per\xEDodo de tiempo determinado."
+  - id: 57
+    concept: Calidad del Proyecto
+    definition: Grado en el que el proyecto cumple con los requisitos y expectativas
+      del cliente y otras partes interesadas.
+  - id: 58
+    concept: "Restricci\xF3n de Recursos"
+    definition: Factor que limita la disponibilidad de recursos, como tiempo, dinero,
+      personal o equipo.
+  - id: 59
+    concept: Control de Proyectos
+    definition: Proceso de monitorear, medir y corregir el rendimiento del proyecto
+      para garantizar que se alcancen los objetivos.
+  - id: 60
+    concept: "Planificaci\xF3n de la Adquisici\xF3n"
+    definition: "Proceso de determinar qu\xE9 bienes y servicios externos se necesitar\xE1n
+      para completar el proyecto y c\xF3mo se adquirir\xE1n."
+  - id: 61
+    concept: "L\xEDnea de Base del Alcance"
+    definition: "Versi\xF3n aprobada del alcance del proyecto que se utiliza como
+      referencia para medir y controlar los cambios."
+  - id: 62
+    concept: Riesgo
+    definition: "Evento incierto o condici\xF3n que, si ocurre, afectar\xE1 positiva
+      o negativamente el logro de los objetivos del proyecto."
+  - id: 63
+    concept: "Comunicaci\xF3n del Proyecto"
+    definition: "Flujo de informaci\xF3n dentro del proyecto y entre el proyecto
+      y las partes interesadas."
+  - id: 64
+    concept: "Plan de Administraci\xF3n de Configuraci\xF3n"
+    definition: "Documento que establece c\xF3mo se identificar\xE1n, documentar\xE1n
+      y controlar\xE1n los elementos de configuraci\xF3n del proyecto."
+  - id: 65
+    concept: "Plan de Gesti\xF3n de Calidad"
+    definition: "Documento que establece las pol\xEDticas, los procedimientos y los
+      recursos para la implementaci\xF3n y el mantenimiento de la calidad en el proyecto."
+  - id: 66
+    concept: "An\xE1lisis de Stakeholders"
+    definition: Proceso de identificar, analizar y gestionar las partes interesadas
+      del proyecto y sus necesidades, expectativas, intereses y roles.
+  - id: 67
+    concept: Diagrama de Flujo de Datos
+    definition: "Representaci\xF3n gr\xE1fica de c\xF3mo fluyen los datos en un sistema
+      o proceso, mostrando los procesos, las entradas, las salidas y los almacenamientos
+      de datos."
+  - id: 68
+    concept: "Documentaci\xF3n del Proyecto"
+    definition: Todos los documentos y registros asociados con el proyecto, incluidos
+      planes, informes, contratos y comunicaciones.
+  - id: 69
+    concept: "Administraci\xF3n de Riesgos"
+    definition: Proceso de identificar, analizar y responder a los riesgos del proyecto
+      para minimizar su impacto en los objetivos del proyecto.
+  - id: 70
+    concept: "L\xEDnea de Base de Costos"
+    definition: "Versi\xF3n aprobada del presupuesto del proyecto que se utiliza
+      como referencia para medir y controlar los costos."
+  - id: 71
+    concept: "Evaluaci\xF3n de Impacto"
+    definition: Proceso de determinar los efectos potenciales de un cambio en el
+      proyecto.
+  - id: 72
+    concept: "Matriz de Asignaci\xF3n de Responsabilidades (RAM)"
+    definition: Herramienta que muestra las actividades del proyecto y las personas
+      o roles responsables de llevarlas a cabo.
+  - id: 73
+    concept: Acta de Cierre del Proyecto
+    definition: "Documento que formaliza la aceptaci\xF3n del producto o servicio
+      del proyecto y cierra formalmente el proyecto."
+  - id: 74
+    concept: "Plan de Gesti\xF3n de Recursos Humanos"
+    definition: "Documento que describe c\xF3mo se adquirir\xE1n, desarrollar\xE1n
+      y gestionar\xE1n los recursos humanos del proyecto."
+  - id: 75
+    concept: "Restricci\xF3n Triple"
+    definition: "Concepto que establece que el alcance, el tiempo y el costo son
+      interdependientes y est\xE1n vinculados por la calidad del proyecto."
+  - id: 76
+    concept: "Gesti\xF3n de la Configuraci\xF3n"
+    definition: "Proceso de identificar y controlar los elementos de configuraci\xF3n
+      del proyecto, como documentos, versiones y cambios."
+  - id: 77
+    concept: Diagrama de Red
+    definition: "Representaci\xF3n gr\xE1fica de las actividades del proyecto y sus
+      relaciones, mostrando la secuencia y la dependencia entre las actividades."
+  - id: 78
+    concept: Ciclo de Vida del Proyecto
+    definition: "Serie de fases o etapas que un proyecto atraviesa desde su inicio
+      hasta su finalizaci\xF3n."
+  - id: 79
+    concept: "Gesti\xF3n de la Comunicaci\xF3n"
+    definition: "Proceso de planificar, recopilar, almacenar y distribuir informaci\xF3n
+      relevante para el proyecto de manera oportuna y efectiva."
+  - id: 80
+    concept: "Estimaci\xF3n de la Duraci\xF3n"
+    definition: Proceso de estimar la cantidad de tiempo requerido para completar
+      las actividades del proyecto.
+  - id: 81
+    concept: "Matriz de Evaluaci\xF3n de Riesgos"
+    definition: "Herramienta que clasifica y prioriza los riesgos del proyecto seg\xFAn
+      su probabilidad e impacto."
+  - id: 82
+    concept: "Plan de Gesti\xF3n de Cambios"
+    definition: "Documento que establece c\xF3mo se identificar\xE1n, evaluar\xE1n
+      y controlar\xE1n los cambios en el proyecto."
+  - id: 83
+    concept: "An\xE1lisis de Valor Ganado (EVM)"
+    definition: "M\xE9todo para medir el desempe\xF1o del proyecto comparando el
+      valor ganado con el costo real y el presupuesto."
+  - id: 84
+    concept: Calendario del Proyecto
+    definition: "Documento que muestra las fechas de inicio y finalizaci\xF3n de
+      las actividades del proyecto."
+  - id: 85
+    concept: "Gesti\xF3n de Interesados"
+    definition: Proceso de identificar, analizar y gestionar las expectativas de
+      las partes interesadas del proyecto.
+  - id: 86
+    concept: "Evaluaci\xF3n de Impacto Ambiental"
+    definition: Proceso para determinar los efectos potenciales de un proyecto en
+      el medio ambiente.
+  - id: 87
+    concept: "Evaluaci\xF3n de Desempe\xF1o"
+    definition: Proceso para medir y evaluar el rendimiento del proyecto y su cumplimiento
+      de los objetivos.
+  - id: 88
+    concept: Plan de Calidad
+    definition: "Documento que establece las pol\xEDticas, los procedimientos y los
+      criterios de calidad del proyecto."
+  - id: 89
+    concept: Diagrama de Flujo
+    definition: "Representaci\xF3n gr\xE1fica de los pasos o procesos de un sistema,
+      mostrando la secuencia y las interacciones entre ellos."
+  - id: 90
+    concept: "Auditor\xEDa del Proyecto"
+    definition: "Examen independiente de las actividades, procesos y resultados del
+      proyecto para garantizar el cumplimiento de los est\xE1ndares."
+  - id: 91
+    concept: "An\xE1lisis de Sensibilidad"
+    definition: "Proceso para evaluar c\xF3mo los cambios en una variable afectan
+      el resultado del proyecto."
+  - id: 92
+    concept: Cierre del Proyecto
+    definition: "Proceso de finalizaci\xF3n ordenada y formal del proyecto, incluyendo
+      la entrega del producto o servicio."
+  - id: 93
+    concept: "Plan de Gesti\xF3n de Stakeholders"
+    definition: "Documento que identifica a las partes interesadas del proyecto y
+      describe c\xF3mo se gestionar\xE1n sus expectativas."
+  - id: 94
+    concept: Diagrama de Precedencia
+    definition: "T\xE9cnica para representar las relaciones entre las actividades
+      del proyecto, mostrando la secuencia y las dependencias."
+  - id: 95
+    concept: "Evaluaci\xF3n de Viabilidad"
+    definition: "An\xE1lisis para determinar si un proyecto es factible en t\xE9rminos
+      t\xE9cnicos, financieros y operativos."
+  - id: 96
+    concept: "Evaluaci\xF3n de Impacto Social"
+    definition: Proceso para determinar los efectos potenciales de un proyecto en
+      la sociedad y las comunidades afectadas.
+  - id: 97
+    concept: Matriz de Responsabilidades
+    definition: "Herramienta que define y asigna roles y responsabilidades para las
+      actividades del proyecto, mostrando qui\xE9n es responsable, qui\xE9n es consultado,
+      qui\xE9n debe ser informado y qui\xE9n aprueba."
+  - id: 98
+    concept: "Diagrama de \xC1rbol de Decisiones"
+    definition: "Representaci\xF3n gr\xE1fica de las opciones y posibles resultados
+      de una decisi\xF3n, ayudando a visualizar y analizar las alternativas disponibles."
+  - id: 99
+    concept: "Plan de Gesti\xF3n de Costos"
+    definition: "Documento que describe c\xF3mo se estimar\xE1n, presupuestar\xE1n
+      y controlar\xE1n los costos del proyecto."
+  - id: 100
+    concept: "Matriz de Comparaci\xF3n"
+    definition: "Herramienta que compara las caracter\xEDsticas o criterios de diferentes
+      opciones, ayudando a tomar decisiones informadas."
+  - id: 101
+    concept: Estrategia de Adquisiciones
+    definition: "Plan que define c\xF3mo se adquirir\xE1n los bienes y servicios
+      necesarios para el proyecto, incluyendo la selecci\xF3n de proveedores y la
+      gesti\xF3n de contratos."
+  - id: 102
+    concept: "Evaluaci\xF3n de Impacto Econ\xF3mico"
+    definition: "An\xE1lisis para determinar los efectos potenciales de un proyecto
+      en la econom\xEDa, incluyendo el empleo, los ingresos y el crecimiento."
+  - id: 103
+    concept: Matriz de Riesgos y Oportunidades
+    definition: "Herramienta que identifica y eval\xFAa los riesgos y oportunidades
+      del proyecto, mostrando su probabilidad e impacto y las respuestas asociadas."
+  - id: 104
+    concept: "Plan de Comunicaci\xF3n"
+    definition: "Documento que establece c\xF3mo se comunicar\xE1 la informaci\xF3n
+      del proyecto a las partes interesadas, incluyendo los medios, la frecuencia
+      y los destinatarios."
+  - id: 105
+    concept: "An\xE1lisis FODA"
+    definition: "M\xE9todo para identificar las fortalezas, debilidades, oportunidades
+      y amenazas de un proyecto, ayudando a desarrollar estrategias y tomar decisiones."
+  - id: 106
+    concept: "Matriz de Evaluaci\xF3n de Alternativas"
+    definition: Herramienta que compara diferentes opciones o soluciones para un
+      problema, evaluando sus ventajas y desventajas.
+  - id: 107
+    concept: "Evaluaci\xF3n de Impacto Cultural"
+    definition: "An\xE1lisis para determinar los efectos potenciales de un proyecto
+      en la cultura y las tradiciones de una comunidad."
+  - id: 108
+    concept: Plan de Seguimiento y Control
+    definition: "Documento que establece c\xF3mo se supervisar\xE1n y controlar\xE1n
+      las actividades del proyecto, incluyendo la recopilaci\xF3n de datos y la evaluaci\xF3n
+      del desempe\xF1o."
+  - id: 109
+    concept: Matriz de Interdependencias
+    definition: Herramienta que identifica las relaciones y dependencias entre las
+      actividades del proyecto, ayudando a coordinar y programar el trabajo.
+  - id: 110
+    concept: "Plan de Gesti\xF3n de la Calidad"
+    definition: "Documento que establece c\xF3mo se planificar\xE1, asegurar\xE1
+      y controlar\xE1 la calidad en el proyecto, incluyendo los est\xE1ndares y m\xE9tricas
+      de calidad."
+  - id: 111
+    concept: "Evaluaci\xF3n de Impacto Legal"
+    definition: "An\xE1lisis para determinar los efectos potenciales de un proyecto
+      en las leyes y regulaciones aplicables."
+  - id: 112
+    concept: Diagrama de Matriz
+    definition: "Representaci\xF3n gr\xE1fica de datos en forma de tabla, mostrando
+      las relaciones y comparaciones entre elementos."
+  - id: 113
+    concept: "An\xE1lisis de Costo-Beneficio"
+    definition: "Evaluaci\xF3n de los costos y beneficios de un proyecto para determinar
+      su viabilidad financiera."
+  - id: 114
+    concept: Plan de Adquisiciones
+    definition: "Documento que describe c\xF3mo se adquirir\xE1n los bienes y servicios
+      necesarios para el proyecto."
+  - id: 115
+    concept: "Plan de Gesti\xF3n de Comunicaciones"
+    definition: "Documento que establece c\xF3mo se planificar\xE1n, ejecutar\xE1n
+      y controlar\xE1n las comunicaciones del proyecto."
+  - id: 116
+    concept: "Evaluaci\xF3n de Desempe\xF1o del Equipo"
+    definition: Proceso para evaluar la efectividad y el rendimiento del equipo del
+      proyecto.
+  - id: 117
+    concept: "Gesti\xF3n de la Innovaci\xF3n"
+    definition: "Proceso para fomentar y gestionar la implementaci\xF3n de nuevas
+      ideas y tecnolog\xEDas en el proyecto."
+  - id: 118
+    concept: "An\xE1lisis de Rentabilidad"
+    definition: "Evaluaci\xF3n de la capacidad de un proyecto para generar beneficios
+      en relaci\xF3n con los costos."
+  - id: 119
+    concept: "Gesti\xF3n de Proyectos \xC1giles"
+    definition: "Enfoque para gestionar proyectos que se basa en la adaptabilidad,
+      la colaboraci\xF3n y la entrega incremental."
+  - id: 120
+    concept: Diagrama de Pert
+    definition: "T\xE9cnica utilizada para modelar y analizar las tareas y sus dependencias
+      en un proyecto."
+  - id: 121
+    concept: "Plan de Gesti\xF3n de Riesgos Ambientales"
+    definition: "Documento que identifica y describe c\xF3mo se gestionar\xE1n los
+      riesgos ambientales en el proyecto."
+  - id: 122
+    concept: "Gesti\xF3n de la Configuraci\xF3n del Software"
+    definition: "Proceso para gestionar los cambios en el software y asegurar la
+      integridad de la configuraci\xF3n."
+  - id: 123
+    concept: "Plan de Gesti\xF3n de Recursos"
+    definition: "Documento que describe c\xF3mo se planificar\xE1n y gestionar\xE1n
+      los recursos del proyecto."
+  - id: 124
+    concept: "An\xE1lisis de Impacto del Proyecto"
+    definition: "Evaluaci\xF3n de c\xF3mo un proyecto afectar\xE1 a las partes interesadas,
+      el entorno y la sociedad."
+  - id: 125
+    concept: "Gesti\xF3n de la Integraci\xF3n de Sistemas"
+    definition: Proceso para asegurar que los diferentes sistemas de un proyecto
+      funcionen juntos de manera efectiva.
+  - id: 126
+    concept: "Plan de Gesti\xF3n de Riesgos Operativos"
+    definition: "Documento que describe c\xF3mo se identificar\xE1n, evaluar\xE1n
+      y gestionar\xE1n los riesgos operativos del proyecto."
+  - id: 127
+    concept: "An\xE1lisis de la Cadena de Valor"
+    definition: "Evaluaci\xF3n de las actividades del proyecto para identificar oportunidades
+      de mejora y eliminar desperdicios."
+  - id: 128
+    concept: "Gesti\xF3n de la Implementaci\xF3n del Proyecto"
+    definition: Proceso para ejecutar las actividades del proyecto de acuerdo con
+      el plan establecido.
+  - id: 129
+    concept: "Plan de Gesti\xF3n de Desarrollo"
+    definition: "Documento que describe c\xF3mo se planificar\xE1 y gestionar\xE1
+      el desarrollo del proyecto."
+  - id: 130
+    concept: "Diagrama de \xC1rbol de Decisi\xF3n"
+    definition: Herramienta utilizada para visualizar y analizar las opciones y sus
+      resultados en un proyecto.
+  - id: 131
+    concept: "An\xE1lisis de Costo-Efectividad"
+    definition: "Evaluaci\xF3n de los costos de un proyecto en relaci\xF3n con los
+      resultados y beneficios esperados."
+  - id: 132
+    concept: "Gesti\xF3n de Proyectos Tradicionales"
+    definition: Enfoque para gestionar proyectos que sigue un proceso lineal y secuencial.
+  - id: 133
+    concept: "Plan de Gesti\xF3n de Cambios Organizacionales"
+    definition: "Documento que describe c\xF3mo se gestionar\xE1n los cambios en
+      la organizaci\xF3n como resultado del proyecto."
+  - id: 134
+    concept: "Evaluaci\xF3n de Impacto Pol\xEDtico"
+    definition: "An\xE1lisis de c\xF3mo un proyecto afectar\xE1 el panorama pol\xEDtico
+      y las relaciones entre las partes interesadas."
+  - id: 135
+    concept: "Gesti\xF3n de la Capacidad"
+    definition: Proceso para asegurar que los recursos y la infraestructura del proyecto
+      puedan satisfacer las demandas previstas.
+  - id: 136
+    concept: "Plan de Gesti\xF3n de Compras"
+    definition: "Documento que describe c\xF3mo se planificar\xE1n y gestionar\xE1n
+      las compras en el proyecto."
+  - id: 137
+    concept: "An\xE1lisis de Escenarios"
+    definition: "Evaluaci\xF3n de diferentes situaciones y resultados posibles para
+      tomar decisiones informadas en el proyecto."
+  - id: 138
+    concept: "Gesti\xF3n de la Seguridad de la Informaci\xF3n"
+    definition: "Proceso para proteger la confidencialidad, integridad y disponibilidad
+      de la informaci\xF3n del proyecto."
+  - id: 139
+    concept: "Plan de Gesti\xF3n de Entregas"
+    definition: "Documento que describe c\xF3mo se planificar\xE1n y gestionar\xE1n
+      las entregas de productos y servicios del proyecto."
+  - id: 140
+    concept: "An\xE1lisis de FODA"
+    definition: "Evaluaci\xF3n de las Fortalezas, Oportunidades, Debilidades y Amenazas
+      de un proyecto para informar la estrategia."
+  - id: 141
+    concept: "Gesti\xF3n de Proyectos H\xEDbridos"
+    definition: "Enfoque que combina pr\xE1cticas tradicionales y \xE1giles para
+      gestionar proyectos."
+  - id: 142
+    concept: "An\xE1lisis de Impacto Financiero"
+    definition: "Evaluaci\xF3n de c\xF3mo un proyecto afectar\xE1 la situaci\xF3n
+      financiera de la organizaci\xF3n."
+  - id: 143
+    concept: "Gesti\xF3n del Conocimiento"
+    definition: Proceso para capturar, almacenar y compartir el conocimiento y la
+      experiencia del proyecto.
+  - id: 144
+    concept: "Plan de Gesti\xF3n de Interesados"
+    definition: "Documento que describe c\xF3mo se identificar\xE1n, gestionar\xE1n
+      y comunicar\xE1n las expectativas de las partes interesadas del proyecto."
+  - id: 145
+    concept: "An\xE1lisis de Brechas"
+    definition: "Evaluaci\xF3n de la diferencia entre el estado actual y el estado
+      deseado en un proyecto para identificar \xE1reas de mejora."
+  - id: 146
+    concept: "Gesti\xF3n de la Log\xEDstica"
+    definition: Proceso para coordinar el movimiento y almacenamiento de recursos
+      y materiales en el proyecto.
+  - id: 147
+    concept: "Gesti\xF3n del Alcance"
+    definition: Proceso para definir, gestionar y controlar el alcance del proyecto
+      y sus entregables.
+  - id: 148
+    concept: "An\xE1lisis de Impacto Ambiental"
+    definition: "Evaluaci\xF3n de c\xF3mo un proyecto afectar\xE1 el medio ambiente
+      y los recursos naturales."
+  - id: 149
+    concept: "An\xE1lisis de Viabilidad"
+    definition: "Evaluaci\xF3n de la capacidad de un proyecto para alcanzar sus objetivos
+      y generar beneficios."
+  - id: 150
+    concept: "Gesti\xF3n del Tiempo"
+    definition: Proceso para planificar, programar y controlar el tiempo necesario
+      para completar el proyecto.
+  - id: 151
+    concept: "An\xE1lisis de Riesgos"
+    definition: "Evaluaci\xF3n de los riesgos potenciales y sus impactos en el proyecto."
+  - id: 152
+    concept: "Gesti\xF3n del Cambio"
+    definition: Proceso para identificar, evaluar y gestionar los cambios en el proyecto.
+  - id: 153
+    concept: "Gesti\xF3n de la Integraci\xF3n"
+    definition: Proceso para coordinar y unificar todos los aspectos del proyecto.
+  - id: 154
+    concept: "Plan de Gesti\xF3n de la Configuraci\xF3n"
+    definition: "Documento que describe c\xF3mo se identificar\xE1n, gestionar\xE1n
+      y controlar\xE1n los elementos de configuraci\xF3n del proyecto."
+  - id: 155
+    concept: "An\xE1lisis de Impacto Social"
+    definition: "Evaluaci\xF3n de c\xF3mo un proyecto afectar\xE1 a la sociedad y
+      las comunidades afectadas."
+  - id: 156
+    concept: "Planificaci\xF3n de Iteraciones"
+    definition: "Actividad para organizar y programar las iteraciones en un proyecto
+      \xE1gil."
+  - id: 157
+    concept: "Revisi\xF3n de Lecciones Aprendidas"
+    definition: Proceso para identificar, documentar y aplicar lecciones aprendidas
+      en proyectos anteriores.
+  - id: 158
+    concept: "Gesti\xF3n del Cambio Organizacional"
+    definition: "Proceso para gestionar la transici\xF3n de una organizaci\xF3n a
+      un nuevo estado despu\xE9s de la implementaci\xF3n de un proyecto."
+  - id: 159
+    concept: "Plan de Gesti\xF3n de la Comunicaci\xF3n"
+    definition: "Documento que describe c\xF3mo se planificar\xE1n y gestionar\xE1n
+      las comunicaciones del proyecto."
+  - id: 160
+    concept: "An\xE1lisis de Red de Pert"
+    definition: "M\xE9todo para visualizar y analizar las relaciones entre las actividades
+      del proyecto."
+  - id: 161
+    concept: "Plan de Gesti\xF3n de Requisitos"
+    definition: "Documento que describe c\xF3mo se gestionar\xE1n y documentar\xE1n
+      los requisitos del proyecto."
+  - id: 162
+    concept: "An\xE1lisis Cualitativo de Riesgos"
+    definition: "Evaluaci\xF3n de la probabilidad e impacto de los riesgos utilizando
+      juicio experto."
+  - id: 163
+    concept: "Gesti\xF3n de la Calidad"
+    definition: Proceso para garantizar que los productos y servicios del proyecto
+      cumplan con los requisitos de calidad.
+  - id: 164
+    concept: "Gesti\xF3n de Partes Interesadas"
+    definition: Proceso para identificar, gestionar y comunicar con las partes interesadas
+      del proyecto.
+  - id: 165
+    concept: "Plan de Gesti\xF3n de la Integraci\xF3n"
+    definition: "Documento que describe c\xF3mo se integrar\xE1n y coordinar\xE1n
+      todos los aspectos del proyecto."
+  - id: 166
+    concept: "Plan de Gesti\xF3n de la Seguridad"
+    definition: "Documento que describe c\xF3mo se identificar\xE1n y gestionar\xE1n
+      los riesgos de seguridad en el proyecto."
+  - id: 167
+    concept: "Gesti\xF3n de Recursos Humanos"
+    definition: Proceso para adquirir, desarrollar y gestionar el equipo del proyecto.
+  - id: 168
+    concept: "An\xE1lisis de Cadenas Cr\xEDticas"
+    definition: "M\xE9todo para identificar las actividades cr\xEDticas que afectan
+      el cronograma del proyecto."
+  - id: 169
+    concept: "Plan de Gesti\xF3n de Alcance"
+    definition: "Documento que describe c\xF3mo se definir\xE1n, gestionar\xE1n y
+      controlar\xE1n los l\xEDmites del proyecto."
+  - id: 170
+    concept: "An\xE1lisis de Valor Ganado"
+    definition: "M\xE9todo para medir el desempe\xF1o del proyecto comparando el
+      valor planificado con el valor real."
+  - id: 171
+    concept: "Gesti\xF3n de Recursos Naturales"
+    definition: Proceso para gestionar el uso sostenible de los recursos naturales
+      en el proyecto.
+  - id: 172
+    concept: "An\xE1lisis de Stakeholder Salud"
+    definition: "Evaluaci\xF3n de los impactos en la salud de los stakeholders involucrados
+      en el proyecto."
+  - id: 173
+    concept: "Plan de Gesti\xF3n de Sostenibilidad"
+    definition: "Documento que describe c\xF3mo se integrar\xE1n consideraciones
+      ambientales, sociales y econ\xF3micas en el proyecto."
+  - id: 174
+    concept: "Gesti\xF3n de la Cadena de Suministro"
+    definition: "Proceso para gestionar el flujo de bienes, servicios e informaci\xF3n
+      desde la adquisici\xF3n de materias primas hasta la entrega al cliente."
+  - id: 175
+    concept: "An\xE1lisis de Riesgos Geot\xE9cnicos"
+    definition: "Evaluaci\xF3n de los riesgos asociados con el suelo y la geolog\xEDa
+      en el proyecto."
+  - id: 176
+    concept: "Plan de Gesti\xF3n de la Innovaci\xF3n"
+    definition: "Documento que describe c\xF3mo se fomentar\xE1 y gestionar\xE1 la
+      innovaci\xF3n en el proyecto."
+  - id: 177
+    concept: "Gesti\xF3n de la Participaci\xF3n Comunitaria"
+    definition: "Proceso para involucrar a la comunidad en la planificaci\xF3n y
+      ejecuci\xF3n del proyecto."
+  - id: 178
+    concept: "An\xE1lisis de Beneficios y Costos"
+    definition: "Evaluaci\xF3n de los beneficios y costos esperados de un proyecto
+      para determinar su viabilidad."
+  - id: 179
+    concept: "Plan de Gesti\xF3n de Residuos"
+    definition: "Documento que describe c\xF3mo se gestionar\xE1n y minimizar\xE1n
+      los residuos generados por el proyecto."
+  - id: 180
+    concept: "Gesti\xF3n de la Salud y Seguridad Ocupacional"
+    definition: Proceso para garantizar un entorno de trabajo seguro y saludable
+      para todos los involucrados en el proyecto.
+  - id: 181
+    concept: "An\xE1lisis de Viabilidad Financiera"
+    definition: "Evaluaci\xF3n de la capacidad financiera para llevar a cabo un proyecto
+      y generar retornos adecuados."
+  - id: 182
+    concept: "Plan de Gesti\xF3n de la Diversidad"
+    definition: "Documento que describe c\xF3mo se fomentar\xE1 y gestionar\xE1 la
+      diversidad en el equipo y las partes interesadas del proyecto."
+  - id: 183
+    concept: "Gesti\xF3n de la Propiedad Intelectual"
+    definition: Proceso para proteger los derechos de propiedad intelectual asociados
+      con los productos y servicios del proyecto.
+  - id: 184
+    concept: "An\xE1lisis de Impacto Econ\xF3mico"
+    definition: "Evaluaci\xF3n de los efectos econ\xF3micos de un proyecto en la
+      regi\xF3n y la econom\xEDa circundante."
+  - id: 185
+    concept: "Plan de Gesti\xF3n de Crisis"
+    definition: "Documento que describe c\xF3mo se anticipar\xE1n, prevenir\xE1n
+      y gestionar\xE1n las crisis en el proyecto."
+  - id: 186
+    concept: "Gesti\xF3n de la Capacidad de Producci\xF3n"
+    definition: "Proceso para asegurar que la capacidad de producci\xF3n sea adecuada
+      para cumplir con los objetivos del proyecto."
+  - id: 187
+    concept: "An\xE1lisis de Factibilidad T\xE9cnica"
+    definition: "Evaluaci\xF3n de la viabilidad t\xE9cnica de un proyecto en t\xE9rminos
+      de recursos y tecnolog\xEDa disponibles."
+  - id: 188
+    concept: "Plan de Gesti\xF3n de la \xC9tica"
+    definition: "Documento que describe c\xF3mo se promover\xE1 y garantizar\xE1
+      la conducta \xE9tica en todas las actividades del proyecto."
+  - id: 189
+    concept: "An\xE1lisis de Viabilidad Legal"
+    definition: "Evaluaci\xF3n de la viabilidad legal de un proyecto en t\xE9rminos
+      de cumplimiento normativo y riesgos legales."
+  - id: 190
+    concept: "Plan de Gesti\xF3n de la Excelencia Operativa"
+    definition: "Documento que describe c\xF3mo se implementar\xE1n pr\xE1cticas
+      de mejora continua y eficiencia en el proyecto."
+  - id: 191
+    concept: "Gesti\xF3n del Conocimiento del Cliente"
+    definition: Proceso para comprender las necesidades y expectativas del cliente
+      y aplicar ese conocimiento en el proyecto.
+  - id: 192
+    concept: "An\xE1lisis de Riesgos Pol\xEDticos"
+    definition: "Evaluaci\xF3n de los riesgos asociados con factores pol\xEDticos
+      y gubernamentales en el proyecto."
+  - id: 193
+    concept: "Plan de Gesti\xF3n de la Eficiencia Energ\xE9tica"
+    definition: "Documento que describe c\xF3mo se gestionar\xE1 y optimizar\xE1
+      el uso de la energ\xEDa en el proyecto."
+  - id: 194
+    concept: "Gesti\xF3n de la Responsabilidad Social Corporativa"
+    definition: "Proceso para integrar consideraciones \xE9ticas, sociales y ambientales
+      en las actividades del proyecto."
+  - id: 195
+    concept: "An\xE1lisis de Viabilidad Cultural"
+    definition: "Evaluaci\xF3n de la compatibilidad del proyecto con la cultura local
+      y los valores sociales."
+  - id: 196
+    concept: "Plan de Gesti\xF3n de la Continuidad del Negocio"
+    definition: "Documento que describe c\xF3mo se garantizar\xE1 la continuidad
+      de las operaciones en caso de interrupciones o desastres."
+  - id: 197
+    concept: "Gesti\xF3n de la Seguridad Alimentaria"
+    definition: Proceso para garantizar la seguridad y calidad de los alimentos en
+      todas las etapas del proyecto.
+  - id: 198
+    concept: "An\xE1lisis de Beneficios Tangibles e Intangibles"
+    definition: "Evaluaci\xF3n de los beneficios tanto cuantificables (tangibles)
+      como cualitativos (intangibles) de un proyecto."
+  - id: 199
+    concept: "Plan de Gesti\xF3n de la Investigaci\xF3n y Desarrollo"
+    definition: "Documento que describe c\xF3mo se gestionar\xE1n y financiar\xE1n
+      las actividades de investigaci\xF3n y desarrollo en el proyecto."
+  - id: 200
+    concept: "Gesti\xF3n del Ciclo de Vida del Producto"
+    definition: "Proceso para gestionar todas las etapas del ciclo de vida de un
+      producto, desde la concepci\xF3n hasta la eliminaci\xF3n."
+  - id: 201
+    concept: "An\xE1lisis de Impacto Cultural"
+    definition: "Evaluaci\xF3n de los efectos del proyecto en la cultura y la identidad
+      cultural de la comunidad."
+  - id: 202
+    concept: "Plan de Gesti\xF3n de la Calidad del Aire"
+    definition: "Documento que describe c\xF3mo se garantizar\xE1 la calidad del
+      aire en el lugar de trabajo y el entorno del proyecto."
+  - id: 203
+    concept: "Gesti\xF3n del Riesgo Financiero"
+    definition: Proceso para identificar, evaluar y mitigar los riesgos financieros
+      asociados con el proyecto.
+  - id: 204
+    concept: "Plan de Gesti\xF3n de la Contaminaci\xF3n"
+    definition: "Documento que describe c\xF3mo se minimizar\xE1 y gestionar\xE1
+      la contaminaci\xF3n ambiental asociada con el proyecto."
+  - id: 205
+    concept: "Gesti\xF3n de la Responsabilidad Civil"
+    definition: Proceso para identificar y mitigar los riesgos de responsabilidad
+      civil asociados con el proyecto.
+  - id: 206
+    concept: "An\xE1lisis de Impacto en la Biodiversidad"
+    definition: "Evaluaci\xF3n de los efectos del proyecto en la diversidad biol\xF3gica
+      y los ecosistemas locales."
+  - id: 207
+    concept: "Plan de Gesti\xF3n de la Diversidad Cultural"
+    definition: "Documento que describe c\xF3mo se fomentar\xE1 y respetar\xE1 la
+      diversidad cultural en el equipo y las partes interesadas del proyecto."

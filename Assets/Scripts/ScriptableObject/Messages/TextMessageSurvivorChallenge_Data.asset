@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fda8da81533c194d825eb7826995fe8, type: 3}
+  m_Name: TextMessageSurvivorChallenge_Data
+  m_EditorClassIdentifier: 
+  nextQuestionMessage: []
+  correctQuestionMessage:
+  - "\xA1Correcto! \xBFQuieres m\xE1s?"
+  - "\xA1Bien hecho! \xBFOtra pregunta?"
+  - "\xA1Mejorando! \xBFListo para m\xE1s?"
+  - "\xA1Aciertos tras aciertos! \xBFSiguiente?"
+  - "\xA1Correcto y seguro! \xBFOtro desaf\xEDo?"
+  - "\xA1Est\xE1s en camino! \xBFLa siguiente?"
+  - "\xA1Correcto de nuevo! \xBFOtro intento?"
+  - "\xA1Est\xE1s brillando! \xBFM\xE1s preguntas?"
+  - "\xA1Golpe maestro! \xBFSuperar logros?"
+  incorrectQuestionMessage: []
+  wonMessage:
+  - "\xA1Tiempo agotado, pero tu esfuerzo es evidente! T\xF3mate un momento y sigue
+    prepar\xE1ndote."
+  - "\xA1El reloj no espera, pero tu dedicaci\xF3n es constante! Aunque el tiempo
+    se agot\xF3, sigue avanzando en tu preparaci\xF3n."
+  - "\xA1Cron\xF3metros vencidos, pero tu determinaci\xF3n sigue fuerte! Aprende
+    de cada pregunta y sigue creciendo."
+  - "\xA1Se acab\xF3 el tiempo, pero no la oportunidad de aprender! Sigue fortaleciendo
+    tus conocimientos para futuros desaf\xEDos."
+  - "\xA1El tiempo es un recurso valioso, pero tu perseverancia es inquebrantable!
+    Contin\xFAa tu camino de preparaci\xF3n con confianza.\xA1El tiempo es un recurso
+    valioso, pero tu perseverancia es inquebrantable! Contin\xFAa tu camino de preparaci\xF3n
+    con confianza."
+  - "\xA1Oops, el reloj nos gan\xF3! Pero cada intento es valioso. Aprovecha la experiencia
+    y sigue avanzando."
+  - "\xA1El tiempo vuela, pero tu compromiso perdura! Aunque los minutos se agotaron,
+    tu preparaci\xF3n sigue su curso."
+  - "\xA1Cron\xF3metros vencidos, pero tu dedicaci\xF3n persiste! Sigue aprendiendo
+    y creciendo en tu camino profesional."
+  - "\xA1Ups, el tiempo se agot\xF3! Pero cada respuesta correcta te acerca a la
+    excelencia. \xA1Sigue adelante!"
+  - "\xA1El reloj no espera por nadie, pero t\xFA sigues progresando! Aprende de
+    cada desaf\xEDo y sigue prepar\xE1ndote."
+  lostMessage:
+  - "\xA1Un peque\xF1o tropiezo, pero cada error es una lecci\xF3n! T\xF3mate un
+    momento y sigue construyendo tu camino de aprendizaje."
+  - "\xA1Oops! Los errores son parte del viaje. Utiliza esta experiencia para mejorar
+    y continuar tu preparaci\xF3n."
+  - "\xA1Aunque los intentos se hayan agotado, tu potencial sigue intacto! Reflexiona
+    sobre lo aprendido y sigue avanzando."
+  - "\xA1El camino hacia el conocimiento puede tener curvas! Aunque los intentos
+    se hayan agotado, cada error es una oportunidad de mejora."
+  - "\xA1Ups, es parte del proceso! Aunque se hayan agotado los intentos, sigue adelante
+    con determinaci\xF3n."
+  - "\xA1No te preocupes! Aprender de los errores es fundamental. Utiliza esta experiencia
+    para fortalecer tus habilidades."
+  - "\xA1El camino hacia el \xE9xito tiene baches! Aunque los intentos se hayan agotado,
+    sigue creciendo y prepar\xE1ndote."
+  - "\xA1\xC1nimo! Cada respuesta incorrecta es una oportunidad de aprender. Sigue
+    avanzando en tu camino de preparaci\xF3n."
+  - "\xA1No hay problema! Aunque los intentos se hayan agotado, tu progreso sigue
+    en marcha. \xA1Sigue construyendo tus habilidades!"
+  - "\xA1Bien jugado! Aunque los intentos se hayan agotado, el aprendizaje contin\xFAa.
+    \xA1Sigue adelante con confianza!"

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af183bad0e59d545aa5960e5b59b913, type: 3}
+  m_Name: Game setting
+  m_EditorClassIdentifier: 
+  settingData:
+    musicVolume: 0
+    soundEffectVolume: 0
+    haveNotification: 0
+    MCReward:
+      baseExperience: 50
+      baseCoins: 10
+      aditionalBonusExpConsecutiveQuestion: 20
+      aditionalBonusCoinsConsecutiveQuestion: 5
+      aditionalBonusExpForAchievement: 30
+      aditionalBonusCoinsForAchievement: 8
+    MAReward:
+      baseExperience: 60
+      baseCoins: 10
+      aditionalBonusExpConsecutiveQuestion: 25
+      aditionalBonusCoinsConsecutiveQuestion: 5
+      aditionalBonusExpForAchievement: 30
+      aditionalBonusCoinsForAchievement: 8
+    MVPReward:
+      baseExperience: 70
+      baseCoins: 0
+      aditionalBonusExpConsecutiveQuestion: 30
+      aditionalBonusCoinsConsecutiveQuestion: 0
+      aditionalBonusExpForAchievement: 35
+      aditionalBonusCoinsForAchievement: 0
+    DSReward:
+      baseExperience: 80
+      baseCoins: 10
+      aditionalBonusExpConsecutiveQuestion: 35
+      aditionalBonusCoinsConsecutiveQuestion: 5
+      aditionalBonusExpForAchievement: 45
+      aditionalBonusCoinsForAchievement: 8
+    DGReward:
+      baseExperience: 60
+      baseCoins: 10
+      aditionalBonusExpConsecutiveQuestion: 25
+      aditionalBonusCoinsConsecutiveQuestion: 5
+      aditionalBonusExpForAchievement: 30
+      aditionalBonusCoinsForAchievement: 8
+    DEReward:
+      baseExperience: 70
+      baseCoins: 10
+      aditionalBonusExpConsecutiveQuestion: 30
+      aditionalBonusCoinsConsecutiveQuestion: 5
+      aditionalBonusExpForAchievement: 35
+      aditionalBonusCoinsForAchievement: 8
+    RDReward:
+      baseExperience: 50
+      baseCoins: 0
+      aditionalBonusExpConsecutiveQuestion: 0
+      aditionalBonusCoinsConsecutiveQuestion: 0
+      aditionalBonusExpForAchievement: 0
+      aditionalBonusCoinsForAchievement: 0

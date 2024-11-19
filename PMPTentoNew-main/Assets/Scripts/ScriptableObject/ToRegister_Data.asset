@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17502f1ed2d8194dbf641bf356d3ce1, type: 3}
+  m_Name: ToRegister_Data
+  m_EditorClassIdentifier: 
+  dataToRegisterExam:
+    Id: 0
+    IdSimuladorPmpModo: 1
+    NombreExamen: 12/01/2024 6:13:04 p. m.
+    Tiempo: 0
+    IdAspNetUsers: 
+    Usuario: pruebaxjrivera@bsginstitute.net
+    IdSimuladorPmpTarea: 45
+    IdSimuladorPmpDominio: 5
+  responseOfRegisterExam:
+    idSimuladorPmpModo: 1
+    nombreExamen: 12/01/2024 6:13:04 p. m.
+    tiempo: 0
+    fechaInicio: 2024-01-12T18:10:59.7607116-05:00
+    idAspNetUsers: 
+    estadoExamen: 1
+    id: 0
+    fechaCreacion: 2024-01-12T18:10:59.7607128-05:00
+    fechaModificacion: 2024-01-12T18:10:59.760713-05:00
+    estado: 1
+    usuarioCreacion: pruebaxjrivera@bsginstitute.net
+    usuarioModificacion: pruebaxjrivera@bsginstitute.net
+    IdSimuladorPmpDominio: 0
+  questionInformation:
+    id: 9682
+    nombreExamen: 12/01/2024 6:13:04 p. m.
+    tiempo: 0
+    fechaInicio: 2024-01-12T18:10:59.76
+    idAspNetUsers: 
+    estadoExamen: 1
+    preguntasRespondidas: 0
+    preguntasPendientes: 27
+    listaPreguntas: []
