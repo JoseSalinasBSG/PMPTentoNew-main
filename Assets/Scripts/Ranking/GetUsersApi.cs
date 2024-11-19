@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Linq;
 using TMPro;
 using Unity.VectorGraphics;
 using UnityEngine;
@@ -27,11 +28,11 @@ public class GetUsersApi : MonoBehaviour
         Experto,
         Master,
         Leyenda
-    }   
-    
+    }
+
     public void GetRankingInformation()//este metodo se llama al presionar en seccion ranking
     {
-        
+
         var tExperience = _user.userInfo.user.detail.totalExperience;//obtenemos experiencia y colocamos en variable
         if (tExperience < 0)
         {
@@ -95,18 +96,16 @@ public class GetUsersApi : MonoBehaviour
     public void GetGlobal()
     {
         StopAllCoroutines();
-        StartCoroutine(GetData(0, 100000));
+        StartCoroutine(GetData(0, 100000));//si se le pasa mas de 99 se demora en crear los sprites y se congela el juego
         Debug.Log("GetGlobal");
     }
 
-    
-    
     private IEnumerator GetData(int minExperience, int maxExperience)
     {
         GameEvents.RequestRanking?.Invoke();
         using (UnityWebRequest request = new UnityWebRequest(URL, "POST"))
         {
-            DataToRequireRanking dataLogin = new DataToRequireRanking() { MinExperience = minExperience, MaxExperience = maxExperience};
+            DataToRequireRanking dataLogin = new DataToRequireRanking() { MinExperience = minExperience, MaxExperience = maxExperience };
             var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataLogin));
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = new DownloadHandlerBuffer();
@@ -115,7 +114,6 @@ public class GetUsersApi : MonoBehaviour
             request.SetRequestHeader("Accept", "application/json");
             request.SetRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Unity 3D; ZFBrowser 3.1.0; UnityTests 1.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36");
 
-            
             yield return request.SendWebRequest();
             if (request.result == UnityWebRequest.Result.ConnectionError)
             {
@@ -132,9 +130,13 @@ public class GetUsersApi : MonoBehaviour
         }
     }
 
-    private void SaveDataAllUsers(SimpleJSON.JSONNode stats) {
-        dataUserAll.Users.Clear	();
-        for (int i = 0; i < stats.Count; i++) 
+    private void SaveDataAllUsers(SimpleJSON.JSONNode stats)
+    {
+        dataUserAll.Users.Clear();
+        // Crear lista temporal para procesar los usuarios
+        List<DataUserAll.DataUsers> tempUsers = new List<DataUserAll.DataUsers>();
+
+        for (int i = 0; i < stats.Count; i++)
         {
             DataUserAll.DataUsers user = new DataUserAll.DataUsers();
             user.id = stats[i]["idAlumno"];
@@ -158,16 +160,24 @@ public class GetUsersApi : MonoBehaviour
             avatar.mouth = stats[i]["avatar"]["mouth"];
             avatar.skin = stats[i]["avatar"]["skin"];
             //----
-
-            user.avatar=avatar;//asignar objeto avatar al usuario
-            dataUserAll.Users.Add(user);
-
-            user.urlAvatarUser=GenerateUrlToAvatarForRanking(avatar);
-            StartCoroutine(downloadSVGUsersRanking(user.urlAvatarUser,i));
-
-
+            user.avatar = avatar;//asignar objeto avatar al usuario
+            user.urlAvatarUser = GenerateUrlToAvatarForRanking(avatar);
+            // Agregar a la lista temporal
+            tempUsers.Add(user);
         }
-        Debug.Log("Se completo llenado de Avatars usuario");
+
+        // Ordenar usuarios
+        tempUsers = tempUsers.OrderByDescending(user => user.totalExperience).ToList();
+
+        // Agregar los usuarios ordenados a la lista final
+        dataUserAll.Users.AddRange(tempUsers);
+
+        // Ejecutar corrutinas para los 10 primeros usuarios
+        for (int i = 0; i < 10; i++)
+        {
+            StartCoroutine(downloadSVGUsersRanking(dataUserAll.Users[i].urlAvatarUser, i));
+        }
+        //Debug.Log("Se completo llenado de Avatars usuario");
         //GameEvents.RankingRetrieved?.Invoke();
     }
 
@@ -188,12 +198,11 @@ public class GetUsersApi : MonoBehaviour
         return url;
     }
 
-
-    
-    IEnumerator downloadSVGUsersRanking(string url,int i)
+    IEnumerator downloadSVGUsersRanking(string url, int i)
     {
         UnityWebRequest www = UnityWebRequest.Get(url);
 
+        //yield break;
         yield return www.SendWebRequest();
         if (www.isHttpError || www.isNetworkError)
         {
@@ -212,13 +221,13 @@ public class GetUsersApi : MonoBehaviour
             };
 
             // Dynamically import the SVG data, and tessellate the resulting vector scene.
+            Debug.Log($"Tamaño del bitString: {bitString.Length} caracteres");
             var sceneInfo = SVGParser.ImportSVG(new StringReader(bitString));
             var geoms = VectorUtils.TessellateScene(sceneInfo.Scene, tessOptions);
 
             // Build a sprite with the tessellated geometry
             Sprite sprite = VectorUtils.BuildSprite(geoms, 10.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
-            dataUserAll.Users[i].spriteAvatarUser = sprite;                     
-
+            dataUserAll.Users[i].spriteAvatarUser = sprite;
         }
     }
 }

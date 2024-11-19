@@ -68,22 +68,21 @@ public class GameplaySound : MonoBehaviour
     private void PlayPressedButtonSound()
     {
         _audioManager.PlaySFXAtPoint(_audioManager.AudioSettings.TapTouchSound, Vector3.zero, 0f, false);//reproduce sonido 
-        Debug.Log("play");
     }
 
     private void LightVibration()
     {
-        Debug.Log("Light Vibration performed");
+        //Debug.Log("Light Vibration performed");
         //HapticFeedback.LightFeedback();
     }
     private void MediumVibration()
     {
-        Debug.Log("Medium Vibration performed");
+        //Debug.Log("Medium Vibration performed");
         //HapticFeedback.MediumFeedback();
     }
     private void HeavyVibration()
     {
-        Debug.Log("Heavy Vibration performed");
+        //Debug.Log("Heavy Vibration performed");
         //HapticFeedback.HeavyFeedback();
     }
     private void PlayCorrectAnswerSound()

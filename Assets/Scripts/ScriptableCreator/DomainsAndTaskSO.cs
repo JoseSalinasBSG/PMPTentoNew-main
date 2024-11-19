@@ -37,13 +37,13 @@ public class DomainsAndTaskSO : ScriptableObject
 
     private void OnEnable()
     {
-        Debug.Log("Enable domains and tasks");
+        //Debug.Log("Enable domains and tasks");
         GameEvents.DomainsRetreived += GameEvents_DomainRetreived;
     }
 
     private void OnDisable()
     {
-        Debug.Log("Disable domains and tasks");
+        //Debug.Log("Disable domains and tasks");
         GameEvents.DomainsRetreived += GameEvents_DomainRetreived;
     }
 

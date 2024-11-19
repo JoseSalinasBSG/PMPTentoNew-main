@@ -20,8 +20,7 @@ public class InterfaceController : MonoBehaviour
     }
 
     private UIScreen GetScreen(string name)
-    {
-        
+    {        
         return _screens.FirstOrDefault(x => x.name == name)!;
     }
     private void OnEnable()
