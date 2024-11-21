@@ -1,8 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Question;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
+//<summary>
+//Clase que se encarga de almacenar la informaciÃ³n de una pregunta
+//fecha: 2024-11-20
+//Jose Salinas: Agregue la variable _questionTextforAudio para usarla para generar el audio descriptivo ya que con la colorizaciï¿½n de las palabras el texto queda muy largo y se reproduce los caracteres para generar los colores.
+//</summary>
 
 public class QuestionInformationVP : MonoBehaviour
 {
@@ -12,6 +20,8 @@ public class QuestionInformationVP : MonoBehaviour
     [SerializeField] private OptionVP _opt2;
     [SerializeField] private OptionVP _opt3;
     [SerializeField] private OptionVP _opt4;
+
+    private String _questionTextforAudio;
 
     private QuestionDataVP _questionDataVp;
 
@@ -52,10 +62,16 @@ public class QuestionInformationVP : MonoBehaviour
         get => _question;
         set => _question = value;
     }
+    public String QuestiontextforAudio
+    {
+        get => _questionTextforAudio;
+        set => _questionTextforAudio = value;
+    }
     public void SetData(QuestionDataVP questionData)
     {
         _questionDataVp = questionData;
         //_question.text = questionData.question;
+        _questionTextforAudio = questionData.question;
         _question.text = SeparateAndRejoin(questionData.question);
         _questionContainer.text = questionData.question;
         _opt1.SetData(questionData.options[0].respuesta,questionData.options[0].id.ToString());
@@ -114,7 +130,7 @@ public class QuestionInformationVP : MonoBehaviour
 
         for (int i = 0; i < input.Length; i++)
         {
-            Color color = firstWordColors[i % colorCount]; // Obtener color cíclicamente
+            Color color = firstWordColors[i % colorCount]; // Obtener color cï¿½clicamente
             string hexColor = ColorUtility.ToHtmlStringRGBA(color); // Convertir color a formato hexadecimal
             result += $"<b><size={firstWordSize}><color=#{hexColor}>{input[i]}</color></size></b>";
         }

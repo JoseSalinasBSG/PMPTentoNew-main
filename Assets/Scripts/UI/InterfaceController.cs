@@ -73,8 +73,7 @@ public class InterfaceController : MonoBehaviour
     private void GameEvents_DomainsSaved(string viewName)
     {
         EnableScreen(viewName);
-        Debug.Log(" -> " + viewName);
-
+        //Debug.Log(" -> " + viewName);
     }
 
     public void EnableScreen(string viewName)

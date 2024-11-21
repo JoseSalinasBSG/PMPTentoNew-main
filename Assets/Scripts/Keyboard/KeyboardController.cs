@@ -14,7 +14,7 @@ public class KeyboardController : MonoBehaviour
     private RectTransform _inputFieldRectTransform;
     private RectTransform _scrollRectTransform;
 
-    
+
     private float _keyboardHeight;
     private float _timeToMoveCanvasWithKeyboard;
     private float _timeToMoveCanvasWithoutKeyboard;
@@ -26,9 +26,9 @@ public class KeyboardController : MonoBehaviour
     private InputBase _inputFieldManager;
     private void Start()
     {
-// #if UNITY_ANDROID
-//         TouchScreenKeyboard.Android.consumesOutsideTouches = true;
-// #endif
+        // #if UNITY_ANDROID
+        //         TouchScreenKeyboard.Android.consumesOutsideTouches = true;
+        // #endif
         _scrollRectTransform = _scrollRect.GetComponent<RectTransform>();
         // TouchScreenKeyboard.hideInput = false;
     }
@@ -70,27 +70,25 @@ public class KeyboardController : MonoBehaviour
     //     }
     //     _inputFieldManager.ComprovePasswordFormat(arg0);
     // }
-// #if UNITY_ANDROID
-//     private void LateUpdate()
-//     {
-//         if (_keyboard != null && _keyboard.status == TouchScreenKeyboard.Status.Visible)
-//         {
-//             _inputField.text = _keyboard.text;
-//         }
-//
-//         
-//     }
-// #endif
+    // #if UNITY_ANDROID
+    //     private void LateUpdate()
+    //     {
+    //         if (_keyboard != null && _keyboard.status == TouchScreenKeyboard.Status.Visible)
+    //         {
+    //             _inputField.text = _keyboard.text;
+    //         }
+    //
+    //         
+    //     }
+    // #endif
     private void Update()
     {
-        
-
-        if (TouchScreenKeyboard.visible )
+        if (TouchScreenKeyboard.visible)
         {
             _timeToMoveCanvasWithoutKeyboard = 0;
             // _scrollRect.verticalNormalizedPosition = 0;
 #if UNITY_ANDROID
-            
+
             if (_keyboardHeight == 0)
             {
                 _keyboardHeight = GetRelativeKeyboardHeight(_relativeRect, true);
@@ -99,13 +97,13 @@ public class KeyboardController : MonoBehaviour
             _keyboardHeight = TouchScreenKeyboard.area.height;
 
 #endif
-            if( _timeToMoveCanvasWithKeyboard == 0)
+            if (_timeToMoveCanvasWithKeyboard == 0)
             {
                 _timeToMoveCanvasWithKeyboard = Time.time;
             }
             var actualOffset = Mathf.SmoothStep(0, _keyboardHeight, (Time.time - _timeToMoveCanvasWithKeyboard) / _movementDuration);
             var positionTemp = new Vector2(_scrollRect.content.anchoredPosition.x, actualOffset);
-            
+
             _scrollRectTransform.offsetMin = positionTemp;
             // _scrollRect.verticalNormalizedPosition += (Screen.height - (_keyboardHeight + _inputFieldRectTransform )/ Screen.height;
             // Debug.Log(_keyboardHeight + " " + _scrollRect.verticalNormalizedPosition + " " + _inputFieldRectTransform.position.y + " " + Screen.height + " " + Screen.safeArea.height + " " + Screen.safeArea.yMin + " " + Screen.safeArea.yMax);
@@ -114,32 +112,32 @@ public class KeyboardController : MonoBehaviour
             if (diff >= 0)
             {
                 _scrollRect.verticalNormalizedPosition -= Time.deltaTime;
-            
+
             }
         }
         else
         {
             _timeToMoveCanvasWithKeyboard = 0;
 
-            if( _timeToMoveCanvasWithoutKeyboard == 0)
+            if (_timeToMoveCanvasWithoutKeyboard == 0)
             {
                 _timeToMoveCanvasWithoutKeyboard = Time.time;
             }
             var actualOffset = Mathf.SmoothStep(_keyboardHeight, 0, (Time.time - _timeToMoveCanvasWithoutKeyboard) / _movementDuration);
             var positionTemp = new Vector2(_scrollRect.content.anchoredPosition.x, actualOffset);
-            _scrollRectTransform.offsetMin =positionTemp;
+            _scrollRectTransform.offsetMin = positionTemp;
 
         }
 
     }
-    
+
     public static int GetRelativeKeyboardHeight(RectTransform rectTransform, bool includeInput)
     {
         int keyboardHeight = GetKeyboardHeight(includeInput);
         float screenToRectRatio = Screen.height / rectTransform.rect.height;
         float keyboardHeightRelativeToRect = keyboardHeight / screenToRectRatio;
-   
-        return (int) keyboardHeightRelativeToRect;
+
+        return (int)keyboardHeightRelativeToRect * 3;
     }
     private static int GetKeyboardHeight(bool includeInput)
     {

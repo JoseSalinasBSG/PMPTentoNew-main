@@ -55,6 +55,7 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
         _currentPanel = _listItems[0];
         inLerp = true;
         _currentPanel.StartAnimation();
+        Debug.Log(_currentPanel.GetTextToTTS());
         _audioControll.StartTTS(_currentPanel.GetTextToTTS());
         // CleanOtherPanels();
         // StartCoroutine(FitPanel(_currentPanel));
@@ -239,9 +240,7 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
             _currentPanel.StartAnimation();
             CleanOtherPanels();   
             _audioControll.StopTTS();
-            _audioControll.StartTTS(_currentPanel.GetTextToTTS());
-            Debug.Log("Cambio panel");
-
+            _audioControll.StartTTS(_currentPanel.GetTextToTTS());           
         }
         
         inLerp = false;

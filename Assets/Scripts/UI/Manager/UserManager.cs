@@ -73,13 +73,11 @@ public class UserManager : MonoBehaviour
     {
         if (_userSO.userInfo.user.detail.idCaracteristicaGamificacion == 0)
         {
-            Debug.Log("nuevo en gamificacion");
             _userSO.userInfo.haveUsername = false;
             _userSO.userInfo.haveInstructor = false;
         }
         else if (_userSO.userInfo.user.detail.idCaracteristicaGamificacion == 1)
         {
-            Debug.Log("tiene datos en gamificacion");
             _userSO.userInfo.haveUsername = true;
             _userSO.userInfo.haveInstructor = true;
         }
@@ -94,7 +92,6 @@ public class UserManager : MonoBehaviour
 
     private void GameEvent_SuccessGetUser()
     {
-        Debug.Log("succes get user");
         GameEvents.GetUserExam?.Invoke(_userSO.userInfo.user.userName);
         _userService.GetUserDetail(_userSO.userInfo.user.idAlumno);//obtiene datos user detail de endpoint
         _userService.GetUserAchievement(_userSO.userInfo.user.idAlumno);//obtiene datos user achievement de endpoint

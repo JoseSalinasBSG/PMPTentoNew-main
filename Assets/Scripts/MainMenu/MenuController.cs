@@ -38,7 +38,7 @@ namespace MainMenu
         private GameObject _instructorInstantiated;
         private void Start()
         {
-            FindObjectOfType<GameplaySound>().PlayMainMenuSound();
+            //FindObjectOfType<GameplaySound>().PlayMainMenuSound();
             // if (PlayerPrefs.HasKey("settingInfo"))
             // {
             //     _objectSettings.settingData = JsonUtility.FromJson<ScriptableObjectSettings.SettingData>(PlayerPrefs.GetString("settingInfo"));
@@ -172,30 +172,28 @@ namespace MainMenu
 
         public void SetUserLevel()
         {
-            Debug.Log("Seteando nivel");
-
             if (_user.userInfo.user.detail.totalExperience<=4500)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[0];
-                Debug.Log("Nivel Novato");
+                //Debug.Log("Nivel Novato");
                 _experienceToAchieve.text = "de 4500";
             }
             else if (_user.userInfo.user.detail.totalExperience >= 4501 && _user.userInfo.user.detail.totalExperience <= 9500)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[1];
-                Debug.Log("Nivel Experto");
+                //Debug.Log("Nivel Experto");
                 _experienceToAchieve.text = "de 9500";
             }
             else if (_user.userInfo.user.detail.totalExperience >= 9501 && _user.userInfo.user.detail.totalExperience <= 15000)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[2];
-                Debug.Log("Nivel Master");
+                //Debug.Log("Nivel Master");
                 _experienceToAchieve.text = "de 15000";
             }
             else if (_user.userInfo.user.detail.totalExperience >= 15001)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[3];
-                Debug.Log("Nivel Leyenda");
+                //Debug.Log("Nivel Leyenda");
                 _experienceToAchieve.text = null;
             }
         }
