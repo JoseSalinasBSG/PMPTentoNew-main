@@ -29,6 +29,8 @@ public class DelayTime : MonoBehaviour
         
         while (!loadingOperation.isDone)
         {
+            if (loadingOperation.progress >= 0.9f)
+                break;
             yield return null;
         }
     }
