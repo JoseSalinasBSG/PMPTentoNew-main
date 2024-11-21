@@ -1,10 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
+
+//<summary>
+//Script que controla el scroll de la pantalla y el movimiento del canvas con el teclado
+//</summary>
 
 public class KeyboardController : MonoBehaviour
 {
@@ -126,7 +126,6 @@ public class KeyboardController : MonoBehaviour
             var actualOffset = Mathf.SmoothStep(_keyboardHeight, 0, (Time.time - _timeToMoveCanvasWithoutKeyboard) / _movementDuration);
             var positionTemp = new Vector2(_scrollRect.content.anchoredPosition.x, actualOffset);
             _scrollRectTransform.offsetMin = positionTemp;
-
         }
 
     }
@@ -137,7 +136,7 @@ public class KeyboardController : MonoBehaviour
         float screenToRectRatio = Screen.height / rectTransform.rect.height;
         float keyboardHeightRelativeToRect = keyboardHeight / screenToRectRatio;
 
-        return (int)keyboardHeightRelativeToRect * 3;
+        return (int)keyboardHeightRelativeToRect * 5;//JS: multiplique por 5 para darle un mayor offset ya que no se mostraban los inputfields
     }
     private static int GetKeyboardHeight(bool includeInput)
     {

@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+//<summary>
+//Scriptable Object que guarda las preguntas incorrectas
+//</summary>
+
 namespace ScriptableCreator
 {
     [Serializable]
@@ -18,7 +22,7 @@ namespace ScriptableCreator
 
     public void SaveIncorrectQuestion(QuestionItem questionItem)
         {
-            if (questions.IncorrectQuestionsList.Exists(x => x.id == questionItem.id))
+            if (questions.IncorrectQuestionsList.Exists(x => x.idSimuladorPmpPregunta == questionItem.idSimuladorPmpPregunta))
             {
                 return;
             }

@@ -20514,7 +20514,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -27804,7 +27804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4095803344892144256, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4095803344892144256, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
       propertyPath: m_AnchoredPosition.y

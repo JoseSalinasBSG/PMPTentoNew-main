@@ -1965,7 +1965,7 @@ MonoBehaviour:
   _spriteError: {fileID: 21300000, guid: d46f5dc01bebbf54ba3402c5134f0a5f, type: 3}
   _spriteDefault: {fileID: 21300000, guid: f5b2a77e0e8dbff4099986f890bda867, type: 3}
   _spriteSelect: {fileID: 21300000, guid: 7fae0a473ef455e4da40ca4fb13119da, type: 3}
-  _placeholderTextDefault: Ingrese su coreo electronico
+  _placeholderTextDefault: Ingrese su correo electronico
 --- !u!1 &482396188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,8 +2741,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 369}
-  m_SizeDelta: {x: 910.17993, y: 332.0448}
+  m_AnchoredPosition: {x: 0, y: 370}
+  m_SizeDelta: {x: 490, y: 335}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630257549
 MonoBehaviour:
@@ -4313,8 +4313,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1246362830}
-  - component: {fileID: 1246362832}
-  - component: {fileID: 1246362831}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -4338,51 +4336,11 @@ RectTransform:
   - {fileID: 1471942145}
   m_Father: {fileID: 130171477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1059.0493}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1246362831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246362829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
---- !u!114 &1246362832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246362829}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 100
-    m_Right: 100
-    m_Top: 50
-    m_Bottom: 50
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &1265889872
 GameObject:
   m_ObjectHideFlags: 0
@@ -5409,8 +5367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -426}
-  m_SizeDelta: {x: 902.9204, y: 1059.0715}
+  m_AnchoredPosition: {x: 0, y: -430}
+  m_SizeDelta: {x: 900, y: 1070}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1471942146
 MonoBehaviour:
@@ -5657,8 +5615,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 355.02335, y: -52.43795}
-  m_SizeDelta: {x: 710.0467, y: 104.8759}
+  m_AnchoredPosition: {x: 353.56314, y: -52.43795}
+  m_SizeDelta: {x: 707.1263, y: 104.8759}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1531220535
 MonoBehaviour:
@@ -5713,7 +5671,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -7094,8 +7052,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 355.02335, y: -52.43795}
-  m_SizeDelta: {x: 710.0467, y: 104.8759}
+  m_AnchoredPosition: {x: 353.56314, y: -52.43795}
+  m_SizeDelta: {x: 707.1263, y: 104.8759}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869036028
 MonoBehaviour:
@@ -7150,7 +7108,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
