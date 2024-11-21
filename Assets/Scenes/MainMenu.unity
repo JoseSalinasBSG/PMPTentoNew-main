@@ -5128,7 +5128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8df2ed2807191498510cb2e4ba496d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  URL: http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerRankingGamificacion
   dataUserAll: {fileID: 11400000, guid: ffd87d1a3f0a70f4f929f0f80ef1b142, type: 2}
   _user: {fileID: 11400000, guid: 2f47c0a4eb7b9cf4a9cf3eccaac92c96, type: 2}
   _categoryTitle: {fileID: 400085515955174274}
@@ -6204,6 +6203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eae78d5732eba042b4fb048cbe7ef19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notificationData: {fileID: 0}
+  prefab: {fileID: 0}
+  content: {fileID: 0}
 --- !u!114 &1251702360
 MonoBehaviour:
   m_ObjectHideFlags: 0

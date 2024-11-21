@@ -4,19 +4,32 @@ using UnityEngine.Events;
 
 public class DelayTime : MonoBehaviour
 {
-    [SerializeField] private float _delayTimeForStart;
-    [SerializeField] private UnityEvent OnBeforeDelay;
-    [SerializeField] private UnityEvent OnAfterDelay;
+    // [SerializeField] private float _delayTimeForStart;
+    [SerializeField] private GameObject LoadingScreen;
+    // [SerializeField] private UnityEvent OnBeforeDelay;
+    // [SerializeField] private UnityEvent OnAfterDelay;
 
-    private IEnumerator DelayRoutine()
+    // private IEnumerator DelayRoutine()
+    // {
+    //     OnBeforeDelay?.Invoke();
+    //     yield return new WaitForSeconds(_delayTimeForStart);
+    //     OnAfterDelay?.Invoke();
+    // }
+
+    public void LoadScene(int index)
     {
-        OnBeforeDelay?.Invoke();
-        yield return new WaitForSeconds(_delayTimeForStart);
-        OnAfterDelay?.Invoke();
+        StartCoroutine(LoadSceneAsync(index));
     }
-
-    public void StartDelayTime()
+    
+    private IEnumerator LoadSceneAsync(int indexScene)
     {
-        StartCoroutine(DelayRoutine());
+        AsyncOperation loadingOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(indexScene);
+        
+        LoadingScreen.SetActive(true);
+        
+        while (!loadingOperation.isDone)
+        {
+            yield return null;
+        }
     }
 }

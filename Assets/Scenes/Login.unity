@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6512,12 +6512,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1787744283}
         m_TargetAssemblyTypeName: DelayTime, Assembly-CSharp
-        m_MethodName: StartDelayTime
-        m_Mode: 1
+        m_MethodName: LoadScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: MainMenu
           m_BoolArgument: 0
@@ -6550,37 +6550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7a41e3705955046ba3cb313b086666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayTimeForStart: 2
-  OnBeforeDelay:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 548249025}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnAfterDelay:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1049716371}
-        m_TargetAssemblyTypeName: Scene.LoadScene, Assembly-CSharp
-        m_MethodName: LoadSceneUsingName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MainMenu
-          m_BoolArgument: 0
-        m_CallState: 2
+  LoadingScreen: {fileID: 548249025}
 --- !u!1 &1793397299
 GameObject:
   m_ObjectHideFlags: 0
