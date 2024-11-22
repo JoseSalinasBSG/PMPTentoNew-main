@@ -39,8 +39,8 @@ public class PlatformItem : MonoBehaviour
         public int index;
         public string description;
         public string tittle;
-        public int attempt;    
-        public int totalTasks;    
+        public int attempt;
+        public int totalTasks;
     }
     private PlatformInformation _information;
 
@@ -88,10 +88,10 @@ public class PlatformItem : MonoBehaviour
         {
             Debug.Log($"tarea con id {obj} encontrado");
             Attempts++;
-                if (!ButtonTrigger.enabled)
-                {
-                    ButtonTrigger.enabled = true;
-                }
+            if (!ButtonTrigger.enabled)
+            {
+                ButtonTrigger.enabled = true;
+            }
         }
     }
 }

@@ -68,14 +68,11 @@ public class AudioManager : MonoBehaviour
         {
             AudioEvents.SFXVolumeChanged?.Invoke(PlayerPrefs.GetFloat("SounEffectVolume"));
             // AudioEvents_OnSFXVolumeChanged();
-            Debug.Log("SounEffectVolume "  + PlayerPrefs.GetFloat("SounEffectVolume"));
         }
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
             AudioEvents.MusicVolumeChanged?.Invoke(PlayerPrefs.GetFloat("MusicVolume"));
             // AudioEvents_OnMusicVolumeChanged(PlayerPrefs.GetFloat("MusicVolume"));
-            Debug.Log("v "  + PlayerPrefs.GetFloat("MusicVolume"));
-
         }
         
     }

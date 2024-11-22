@@ -1,7 +1,10 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+
+//<summary>
+//Este script se encarga de comprobar si el usuario ha iniciado sesión
+//</summary>
 
 namespace Login
 {
@@ -10,19 +13,16 @@ namespace Login
         [SerializeField] private Canvas _GUILogin;
         [SerializeField] private Canvas _GUIUsername;
         [SerializeField] private Canvas _GUIInstructor;
-
         [SerializeField] private ScriptableObjectUser _objectUser;
         [SerializeField] private ScriptableObjectInstructor _objectInstructor;
         [SerializeField] private UnityEvent _onFinishLoginConfiguration;
-
         [SerializeField] private UserManager _userManager;
 
         // Start is called before the first frame update
         IEnumerator Start()
         {
             yield return new WaitUntil(() =>_userManager.EndFinishLoadData && _userManager.EndFinishLoadAvatar );
-            Debug.Log("terminado 2");
-            // yield return null;
+            //Debug.Log("terminado 2");
             ComprobeLogin();
         }
 

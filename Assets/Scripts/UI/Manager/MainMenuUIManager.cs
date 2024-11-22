@@ -9,8 +9,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private FadeUI _gameChallengesPopup;
     [SerializeField] private FadeUI _gameConfigurationPopup;
     [SerializeField] private FadeUI _chooseInstructorPopup;
-    [SerializeField] private FadeUI _notificationPopup;
-    
+    [SerializeField] private FadeUI _notificationPopup;    
     
     // [Header("Views")]
     // [SerializeField]
@@ -81,8 +80,7 @@ public class MainMenuUIManager : MonoBehaviour
     {
         _notificationPopup.gameObject.SetActive(true);
         _notificationPopup.FadeInTransition();
-    }
-    
+    }   
     
     private void UIEvent_SettingHide()
     {
@@ -111,8 +109,7 @@ public class MainMenuUIManager : MonoBehaviour
     }
     public void CloseConfigurationPopup()//cerrar menu de configuracion, se ejecuta el metodo al presionar en icono config
     {
-        UIEvents.SettingHide?.Invoke();
-     
+        UIEvents.SettingHide?.Invoke();     
     }
     public void OpenGameModesPopup()
     {

@@ -1,7 +1,10 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+
+//<summary>
+//clase que se encarga de validar el usuario ingresado
+//</summary>
 
 namespace Login
 {
@@ -9,7 +12,7 @@ namespace Login
     {
         [SerializeField] private InputBase _emailInput;
         [SerializeField] private InputBase _passwordInput;
-        
+
         [SerializeField] public UnityEvent _onSuccessLogin;
         [SerializeField] public UnityEvent _onMissingFields;
         [SerializeField] public UnityEvent<string> _onErrorInLogin;
@@ -27,7 +30,7 @@ namespace Login
             var emptyPassword = _passwordInput.HaveError;
             return emptyEmail || emptyPassword;
         }
-        
+
         public void ComprobeUser()
         {
             //Logica para buscar usuario
@@ -35,12 +38,11 @@ namespace Login
             var password = _passwordInput.InputField.text;
             _loginRestApi.PostLogin(email, password);
         }
-        
+
         public void Login()
         {
             StopAllCoroutines();
             StartCoroutine(ILogin());
-
         }
 
         IEnumerator ILogin()

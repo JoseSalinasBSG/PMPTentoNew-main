@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UI;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 namespace Question
@@ -83,7 +80,6 @@ namespace Question
             ConfigurateQuestion();
             UIEvents.ShowQuestionView?.Invoke();
         }
-
        
         #endregion
 
@@ -132,8 +128,7 @@ namespace Question
         }
         
         public QuestionDataVP GetNextQuestion()
-        {
-            
+        {            
             if (CurrentIndex + 1 == _session.Count)
             {
                 // GameEvents.GameWon?.Invoke();
@@ -154,8 +149,7 @@ namespace Question
                 return null;
             }
             var tempQuestion = _session[CurrentIndex - 1];
-            _onPreviousQuestion?.Invoke();
-            
+            _onPreviousQuestion?.Invoke();            
             return tempQuestion;
         }
         public QuestionDataVP[] GetQuestions(int index)
