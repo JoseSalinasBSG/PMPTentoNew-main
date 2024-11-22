@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7752336a-decd-4356-b59e-34eb6eb6a629" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.PMPTentoNew/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.PMPTentoNew/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PMPTentoNew/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PMPTentoNew/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DesafioGlosario.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DesafioGlosario.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Login.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DelayTime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DelayTime.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ranking/GetUsersApi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ranking/GetUsersApi.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/New Universal Render Pipeline Asset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/New Universal Render Pipeline Asset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GlosaryChallenge/LineMatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GlosaryChallenge/LineMatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/GameplaySound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameplaySound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Manager/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Manager/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +109,7 @@
       <workItem from="1732061556685" duration="5375000" />
       <workItem from="1732115612432" duration="14947000" />
       <workItem from="1732136818406" duration="9497000" />
+      <workItem from="1732225177714" duration="8466000" />
     </task>
     <servers />
   </component>

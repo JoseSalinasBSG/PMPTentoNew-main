@@ -11,6 +11,9 @@ public class LineMatcher : MonoBehaviour
     [SerializeField] private RectTransform startObject = null;
     [SerializeField] private RectTransform endObject = null;
     [SerializeField] private UnityEvent OnEndObjectSelected;
+    
+    [SerializeField] private string _startObjectTag;
+    [SerializeField] private string _endObjectTag;
 
     private int currentIndex = 0;
 
@@ -47,10 +50,15 @@ public class LineMatcher : MonoBehaviour
         if (startObject == null)
         {
             startObject = startPosition;
+            _startObjectTag = startPosition.parent.gameObject.tag;
+        }
+        else if(!startPosition.parent.gameObject.CompareTag(_startObjectTag))
+        {
+            SetEndObject(startPosition);
         }
         else
         {
-            SetEndObject(startPosition);
+            startObject = startPosition.parent.gameObject.GetComponent<OptionGC>().ID == startObject.parent.gameObject.GetComponent<OptionGC>().ID ? null : startPosition;
         }
     }
 
