@@ -111,7 +111,7 @@ public class DataToRegisterSO : ScriptableObject
     public QuestionInformationExam questionInformation; 
     public void OnEnable()
     {
-        Debug.Log("On enable Data to register");
+        //Debug.Log("On enable Data to register");
         GameEvents.GetIdDomain += GameEvents_GetIdDomain;
         GameEvents.GetIdTask += GameEvents_GetIdTask;
         GameEvents.GetNameExam += GameEvents_GetNameExam;
@@ -135,7 +135,7 @@ public class DataToRegisterSO : ScriptableObject
 
     private void OnDisable()
     {
-        Debug.Log("On disable Data to register");
+        //Debug.Log("On disable Data to register");
         GameEvents.GetIdDomain -= GameEvents_GetIdDomain;
         GameEvents.GetIdTask -= GameEvents_GetIdTask;
         GameEvents.GetNameExam -= GameEvents_GetNameExam;

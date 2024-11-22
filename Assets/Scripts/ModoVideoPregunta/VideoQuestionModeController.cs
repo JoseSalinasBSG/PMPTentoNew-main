@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Handles3D;
 using Question;
 using ScriptableCreator;
-using UI.Button;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,7 +22,7 @@ public class VideoQuestionModeController : MonoBehaviour
     private float _experienceAccumulated = 0;
     private float _coinsAccumulated = 0;
     // [Header("Reward")] 
-    
+
     private void Awake()
     {
         _numberOfConsecutiveQuestion = -2;
@@ -37,7 +34,7 @@ public class VideoQuestionModeController : MonoBehaviour
         FindObjectOfType<GameplaySound>().PlayVideoQuestionModeSound();
         GetQuestions();
     }
-    
+
 
     private void OnEnable()
     {
@@ -58,14 +55,13 @@ public class VideoQuestionModeController : MonoBehaviour
     private void GameEvents_IncorrectlyAnswered()
     {
         _numberOfConsecutiveQuestion = -2;
-        
     }
 
     private void GameEvents_CorrectlyAnswered()
     {
         _numberOfConsecutiveQuestion++;
         var clampConsecutive = Mathf.Clamp(_numberOfConsecutiveQuestion, 0, int.MaxValue);
-        var exp = 
+        var exp =
             // Base experience
             _gameSettings.settingData.MCReward.baseExperience +
             // Bonus by consecutive question
@@ -127,7 +123,7 @@ public class VideoQuestionModeController : MonoBehaviour
 
     public void GetQuestions()
     {
-
+        Debug.Log("GetQuestions");
         // _pmpService.Service_GetQuestions(9682);
         UIEvents.ShowLoadingView?.Invoke();
         var task = _domainsAndTaskSo.DomainContainer.listaTarea[
@@ -137,7 +133,7 @@ public class VideoQuestionModeController : MonoBehaviour
             )
         ];
         _registerExam.dataToRegisterExam.IdSimuladorPmpTarea = task.id;
-        _registerExam.dataToRegisterExam.IdSimuladorPmpDominio = _domainsAndTaskSo.DomainContainer.listaDominio.FirstOrDefault( x => x.id == task.idSimuladorPmpDominio)!.id;
+        _registerExam.dataToRegisterExam.IdSimuladorPmpDominio = _domainsAndTaskSo.DomainContainer.listaDominio.FirstOrDefault(x => x.id == task.idSimuladorPmpDominio)!.id;
         GameEvents.GetNameExam?.Invoke($"ModoAprendizaje-{_userData.userInfo.user.detail.usernameG}-{task.id}-{task.idSimuladorPmpDominio}-{DateTime.Now.ToString(CultureInfo.CurrentCulture)}");
     }
 }

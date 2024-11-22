@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Button;
 using ScriptableCreator;
 using TMPro;
@@ -11,16 +9,18 @@ public class StoreController : MonoBehaviour
 {
     [SerializeField] private ScriptableObjectUser _user;
 
-    [Header("Power ups scriptable objects")] [SerializeField]
+    [Header("Power ups scriptable objects")]
+    [SerializeField]
     private ScripableObjectPowerUp _powerUpSecondOportunity;
-    private bool areItemsInstanciated=false;
+    private bool areItemsInstanciated = false;
 
     [SerializeField] private ScripableObjectPowerUp _powerUpTrueOption;
     [SerializeField] private ScripableObjectPowerUp _powerUpDeleteOption;
     [SerializeField] private ScripableObjectPowerUp _powerUpNextQuestion;
     [SerializeField] private ScripableObjectPowerUp _powerUpMoreTime;
 
-    [Header("Power ups interfaces")] [SerializeField]
+    [Header("Power ups interfaces")]
+    [SerializeField]
     private TextMeshProUGUI _powerUpSecondOportunityI;
 
     [SerializeField] private TextMeshProUGUI _powerUpTrueOptionI;
@@ -28,7 +28,8 @@ public class StoreController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _powerUpNextQuestionI;
     [SerializeField] private TextMeshProUGUI _powerUpMoreTimeI;
 
-    [Header("Power ups scriptable objects")] [SerializeField]
+    [Header("Power ups scriptable objects")]
+    [SerializeField]
     private Sprite _spriteSecondOportunity;
 
     [SerializeField] private Sprite _spriteTrueOption;
@@ -36,7 +37,7 @@ public class StoreController : MonoBehaviour
     [SerializeField] private Sprite _spriteNextQuestion;
     [SerializeField] private Sprite _spriteMoreTime;
 
-    [Header("General")] [SerializeField] private Transform _GeneralContainer;
+    [Header("General")][SerializeField] private Transform _GeneralContainer;
     [SerializeField] private StoreSection _storeSectionPrefab;
     [SerializeField] private StoreItem _storeItemPrefab;
     [SerializeField] private Transform _offset;
@@ -44,13 +45,14 @@ public class StoreController : MonoBehaviour
     //[SerializeField] private TextMeshProUGUI _totalExperienceLabel;
     //[SerializeField] private TextMeshProUGUI _usernameLabel;
 
-    [Header("Pop-up compra")] [SerializeField]
+    [Header("Pop-up compra")]
+    [SerializeField]
     private FadeUI _popupCompra;
 
     [SerializeField] private TextMeshProUGUI _messageCompra;
     [SerializeField] private Image _imageCompra;
     [SerializeField] private TextMeshProUGUI _amountLabel;
-    [Header("Roulette")] 
+    [Header("Roulette")]
     [SerializeField]
     private ButtonAnimation _rouletteButton;
     [SerializeField]
@@ -63,10 +65,10 @@ public class StoreController : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("UseRoulette"))
         {
-        DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-        TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime; 
-        TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
-        _timeRemainingRoulette.text = "El giro de la ruleta estará \r\ndisponible nuevamente en: " +string.Format("{0:D2}:{1:D2}:{2:D2}", timeRemaining.Hours, timeRemaining.Minutes, timeRemaining.Seconds);
+            DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
+            TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
+            TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
+            _timeRemainingRoulette.text = "El giro de la ruleta estará \r\ndisponible nuevamente en: " + string.Format("{0:D2}:{1:D2}:{2:D2}", timeRemaining.Hours, timeRemaining.Minutes, timeRemaining.Seconds);
         }
     }
 
@@ -79,23 +81,19 @@ public class StoreController : MonoBehaviour
             DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
             TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
             TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
-            
-            Debug.Log("Última vez que se usó la ruleta: " + lastUseTime);
-            Debug.Log("Tiempo desde la última vez que se usó: " + timeSinceLastUse);
-            Debug.Log("Faltan: "+timeRemaining);
 
             if (timeSinceLastUse < TimeSpan.FromHours(24))//es igual a la fecha de hoy
             {//desactiva ruleta
                 _rouletteButton.gameObject.SetActive(false);
                 _rouletteButtonUsed.gameObject.SetActive(true);
                 //_timeRemainingRoulette.text = "El giro de la ruleta estará \r\ndisponible nuevamente en: " +timeRemaining;
-                _rouletteButton.GetComponent<PassScrollEvents>().enabled = false;               
+                _rouletteButton.GetComponent<PassScrollEvents>().enabled = false;
             }
             else
             {//activa ruleta
                 _rouletteButton.gameObject.SetActive(true);
                 _rouletteButtonUsed.gameObject.SetActive(false);
-                _rouletteButton.GetComponent<PassScrollEvents>().enabled = true;               
+                _rouletteButton.GetComponent<PassScrollEvents>().enabled = true;
             }
         }
         //_usernameLabel.text = _user.userInfo.user.detail.usernameG;

@@ -16,20 +16,20 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
     [SerializeField] private RectTransform _contentPanelTransform;
     [SerializeField] private VerticalLayoutGroup _vlg;
     [SerializeField] private RectTransform _canvasTransform;
+    [SerializeField] private RectTransform _puntoPartida;
+    [SerializeField] private ScrollViewItem scrollViewItem;
     [Range(0, 5)]
     [SerializeField] private float _dragThreshold;
     [Range(0, 3)]
     [SerializeField] private float _duration;
-    [SerializeField] private RectTransform _puntoPartida;
-    [SerializeField] private ScrollViewItem scrollViewItem;
-    
+
     private ScrollViewItem _currentPanel;
     private List<ScrollViewItem> _listItems = new List<ScrollViewItem>();
     private float _bottomLimit;
     private RectTransform _rCurrent;
     private Vector2 _deltaMouse;
-    
-    
+
+
     private int initCount;
     private bool inLerp = false;
     public float scale;
@@ -48,40 +48,31 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
             rt.name = i.ToString();
             _listItems.Add(rt);
         }
-
         initCount = 3;
         _bottomLimit = _listItems[0].OwnRectTransform.rect.height * initCount;
-
         _currentPanel = _listItems[0];
         inLerp = true;
         _currentPanel.StartAnimation();
         _audioControll.StartTTS(_currentPanel.GetTextToTTS());
         // CleanOtherPanels();
         // StartCoroutine(FitPanel(_currentPanel));
-
     }
-    
-    private void Update()
+    private void LateUpdate()
     {
         Time.timeScale = scale;
         if (!inLerp && Input.touchCount > 0)
         {
-            
-            if (_contentPanelTransform.localPosition.y > 0 )
+            if (_contentPanelTransform.localPosition.y > 0)
             {
                 Canvas.ForceUpdateCanvases();
-                _contentPanelTransform.localPosition -=
-                    new Vector3(0, initCount * (_listItems[0].OwnRectTransform.rect.height + _vlg.spacing), 0);
+                _contentPanelTransform.localPosition -= new Vector3(0, initCount * (_listItems[0].OwnRectTransform.rect.height + _vlg.spacing), 0);
             }
-            //
-            if (_contentPanelTransform.localPosition.y < 0 )
+            if (_contentPanelTransform.localPosition.y < 0)
             {
                 Canvas.ForceUpdateCanvases();
-                _contentPanelTransform.localPosition +=
-                    new Vector3(0, initCount * (_listItems[0].OwnRectTransform.rect.height + _vlg.spacing), 0);
+                _contentPanelTransform.localPosition += new Vector3(0, initCount * (_listItems[0].OwnRectTransform.rect.height + _vlg.spacing), 0);
             }
         }
-
     }
 
     private void OnEnable()
@@ -102,59 +93,51 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        
         inLerp = true;
         _deltaMouse = Input.GetTouch(0).deltaPosition;
-
-        if (Mathf.Approximately(_ContentInitPosition.y - _contentPanelTransform.localPosition.y,0))
+        if (Mathf.Approximately(_ContentInitPosition.y - _contentPanelTransform.localPosition.y, 0))
         {
             return;
         }
-        // Debug.Log(_deltaMouse.y);
         if (Mathf.Abs(_deltaMouse.y) > _dragThreshold)
         {
             var currentPanel = GetNearTransform(_currentPanel, _deltaMouse.y >= 0);
             StartCoroutine(FitPanel(currentPanel, currentPanel != _currentPanel));
-
         }
         else
         {
             var currentPanel = GetNearTransform();
             StartCoroutine(FitPanel(currentPanel, currentPanel != _currentPanel));
-
         }
     }
 
-    private ScrollViewItem GetNearTransform(ScrollViewItem target = null, bool dragUp= false)
+    private ScrollViewItem GetNearTransform(ScrollViewItem target = null, bool dragUp = false)
     {
         ScrollViewItem currentPanel = null;
-            float minDistance = Single.MaxValue;
-            for (int i = 0; i < _listItems.Count; i++)
+        float minDistance = Single.MaxValue;
+        for (int i = 0; i < _listItems.Count; i++)
+        {
+            var distance = Vector3.Distance(_listItems[i].OwnRectTransform.position, _puntoPartida.position);
+            if (minDistance > distance /*&&( !target || currentPanel != target)*/)
             {
-                var distance = Vector3.Distance(_listItems[i].OwnRectTransform.position, _puntoPartida.position);
-                if (minDistance > distance /*&&( !target || currentPanel != target)*/)
+                if (target)
                 {
-                    if (target)
-                    {
-                        if (_listItems[i] == target) continue;
-                        minDistance = distance;
-                        currentPanel = _listItems[i];
-
-                    }
-                    else
-                    {
-                        minDistance = distance;
-                        currentPanel = _listItems[i];    
-                    }
-                    
+                    if (_listItems[i] == target) continue;
+                    minDistance = distance;
+                    currentPanel = _listItems[i];
                 }
-            }
+                else
+                {
+                    minDistance = distance;
+                    currentPanel = _listItems[i];
+                }
 
+            }
+        }
         return currentPanel;
     }
     IEnumerator FitPanel(ScrollViewItem target, bool isOther = false)
     {
-
         var currentTime = 0f;
         var nitPosition = _contentPanelTransform.position;
         var difference = -target.OwnRectTransform.position + _puntoPartida.position;
@@ -171,25 +154,23 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
             {
                 // Debug.Log("previous question");
                 _questionController.CurrentIndex--;
-            }    
+            }
         }
-        
-        while (currentTime <=1)
+
+        while (currentTime <= 1)
         {
-            
+
             // Debug.DrawLine(target.OwnRectTransform.position, _puntoPartida.position, Color.red);
             currentTime += Time.deltaTime / _duration;
             var movementInY = Mathf.Lerp(nitPosition.y, (nitPosition + difference).y, currentTime);
             _contentPanelTransform.position =
-                new Vector3(0,movementInY , 0);
+                new Vector3(0, movementInY, 0);
             yield return null;
         }
-        _contentPanelTransform.position =
-            new Vector3(0,(nitPosition + difference).y , 0);
+        _contentPanelTransform.position = new Vector3(0, (nitPosition + difference).y, 0);
         _currentPanel = target;
         if (_currentPanel.transform.GetSiblingIndex() == 2)
         {
-            // Change to next question
             if (!_questionController.IsLastQuestion())
             {
                 _contentPanelTransform.transform.GetChild(0).SetAsLastSibling();
@@ -206,7 +187,6 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
                     {
                         panel.SetDataInformation(nextQuestion);
                     }
-
                 }
             }
         }
@@ -224,26 +204,20 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
                     var previousQuestion = _questionController.GetPreviousQuestion();
                     if (previousQuestion != null)
                     {
-                        Debug.Log("current: " + _questionController.CurrentQuestion.idQuestion + " prev: " + previousQuestion.idQuestion);
-
+                        //Debug.Log("current: " + _questionController.CurrentQuestion.idQuestion + " prev: " + previousQuestion.idQuestion);
                         panel.SetDataInformation(previousQuestion);
                     }
-
                 }
             }
-            
         }
 
         if (isOther)
         {
             _currentPanel.StartAnimation();
-            CleanOtherPanels();   
             _audioControll.StopTTS();
             _audioControll.StartTTS(_currentPanel.GetTextToTTS());
-            Debug.Log("Cambio panel");
-
+            //CleanOtherPanels();
         }
-        
         inLerp = false;
     }
 

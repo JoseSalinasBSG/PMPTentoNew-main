@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Question;
-using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class ScrollViewItem : MonoBehaviour
 {
@@ -27,7 +22,7 @@ public class ScrollViewItem : MonoBehaviour
 
     public string GetTextToTTS()
     {
-        return _questionInformationVp.Question.text + ". " + _questionInformationVp.Opt1.Label.text + ". " +
+        return _questionInformationVp.QuestiontextforAudio + ". " + _questionInformationVp.Opt1.Label.text + ". " +
                _questionInformationVp.Opt2.Label.text + ". " + _questionInformationVp.Opt3.Label.text + ". O " +
                _questionInformationVp.Opt4.Label.text;
     }

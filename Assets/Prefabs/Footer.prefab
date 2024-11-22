@@ -271,7 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9176149073732598760}
   m_Layer: 5
-  m_Name: ------FOOTER---------
+  m_Name: Footer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,6 +809,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 5048181392404489742}
   _eventTrigger: {fileID: 6608321987811927774}
+  toSound: 1
+  vibrationMode: 0
 --- !u!114 &6608321987811927774
 MonoBehaviour:
   m_ObjectHideFlags: 0
