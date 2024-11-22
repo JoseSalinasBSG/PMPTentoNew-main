@@ -35,7 +35,6 @@ public class OptionAnimation : MonoBehaviour
     {
         _options.alpha = 0;
         _options.transform.localPosition = _initPosition; 
-
     }
 
     IEnumerator IStartAnimationPosition()

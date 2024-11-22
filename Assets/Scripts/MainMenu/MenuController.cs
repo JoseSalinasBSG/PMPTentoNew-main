@@ -116,7 +116,6 @@ namespace MainMenu
             while (_instructorInstantiated)
             {
                 yield return null;
-                Debug.Log("Waiting");
             }
             _instructorInstantiated = Instantiate(_objectInstructor.instructors.FirstOrDefault(x => x.id == indexInstructor)!.prefab,
                 _pointToInstantiate.position, _pointToInstantiate.rotation, _pointToInstantiate);

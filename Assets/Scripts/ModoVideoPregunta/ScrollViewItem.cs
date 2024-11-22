@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Question;
-using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class ScrollViewItem : MonoBehaviour
 {

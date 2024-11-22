@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Handles3D;
 using Question;
 using ScriptableCreator;
-using UI.Button;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

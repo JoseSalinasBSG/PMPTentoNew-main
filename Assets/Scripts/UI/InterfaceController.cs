@@ -38,13 +38,13 @@ public class InterfaceController : MonoBehaviour
 
     private void UIEvents_ShowFinishView()
     {
-        Debug.Log("show finish view ");
+        //Debug.Log("show finish view ");
         EnableScreen(PMPScenes.FinishViewInCategoryMode);
     }
 
     private void UIEvents_ShowLoadingView()
     {
-        Debug.Log("show loading view ");
+        //Debug.Log("show loading view ");
         EnableScreen(PMPScenes.LoadingViewInCategoryMode);
     }
 
@@ -60,13 +60,13 @@ public class InterfaceController : MonoBehaviour
 
     private void UIEvents_ShowQuestionView()
     {
-        Debug.Log("show question view ");
+        //Debug.Log("show question view ");
         EnableScreen(PMPScenes.QuestionAndOptionViewInCategoryMode);
     }
 
     private void GameEvents_TaskRetreived(List<Task> obj)
     {
-        Debug.Log("interface task retreived");
+        //Debug.Log("interface task retreived");
         EnableScreen(PMPScenes.TaskViewInCategoryMode);
     }
 
@@ -78,7 +78,7 @@ public class InterfaceController : MonoBehaviour
 
     public void EnableScreen(string viewName)
     {
-        Debug.Log(viewName);
+        //Debug.Log(viewName);
         _currentScreen.screen.gameObject.SetActive(false);
         var screen = GetScreen(viewName);
         screen.screen.gameObject.SetActive(true);

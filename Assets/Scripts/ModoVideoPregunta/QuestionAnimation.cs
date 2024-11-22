@@ -27,7 +27,7 @@ public class QuestionAnimation : MonoBehaviour
     public void CleanOption()
     {
         _canvasGroup.alpha = 0;
-        // _options.transform.localPosition = _initPosition; 
+        _canvasGroup.transform.localPosition = _initPosition; 
 
     }
 

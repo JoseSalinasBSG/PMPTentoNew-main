@@ -251,37 +251,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153451624}
   m_CullTransparentMesh: 1
---- !u!1 &158631926
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 158631927}
-  m_Layer: 0
-  m_Name: Lipsync Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &158631927
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158631926}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190188605
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,8 +285,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -115.46655}
-  m_SizeDelta: {x: 0, y: 230.9327}
+  m_AnchoredPosition: {x: 0, y: -115}
+  m_SizeDelta: {x: 0, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &190188607
 MonoBehaviour:
@@ -333,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.9960785, g: 0.22352943, b: 0.22352943, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -979,7 +948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.99592763, g: 1, b: 0.5235849, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1558,10 +1527,10 @@ MonoBehaviour:
   _contentPanelTransform: {fileID: 1981090597}
   _vlg: {fileID: 1981090599}
   _canvasTransform: {fileID: 1689113860}
-  _dragThreshold: 3
-  _duration: 0.2
   _puntoPartida: {fileID: 1520333400}
   scrollViewItem: {fileID: 6014774203240614514, guid: 6ffbdf687089d40419f2043f825b20f4, type: 3}
+  _dragThreshold: 0.7
+  _duration: 0.3
   scale: 1
 --- !u!114 &1073789428
 MonoBehaviour:
@@ -2339,13 +2308,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 190188606}
   - {fileID: 1073789423}
   - {fileID: 748902640}
-  - {fileID: 1821192335}
   - {fileID: 1520333400}
   - {fileID: 1940555698}
   - {fileID: 153451625}
+  - {fileID: 190188606}
+  - {fileID: 1821192335}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3288,7 +3257,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -3485,6 +3454,5 @@ SceneRoots:
   - {fileID: 1452841997}
   - {fileID: 38285660}
   - {fileID: 221259753}
-  - {fileID: 158631927}
   - {fileID: 1460085149}
   - {fileID: 1825853750}
