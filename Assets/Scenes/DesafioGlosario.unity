@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 356809681}
   m_Layer: 5
   m_Name: Option 4
-  m_TagString: Untagged
+  m_TagString: GC_Definitions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1105,7 +1105,7 @@ GameObject:
   - component: {fileID: 683896174}
   m_Layer: 5
   m_Name: Option 5
-  m_TagString: Untagged
+  m_TagString: GC_Concepts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1489,7 +1489,7 @@ GameObject:
   - component: {fileID: 695528865}
   m_Layer: 5
   m_Name: Option 1
-  m_TagString: Untagged
+  m_TagString: GC_Definitions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2784,7 +2784,7 @@ GameObject:
   - component: {fileID: 989045980}
   m_Layer: 5
   m_Name: Option 3
-  m_TagString: Untagged
+  m_TagString: GC_Definitions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3438,7 +3438,7 @@ GameObject:
   - component: {fileID: 1047854492}
   m_Layer: 5
   m_Name: Option 5
-  m_TagString: Untagged
+  m_TagString: GC_Definitions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5507,6 +5507,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _startObjectTag: 
+  _endObjectTag: 
 --- !u!114 &1861133739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5714,7 +5716,7 @@ GameObject:
   - component: {fileID: 2051587273}
   m_Layer: 5
   m_Name: Option 2
-  m_TagString: Untagged
+  m_TagString: GC_Definitions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6705,7 +6707,7 @@ GameObject:
   - component: {fileID: 8219959849455588513}
   m_Layer: 5
   m_Name: Option 3
-  m_TagString: Untagged
+  m_TagString: GC_Concepts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7512,7 +7514,7 @@ GameObject:
   - component: {fileID: 9084196341621833643}
   m_Layer: 5
   m_Name: Option 4
-  m_TagString: Untagged
+  m_TagString: GC_Concepts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9348,7 +9350,7 @@ GameObject:
   - component: {fileID: 8903819291810927151}
   m_Layer: 5
   m_Name: Option 1
-  m_TagString: Untagged
+  m_TagString: GC_Concepts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9794,7 +9796,7 @@ GameObject:
   - component: {fileID: 9023454774003333112}
   m_Layer: 5
   m_Name: Option 2
-  m_TagString: Untagged
+  m_TagString: GC_Concepts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
