@@ -3216,7 +3216,7 @@ GameObject:
   - component: {fileID: 613188792}
   - component: {fileID: 613188791}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: FPS_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23939,14 +23939,14 @@ SceneRoots:
   - {fileID: 1486346904}
   - {fileID: 913606109}
   - {fileID: 1123753194}
-  - {fileID: 306404834}
   - {fileID: 1337041751}
   - {fileID: 1948238317}
-  - {fileID: 19070946}
-  - {fileID: 613188794}
   - {fileID: 1461942202}
   - {fileID: 1954085043}
   - {fileID: 38285660}
   - {fileID: 708024837}
   - {fileID: 3403111}
   - {fileID: 2002315478}
+  - {fileID: 19070946}
+  - {fileID: 306404834}
+  - {fileID: 613188794}

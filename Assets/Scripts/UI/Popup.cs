@@ -29,18 +29,14 @@ namespace UI
             if (_detectTouchOutside)
             {
                 EnhancedTouchSupport.Enable();
-
                 Touch.onFingerDown += TouchOnonFingerDown;
             }
         }
 
-    private void TouchOnonFingerDown(Finger obj)//metodo para que cuando se toque fuera del gameobject _container ejecute una accion
+        private void TouchOnonFingerDown(Finger obj)//metodo para que cuando se toque fuera del gameobject _container ejecute una accion
         {
             var pos = obj.currentTouch.screenPosition;
-            //Debug.Log("touch pressed " + pos + " - " + _container.gameObject.activeSelf + " - " + RectTransformUtility.RectangleContainsScreenPoint(_container, pos));
-
-            if (_container.gameObject.activeSelf &&
-                !RectTransformUtility.RectangleContainsScreenPoint(_container, pos))
+            if (_container.gameObject.activeSelf && !RectTransformUtility.RectangleContainsScreenPoint(_container, pos))
             {
                 _onOutsidePopup?.Invoke();
             }

@@ -2,24 +2,24 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+//<summary>
+//LoadScene se encarga de cargar los distintos scenes del juego
+//</summary>
+
 namespace Scene
 {
     public class LoadScene : MonoBehaviour
     {
         #region Variables
-
         [SerializeField] private ScriptableObjectScenes _objectScenes;
-        [SerializeField] private UnityEvent _onBeforeLoadScene;
-        
+        [SerializeField] private UnityEvent _onBeforeLoadScene;        
         private AsyncOperation loadingOperation;
         private bool _initLoadAsync;
-
         public ScriptableObjectScenes ObjectScenes
         {
             get => _objectScenes;
             set => _objectScenes = value;
         }
-
         #endregion
 
         #region Unity Methods
@@ -57,13 +57,8 @@ namespace Scene
 
         public void LoadSceneAscync(string sceneName)
         {
-
             _onBeforeLoadScene?.Invoke();
             SceneManager.LoadScene("LoadingScene");
-
-            // loadingOperation = SceneManager.LoadSceneAsync(sceneName);
-            // loadingOperation.allowSceneActivation = false;
-            // _initLoadAsync = true;
         }
 
         public void ExitGame()
@@ -77,7 +72,5 @@ namespace Scene
             LoadSceneUsingName("Login");
         }
         #endregion
-
     }
-
 }

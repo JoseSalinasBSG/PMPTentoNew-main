@@ -6,8 +6,8 @@ using UnityEngine;
 public class AchievementListContainer
 {
     public List<AchievementData.Achievement> achievementList = new List<AchievementData.Achievement>();//se crea lista con clase Achievement
-
 }
+
 [CreateAssetMenu(fileName = "AchievementData", menuName = "ScriptableObjects/AchievementData")]
 public class AchievementData : ScriptableObject
 {
@@ -19,8 +19,7 @@ public class AchievementData : ScriptableObject
         public int CurrentCounter;
         public int MaxCounter;
         public int CurrentLevel;
-        public int MaxLevel;
-           
+        public int MaxLevel;           
 
         //public int MaxCounterDifficulty;
         public int GiftsObtained;
@@ -35,15 +34,14 @@ public class AchievementData : ScriptableObject
 
     public void AddCounter(int index)//contador con parametro index
     {
-
         var achievement = achievementListContainer.achievementList[index];//accedo al indice index de la lista de clase Achievement osea al SO AchievementData
         achievement.CurrentCounter++;//accedo al contador y lo aumento
-        Debug.Log($"Se aumentó Current Counter: {achievement.CurrentCounter}");
+        Debug.Log($"Se aumentï¿½ Current Counter: {achievement.CurrentCounter}");
 
         if (achievement.CurrentCounter >= achievement.MaxCounter)//accedo a los campos de la lista y comparo si CurrentCounter es mayor igual que MaxCounter
         {
             achievement.CurrentLevel++;//aumentamos un Nivel
-            Debug.Log($"Alcanzo Max Counter, se aumentó Current Level:{achievement.CurrentLevel}");
+            Debug.Log($"Alcanzo Max Counter, se aumentï¿½ Current Level:{achievement.CurrentLevel}");
             if (achievement.CurrentLevel>=achievement.MaxLevel)
             {
                 achievement.CurrentLevel = 0;
@@ -107,7 +105,7 @@ public class AchievementData : ScriptableObject
                                                                                                           //el objeto achievementListContainer con los datos deserializados del JSON obtenido
         }
         else
-        {
+        { 
             SaveLocalData();
         }
     }
@@ -121,27 +119,27 @@ public class AchievementData : ScriptableObject
                 achievementListContainer.achievementList[0].Streak4Date = date;
                 achievementListContainer.achievementList[0].lastOriginStreak4 = origin;
 
-                Debug.Log("Se añadio logro racha 4 preguntas");
+                Debug.Log("Se aï¿½adio logro racha 4 preguntas");
                 break;
 
             case 6:
                 achievementListContainer.achievementList[0].Streak6Questions++;
                 achievementListContainer.achievementList[0].Streak6Date = date;
                 achievementListContainer.achievementList[0].lastOriginStreak6 = origin;
-                Debug.Log("Se añadio logro racha 6 preguntas");
+                Debug.Log("Se aï¿½adio logro racha 6 preguntas");
                 break;
             case 8:
                 achievementListContainer.achievementList[0].Streak8Questions++;
                 achievementListContainer.achievementList[0].Streak8Date = date;
                 achievementListContainer.achievementList[0].lastOriginStreak8 = origin;
-                Debug.Log("Se añadio logro racha 8 preguntas");
+                Debug.Log("Se aï¿½adio logro racha 8 preguntas");
                 break;
 
             case 10:
                 achievementListContainer.achievementList[0].Streak10Questions++;
                 achievementListContainer.achievementList[0].Streak10Date = date;
                 achievementListContainer.achievementList[0].lastOriginStreak10 = origin;
-                Debug.Log("Se añadio logro racha 10 preguntas");
+                Debug.Log("Se aï¿½adio logro racha 10 preguntas");
                 break;                
         }
         SaveLocalData();
