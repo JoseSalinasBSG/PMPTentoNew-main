@@ -2,6 +2,10 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
+//<summary>
+//FPSView se encarga de mostrar en el UI el FPS usado en el juego
+//</summary>
+
 public class FPSView : MonoBehaviour
 {
     const float goodFpsThreshold = 60;
@@ -21,8 +25,7 @@ public class FPSView : MonoBehaviour
     }
     
     private void Update()
-    {
-        
+    {        
         CalculateCurrentFPS();
     }
 
@@ -49,7 +52,6 @@ public class FPSView : MonoBehaviour
             {
                 textOutput.color = Color.red;
             }
-
             textOutput.text = "FPS:" + framesPerSecond + "\n" + "MS:" + milliseconds.ToString(".0");
             yield return new WaitForSeconds(updateInteval);
         }
@@ -58,7 +60,5 @@ public class FPSView : MonoBehaviour
     {
         Application.targetFrameRate = 61;
         StartCoroutine(ShowFPS());
-
-    }
-    
+    }    
 }

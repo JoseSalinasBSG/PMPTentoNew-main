@@ -12,13 +12,13 @@ namespace Button
         [SerializeField] private ScriptableObjectButton _scriptableObjectButton;
         [SerializeField] private Image _imageButton;
         [SerializeField] private EventTrigger _eventTrigger;
-        public bool toSound=true;
+        public bool toSound = true;
         private int vibrateIndicator;
 
 
         private float _currentTime;
         private Vector3 _startScale;
-        private Color _colorDisable = new Color(.8f , .8f, .8f, 1);
+        private Color _colorDisable = new Color(.8f, .8f, .8f, 1);
         private Color _colorDefault = Color.white;
         EventTrigger.Entry entry = new EventTrigger.Entry();
 
@@ -27,7 +27,7 @@ namespace Button
             None,
             LightVibration,
             MediumVibration,
-            HeavyVibration,               
+            HeavyVibration,
         }
         [SerializeField] VibrationMode vibrationMode;
 
@@ -54,13 +54,10 @@ namespace Button
         }
 
         private void OnEnable()
-        {  
-            
+        {
             entry.eventID = EventTriggerType.PointerDown;//establece tipo de evento a escuchar,
             entry.callback.AddListener(Call);//se a�ade a la lista de metodos que se ejecutaran cuando el evento a escuchar se dispare, cuando haya evento PointerDown se llamara a Call
             _eventTrigger.triggers.Add(entry);
-
-            
         }
 
         private void Call(BaseEventData arg0)
@@ -75,12 +72,10 @@ namespace Button
 
         private void OnDisable()
         {
-            
             entry.callback.RemoveListener(Call);
             _eventTrigger.triggers.Remove(entry);
-            
         }
-        
+
 
         public void StartAnimation()
         {
@@ -112,9 +107,6 @@ namespace Button
             _eventTrigger.enabled = false;
             _imageButton.color = _colorDisable;
         }
-    
-
-
 
         IEnumerator IStartAnimation()
         {
@@ -143,6 +135,6 @@ namespace Button
                 yield return null;
             }
         }
-    
+
     }
 }

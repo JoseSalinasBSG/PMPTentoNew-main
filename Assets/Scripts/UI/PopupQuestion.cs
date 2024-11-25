@@ -10,8 +10,7 @@ namespace UI
         #region Variables
 
         [SerializeField] private TextMessageSO _textMessage;
-        [SerializeField] private TextMeshProUGUI _message;
-        
+        [SerializeField] private TextMeshProUGUI _message;        
         [SerializeField] private TextMeshProUGUI _messagePower;
         [SerializeField] private Image _imageBSecondOportunity;
         [SerializeField] private TextMeshProUGUI _labelBSecondOportunity;
@@ -20,21 +19,6 @@ namespace UI
         [SerializeField] private Color _incorrectColor;
         
         #endregion
-
-        #region Unity Methods
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            
-        }
-        // Update is called once per frame
-        
-        
-
-        #endregion
-
-        #region Methods
 
         public void SetMessage(bool isCorrect)
         {
@@ -64,9 +48,7 @@ namespace UI
                 _message.color = _incorrectColor;
                 
             }
-            _message.text = message;
-            
-
+            _message.text = message; 
         }
 
         public void SetMessagePower(string message)
@@ -82,13 +64,7 @@ namespace UI
         public void DisableEventTrigger()
         {
             _eventTrigger.enabled = false;
-        }
-
-        #endregion
-
-      
-
-   
+        }  
 
     }
 }

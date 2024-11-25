@@ -2227,7 +2227,7 @@ GameObject:
   - component: {fileID: 1689113858}
   - component: {fileID: 1689113857}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GUI - Video Pregunta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2245,7 +2245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
@@ -2285,13 +2285,13 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 7
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -2782,11 +2782,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 78
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 78
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2818,11 +2818,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 112.4
+      value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -153.4
+      value: -155
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3447,12 +3447,12 @@ SceneRoots:
   m_Roots:
   - {fileID: 1795670250}
   - {fileID: 1689113860}
-  - {fileID: 1556507314}
-  - {fileID: 1452222509}
-  - {fileID: 1935422794}
   - {fileID: 869884009}
   - {fileID: 1452841997}
   - {fileID: 38285660}
   - {fileID: 221259753}
   - {fileID: 1460085149}
   - {fileID: 1825853750}
+  - {fileID: 1935422794}
+  - {fileID: 1452222509}
+  - {fileID: 1556507314}

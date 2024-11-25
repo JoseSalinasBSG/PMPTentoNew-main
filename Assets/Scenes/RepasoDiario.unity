@@ -1452,8 +1452,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -455.1}
-  m_SizeDelta: {x: 811.6, y: 259.09998}
+  m_AnchoredPosition: {x: 0, y: -455}
+  m_SizeDelta: {x: 810, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &453543883
 MonoBehaviour:
@@ -1618,8 +1618,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1199.8455}
-  m_SizeDelta: {x: -179.67798, y: 1305}
+  m_AnchoredPosition: {x: 0, y: -1200}
+  m_SizeDelta: {x: -180, y: 1305}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484682885
 MonoBehaviour:
@@ -2016,8 +2016,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -157.37817}
-  m_SizeDelta: {x: 0, y: 314.7563}
+  m_AnchoredPosition: {x: 0, y: -160}
+  m_SizeDelta: {x: 0, y: 315}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &836677235
 MonoBehaviour:
@@ -2325,7 +2325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
@@ -2365,13 +2365,13 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 31
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -5281,7 +5281,7 @@ Transform:
   m_GameObject: {fileID: 1569370300}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6551,5 +6551,5 @@ SceneRoots:
   - {fileID: 1580682570}
   - {fileID: 275218273}
   - {fileID: 79173341}
-  - {fileID: 955430467}
   - {fileID: 1472637925}
+  - {fileID: 955430467}

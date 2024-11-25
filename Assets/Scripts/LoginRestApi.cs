@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 //<summary>
-//Clase que se encarga de realizar las peticiones a la API para obtener datos del usuario
+//LoginRestApi se encarga de realizar las peticiones a la API para obtener datos del usuario
 //</summary>
 
 public class LoginRestApi : MonoBehaviour
@@ -80,7 +80,7 @@ public class LoginRestApi : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text);
+                    Debug.Log(request.downloadHandler.text + " - " + e.ToString());
                     _objectUser.userInfo.haveUser = false;
                     _loginController._onErrorInLogin?.Invoke("Se tuvo un error interno, vuelva a intentarlo mas tarde");
                 }
@@ -105,7 +105,6 @@ public class LoginRestApi : MonoBehaviour
             if (request.responseCode == 401)
             {
                 _objectUser.userInfo.user = JsonUtility.FromJson<User>(request.downloadHandler.text);
-
                 _objectUser.userInfo.haveUser = false;
                 GameEvents.ErrorLogin?.Invoke(_objectUser.userInfo.user.excepcion.descripcionGeneral);
             }
@@ -153,7 +152,7 @@ public class LoginRestApi : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text);
+                    Debug.Log(request.downloadHandler.text + " - " + e.ToString());
                     _objectUser.userInfo.haveUser = false;
                     _loginController._onErrorInLogin?.Invoke("Se tuvo un error interno, vuelva a intentarlo mas tarde");
                 }
@@ -224,11 +223,10 @@ public class LoginRestApi : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text);
+                    Debug.Log(request.downloadHandler.text + " - " + e.ToString());
                     _objectUser.userInfo.haveUser = false;
                     _loginController._onErrorInLogin?.Invoke("Se tuvo un error interno, vuelva a intentarlo mas tarde");
                 }
-
             }
             // PlayerPrefs.SetString("userInfo", JsonUtility.ToJson(_objectUser.userInfo));
             _finishRequest = true;

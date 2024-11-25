@@ -2259,7 +2259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.019607844, g: 0.27058825, b: 0.75294125, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2758,7 +2758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2988,7 +2988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.019607844, g: 0.27058825, b: 0.75294125, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3786,7 +3786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5671,7 +5671,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 1
+  m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -7108,7 +7108,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 1
+  m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -7574,7 +7574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8560,7 +8560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7159976342439286557, guid: aa84ca15091c5c14aa180f32f3134cb9, type: 3}
       propertyPath: toSound
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7159976342439286557, guid: aa84ca15091c5c14aa180f32f3134cb9, type: 3}
       propertyPath: vibrationMode
@@ -8811,18 +8811,18 @@ SceneRoots:
   - {fileID: 1819977549}
   - {fileID: 1392063655}
   - {fileID: 226300296}
-  - {fileID: 32560890}
   - {fileID: 2113561464}
   - {fileID: 600175730}
-  - {fileID: 758116582}
-  - {fileID: 905495162}
-  - {fileID: 1787744282}
-  - {fileID: 1379237441}
-  - {fileID: 1049716370}
   - {fileID: 532442928}
+  - {fileID: 905495162}
+  - {fileID: 1005293128}
+  - {fileID: 1787744282}
+  - {fileID: 758116582}
+  - {fileID: 1049716370}
   - {fileID: 266222808}
   - {fileID: 213234112}
   - {fileID: 1806704733}
   - {fileID: 1835904624}
-  - {fileID: 1005293128}
   - {fileID: 213368145}
+  - {fileID: 32560890}
+  - {fileID: 1379237441}
