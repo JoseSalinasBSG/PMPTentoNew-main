@@ -160,11 +160,6 @@ public class UserService : MonoBehaviour
                         {
                             _scriptableObjectUser.userInfo.haveUsername = false;
                         }
-
-                        if (_scriptableObjectUser.userInfo.user.detail.idCaracteristicaGamificacion != 0)
-                        {
-                            Debug.Log("idcaracteristicaGamificacion 1");
-                        }
                     }
                     GameEvents.SuccessGetUserDetail?.Invoke();
                 }

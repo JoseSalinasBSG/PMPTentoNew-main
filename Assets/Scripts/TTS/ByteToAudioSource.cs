@@ -15,7 +15,7 @@ public class ByteToAudioSource : MonoBehaviour
 
     private const string API_URL = "https://translate.google.com/translate_tts";
     private const string LANG = "es";
-    private const int MAX_LENGTH = 210;
+    private const int MAX_LENGTH = 200;
     
     private string GenerateUrl(string text, string lang)
     {
@@ -36,7 +36,7 @@ public class ByteToAudioSource : MonoBehaviour
     }
     private IEnumerator IStartTTS()
     {
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.03f);
         parts = SplitText(text);
         foreach (string part in parts)
         {
@@ -71,6 +71,7 @@ public class ByteToAudioSource : MonoBehaviour
         var sentences = Regex.Split(text, @"(?<=[.!?]) +");
         for (int i = 0; i < sentences.Length; i++)
         {
+            Debug.Log(sentences[i]);
             if (sentences[i].Length <= maxLength)
             {
                 parts.Add(sentences[i]);

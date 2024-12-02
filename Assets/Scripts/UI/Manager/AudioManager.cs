@@ -37,7 +37,6 @@ public class AudioManager : MonoBehaviour
 
     private void OnEnable()
     {
-
         AudioEvents.SFXVolumeChanged += AudioEvents_OnSFXVolumeChanged;
         AudioEvents.MusicVolumeChanged += AudioEvents_OnMusicVolumeChanged;
         AudioEvents.MasterVolumeChanged += AudioEvents_OnMasterVolumeChanged;
