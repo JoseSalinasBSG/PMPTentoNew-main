@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "PMPTentoNew-main.sln"
+    "dotnet.defaultSolution": "PMPTentoNew.sln"
 }

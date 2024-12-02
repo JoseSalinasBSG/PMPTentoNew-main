@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7752336a-decd-4356-b59e-34eb6eb6a629" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PMPTentoNew/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PMPTentoNew/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Login.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +108,10 @@
       <workItem from="1732115612432" duration="14947000" />
       <workItem from="1732136818406" duration="9497000" />
       <workItem from="1732225177714" duration="8466000" />
+      <workItem from="1732667161468" duration="1417000" />
+      <workItem from="1732803872038" duration="651000" />
+      <workItem from="1732810505313" duration="2408000" />
+      <workItem from="1732919195266" duration="7426000" />
     </task>
     <servers />
   </component>
