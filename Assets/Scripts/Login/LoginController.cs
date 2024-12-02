@@ -36,6 +36,24 @@ namespace Login
             //Logica para buscar usuario
             var email = _emailInput.InputField.text;
             var password = _passwordInput.InputField.text;
+            
+            Debug.Log("Email: " + email);
+            Debug.Log("Password: " + password);
+            
+            if(password != password.Trim())
+            {
+                Debug.Log("La contraseña no debe contener espacios al principio o al final.");
+                _onErrorInLogin?.Invoke("La contraseña no debe contener espacios al principio o al final.");
+                return;
+            }
+            
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                Debug.Log("El correo o la contraseña no pueden estar vacíos.");
+                _onErrorInLogin?.Invoke("El correo o la contraseña no pueden estar vacíos.");
+                return;
+            }
+
             _loginRestApi.PostLogin(email, password);
         }
 
