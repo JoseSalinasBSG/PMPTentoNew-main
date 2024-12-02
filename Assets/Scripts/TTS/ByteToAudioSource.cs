@@ -36,12 +36,11 @@ public class ByteToAudioSource : MonoBehaviour
     }
     private IEnumerator IStartTTS()
     {
-        yield return new WaitForSeconds(.03f);
+        yield return new WaitForSeconds(.07f);
         parts = SplitText(text);
         foreach (string part in parts)
         {
             var url = GenerateUrl(part, LANG);
-            //Debug.Log(url);
             using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
             {
                 yield return www.SendWebRequest();
@@ -56,22 +55,19 @@ public class ByteToAudioSource : MonoBehaviour
                     _audioSource.clip = DownloadHandlerAudioClip.GetContent(www);/*www.downloadHandler.data;*/
                     _audioSource.Play();
                     // PlayMP3(audioData);
-                    yield return new WaitForSeconds(_audioSource.clip.length);
+                    yield return new WaitForSeconds(_audioSource.clip.length - .07f);
                 }
             }
-
             yield return null;
-
         }
     }
     
     private List<string> SplitText(string text, int maxLength = MAX_LENGTH)
     {
         List<string> parts = new List<string>();
-        var sentences = Regex.Split(text, @"(?<=[.!?]) +");
+        var sentences = Regex.Split(text, @"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|\!)\s+");
         for (int i = 0; i < sentences.Length; i++)
         {
-            Debug.Log(sentences[i]);
             if (sentences[i].Length <= maxLength)
             {
                 parts.Add(sentences[i]);
