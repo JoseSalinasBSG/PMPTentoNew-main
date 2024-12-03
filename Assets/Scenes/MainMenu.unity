@@ -14049,7 +14049,7 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 2765058095928741676}
   _eventTrigger: {fileID: 4902843725325388184}
-  toSound: 0
+  toSound: 1
   vibrationMode: 2
 --- !u!225 &1722495587336764018
 CanvasGroup:
@@ -21327,7 +21327,7 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 5393618391423247319}
   _eventTrigger: {fileID: 3165211785948950247}
-  toSound: 0
+  toSound: 1
   vibrationMode: 2
 --- !u!224 &3924422546777901875
 RectTransform:
@@ -30743,7 +30743,7 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 4760528034709378649}
   _eventTrigger: {fileID: 7533368335981073318}
-  toSound: 0
+  toSound: 1
   vibrationMode: 2
 --- !u!1 &5984436392999878929
 GameObject:

@@ -146,7 +146,6 @@ public class GameplaySound : MonoBehaviour
         {
             return;
         }
-        Debug.Log("playmainmenu");
         _audioManager.actualSound = AudioManager.ActualSound.main;
         _audioManager.PlayMusic(_audioManager.AudioSettings.MainSound, Vector3.zero, 0, true);
     }

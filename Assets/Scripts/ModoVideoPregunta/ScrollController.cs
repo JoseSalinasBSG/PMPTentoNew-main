@@ -57,23 +57,23 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
         // CleanOtherPanels();
         // StartCoroutine(FitPanel(_currentPanel));
     }
-    private void LateUpdate()
-    {
-        Time.timeScale = scale;
-        if (!inLerp && Input.touchCount > 0)
-        {
-            if (_contentPanelTransform.localPosition.y > 0)
-            {
-                Canvas.ForceUpdateCanvases();
-                _contentPanelTransform.localPosition -= new Vector3(0, initCount * (_listItems[0].OwnRectTransform.rect.height + _vlg.spacing), 0);
-            }
-            if (_contentPanelTransform.localPosition.y < 0)
-            {
-                Canvas.ForceUpdateCanvases();
-                _contentPanelTransform.localPosition += new Vector3(0, initCount * (_listItems[0].OwnRectTransform.rect.height + _vlg.spacing), 0);
-            }
-        }
-    }
+    // private void LateUpdate()
+    // {
+    //     Time.timeScale = scale;
+    //     if (!inLerp && Input.touchCount > 0)
+    //     {
+    //         if (_contentPanelTransform.localPosition.y > 0)
+    //         {
+    //             Canvas.ForceUpdateCanvases();
+    //             _contentPanelTransform.localPosition -= new Vector3(0, initCount * (_listItems[0].OwnRectTransform.rect.height + _vlg.spacing), 0);
+    //         }
+    //         if (_contentPanelTransform.localPosition.y < 0)
+    //         {
+    //             Canvas.ForceUpdateCanvases();
+    //             _contentPanelTransform.localPosition += new Vector3(0, initCount * (_listItems[0].OwnRectTransform.rect.height + _vlg.spacing), 0);
+    //         }
+    //     }
+    // }
 
     private void OnEnable()
     {
@@ -93,6 +93,7 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Debug.Log("OnEndDrag");
         inLerp = true;
         _deltaMouse = Input.GetTouch(0).deltaPosition;
         if (Mathf.Approximately(_ContentInitPosition.y - _contentPanelTransform.localPosition.y, 0))
@@ -216,7 +217,7 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
             _currentPanel.StartAnimation();
             _audioControll.StopTTS();
             _audioControll.StartTTS(_currentPanel.GetTextToTTS());
-            //CleanOtherPanels();
+            CleanOtherPanels();
         }
         inLerp = false;
     }

@@ -31,7 +31,6 @@ public class LoginRestApi : MonoBehaviour
         using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
         {
             DataLogin dataLogin = new DataLogin() { username = username, password = password };
-
             var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataLogin));
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);//para subir datos en formato RAW
             request.downloadHandler = new DownloadHandlerBuffer();//para manejar la descarga de la respuesta

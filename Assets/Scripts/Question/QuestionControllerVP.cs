@@ -31,7 +31,7 @@ namespace Question
         [SerializeField] private DataToRegisterSO _toRegisterSo;
         [SerializeField] private List<QuestionDataVP> _session = new List<QuestionDataVP>();
         private QuestionDataVP _currentQuestion;
-        private List<int> _indexes = new List<int>(){0,1,2,3} ;
+        private List<int> _indexes = new List<int>() { 0, 1, 2, 3 };
         private int _currentIndex;
         private int _numberOfCorrectQuestions;
 
@@ -46,9 +46,9 @@ namespace Question
             set
             {
                 _currentIndex = value;
-                if (CurrentIndex <_session.Count && CurrentIndex >= 0)
+                if (CurrentIndex < _session.Count && CurrentIndex >= 0)
                 {
-                    CurrentQuestion = _session[CurrentIndex];                    
+                    CurrentQuestion = _session[CurrentIndex];
                 }
 
             }
@@ -80,7 +80,7 @@ namespace Question
             ConfigurateQuestion();
             UIEvents.ShowQuestionView?.Invoke();
         }
-       
+
         #endregion
 
         #region Methods
@@ -89,12 +89,12 @@ namespace Question
         {
             for (int i = 0; i < questions.Length; i++)
             {
-                
+
                 QuestionDataVP questionData = new QuestionDataVP();
                 questionData.retroalimentacion = questions[i].pregunta.retroalimentacion;
                 questionData.idQuestion = questions[i].pregunta.id.ToString();
                 questionData.question = questions[i].pregunta.enunciado;
-                
+
                 var randomvalue = Random.Range(0, _indexes.Count);
                 questionData.options[_indexes[randomvalue]] = questions[i].pregunta.respuesta[0];
                 _indexes.RemoveAt(randomvalue);
@@ -112,7 +112,7 @@ namespace Question
 
                 questionData.idCorrectOption = questions[i].pregunta.respuesta.FirstOrDefault(x => x.correcto == "true")?.id.ToString();
 
-                _session.Add( questionData);
+                _session.Add(questionData);
                 _indexes.Add(0);
                 _indexes.Add(1);
                 _indexes.Add(2);
@@ -126,10 +126,10 @@ namespace Question
             // _questionInformation.SetData(_currentQuestion);
             // _currentIndex++;
         }
-        
+
         public QuestionDataVP GetNextQuestion()
-        {            
-            if (CurrentIndex + 1 == _session.Count)
+        {
+            if (CurrentIndex + 1 > _session.Count)
             {
                 // GameEvents.GameWon?.Invoke();
                 _onEndQuestions?.Invoke();
@@ -149,7 +149,7 @@ namespace Question
                 return null;
             }
             var tempQuestion = _session[CurrentIndex - 1];
-            _onPreviousQuestion?.Invoke();            
+            _onPreviousQuestion?.Invoke();
             return tempQuestion;
         }
         public QuestionDataVP[] GetQuestions(int index)

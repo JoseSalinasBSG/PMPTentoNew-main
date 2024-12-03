@@ -15,7 +15,7 @@ public class ByteToAudioSource : MonoBehaviour
 
     private const string API_URL = "https://translate.google.com/translate_tts";
     private const string LANG = "es";
-    private const int MAX_LENGTH = 210;
+    private const int MAX_LENGTH = 200;
     
     private string GenerateUrl(string text, string lang)
     {
@@ -36,12 +36,11 @@ public class ByteToAudioSource : MonoBehaviour
     }
     private IEnumerator IStartTTS()
     {
-        yield return new WaitForSeconds(.3f);
+        //yield return new WaitForSeconds(.07f);
         parts = SplitText(text);
         foreach (string part in parts)
         {
             var url = GenerateUrl(part, LANG);
-            //Debug.Log(url);
             using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
             {
                 yield return www.SendWebRequest();
@@ -56,19 +55,17 @@ public class ByteToAudioSource : MonoBehaviour
                     _audioSource.clip = DownloadHandlerAudioClip.GetContent(www);/*www.downloadHandler.data;*/
                     _audioSource.Play();
                     // PlayMP3(audioData);
-                    yield return new WaitForSeconds(_audioSource.clip.length);
+                    yield return new WaitForSeconds(_audioSource.clip.length - .3f);
                 }
             }
-
             yield return null;
-
         }
     }
     
     private List<string> SplitText(string text, int maxLength = MAX_LENGTH)
     {
         List<string> parts = new List<string>();
-        var sentences = Regex.Split(text, @"(?<=[.!?]) +");
+        var sentences = Regex.Split(text, @"(?<=[.!?¿()]) +");
         for (int i = 0; i < sentences.Length; i++)
         {
             if (sentences[i].Length <= maxLength)
@@ -79,7 +76,8 @@ public class ByteToAudioSource : MonoBehaviour
             {
                 // Debug.Log("Texto demasiado grande para procesar");
                 // Debug.Log("Dividiendo texto");
-                parts.AddRange(SplitLongSentence(sentences[i], 200));
+                //parts.AddRange(SplitLongSentence(sentences[i], MAX_LENGTH/2));
+                parts.AddRange(Regex.Split(sentences[i], @"(?<=[-:,.!¿?]) +"));
                 // Debug.Log(sentences[i].Length);
             }
         }

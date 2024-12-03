@@ -15,5 +15,3 @@
         </activity>
     </application>
 </manifest>
-
-<!-- Quiero remover el permiso de AUDIO_RECORD -->
