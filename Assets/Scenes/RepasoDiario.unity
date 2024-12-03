@@ -2305,7 +2305,6 @@ GameObject:
   - component: {fileID: 913606108}
   - component: {fileID: 913606107}
   - component: {fileID: 913606106}
-  - component: {fileID: 913606110}
   m_Layer: 5
   m_Name: GUI - Resumen
   m_TagString: Untagged
@@ -2396,27 +2395,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &913606110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913606105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e867fedc0142074bb46b540a7eb6316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _popupIncorrect: {fileID: 0}
-  _popupCorrect: {fileID: 0}
-  _question: {fileID: 0}
-  _opt1: {fileID: 0}
-  _opt2: {fileID: 0}
-  _opt3: {fileID: 0}
-  _opt4: {fileID: 0}
-  firstWordColors: []
-  firstWordSize: 0
 --- !u!1 &955430463
 GameObject:
   m_ObjectHideFlags: 0

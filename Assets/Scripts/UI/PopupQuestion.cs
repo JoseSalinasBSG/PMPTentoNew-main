@@ -40,13 +40,11 @@ namespace UI
         {
             if (isCorrect)
             {
-                _message.color =_correctColor;
-                
+                _message.color =_correctColor;                
             }
             else
             {
-                _message.color = _incorrectColor;
-                
+                _message.color = _incorrectColor;                
             }
             _message.text = message; 
         }

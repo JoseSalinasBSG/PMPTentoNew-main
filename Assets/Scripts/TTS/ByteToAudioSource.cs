@@ -36,7 +36,7 @@ public class ByteToAudioSource : MonoBehaviour
     }
     private IEnumerator IStartTTS()
     {
-        yield return new WaitForSeconds(.07f);
+        //yield return new WaitForSeconds(.07f);
         parts = SplitText(text);
         foreach (string part in parts)
         {
@@ -55,7 +55,7 @@ public class ByteToAudioSource : MonoBehaviour
                     _audioSource.clip = DownloadHandlerAudioClip.GetContent(www);/*www.downloadHandler.data;*/
                     _audioSource.Play();
                     // PlayMP3(audioData);
-                    yield return new WaitForSeconds(_audioSource.clip.length - .07f);
+                    yield return new WaitForSeconds(_audioSource.clip.length - .3f);
                 }
             }
             yield return null;
@@ -65,7 +65,7 @@ public class ByteToAudioSource : MonoBehaviour
     private List<string> SplitText(string text, int maxLength = MAX_LENGTH)
     {
         List<string> parts = new List<string>();
-        var sentences = Regex.Split(text, @"(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|\!)\s+");
+        var sentences = Regex.Split(text, @"(?<=[.!?¿()]) +");
         for (int i = 0; i < sentences.Length; i++)
         {
             if (sentences[i].Length <= maxLength)
@@ -76,7 +76,8 @@ public class ByteToAudioSource : MonoBehaviour
             {
                 // Debug.Log("Texto demasiado grande para procesar");
                 // Debug.Log("Dividiendo texto");
-                parts.AddRange(SplitLongSentence(sentences[i], 200));
+                //parts.AddRange(SplitLongSentence(sentences[i], MAX_LENGTH/2));
+                parts.AddRange(Regex.Split(sentences[i], @"(?<=[-:,.!¿?]) +"));
                 // Debug.Log(sentences[i].Length);
             }
         }
