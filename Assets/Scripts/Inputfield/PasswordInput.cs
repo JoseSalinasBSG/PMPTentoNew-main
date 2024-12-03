@@ -11,7 +11,7 @@ public class PasswordInput : InputBase
     
     public override void CheckNullField()
     {
-        if (_inputField.text == "")
+        if (_inputField.text == string.Empty)
         {
             // Dejo campos vacios
             SetAppearanceToError();

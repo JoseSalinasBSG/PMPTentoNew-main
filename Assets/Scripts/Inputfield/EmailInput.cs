@@ -12,7 +12,7 @@ public class EmailInput : InputBase
 
     public override void CheckNullField()
     {
-        if (_inputField.text == "" || _inputField.text.Length == 0)
+        if (_inputField.text == string.Empty || _inputField.text.Length == 0)
         {
             // Debug.Log("xd");
             // Dejo campos vacios
