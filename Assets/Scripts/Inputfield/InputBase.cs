@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -27,6 +28,9 @@ public abstract class InputBase : MonoBehaviour
 
     protected TextMeshProUGUI _placeholderText;
     protected bool haveError;
+    protected bool hasTextOnCache;
+    protected Dictionary<string,string> _textCache;
+
     #endregion
 
     #region public variables
@@ -49,11 +53,14 @@ public abstract class InputBase : MonoBehaviour
     #region Unity Methods
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         haveError = true;
+        hasTextOnCache = false;
         // _inputField = GetComponent<TMP_InputField>();
         _placeholderText = _inputField.placeholder.GetComponent<TextMeshProUGUI>();
+        _textCache = new Dictionary<string, string>();
+        _placeholderText.text = _textCache.GetValueOrDefault(_inputField.name, _placeholderTextDefault);
     }
 
     // Update is called once per frame
@@ -61,6 +68,69 @@ public abstract class InputBase : MonoBehaviour
     {
         
     }
+    
+    protected void OnEnable()
+    {
+        _inputField.onEndEdit.AddListener(OnInputFieldFocusLost);
+        _inputField.onValueChanged.AddListener(OnInputFieldTextChanged);
+        Application.focusChanged += OnApplicationFocus;
+    }
+
+
+    protected void OnDisable()
+    {
+        _inputField.onEndEdit.RemoveListener(OnInputFieldFocusLost);
+        _inputField.onValueChanged.RemoveListener(OnInputFieldTextChanged);
+        Application.focusChanged -= OnApplicationFocus;
+    }
+    private void OnInputFieldFocusLost(string arg0)
+    {
+        
+        SaveTextOnCache(_inputField.text);
+        Debug.Log($"Text cached: {_inputField.text}");
+    }
+
+    private void OnInputFieldTextChanged(string arg0)
+    {
+        SaveTextOnCache(_inputField.text);
+        Debug.Log($"Text changed: {arg0}");
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)
+        {
+            SaveTextOnCache(_inputField.text);
+            Debug.Log($"Cached text on focus lost");
+        }
+        else
+        {
+            _inputField.text = GetTextFromCache(_inputField.name);
+            // _placeholderText.text = GetTextFromCache(_inputField.name);
+            Debug.Log($"Cached text on focus gain");
+            // Debug.Log($"Text loaded: {GetTextFromCache(_inputField.name)} in {_inputField.name}");
+        }
+    }
+    
+    protected void SaveTextOnCache(string arg0)
+    {
+        if (arg0 == string.Empty)
+        {
+            return;
+        }
+
+        // Si ya existe un valor, actualízalo
+        // Si no existe, añádelo
+        _textCache[_inputField.name] = arg0;
+        Debug.Log($"Cached text: {GetTextFromCache(_inputField.name)} in {_inputField.name}");
+    }
+    
+    protected string GetTextFromCache(string key)
+    {
+        // Debug.Log($"Cached get value: {_textCache[key]}");
+        return _textCache[key];
+    }
+
     #endregion
 
     #region public Methods

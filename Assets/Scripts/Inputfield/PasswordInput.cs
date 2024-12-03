@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PasswordInput : InputBase
 {
+    protected override void Start()
+    {
+        base.Start();
+    }
     
     public override void CheckNullField()
     {
