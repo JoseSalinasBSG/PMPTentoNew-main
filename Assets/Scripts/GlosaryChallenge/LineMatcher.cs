@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class LineMatcher : MonoBehaviour
 {
@@ -13,7 +15,7 @@ public class LineMatcher : MonoBehaviour
     [SerializeField] private string _endObjectTag;
 
     private int currentIndex = 0;
-
+    
     public void Draw()
     {
         if (startObject != null && endObject != null)
@@ -44,24 +46,33 @@ public class LineMatcher : MonoBehaviour
     }
     public void SetStartObject(RectTransform startPosition)
     {
-        if (startObject == null)
+        var isButtonSelected = startPosition.parent.gameObject.GetComponent<OptionGC>().IsSelectedInGC();
+        var buttonID = startPosition.parent.gameObject.GetComponent<OptionGC>().ID;
+        var startObjectButtonID = startObject.parent.gameObject.GetComponent<OptionGC>().ID;
+
+        if((startObject == null && isButtonSelected) || (startObject != null && isButtonSelected && startObjectButtonID != buttonID))
         {
             startObject = startPosition;
-            _startObjectTag = startPosition.parent.gameObject.tag;
+            _startObjectTag = startPosition.parent.tag;
         }
-        else if(!startPosition.parent.gameObject.CompareTag(_startObjectTag))
+        else if(startObject != null && !isButtonSelected && startObjectButtonID == buttonID)
+        {
+            startObject = null;
+            _startObjectTag = null;
+        }
+        else if(startObject != null && !startPosition.parent.gameObject.CompareTag(_startObjectTag))
         {
             SetEndObject(startPosition);
         }
-        else
-        {
-            startObject = startPosition.parent.gameObject.GetComponent<OptionGC>().ID == startObject.parent.gameObject.GetComponent<OptionGC>().ID ? null : startPosition;
-        }
+
+
+        Debug.Log($"Butoon ID: {startObjectButtonID}");
     }
 
     public void SetEndObject(RectTransform endPosition)
     {
         endObject = endPosition;
+        _endObjectTag = endPosition.parent.gameObject.tag;
         OnEndObjectSelected?.Invoke();
     }
 
