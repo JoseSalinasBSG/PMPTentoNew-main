@@ -13,6 +13,7 @@ public class LineMatcher : MonoBehaviour
     
     [SerializeField] private string _startObjectTag;
     [SerializeField] private string _endObjectTag;
+    [SerializeField] private string _currentObjectTag;
 
     private int currentIndex = 0;
     
@@ -44,37 +45,66 @@ public class LineMatcher : MonoBehaviour
             line.gameObject.SetActive(false);
         }
     }
+    // public void SetStartObject(RectTransform startPosition)
+    // {
+    //     var isButtonSelected = startPosition.parent.gameObject.GetComponent<OptionGC>().IsSelectedInGC();
+    //     var buttonID = startPosition.parent.gameObject.GetComponent<OptionGC>().ID;
+    //     var startObjectButtonID = startObject.parent.gameObject.GetComponent<OptionGC>().ID;
+
+    //     if((startObject == null && isButtonSelected) || (startObject != null && isButtonSelected && startObjectButtonID != buttonID))
+    //     {
+    //         startObject = startPosition;
+    //         _startObjectTag = startPosition.parent.tag;
+    //     }
+    //     else if(startObject != null && !isButtonSelected && startObjectButtonID == buttonID)
+    //     {
+    //         startObject = null;
+    //         _startObjectTag = null;
+    //     }
+    //     else if(startObject != null && !startPosition.parent.gameObject.CompareTag(_startObjectTag))
+    //     {
+    //         SetEndObject(startPosition);
+    //     }
+
+
+    //     Debug.Log($"Butoon ID: {startObjectButtonID}");
+    // }
+
+    // public void SetEndObject(RectTransform endPosition)
+    // {
+    //     endObject = endPosition;
+    //     _endObjectTag = endPosition.parent.gameObject.tag;
+    //     OnEndObjectSelected?.Invoke();
+    // }
+
+
     public void SetStartObject(RectTransform startPosition)
     {
-        var isButtonSelected = startPosition.parent.gameObject.GetComponent<OptionGC>().IsSelectedInGC();
-        var buttonID = startPosition.parent.gameObject.GetComponent<OptionGC>().ID;
-        var startObjectButtonID = startObject.parent.gameObject.GetComponent<OptionGC>().ID;
-
-        if((startObject == null && isButtonSelected) || (startObject != null && isButtonSelected && startObjectButtonID != buttonID))
+        if (startObject == null)
         {
             startObject = startPosition;
-            _startObjectTag = startPosition.parent.tag;
+            _currentObjectTag = startPosition.parent.tag;
+            Debug.Log($"Start object tag: {_currentObjectTag}");
         }
-        else if(startObject != null && !isButtonSelected && startObjectButtonID == buttonID)
+        else if (_currentObjectTag == startPosition.parent.tag)
         {
-            startObject = null;
-            _startObjectTag = null;
+            startObject = startPosition;
         }
-        else if(startObject != null && !startPosition.parent.gameObject.CompareTag(_startObjectTag))
-        {
+        else
+        {            
             SetEndObject(startPosition);
         }
 
-
-        Debug.Log($"Butoon ID: {startObjectButtonID}");
     }
 
     public void SetEndObject(RectTransform endPosition)
     {
         endObject = endPosition;
-        _endObjectTag = endPosition.parent.gameObject.tag;
         OnEndObjectSelected?.Invoke();
     }
+
+
+
 
     private void DrawLine()
     {
@@ -113,3 +143,5 @@ public class LineMatcher : MonoBehaviour
         return localPoint;
     }
 }
+
+
