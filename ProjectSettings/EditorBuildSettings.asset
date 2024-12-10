@@ -32,7 +32,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RepasoDiario.unity
     guid: f17369140026369479563021fc7ffe5f
-  - enabled: 0
-    path: Assets/Scenes/TEST - Roulette.unity
-    guid: 80368bb90731e804ab2570bb03a00ae6
   m_configObjects: {}
