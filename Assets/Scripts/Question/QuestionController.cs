@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ScriptableCreator;
-using TMPro;
-using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -32,9 +29,7 @@ namespace Question
         #region Variables
 
         [SerializeField] private QuestionInformation _questionInformation;
-        [SerializeField]
-        private IncorrectQuestionsSO _incorrectQuestions;
-
+        [SerializeField] private IncorrectQuestionsSO _incorrectQuestions;
         [SerializeField] private UnityEvent _onSelectOption;
         [SerializeField] private UnityEvent<int> _onCorrectOption;//evento con parametro int
         [SerializeField] private UnityEvent _onIncorrectOption;
@@ -49,7 +44,7 @@ namespace Question
         [SerializeField] private DataToRegisterSO _toRegisterSo;
         private List<QuestionData> _session = new List<QuestionData>();
         public QuestionData _currentQuestion;//provisionalmente en public para ver respuestas
-        private List<int> _indexes = new List<int>(){0,1,2,3} ;
+        private List<int> _indexes = new List<int>() { 0, 1, 2, 3 };
         private int _currentIndex;
         private int _numberOfConsecutiveAnswers;
 
@@ -90,13 +85,11 @@ namespace Question
             ConfigurateQuestion();
             UIEvents.ShowQuestionView?.Invoke();
         }
-
-    
         // Start is called before the first frame update
         void Start()
         {
             _progressQuestion?.CalculateWidth(10);
-            
+
             // for (int i = 0; i < 10; i++)
             // {
             //     QuestionData questionData = new QuestionData();
@@ -112,8 +105,6 @@ namespace Question
             //     _session.Add( questionData);
             // }
         }
-
-        
         #endregion
 
         #region Methods
@@ -126,12 +117,12 @@ namespace Question
             }
             for (int i = 0; i < questions.Length; i++)
             {
-                
+
                 QuestionData questionData = new QuestionData();
                 questionData.questionItem = questions[i];
                 questionData.idQuestion = questions[i].pregunta.id.ToString();
                 questionData.question = questions[i].pregunta.enunciado;
-                
+
                 var randomvalue = Random.Range(0, _indexes.Count);
                 questionData.options[_indexes[randomvalue]] = questions[i].pregunta.respuesta[0];
                 _indexes.RemoveAt(randomvalue);
@@ -153,14 +144,13 @@ namespace Question
                     questionData.progressItem = _progressQuestion.CreateItem(i);
                 }
 
-                _session.Add( questionData);
+                _session.Add(questionData);
                 _indexes.Add(0);
                 _indexes.Add(1);
                 _indexes.Add(2);
                 _indexes.Add(3);
                 questionData.idTask = questions[i].idSimuladorPmpTarea;
             }
-
         }
         public void ConfigurateQuestion()
         {
@@ -169,7 +159,6 @@ namespace Question
             {
                 _currentQuestion.progressItem.SetCurrentItem();
             }
-
             _questionInformation.SetData(_currentQuestion);
             //_currentIndex++;
         }
@@ -196,9 +185,7 @@ namespace Question
             {
                 _currentQuestion.progressItem.SetCurrentItem();
             }
-
             _questionInformation.SetData(_currentQuestion);
-            
             _onNextQuestion?.Invoke();
             GameEvents.RecoveryTime?.Invoke();
         }
@@ -216,9 +203,7 @@ namespace Question
             {
                 _currentQuestion.progressItem.SetCurrentItem();
             }
-            
             _questionInformation.SetData(_currentQuestion);
-            
             _onNextQuestion?.Invoke();
             GameEvents.RecoveryTime?.Invoke();
         }
@@ -234,44 +219,32 @@ namespace Question
         {
             _questionInformation.DisableOptions();//deshabilita opciones de respuestas una vez seleccionada una
             _onSelectOption?.Invoke();
-
-            AchievementControlller _achievementController=FindObjectOfType<AchievementControlller>();//referencio achievement controller
+            AchievementControlller _achievementController = FindObjectOfType<AchievementControlller>();//referencio achievement controller
             int lastElement = _achievementController.maxGoodStreakList.Last();//accedo al ultimo elemento de la lista maxGoodStreakList en AchievementController
 
             if (_currentQuestion.idCorrectOption == id)//compara el id de la opcion seleccionada con el de la correcta
             {
-
                 if (_numberOfConsecutiveAnswers < lastElement)
                 {
-                _numberOfConsecutiveAnswers++;//incrementa contador de respuestas correctas
-                Debug.Log($"Se aumentó _numberOfConsecutiveAnswers:{_numberOfConsecutiveAnswers}");
-
+                    _numberOfConsecutiveAnswers++;//incrementa contador de respuestas correctas
                 }
                 else
                 {
                     _numberOfConsecutiveAnswers = 1;
-                    Debug.Log($"Se reinicio _numberOfConsecutiveAnswers:{_numberOfConsecutiveAnswers}");
-
                 }
-
                 if (useProgressQuestion)
                 {
                     _currentQuestion.progressItem.SetCorrectSelection();
                     _progressQuestion.Label = _numberOfConsecutiveAnswers.ToString();
                 }
-
                 if (_numberOfConsecutiveAnswers == GetCountSession)//Verifica si se alcanzo el numero de respuestas deseado
                 {
                     OnLatestQuestionAchieved?.Invoke();//si alcanzo el numero dispara el evento
                 }
-
                 _questionInformation.SetMessage("¡Correcto! ¡Eres un experto en este tema!", true);//muestra mensaje
                 GameEvents.CorrectlyAnswered?.Invoke();//dispara evento
                 _onCorrectOption?.Invoke(_numberOfConsecutiveAnswers);//llamar al evento local onCorrectOption con el contador de respuestas correctas como parametro
-                Debug.Log("Respuesta Correcta");
-                return true;//retorna verdadero si es correcta la respuesta
-                
-                
+                return true;//retorna verdadero si es correcta la respuesta    
             }
             //SI ES INCORRECTA
             _incorrectQuestions.SaveIncorrectQuestion(_currentQuestion.questionItem);//guarda la pregunta incorrecta
@@ -279,12 +252,11 @@ namespace Question
             {
                 _currentQuestion.progressItem.SetIncorrectSelection();
             }
-
             _questionInformation.SetMessage("Esa no es la respuesta correcta, pero cada error es una oportunidad de aprendizaje.", false);
             GameEvents.IncorrectlyAnswered?.Invoke();//dispara evento
             _onIncorrectOption?.Invoke();
             return false;//retorna falso si es incorrecta la respuesta
-            
+
         }
 
         public void SetCurrentQuestionProgress()
@@ -309,13 +281,13 @@ namespace Question
                 return;
             }
             if (_questionInformation.Opt2.ID == idCorrectOption)
-            {               
+            {
                 ExecuteEvents.Execute<IPointerClickHandler>(_questionInformation.Opt2.gameObject,
                     new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
                 return;
             }
             if (_questionInformation.Opt3.ID == idCorrectOption)
-            {               
+            {
                 ExecuteEvents.Execute<IPointerClickHandler>(_questionInformation.Opt3.gameObject,
                     new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
                 return;
@@ -355,9 +327,6 @@ namespace Question
             }
             Gizmos.DrawSphere(_questionInformation.Opt4.transform.position, 15f);
         }
-
         #endregion
-
     }
-
 }
