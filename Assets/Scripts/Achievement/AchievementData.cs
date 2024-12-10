@@ -45,11 +45,11 @@ public class AchievementData : ScriptableObject
             if (achievement.CurrentLevel>=achievement.MaxLevel)
             {
                 achievement.CurrentLevel = 0;
-                Debug.Log($"Se reinicio Current Level:{achievement.CurrentLevel}");
+                //Debug.Log($"Se reinicio Current Level:{achievement.CurrentLevel}");
 
             }
             achievement.CurrentCounter = 0;//reiniciamos
-            Debug.Log($"Se reinicio Current Counter:{achievement.CurrentCounter}");
+            //Debug.Log($"Se reinicio Current Counter:{achievement.CurrentCounter}");
             //AddMaxCounterDifficulty(index);
             AddGiftsObtained(index);
         }

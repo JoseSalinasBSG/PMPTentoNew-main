@@ -88,16 +88,15 @@ namespace Question
 
         IEnumerator StartInstantiate()
         {
-            var width = _rectContainer.rect.width / (_listToInstantiate.Count +1);
-            var initPosition = _rectContainer.rect.xMin;
+            // var width = _rectContainer.rect.width / (_listToInstantiate.Count +1);
+            // var initPosition = _rectContainer.rect.xMin;
             while (_listToInstantiate.Count >0)
             {
-                var currentTime = 0f;
-                
+                var currentTime = 0f;                
                 var currentItem = _listToInstantiate.Dequeue();
                 var itemIntantiated = Instantiate(currentItem, transform);
-                initPosition += width;
-                itemIntantiated.transform.localPosition = new Vector3(initPosition,0,0);
+                // initPosition += width;
+                // itemIntantiated.transform.localPosition = new Vector3(initPosition,0,0);
                 itemIntantiated.gameObject.SetActive(true);
                 while (currentTime <= _timeBetweenItems)
                 {

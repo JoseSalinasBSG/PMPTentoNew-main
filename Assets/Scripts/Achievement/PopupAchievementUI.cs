@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +12,7 @@ public class PopupAchievementUI : MonoBehaviour
     [SerializeField] private ShareSocial valueToShare;
     public void ShowAchievementMaxGoodStreakText(int value)//metodo que se llama en editor para setear valores de UI achivement
     {
-        string text = $"¡Alcanzaste una racha de {value} respuestas correctas seguidas!";
+        string text = $"ï¿½Alcanzaste una racha de {value} respuestas correctas seguidas!";
         achievementText.SetText(text);
         AddMessageNotificationPanel(text);
 
@@ -40,7 +38,7 @@ public class PopupAchievementUI : MonoBehaviour
 
     public void ShowAchievementGoodWithoutErrors()
     {
-        string text = "Completó la ronda sin errores";
+        string text = "Completï¿½ la ronda sin errores";
         achievementText.SetText(text);
         AddMessageNotificationPanel(text);
     }
