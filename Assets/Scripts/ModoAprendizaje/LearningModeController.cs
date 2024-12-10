@@ -1,24 +1,15 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Handles3D;
 using ModoAprendizaje;
 using Question;
 using ScriptableCreator;
 using TMPro;
-using UI.Button;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-// [Serializable]
-// public class ItemToPlayerPrefs
-// {
-//     public int id;
-// }
 [Serializable]
 public class PlatformInformationToPlayerPrefs
 {
@@ -27,7 +18,7 @@ public class PlatformInformationToPlayerPrefs
 public class LearningModeController : MonoBehaviour
 {
     private const string PREFS_INFO_LEARNING_MODE = "LearningModeInformation";
-    
+
     [SerializeField] private DataToRegisterSO _registerExam;
     [SerializeField] private DomainsAndTaskSO _domainsAndTask;
     [SerializeField] private ScriptableObjectSettings _gameSettings;
@@ -39,23 +30,20 @@ public class LearningModeController : MonoBehaviour
     [SerializeField] private RewardItemController _rewardItemController;
     [SerializeField] private PlatformController _platformController;
     [SerializeField] private Image _platformMarkerPrefab;
+
     private float _numberOfConsecutiveQuestion;
     private PlatformInformationToPlayerPrefs _informationToPlayerPrefs = new PlatformInformationToPlayerPrefs();
     private float _experienceAccumulated = 0;
     private float _coinsAccumulated = 0;
     private Image _markerInstanciated;
     private List<PlatformItem> _platformItems = new List<PlatformItem>();
-
     private PlatformItem _currentPlatform;
     private PlatformItem.PlatformInformation _selectedPlatformInformation;
-    // [Header("Reward")] 
     private bool haveInformationStored;
     private void Awake()
     {
         _numberOfConsecutiveQuestion = -2;
-        
         _pmpService.Service_GetDomainAndTasks();
-
     }
 
     private void Start()
@@ -93,22 +81,19 @@ public class LearningModeController : MonoBehaviour
     {
         _rewardItemController.AddCoins((int)_coinsAccumulated);
         _rewardItemController.AddExperience((int)_experienceAccumulated);
-        Debug.Log("GameEvent_GameWon");
         UIEvents.ShowFinishView?.Invoke();
     }
 
     private void GameEvents_IncorrectlyAnswered()
     {
         _numberOfConsecutiveQuestion = -2;
-        Debug.Log("GameEvents_IncorrectlyAnswered");
-
     }
 
     private void GameEvents_CorrectlyAnswered()
     {
         _numberOfConsecutiveQuestion++;
         var clampConsecutive = Mathf.Clamp(_numberOfConsecutiveQuestion, 0, int.MaxValue);
-        var exp = 
+        var exp =
             // Base experience
             _gameSettings.settingData.MAReward.baseExperience +
             // Bonus by consecutive question
@@ -116,7 +101,7 @@ public class LearningModeController : MonoBehaviour
             // Bonus by achievement
             _gameSettings.settingData.MAReward.aditionalBonusExpForAchievement * 0;
         // GameEvents.RequestExperienceChange?.Invoke(exp);
-        
+
         _experienceAccumulated += exp;
         _userData.userInfo.user.detail.totalExperience += (int)exp;
 
@@ -127,25 +112,20 @@ public class LearningModeController : MonoBehaviour
             _gameSettings.settingData.MAReward.aditionalBonusCoinsConsecutiveQuestion * clampConsecutive +
             // Bonus by achievement
             _gameSettings.settingData.MAReward.aditionalBonusCoinsForAchievement * 0;
-        
+
         _coinsAccumulated += coins;
         _userData.userInfo.user.detail.totalCoins += (int)coins;
-
-        
         // GameEvents.RequestCoinsChange?.Invoke(coins);
         GameEvents.RequestUpdateDetail?.Invoke();
     }
 
     private void GameEvents_GetNameExam(string obj)
     {
-        Debug.Log("GameEvents_GetNameExam");
         _pmpService.Service_GetExam();
     }
 
     private void GameEvents_TaskRetreived(List<Task> obj)
     {
-        Debug.Log("GameEvents_TaskRetreived");
-
         // _moveItems.SetData(obj);
     }
 
@@ -158,12 +138,10 @@ public class LearningModeController : MonoBehaviour
         GameEvents.IncorrectlyAnswered -= GameEvents_IncorrectlyAnswered;
         GameEvents.GameWon -= GameEvents_GameWon;
         GameEvents.GameLost -= GameEvents_GameWon;
-
     }
 
     private void GameEvents_DomainRetreived(Domains obj)
     {
-        Debug.Log("GameEvents_DomainRetreived");
         // _platformController.SetInstances(obj.listaTarea.Length);
         var ss = -1;
         var counterDomain = 0;
@@ -175,7 +153,7 @@ public class LearningModeController : MonoBehaviour
                 //cambio de dominio
                 ss = obj.listaTarea[i].idSimuladorPmpDominio;
                 _platformController.CreatePlatformInformation(
-                    $"Sección {counterDomain}", 
+                    $"Sección {counterDomain}",
                     obj.listaDominio.FirstOrDefault(x => x.id == obj.listaTarea[i].idSimuladorPmpDominio)?.nombre,
                     _domainsAndTask.DomainDetail.First(x => x.id == ss).description);
                 i--;
@@ -214,13 +192,13 @@ public class LearningModeController : MonoBehaviour
                         {
                             _markerInstanciated.transform.parent = _currentPlatform.transform;
                         }
-                        _markerInstanciated.transform.SetLocalPositionAndRotation(new Vector3(0,4,0), quaternion.identity);
+                        _markerInstanciated.transform.SetLocalPositionAndRotation(new Vector3(0, 4, 0), quaternion.identity);
                         // _markerInstanciated.transform.parent = item.transform;
                     }
                 }
                 _platformItems.Add(item);
             }
-            
+
 
         }
 
@@ -238,7 +216,6 @@ public class LearningModeController : MonoBehaviour
     [ContextMenu("nextPlatform")]
     public void EnableNextPlatform()
     {
-        
         _currentPlatform = _platformItems[_currentPlatform.Information.index++];
         _currentPlatform.EnablePlatform();
         _informationToPlayerPrefs._itemToPlayerPrefsList.Add(_currentPlatform.Information.id);
@@ -252,7 +229,7 @@ public class LearningModeController : MonoBehaviour
         {
             _markerInstanciated.transform.parent = _currentPlatform.transform;
         }
-        _markerInstanciated.transform.SetLocalPositionAndRotation(new Vector3(0,4,0), quaternion.identity);
+        _markerInstanciated.transform.SetLocalPositionAndRotation(new Vector3(0, 4, 0), quaternion.identity);
     }
     public void GetTasks()
     {
@@ -261,7 +238,7 @@ public class LearningModeController : MonoBehaviour
 
     public void GetQuestions()
     {
-        var response =_pmpService.Service_GetDomainAndTaskNames(_selectedPlatformInformation.id);
+        var response = _pmpService.Service_GetDomainAndTaskNames(_selectedPlatformInformation.id);
         _DomainLabelInQuestions.text = $"Dominio: {response.Item1}";
         _TaskLabelInQuestions.text = $"Tarea: {response.Item2}";
         _registerExam.dataToRegisterExam.IdSimuladorPmpTarea = _selectedPlatformInformation.id;

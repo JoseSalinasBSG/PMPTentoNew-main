@@ -28,8 +28,6 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
     private float _bottomLimit;
     private RectTransform _rCurrent;
     private Vector2 _deltaMouse;
-
-
     private int initCount;
     private bool inLerp = false;
     public float scale;
@@ -93,7 +91,6 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
         inLerp = true;
         _deltaMouse = Input.GetTouch(0).deltaPosition;
         if (Mathf.Approximately(_ContentInitPosition.y - _contentPanelTransform.localPosition.y, 0))
@@ -132,7 +129,6 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
                     minDistance = distance;
                     currentPanel = _listItems[i];
                 }
-
             }
         }
         return currentPanel;
@@ -142,8 +138,7 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
         var currentTime = 0f;
         var nitPosition = _contentPanelTransform.position;
         var difference = -target.OwnRectTransform.position + _puntoPartida.position;
-        // Debug.Log(difference + " " +
-        //      contentPanelTransform.TransformPoint(difference) + " " + contentPanelTransform.InverseTransformPoint(difference));
+
         if (isOther)
         {
             if (_deltaMouse.y > 0)
@@ -160,8 +155,6 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
 
         while (currentTime <= 1)
         {
-
-            // Debug.DrawLine(target.OwnRectTransform.position, _puntoPartida.position, Color.red);
             currentTime += Time.deltaTime / _duration;
             var movementInY = Mathf.Lerp(nitPosition.y, (nitPosition + difference).y, currentTime);
             _contentPanelTransform.position =
@@ -170,6 +163,7 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
         }
         _contentPanelTransform.position = new Vector3(0, (nitPosition + difference).y, 0);
         _currentPanel = target;
+
         if (_currentPanel.transform.GetSiblingIndex() == 2)
         {
             if (!_questionController.IsLastQuestion())
@@ -191,6 +185,7 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
                 }
             }
         }
+
         if (_currentPanel.transform.GetSiblingIndex() == 0)
         {
             if (_questionController.CurrentIndex > 0)
@@ -211,7 +206,6 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
                 }
             }
         }
-
         if (isOther)
         {
             _currentPanel.StartAnimation();
@@ -226,6 +220,7 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
     {
         return _listItems.FirstOrDefault(x => x.transform == transformToFind);
     }
+
     private void CleanOtherPanels()
     {
         for (int i = 0; i < _listItems.Count; i++)
@@ -237,16 +232,17 @@ public class ScrollController : MonoBehaviour, IEndDragHandler, IBeginDragHandle
             _listItems[i].CleanPanel();
         }
     }
-    private void OnDrawGizmos()
-    {
-        for (int i = 0; i < _listItems.Count; i++)
-        {
-            Gizmos.DrawLine(_listItems[i].OwnRectTransform.position, _puntoPartida.position);
-        }
-    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         _ContentInitPosition = _contentPanelTransform.localPosition;
     }
+
+    // private void OnDrawGizmos()
+    // {
+    //     for (int i = 0; i < _listItems.Count; i++)
+    //     {
+    //         Gizmos.DrawLine(_listItems[i].OwnRectTransform.position, _puntoPartida.position);
+    //     }
+    // }
 }

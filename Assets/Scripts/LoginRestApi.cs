@@ -269,7 +269,7 @@ public class LoginRestApi : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    Debug.Log("_>" + request.downloadHandler.text);
+                    Debug.Log("_>" + request.downloadHandler.text + " " + e);
                     _objectUser.userInfo.haveAvatar = false;
                 }
             }
