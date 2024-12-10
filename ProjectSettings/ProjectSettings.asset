@@ -168,7 +168,7 @@ PlayerSettings:
   buildNumber:
     Standalone: 0
     VisionOS: 0
-    iPhone: 0
+    iPhone: 1
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 7
@@ -591,7 +591,7 @@ PlayerSettings:
   enableCrashReportAPI: 0
   cameraUsageDescription: 
   locationUsageDescription: 
-  microphoneUsageDescription: 
+  microphoneUsageDescription: for avatar lypsinc
   bluetoothUsageDescription: 
   macOSTargetOSVersion: 10.13.0
   switchNMETAOverride: 
@@ -929,7 +929,7 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
-    Build: 0
+    Build: 1
     Game Performance: 0
     Legacy Analytics: 0
     Purchasing: 0
