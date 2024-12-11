@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: BSgrupo
+  companyName: BSGInstitute
   productName: GamePMPTento
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -164,7 +164,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.BSgrupo.GamePMPTento
     Standalone: com.DefaultCompany.GamePMP
-    iPhone: com.bsgrupo.gamepmptento
+    iPhone: com.BSGInstitute.GamePMPTento
   buildNumber:
     Standalone: 0
     VisionOS: 0
