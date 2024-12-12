@@ -21,7 +21,7 @@ namespace Login
 
         private void Start()
         {
-            FindObjectOfType<GameplaySound>().PlayMainMenuSound();
+            AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.MainSound, true);
         }
 
         public bool ComprobeMissFields()

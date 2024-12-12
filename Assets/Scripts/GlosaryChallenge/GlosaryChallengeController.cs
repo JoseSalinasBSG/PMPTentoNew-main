@@ -50,7 +50,7 @@ public class GlosaryChallengeController : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<GameplaySound>().PlayGlossaryChallengeSound();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.SurvivalChallengeSound, true);
         _glosaryChallengeProgress.SetData(_maxNumberOfCouples * 1/3, _maxNumberOfCouples * 2 / 3, _maxNumberOfCouples * 3 / 3);
         UseTimer = true;
         _timerGC.InitValue(_maxTime);

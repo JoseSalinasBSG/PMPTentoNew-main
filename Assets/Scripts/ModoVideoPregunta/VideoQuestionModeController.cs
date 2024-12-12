@@ -31,7 +31,7 @@ public class VideoQuestionModeController : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<GameplaySound>().PlayVideoQuestionModeSound();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.VideoQuestionModeSound, true);
         GetQuestions();
     }
 

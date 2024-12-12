@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Extras;
 using ScriptableCreator;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
     public const string SFX_VOLUME = "SFXVolume";
     private const string MUSIC_VOLUME = "MusicVolume";
@@ -87,6 +88,14 @@ public class AudioManager : MonoBehaviour
         _sFXAudioSource.Stop();
         StartCoroutine(PlaySFXAtPointDelayed(audioClip, position, delay, loop));
     }
+
+    public void PlayMusic(AudioClip audioClip, bool loop = false)
+    {
+        _musicAudioSource.Stop();
+        _musicAudioSource.PlayOneShot(audioClip);
+        // StartCoroutine(PlaySFXAtPointDelayed(audioClip, position, delay, loop));
+    }
+
     public void PlayMusic(AudioClip audioClip, Vector3 position, float delay = 0, bool loop = false)
     {
         _musicAudioSource.Stop();

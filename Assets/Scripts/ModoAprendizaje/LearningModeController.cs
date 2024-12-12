@@ -60,7 +60,7 @@ public class LearningModeController : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<GameplaySound>().PlayLearningModeSound();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.LearningModeSound, true);
     }
 
     private void OnEnable()

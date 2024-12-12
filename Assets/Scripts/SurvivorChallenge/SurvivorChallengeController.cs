@@ -45,7 +45,7 @@ public class SurvivorChallengeController : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<GameplaySound>().PlaySurvivalChallengeSound();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.SurvivalChallengeSound, true);
         _timer.InitValue(timeToQuestions);
         _currentTime = 0;
     }
