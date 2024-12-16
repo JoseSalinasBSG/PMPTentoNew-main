@@ -1,22 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using System.IO;
 using System.Text.RegularExpressions;
-// using NAudio.Wave;
-// using TTS;
 using UnityEngine.Networking;
 
 public class ByteToAudioSource : MonoBehaviour
 {
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private string text;
-    [SerializeField] private List<string> parts;
+    [SerializeField] private AudioSource _audioSource; // AudioSource para reproducir los audios.
+    [SerializeField] private string text; // Texto de entrada para convertir en audio.
+    [SerializeField] private List<string> parts; // Partes del texto dividido.
 
-    private const string API_URL = "https://translate.google.com/translate_tts";
-    private const string LANG = "es";
-    private const int MAX_LENGTH = 200;
-    
+    private const string API_URL = "https://translate.google.com/translate_tts"; // URL de la API de Google.
+    private const string LANG = "es"; // Idioma para la síntesis de texto.
+    private const int MAX_LENGTH = 200; // Longitud máxima permitida para cada segmento.
+
     private string GenerateUrl(string text, string lang)
     {
         var encodedText = UnityWebRequest.EscapeURL(text);
@@ -34,108 +31,58 @@ public class ByteToAudioSource : MonoBehaviour
         StopAllCoroutines();
         _audioSource.Stop();
     }
+
     private IEnumerator IStartTTS()
     {
-        //yield return new WaitForSeconds(.07f);
         parts = SplitText(text);
+        List<AudioClip> audioClips = new List<AudioClip>();
+
+        // Descargar todos los audios y almacenarlos en una lista.
         foreach (string part in parts)
         {
             var url = GenerateUrl(part, LANG);
             using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
             {
                 yield return www.SendWebRequest();
-    
+
                 if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogError("Error al descargar el audio: " + www.error);
                 }
                 else
                 {
-                    // byte[] audioData = DownloadHandlerAudioClip.GetContent(www)/*www.downloadHandler.data;*/
-                    _audioSource.clip = DownloadHandlerAudioClip.GetContent(www);/*www.downloadHandler.data;*/
-                    _audioSource.Play();
-                    // PlayMP3(audioData);
-                    yield return new WaitForSeconds(_audioSource.clip.length - .3f);
+                    AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
+                    audioClips.Add(clip);
                 }
             }
-            yield return null;
+        }
+
+        // Reproducir los audios en secuencia.
+        foreach (var clip in audioClips)
+        {
+            _audioSource.clip = clip;
+            _audioSource.Play();
+            yield return new WaitForSeconds(clip.length - 0.3f);
         }
     }
-    
+
     private List<string> SplitText(string text, int maxLength = MAX_LENGTH)
     {
         List<string> parts = new List<string>();
-        var sentences = Regex.Split(text, @"(?<=[.!?¿()]) +");
-        for (int i = 0; i < sentences.Length; i++)
+        var sentences = Regex.Split(text, @"(?<=[.!?¿()]) +"); // Divide el texto en oraciones.
+        
+        foreach (string sentence in sentences)
         {
-            if (sentences[i].Length <= maxLength)
+            if (sentence.Length <= maxLength)
             {
-                parts.Add(sentences[i]);
+                parts.Add(sentence);
             }
             else
             {
-                // Debug.Log("Texto demasiado grande para procesar");
-                // Debug.Log("Dividiendo texto");
-                //parts.AddRange(SplitLongSentence(sentences[i], MAX_LENGTH/2));
-                parts.AddRange(Regex.Split(sentences[i], @"(?<=[-:,.!¿?]) +"));
-                // Debug.Log(sentences[i].Length);
+                // Si la oración es demasiado larga, la divide en fragmentos más pequeños.
+                parts.AddRange(Regex.Split(sentence, @"(?<=[-:,.!¿?]) +"));
             }
         }
         return parts;
     }
-
-    private List<string> SplitLongSentence(string sentence, int chunkSize)
-    {
-        List<string> chunks = new List<string>();
-        if (sentence.Length <= chunkSize)
-        {
-            chunks.Add(sentence);
-        }
-        else
-        {
-            int lastSpaceIndex = sentence.LastIndexOf(' ', chunkSize);
-            if (lastSpaceIndex == -1)
-            {
-                lastSpaceIndex = chunkSize;
-            }
-            string firstPart = sentence.Substring(0, lastSpaceIndex);
-            string secondPart = sentence.Substring(lastSpaceIndex).TrimStart();
-            
-            chunks.Add(firstPart);
-            chunks.AddRange(SplitLongSentence(secondPart, chunkSize));
-        }
-        return chunks;
-    }
-    
-    // public void PlayMP3(byte[] mp3Bytes)
-    // {
-    //     using (MemoryStream mp3Stream = new MemoryStream(mp3Bytes))
-    //     {
-    //         using (Mp3FileReader mp3Reader = new Mp3FileReader(mp3Stream))
-    //         {
-    //             using (WaveStream waveStream = WaveFormatConversionStream.CreatePcmStream(mp3Reader))
-    //             {
-    //                 byte[] waveBytes = ReadFully(mp3Stream);
-    //
-    //                 AudioClip audioClip = WavUtility.ToAudioClip(waveBytes, 0, waveBytes.Length, 23500);
-    //
-    //                 _audioSource.clip = audioClip;
-    //                 _audioSource.Play();
-    //             }
-    //         }
-    //     }
-    // }
-    // private byte[] ReadFully(WaveStream waveStream)
-    // {
-    //     byte[] buffer = new byte[waveStream.Length];
-    //     using (MemoryStream ms = new MemoryStream())
-    //     {
-    //         int bytesRead;
-    //         while ((bytesRead = waveStream.Read(buffer, 0, buffer.Length)) > 0)
-    //         {
-    //             ms.Write(buffer, 0, bytesRead);
-    //         }
-    //         return ms.ToArray();
-    //     }
-    // }
 }
