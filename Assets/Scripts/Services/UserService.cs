@@ -208,7 +208,7 @@ public class UserService : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text);
+                    Debug.Log(request.downloadHandler.text + " " + e);
                     // _scriptableObjectUser.userInfo.haveUser = false;
                     // _buttonChangeUsername.interactable = true;
                 }
@@ -252,7 +252,7 @@ public class UserService : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text);
+                    Debug.Log(request.downloadHandler.text + " " + e);
                     // _scriptableObjectUser.userInfo.haveUser = false;
                     // _buttonChangeUsername.interactable = true;
                 }
@@ -331,7 +331,6 @@ public class UserService : MonoBehaviour
             request.SetRequestHeader("Accept", "application/json");
             request.SetRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Unity 3D; ZFBrowser 3.1.0; UnityTests 1.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36");
 
-
             yield return request.SendWebRequest();
 
             if (request.responseCode >= 400)
@@ -360,7 +359,7 @@ public class UserService : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    Debug.Log("_>" + request.downloadHandler.text);
+                    Debug.Log("_>" + request.downloadHandler.text + " " + e);
                     _scriptableObjectUser.userInfo.haveAvatar = false;
                     GameEvents.ErrorGetAvatar?.Invoke();
                 }

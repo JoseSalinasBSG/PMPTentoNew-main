@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Text;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -13,10 +12,7 @@ namespace Configuration
     public class UsernameSelector : MonoBehaviour
     {
         [SerializeField] private TMP_InputField _inputUsername;
-
-        [SerializeField] private string url =
-            "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
-
+        [SerializeField] private string url = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
         [SerializeField] private ScriptableObjectUser _objectUser;
         [SerializeField] private EventTrigger _buttonEventTriggerChangeUsername;
         [SerializeField] private UnityEvent OnUsernameSetted;
@@ -69,7 +65,7 @@ namespace Configuration
                     }
                     catch (Exception e)
                     {
-                        Debug.Log(request.downloadHandler.text);
+                        Debug.Log(request.downloadHandler.text + " " + e);
                         _objectUser.userInfo.haveUser = false;
                         _buttonEventTriggerChangeUsername.enabled = true;
                     }

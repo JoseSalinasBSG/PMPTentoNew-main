@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Question;
 using ScriptableCreator;
 using UnityEngine;
@@ -51,7 +48,7 @@ public class GlosaryChallengeController : MonoBehaviour
     private void Start()
     {
         FindObjectOfType<GameplaySound>().PlayGlossaryChallengeSound();
-        _glosaryChallengeProgress.SetData(_maxNumberOfCouples * 1/3, _maxNumberOfCouples * 2 / 3, _maxNumberOfCouples * 3 / 3);
+        _glosaryChallengeProgress.SetData(_maxNumberOfCouples * 1 / 3, _maxNumberOfCouples * 2 / 3, _maxNumberOfCouples * 3 / 3);
         UseTimer = true;
         _timerGC.InitValue(_maxTime);
         _currentTime = 0;
@@ -77,11 +74,6 @@ public class GlosaryChallengeController : MonoBehaviour
     private void SetData()
     {
         _randomIndices = GenerateRandomList(1, _indicesPool);
-
-        for (int i = 0; i < _randomIndices.Count; i++)
-        {
-            Debug.Log(_randomIndices[i]);
-        }
         var tempIndex = GetRandomIndex();
         for (int i = 0; i < _maxSelectedIndices; i++)
         {
@@ -98,14 +90,12 @@ public class GlosaryChallengeController : MonoBehaviour
         return (GenerateRandomList(0, 5), GenerateRandomList(0, 5));
     }
 
-public void Evaluate()
+    public void Evaluate()
     {
         if (_concepts.OldSelectedButton && _definitions.OldSelectedButton)
         {
-            Debug.Log("evaluando");
             if (_concepts.OldSelectedButton.ID == _definitions.OldSelectedButton.ID)
             {
-                Debug.Log("Se emparejo: " + _concepts.OldSelectedButton.ID + " " + _definitions	.OldSelectedButton.ID);
                 _numberOfSelectedCouple++;
                 _concepts.OldSelectedButton.SetCorrectOption();
                 _optionChoose.Add(_concepts.OldSelectedButton);
@@ -121,7 +111,7 @@ public void Evaluate()
                         var conceptAndDefinition = GetNextCouple();
                         var randomIndexInConcept = Random.Range(0, totalToChange) * 2;
                         var randomIndexInDefinition = Random.Range(0, totalToChange) * 2 + 1;
-                        
+
                         while (actualValuesToConcept.ContainsKey(randomIndexInConcept))
                         {
                             randomIndexInConcept = Random.Range(0, totalToChange) * 2;
@@ -152,14 +142,11 @@ public void Evaluate()
                     GameEvents_CorrectlyAnswered();
                     // Remove old indices from "_actualIndices"
                 }
-                Debug.Log("correcto");
             }
             else
             {
-                Debug.Log("incorrecto");
                 _concepts.OldSelectedButton.SetIncorrectOption();
                 _definitions.OldSelectedButton.SetIncorrectOption();
-
                 //Update data with animation
                 _concepts.OldSelectedButton.StartAnimation();
                 _definitions.OldSelectedButton.StartAnimation();
@@ -168,19 +155,15 @@ public void Evaluate()
             _definitions.CleanOldSelected();
 
         }
-        // else
-        // {
-        //     Debug.Log("No Se puede evaluar, no se encuentra pareja");
-        // }
     }
     private void Update()
     {
         if (!UseTimer)
-        {   
+        {
             return;
         }
         _currentTime += Time.deltaTime / _maxTime;
-        if (_currentTime >1)
+        if (_currentTime > 1)
         {
             UseTimer = false;
             _onGameLost?.Invoke();
@@ -193,10 +176,9 @@ public void Evaluate()
     private ConceptAndDefinitionData GetNextCouple()
     {
         CurrentIndex++;
-        Debug.Log("Current index: " + CurrentIndex + " RandomIndice: " + _randomIndices[CurrentIndex] +  "next id Question: " + _conceptAndDefinitionSo.list[_randomIndices[CurrentIndex]].id);
-        return  _conceptAndDefinitionSo.list[_randomIndices[CurrentIndex]];
+        return _conceptAndDefinitionSo.list[_randomIndices[CurrentIndex]];
     }
-    
+
     public List<int> GenerateRandomList(int initValue, int size)
     {
         // Crea una lista ordenada del 1 al 207
@@ -215,7 +197,7 @@ public void Evaluate()
         }
         return numbers;
     }
-    
+
     public void StopTimer()
     {
         UseTimer = false;
@@ -227,8 +209,8 @@ public void Evaluate()
         {
             Random.InitState(_concepts.Options[i].ID);
             Gizmos.color = new Color(
-                Random.Range(0, 1f), 
-                Random.Range(0, 1f), 
+                Random.Range(0, 1f),
+                Random.Range(0, 1f),
                 Random.Range(0, 1f)
             );
             Gizmos.DrawSphere(_concepts.Options[i].transform.position, 20f);
@@ -237,19 +219,19 @@ public void Evaluate()
         {
             Random.InitState(_definitions.Options[i].ID);
             Gizmos.color = new Color(
-                Random.Range(0, 1f), 
-                Random.Range(0, 1f), 
+                Random.Range(0, 1f),
+                Random.Range(0, 1f),
                 Random.Range(0, 1f)
             );
             Gizmos.DrawSphere(_definitions.Options[i].transform.position, 20f);
         }
     }
-    
+
     private void GameEvents_CorrectlyAnswered()
     {
         // _numberOfConsecutiveQuestion++;
         // var clampConsecutive = Mathf.Clamp(_numberOfConsecutiveQuestion, 0, int.MaxValue);
-        var exp = 
+        var exp =
             // Base experience
             _gameSettings.settingData.MCReward.baseExperience +
             // Bonus by consecutive question

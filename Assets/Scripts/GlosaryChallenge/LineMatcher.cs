@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class LineMatcher : MonoBehaviour
 {
@@ -9,8 +7,7 @@ public class LineMatcher : MonoBehaviour
     [SerializeField] private RectTransform[] lineImageRectTransforms;
     [SerializeField] private RectTransform startObject = null;
     [SerializeField] private RectTransform endObject = null;
-    [SerializeField] private UnityEvent OnEndObjectSelected;
-    
+    [SerializeField] private UnityEvent OnEndObjectSelected;    
     [SerializeField] private string _startObjectTag;
     [SerializeField] private string _endObjectTag;
     [SerializeField] private string _currentObjectTag;
@@ -84,7 +81,6 @@ public class LineMatcher : MonoBehaviour
         {
             startObject = startPosition;
             _currentObjectTag = startPosition.parent.tag;
-            Debug.Log($"Start object tag: {_currentObjectTag}");
         }
         else if (_currentObjectTag == startPosition.parent.tag)
         {
@@ -94,7 +90,6 @@ public class LineMatcher : MonoBehaviour
         {            
             SetEndObject(startPosition);
         }
-
     }
 
     public void SetEndObject(RectTransform endPosition)
@@ -102,9 +97,6 @@ public class LineMatcher : MonoBehaviour
         endObject = endPosition;
         OnEndObjectSelected?.Invoke();
     }
-
-
-
 
     private void DrawLine()
     {
@@ -127,7 +119,6 @@ public class LineMatcher : MonoBehaviour
 
         // Set the rotation of the line
         lineImageRectTransforms[currentIndex].rotation = Quaternion.Euler(0, 0, angle);
-
         currentIndex++;
     }
 

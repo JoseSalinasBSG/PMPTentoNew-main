@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using ScriptableCreator;
 using UnityEngine;
 
@@ -7,7 +5,7 @@ using UnityEngine;
 public class PowerUpItemRoulette : ItemRouletteSO
 {
     public ScripableObjectPowerUp powerUpSO;
-    public virtual void Raise()
+    public override void Raise()
     {
         
     }
