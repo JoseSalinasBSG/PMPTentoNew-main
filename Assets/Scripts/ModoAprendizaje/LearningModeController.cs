@@ -193,11 +193,12 @@ public class LearningModeController : MonoBehaviour
                 };
                 var item = _platformController.CreatePlatform();
                 item.Information = s;
+                var userTasksCompleted = _userData.userInfo.LearningModeState.ItemStates.FirstOrDefault(x => x.id == obj.listaTarea[i].id)!.timesToRetrive.Count;
                 item.Attempts =
                     _userData.userInfo.LearningModeState.ItemStates.Exists(x => x.id == obj.listaTarea[i].id)
-                        ? (3 - _userData.userInfo.LearningModeState.ItemStates.FirstOrDefault(x =>
-                            x.id == obj.listaTarea[i].id)!.timesToRetrive.Count)
+                        ? (3 - userTasksCompleted)
                         : 3;
+                Debug.LogError($"userTaskCompleted: {userTasksCompleted}");
                 if (haveInformationStored)
                 {
                     if (_informationToPlayerPrefs._itemToPlayerPrefsList.Exists(

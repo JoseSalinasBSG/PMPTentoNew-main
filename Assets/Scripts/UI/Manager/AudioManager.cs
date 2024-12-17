@@ -85,6 +85,12 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlaySFXAtPoint(AudioClip audioClip, Vector3 position, float delay = 0, bool loop = false)
     {
+        if (_sFXAudioSource == null)
+        {
+            Debug.LogWarning("Sfx AudioSource is null. Cannot play sfx.");
+            return;
+        }
+
         _sFXAudioSource.Stop();
         StartCoroutine(PlaySFXAtPointDelayed(audioClip, position, delay, loop));
     }
@@ -107,6 +113,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         yield return new WaitForSeconds(delay);
         _sFXAudioSource.loop = loop;
+
         if (audioClip)
         {
             _sFXAudioSource.PlayOneShot(audioClip);
