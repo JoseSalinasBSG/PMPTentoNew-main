@@ -25,8 +25,6 @@ public class CategoryModeController : MonoBehaviour
 
     private float _experienceAccumulated = 0;
     private float _coinsAccumulated = 0;
-    // [Header("Reward")] 
-    
     private void Awake()
     {
         _numberOfConsecutiveQuestion = -2;

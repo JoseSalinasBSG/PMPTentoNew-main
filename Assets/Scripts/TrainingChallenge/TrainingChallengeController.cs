@@ -7,6 +7,23 @@ using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Esta clase gestiona la funcionalidad del Desafío de Glosario en el juego.
+/// 
+/// Actualizaciones recientes (por [Tu Jose Salinas], [17/12/2024]):
+/// - Se incluyó la línea `_userData.userInfo.user.detail.totalCoins += (int)coins;`
+///   para actualizar las monedas totales acumuladas del usuario.
+/// 
+/// Propósito de los cambios:
+/// - Mejorar la funcionalidad al rastrear las monedas acumuladas por el usuario para
+///   un mejor monitoreo del progreso.
+/// 
+/// Notas para desarrolladores futuros:
+/// - Asegurarse de que `_userData` esté correctamente inicializado y sincronizado
+///   con el sistema de datos del usuario del juego.
+/// - Validar cualquier dependencia de `_userData` en los componentes relacionados.
+/// </summary>
+
 public class TrainingChallengeController : MonoBehaviour
 {
     [SerializeField] private DataToRegisterSO _registerSo;
@@ -96,6 +113,7 @@ public class TrainingChallengeController : MonoBehaviour
             _gameSettings.settingData.DSReward.aditionalBonusExpForAchievement * 0;
         GameEvents.RequestExperienceChange?.Invoke(exp);//Invoca evento de cambio de experiencia
         _experienceAccumulated += exp;//se actualiza el total de experiencia acumulada
+        _userData.userInfo.user.detail.totalExperience += (int)exp;
 
         //MONEDAS
         var coins =//monedas recibidas
@@ -106,6 +124,9 @@ public class TrainingChallengeController : MonoBehaviour
             // Bonus by achievement
             _gameSettings.settingData.DSReward.aditionalBonusCoinsForAchievement * 0;
         _coinsAccumulated += coins;//se actualiza monedas acumuladas
+        _userData.userInfo.user.detail.totalCoins += (int)coins;
+        
+        GameEvents.RequestUpdateDetail?.Invoke();
         GameEvents.RequestCoinsChange?.Invoke(coins);//Invoca evento para notificar el cambio en las monedas
 
         CheckNumberOfConsecutiveQuestion();//revisar numero de respuestas consecutivas
