@@ -5,6 +5,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Esta clase gestiona los elementos de la sección de la tienda.
+/// 
+/// Actualizaciones recientes (por Jose Salinas, [17/12/2024]):
+/// - Se agregó el if->return para controlar el botón de compra.
+/// 
+/// Propósito de los cambios:
+/// - La tienda permitia comprar items aun sin saldo de dinero.
+/// 
+/// </summary>
+
+
 public class StoreItem : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _amountLabel;
@@ -48,9 +60,11 @@ public class StoreItem : MonoBehaviour
         _powerUp = powerUp;
     }
 
-
     public void BuyItem()
     {
+        if (_cost > _storeController.CoinsFromUser)
+            return;
+
         _storeController.OpenPopUpCompra(this);
     }
 

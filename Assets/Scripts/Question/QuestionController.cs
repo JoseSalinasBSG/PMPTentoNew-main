@@ -256,7 +256,6 @@ namespace Question
             GameEvents.IncorrectlyAnswered?.Invoke();//dispara evento
             _onIncorrectOption?.Invoke();
             return false;//retorna falso si es incorrecta la respuesta
-
         }
 
         public void SetCurrentQuestionProgress()
