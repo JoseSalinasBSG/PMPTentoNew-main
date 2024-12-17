@@ -5,10 +5,30 @@ using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Esta clase gestiona la funcionalidad del Desafío de Glosario en el juego.
+/// 
+/// Actualizaciones recientes (por [Tu Jose Salinas], [17/12/2024]):
+/// - Se agregó el objeto `_userData` para integrar detalles del usuario.
+/// - Se incluyó la línea `_userData.userInfo.user.detail.totalCoins += (int)coins;`
+///   para actualizar las monedas totales acumuladas del usuario.
+/// 
+/// Propósito de los cambios:
+/// - Mejorar la funcionalidad al rastrear las monedas acumuladas por el usuario para
+///   un mejor monitoreo del progreso.
+/// 
+/// Notas para desarrolladores futuros:
+/// - Asegurarse de que `_userData` esté correctamente inicializado y sincronizado
+///   con el sistema de datos del usuario del juego.
+/// - Validar cualquier dependencia de `_userData` en los componentes relacionados.
+/// </summary>
+
+
 public class GlosaryChallengeController : MonoBehaviour
 {
     [SerializeField] private ConceptAndDefinitionSO _conceptAndDefinitionSo;
     [SerializeField] private ScriptableObjectSettings _gameSettings;
+    [SerializeField] private ScriptableObjectUser _userData;
     [SerializeField] private RewardItemController _rewardItemController;
     [SerializeField] private GlosaryChallengeProgress _glosaryChallengeProgress;
     [SerializeField] private ButtonsGroup _concepts;
@@ -71,6 +91,14 @@ public class GlosaryChallengeController : MonoBehaviour
         _rewardItemController.AddCoins((int)_coinsAccumulated);
         _rewardItemController.AddExperience((int)_experienceAccumulated);
     }
+
+    public void SendGameFinished()
+    {
+        GameEvents.GameLost?.Invoke();
+        GameEvents.GameWon?.Invoke();
+    }
+
+
     private void SetData()
     {
         _randomIndices = GenerateRandomList(1, _indicesPool);
@@ -240,6 +268,7 @@ public class GlosaryChallengeController : MonoBehaviour
             _gameSettings.settingData.MCReward.aditionalBonusExpForAchievement * 0;
         GameEvents.RequestExperienceChange?.Invoke(exp);
         _experienceAccumulated += exp;
+        _userData.userInfo.user.detail.totalExperience += (int)exp;
 
         var coins =
             // Base coins
@@ -250,5 +279,7 @@ public class GlosaryChallengeController : MonoBehaviour
             _gameSettings.settingData.MCReward.aditionalBonusCoinsForAchievement * 0;
         _coinsAccumulated += coins;
         GameEvents.RequestCoinsChange?.Invoke(coins);
+        _userData.userInfo.user.detail.totalCoins += (int)coins;
+        GameEvents.RequestUpdateDetail?.Invoke();
     }
 }

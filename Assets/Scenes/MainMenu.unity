@@ -27639,7 +27639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1795782568926199690, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 1795782568926199690, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
       propertyPath: m_SizeDelta.y
@@ -27774,6 +27774,10 @@ PrefabInstance:
       value: Header
       objectReference: {fileID: 0}
     - target: {fileID: 5516810236767736026, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516810236767736026, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
       propertyPath: m_isRichText
       value: 0
       objectReference: {fileID: 0}
@@ -27788,6 +27792,22 @@ PrefabInstance:
     - target: {fileID: 5516810236767736026, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
       propertyPath: m_fontColor.r
       value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516810236767736026, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516810236767736026, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516810236767736026, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516810236767736026, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5516810236767736026, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
       propertyPath: m_fontColor32.rgba

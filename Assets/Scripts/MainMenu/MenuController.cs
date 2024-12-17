@@ -194,7 +194,7 @@ namespace MainMenu
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[3];
                 //Debug.Log("Nivel Leyenda");
-                _experienceToAchieve.text = null;
+                _experienceToAchieve.text = "de experiencia";
             }
         }
     }
