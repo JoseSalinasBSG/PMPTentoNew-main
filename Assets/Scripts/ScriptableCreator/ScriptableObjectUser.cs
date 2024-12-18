@@ -1,3 +1,4 @@
+using DataStorage;
 using JetBrains.Annotations;
 using System;
 using System.Collections;
@@ -95,6 +96,7 @@ public class UserInfo
 public class ScriptableObjectUser : ScriptableObject
 {
     public UserInfo userInfo;
+    private DataStorageManager _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
 
     private void OnEnable()
     {
@@ -109,8 +111,9 @@ public class ScriptableObjectUser : ScriptableObject
     private void GameEvents_RequestExperienceChange(float obj)
     {
         // userInfo.totalExperience += obj;
-        PlayerPrefs.SetFloat("TotalExperience", userInfo.user.detail.totalExperience);
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetFloat("TotalExperience", userInfo.user.detail.totalExperience);
+        //PlayerPrefs.Save();
+        _dataStorageManager.Save("TotalExperience", userInfo.user.detail.totalExperience);
         GameEvents.ExperienceChanged?.Invoke();
     }
 
@@ -126,8 +129,9 @@ public class ScriptableObjectUser : ScriptableObject
     private void GameEvents_RequestCoinsChange(float obj)
     {
         // userInfo.totalCoins += obj;
-        PlayerPrefs.SetFloat("TotalCoins", userInfo.user.detail.totalCoins);
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetFloat("TotalCoins", userInfo.user.detail.totalCoins);
+        //PlayerPrefs.Save();
+        _dataStorageManager.Save("TotalCoins", userInfo.user.detail.totalCoins);
         GameEvents.CoinsChanged?.Invoke();
     }
 
@@ -136,8 +140,9 @@ public class ScriptableObjectUser : ScriptableObject
         Debug.Log("configurando instructor ID");
         userInfo.haveInstructor = true;
         userInfo.idInstructor = index;
-        PlayerPrefs.SetInt("HaveInstructor", index);
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetInt("HaveInstructor", index);
+        //PlayerPrefs.Save();
+        _dataStorageManager.Save("HaveInstructor", index);
 
         //GameEvents.InstructorSelected?.Invoke();
 
@@ -146,16 +151,20 @@ public class ScriptableObjectUser : ScriptableObject
     private void GameEvents_NameChanged(string username)
     {
         // userInfo.username = username;
-        PlayerPrefs.SetString("Username",username);
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetString("Username",username);
+        //PlayerPrefs.Save();
+        _dataStorageManager.Save("Username", username);
     }
     private void GameEvents_NewUsername(string username)
     {
         userInfo.haveUsername = true;
         // userInfo.username = username;
-        PlayerPrefs.SetString("Username",username);
-        PlayerPrefs.SetInt("HaveUsername",1);
-        PlayerPrefs.Save();
+
+        //PlayerPrefs.SetString("Username",username);
+        //PlayerPrefs.SetInt("HaveUsername",1);
+        //PlayerPrefs.Save();
+
+
         //GameEvents.UsernameSelected?.Invoke();
     }
 

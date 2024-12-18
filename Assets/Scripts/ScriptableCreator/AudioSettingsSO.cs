@@ -1,3 +1,4 @@
+using DataStorage;
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -37,6 +38,8 @@ public class AudioSettingsSO : ScriptableObject
     [Header("Navbar")] [SerializeField] private AudioClip _navbarTapTouchSound;
     [Header("Power-up")] [SerializeField] private AudioClip _bombSmokeSound;
     [SerializeField] private AudioClip _bombExplosionSound;
+
+    private DataStorageManager _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
 
     public AudioMixer AudioMixer => _audioMixer;
     public AudioClip SuccessSound => _successSound;
@@ -118,16 +121,18 @@ public class AudioSettingsSO : ScriptableObject
     private void AudioEvents_SFXVolumeChanged(float obj)
     {
         SoundEffectsVolume = obj;
-        PlayerPrefs.SetFloat("SounEffectVolume", SoundEffectsVolume);
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetFloat("SounEffectVolume", SoundEffectsVolume);
+        //PlayerPrefs.Save();
+        _dataStorageManager.Save("SounEffectVolume", SoundEffectsVolume);
 
     }
 
     private void AudioEvents_MusicVolumeChanged(float obj)
     {
         MusicVolume = obj;
-        PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
+        //PlayerPrefs.Save();
+        _dataStorageManager.Save("MusicVolume", MusicVolume);
 
     }
 

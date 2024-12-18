@@ -1,3 +1,4 @@
+using DataStorage;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,6 +47,8 @@ public class Roulette : MonoBehaviour
     private bool _useRoulette;
     private RouletteItem selecetdItem;
 
+    private DataStorageManager _dataStorageManager;
+
 
     private void Start()
     {
@@ -66,15 +69,19 @@ public class Roulette : MonoBehaviour
         // }
         // Modo 2
 
-        
+        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
+
     }
 
     private void OnEnable()
     {
-        if (PlayerPrefs.HasKey("UseRoulette"))
+        //if (PlayerPrefs.HasKey("UseRoulette"))
+        if (_dataStorageManager.HasKey("UseRoulette"))
         {
-            Debug.Log(DateTime.Parse(PlayerPrefs.GetString("UseRoulette")));
-            var timeUsedRoulette = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
+            //Debug.Log(DateTime.Parse(PlayerPrefs.GetString("UseRoulette")));
+            Debug.Log(DateTime.Parse(_dataStorageManager.Load<string>("UseRoulette")));
+            var timeUsedRoulette = DateTime.Parse(_dataStorageManager.Load<string>("UseRoulette"));
+            //var timeUsedRoulette = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
             if (timeUsedRoulette < DateTime.Today)
             {
                 //No usó ruleta hoy
@@ -187,8 +194,12 @@ public class Roulette : MonoBehaviour
     private void CalculateItemSelected()//item selected es el item escogido
     {
         //COMPUTE THE ITEM SELECTED
-        PlayerPrefs.SetString("UseRoulette", DateTime.Now.ToString());//guardo la fecha en el playerpref
-        PlayerPrefs.Save();//guarda todas las preferencias modificadas
+        //PlayerPrefs.SetString("UseRoulette", DateTime.Now.ToString());//guardo la fecha en el playerpref
+        //PlayerPrefs.Save();//guarda todas las preferencias modificadas
+
+        _dataStorageManager.Save("UseRoulette", DateTime.Now.ToString());
+
+
         float distance = Single.MaxValue;//setear a un valor maximo extremadamente grande
         selecetdItem = null;
         for (int i = 0; i < _rouletteItems.Count; i++)

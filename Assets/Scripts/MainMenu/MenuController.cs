@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using DataStorage;
 using ScriptableCreator;
 using TMPro;
 using Unity.VectorGraphics;
@@ -37,8 +38,12 @@ namespace MainMenu
         private ScriptableObjectNotificationText _notificationTextUsername;
 
         private GameObject _instructorInstantiated;
+
+        private DataStorageManager _storeManager;
         private void Start()
         {
+            _storeManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
+
             AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.MainSound, true);
             // if (PlayerPrefs.HasKey("settingInfo"))
             // {
@@ -157,17 +162,20 @@ namespace MainMenu
         }
         public void SaveUserInformation()
         {
-            PlayerPrefs.SetString("userInfo", JsonUtility.ToJson(_user.userInfo));
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetString("userInfo", JsonUtility.ToJson(_user.userInfo));
+            //PlayerPrefs.Save();
+            _storeManager.Save("userInfo", _user.userInfo);
 
             // _notificationTextUsername.Raise(_user.userInfo.username );
         }
 
         public void SaveSettingInformation()
         {
-            PlayerPrefs.SetString("MusicVolume", JsonUtility.ToJson(_objectSettings.settingData));
-            PlayerPrefs.SetString("SounEffectVolume", JsonUtility.ToJson(_objectSettings.settingData));
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetString("MusicVolume", JsonUtility.ToJson(_objectSettings.settingData));
+            //PlayerPrefs.SetString("SounEffectVolume", JsonUtility.ToJson(_objectSettings.settingData));
+            //PlayerPrefs.Save();
+            _storeManager.Save("MusicVolume", _objectSettings.settingData);
+            _storeManager.Save("SounEffectVolume", _objectSettings.settingData);
         }
 
         public void SetUserLevel()

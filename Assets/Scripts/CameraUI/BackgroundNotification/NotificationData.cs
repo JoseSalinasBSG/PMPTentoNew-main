@@ -1,3 +1,4 @@
+using DataStorage;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class NotificationListContainer
 public class NotificationData : ScriptableObject
 {
     public NotificationListContainer NotificationListContainer;
+
+    private DataStorageManager _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
 
     private void OnEnable()
     {
@@ -47,8 +50,9 @@ public class NotificationData : ScriptableObject
         // {
         //     Debug.Log("Save successful");
         // }
-        PlayerPrefs.SetString("NotificationData", JsonUtility.ToJson(NotificationListContainer));
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetString("NotificationData", JsonUtility.ToJson(NotificationListContainer));
+        //PlayerPrefs.Save();
+        _dataStorageManager.Save("NotificationData", NotificationListContainer);
     }
 
     private void LoadLocalData()
@@ -59,9 +63,11 @@ public class NotificationData : ScriptableObject
         //
         //     Debug.Log("Load complete");
         // }
-        if (PlayerPrefs.HasKey("NotificationData"))
+        //if (PlayerPrefs.HasKey("NotificationData"))
+        if (_dataStorageManager.HasKey("NotificationData"))
         {
-            JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("NotificationData"), NotificationListContainer);
+            //JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("NotificationData"), NotificationListContainer);
+            JsonUtility.FromJsonOverwrite(_dataStorageManager.Load<string>("NotificationData"), NotificationListContainer);
         }
     }
 }

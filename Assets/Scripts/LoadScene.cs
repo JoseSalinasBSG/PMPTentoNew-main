@@ -1,3 +1,4 @@
+using DataStorage;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,8 @@ namespace Scene
         [SerializeField] private UnityEvent _onBeforeLoadScene;        
         private AsyncOperation loadingOperation;
         private bool _initLoadAsync;
+
+        private DataStorageManager _dataStorageManager;
         public ScriptableObjectScenes ObjectScenes
         {
             get => _objectScenes;
@@ -23,6 +26,11 @@ namespace Scene
         #endregion
 
         #region Unity Methods
+
+        private void Start()
+        {
+            _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
+        }
 
         // private void Update()
         // {
@@ -38,7 +46,7 @@ namespace Scene
         #endregion
 
         #region Methods
-        
+
         public void LoadSceneUsingName(string sceneName)
         {
             _onBeforeLoadScene?.Invoke();
@@ -68,7 +76,8 @@ namespace Scene
 
         public void LogOut()
         {
-            PlayerPrefs.DeleteAll();
+            //PlayerPrefs.DeleteAll();
+            _dataStorageManager.DeleteAll();
             LoadSceneUsingName("Login");
         }
         #endregion
