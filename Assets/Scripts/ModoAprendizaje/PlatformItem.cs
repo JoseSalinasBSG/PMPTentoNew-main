@@ -83,7 +83,6 @@ public class PlatformItem : MonoBehaviour
     {
         if (Information.id == obj)
         {
-            Debug.Log($"tarea con id {obj} encontrado");
             Attempts++;
             if (!ButtonTrigger.enabled)
             {

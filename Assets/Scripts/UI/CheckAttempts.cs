@@ -12,7 +12,6 @@ public class CheckAttempts : MonoBehaviour
          var s = _user.userInfo.LearningModeState.ItemStates[i];
          for (int j = s.timesToRetrive.Count - 1; j >= 0; j--)
          {
-            Debug.Log(s.timesToRetrive[j]);
             if (DateTime.Now > s.timesToRetrive[j])
             {
                s.timesToRetrive.RemoveAt(j);

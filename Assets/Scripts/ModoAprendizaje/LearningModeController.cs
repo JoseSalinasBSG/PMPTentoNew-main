@@ -176,6 +176,8 @@ public class LearningModeController : MonoBehaviour
                         ? (3 - _userData.userInfo.LearningModeState.ItemStates.FirstOrDefault(x =>
                             x.id == obj.listaTarea[i].id)!.timesToRetrive.Count)
                         : 3;
+
+                Debug.Log("attemptes: " + item.Attempts);
                 if (haveInformationStored)
                 {
                     if (_informationToPlayerPrefs._itemToPlayerPrefsList.Exists(
@@ -198,8 +200,6 @@ public class LearningModeController : MonoBehaviour
                 }
                 _platformItems.Add(item);
             }
-
-
         }
 
         if (!haveInformationStored)
