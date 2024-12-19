@@ -1,4 +1,4 @@
-using System;
+ using System;
 using Button;
 using DataStorage;
 using ScriptableCreator;
@@ -67,7 +67,6 @@ public class StoreController : MonoBehaviour
 
     private void Start()
     {
-        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
     }
 
     private void Update()
@@ -85,6 +84,7 @@ public class StoreController : MonoBehaviour
 
     private void OnEnable()
     {
+        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
         //if (PlayerPrefs.HasKey("UseRoulette"))//verifica si fue usada la ruleta
         if (_dataStorageManager.HasKey("UseRoulette"))//verifica si fue usada la ruleta
         {
