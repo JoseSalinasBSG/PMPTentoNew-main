@@ -118,7 +118,7 @@ public class UserManager : MonoBehaviour
         if (_storeManager.HasKey("username") && _storeManager.HasKey("password"))
         {
             //_userService.GetUSer(PlayerPrefs.GetString("username"), PlayerPrefs.GetString("password"));
-            Debug.LogError("username: " + _storeManager.Load<string>("username") + " password: " + _storeManager.Load<string>("password"));
+            //Debug.LogError("username: " + _storeManager.Load<string>("username") + " password: " + _storeManager.Load<string>("password"));
             _userService.GetUSer(_storeManager.Load<string>("username"), _storeManager.Load<string>("password"));
         }
         else
