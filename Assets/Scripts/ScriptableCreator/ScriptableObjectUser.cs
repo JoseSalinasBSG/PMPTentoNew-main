@@ -161,6 +161,9 @@ public class ScriptableObjectUser : ScriptableObject
         //PlayerPrefs.SetInt("HaveUsername",1);
         //PlayerPrefs.Save();
 
+        _dataStorageManager.Save("Username", username);
+        _dataStorageManager.Save("HaveUsername", 1);
+
 
         //GameEvents.UsernameSelected?.Invoke();
     }
