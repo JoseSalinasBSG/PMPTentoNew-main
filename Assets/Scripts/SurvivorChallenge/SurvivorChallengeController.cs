@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Question;
@@ -100,7 +98,6 @@ public class SurvivorChallengeController : MonoBehaviour
     {
         _rewardItemController.AddCoins((int)_coinsAccumulated);
         _rewardItemController.AddExperience((int)_experienceAccumulated);
-        Debug.Log("GameEvent_GameWon");
         UIEvents.ShowFinishView?.Invoke();
     }
     private void GameEvents_GetNameExam(string obj)
@@ -111,7 +108,6 @@ public class SurvivorChallengeController : MonoBehaviour
     private void GameEvents_IncorrectlyAnswered()
     {
         _numberOfConsecutiveQuestion = -2;
-        Debug.Log("GameEvents_IncorrectlyAnswered");
 
     }
     private void GameEvents_CorrectlyAnswered()

@@ -83,7 +83,7 @@ public class PlatformItem : MonoBehaviour
     {
         if (Information.id == obj)
         {
-            //Attempts++;
+            Attempts++;
             if (!ButtonTrigger.enabled)
             {
                 ButtonTrigger.enabled = true;

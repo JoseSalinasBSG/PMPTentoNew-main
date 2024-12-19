@@ -1,6 +1,4 @@
-using JetBrains.Annotations;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -158,22 +156,26 @@ public class ScriptableObjectUser : ScriptableObject
 
     public void AddCounter(int idTask)
     {
+        // Encuentra el item existente
         var item = userInfo.LearningModeState.ItemStates.FirstOrDefault(x => x.id == idTask);
+
         if (item != null)
         {
+            // Si el item existe, añade un nuevo tiempo
+            item.timesToRetrive ??= new List<DateTime>();
             item.timesToRetrive.Add(DateTime.Now.AddSeconds(10));
-            //userInfo.LearningModeState.ItemStates.Add(item);
-            Debug.Log("add counter item exists: " + userInfo.LearningModeState.ItemStates.FirstOrDefault(x => x.id == idTask).timesToRetrive.Count);
         }
         else
         {
+            // Si el item no existe, créalo y añádelo
             item = new ItemState
             {
-                id = idTask
+                id = idTask,
+                timesToRetrive = new List<DateTime> { DateTime.Now.AddSeconds(10) }
             };
-            item.timesToRetrive.Add(DateTime.Now.AddSeconds(10));
+
             userInfo.LearningModeState.ItemStates.Add(item);
-            Debug.Log("add counter item does not exists: " + userInfo.LearningModeState.ItemStates.Count);
         }
     }
+
 }

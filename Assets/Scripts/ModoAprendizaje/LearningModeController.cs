@@ -177,7 +177,6 @@ public class LearningModeController : MonoBehaviour
                             x.id == obj.listaTarea[i].id)!.timesToRetrive.Count)
                         : 3;
 
-                Debug.Log("attemptes: " + item.Attempts);
                 if (haveInformationStored)
                 {
                     if (_informationToPlayerPrefs._itemToPlayerPrefsList.Exists(
@@ -250,7 +249,6 @@ public class LearningModeController : MonoBehaviour
 
     public void SendRetrieveAttempt()
     {
-        Debug.Log("SendRetrieveAttempt");
         _userData.AddCounter(_questionController.CurrentQuestion.idTask);
     }
 }

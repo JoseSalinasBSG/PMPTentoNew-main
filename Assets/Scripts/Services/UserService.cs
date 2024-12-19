@@ -242,11 +242,11 @@ public class UserService : MonoBehaviour
                     if (achievement)//si es true es exitoso
                     {
                         //GameEvents.AchievementsChanged?.Invoke();//falta llenar metodo
-                        Debug.Log("UpdateUserAchievements");
+                        //Debug.Log("UpdateUserAchievements");
                     }
                     else
                     {
-                        Debug.Log("UpdateUserAchievementes false");
+                        //Debug.Log("UpdateUserAchievementes false");
                         // _buttonChangeUsername.interactable = true;
                     }
                 }
