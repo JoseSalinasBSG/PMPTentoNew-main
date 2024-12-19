@@ -53,12 +53,12 @@ public class LearningModeController : MonoBehaviour
 
     private void Start()
     {
-        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
         AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.LearningModeSound, true);
     }
 
     private void OnEnable()
     {
+        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
         //if (!PlayerPrefs.HasKey(PREFS_INFO_LEARNING_MODE))
         if (!_dataStorageManager.HasKey(PREFS_INFO_LEARNING_MODE))
         {
@@ -179,10 +179,9 @@ public class LearningModeController : MonoBehaviour
                 };
                 var item = _platformController.CreatePlatform();
                 item.Information = s;
-                var userTasksCompleted = _userData.userInfo.LearningModeState.ItemStates.FirstOrDefault(x => x.id == obj.listaTarea[i].id)!.timesToRetrive.Count;
                 item.Attempts =
                     _userData.userInfo.LearningModeState.ItemStates.Exists(x => x.id == obj.listaTarea[i].id)
-                        ? (3 - userTasksCompleted)
+                        ? (3 - (_userData.userInfo.LearningModeState.ItemStates.FirstOrDefault(x => x.id == obj.listaTarea[i].id)!.timesToRetrive.Count))
                         : 3;
 
                 if (haveInformationStored)
