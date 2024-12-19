@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using DataStorage;
+using Handles3D;
 using ModoAprendizaje;
 using Question;
 using ScriptableCreator;
@@ -39,6 +41,9 @@ public class LearningModeController : MonoBehaviour
     private List<PlatformItem> _platformItems = new List<PlatformItem>();
     private PlatformItem _currentPlatform;
     private PlatformItem.PlatformInformation _selectedPlatformInformation;
+
+    private DataStorageManager _dataStorageManager;
+    // [Header("Reward")] 
     private bool haveInformationStored;
     private void Awake()
     {
@@ -48,18 +53,21 @@ public class LearningModeController : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<GameplaySound>().PlayLearningModeSound();
+        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.LearningModeSound, true);
     }
 
     private void OnEnable()
     {
-        if (!PlayerPrefs.HasKey(PREFS_INFO_LEARNING_MODE))
+        //if (!PlayerPrefs.HasKey(PREFS_INFO_LEARNING_MODE))
+        if (!_dataStorageManager.HasKey(PREFS_INFO_LEARNING_MODE))
         {
             haveInformationStored = false;
         }
         else
         {
-            _informationToPlayerPrefs = JsonUtility.FromJson<PlatformInformationToPlayerPrefs>(PlayerPrefs.GetString(PREFS_INFO_LEARNING_MODE));
+            //_informationToPlayerPrefs = JsonUtility.FromJson<PlatformInformationToPlayerPrefs>(PlayerPrefs.GetString(PREFS_INFO_LEARNING_MODE));
+            _informationToPlayerPrefs = JsonUtility.FromJson<PlatformInformationToPlayerPrefs>(_dataStorageManager.Load<string>(PREFS_INFO_LEARNING_MODE));
             haveInformationStored = true;
         }
         GameEvents.DomainsRetreived += GameEvents_DomainRetreived;
@@ -171,10 +179,10 @@ public class LearningModeController : MonoBehaviour
                 };
                 var item = _platformController.CreatePlatform();
                 item.Information = s;
+                var userTasksCompleted = _userData.userInfo.LearningModeState.ItemStates.FirstOrDefault(x => x.id == obj.listaTarea[i].id)!.timesToRetrive.Count;
                 item.Attempts =
                     _userData.userInfo.LearningModeState.ItemStates.Exists(x => x.id == obj.listaTarea[i].id)
-                        ? (3 - _userData.userInfo.LearningModeState.ItemStates.FirstOrDefault(x =>
-                            x.id == obj.listaTarea[i].id)!.timesToRetrive.Count)
+                        ? (3 - userTasksCompleted)
                         : 3;
 
                 if (haveInformationStored)
@@ -207,8 +215,9 @@ public class LearningModeController : MonoBehaviour
             _currentPlatform.EnablePlatform();
             _markerInstanciated = Instantiate(_platformMarkerPrefab, _currentPlatform.transform);
             _informationToPlayerPrefs._itemToPlayerPrefsList.Add(_currentPlatform.Information.id);
-            PlayerPrefs.SetString(PREFS_INFO_LEARNING_MODE, JsonUtility.ToJson(_informationToPlayerPrefs));
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetString(PREFS_INFO_LEARNING_MODE, JsonUtility.ToJson(_informationToPlayerPrefs));
+            //PlayerPrefs.Save();
+            _dataStorageManager.Save(PREFS_INFO_LEARNING_MODE, _informationToPlayerPrefs);
         }
     }
 
@@ -218,8 +227,9 @@ public class LearningModeController : MonoBehaviour
         _currentPlatform = _platformItems[_currentPlatform.Information.index++];
         _currentPlatform.EnablePlatform();
         _informationToPlayerPrefs._itemToPlayerPrefsList.Add(_currentPlatform.Information.id);
-        PlayerPrefs.SetString(PREFS_INFO_LEARNING_MODE, JsonUtility.ToJson(_informationToPlayerPrefs));
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetString(PREFS_INFO_LEARNING_MODE, JsonUtility.ToJson(_informationToPlayerPrefs));
+        //PlayerPrefs.Save();
+        _dataStorageManager.Save(PREFS_INFO_LEARNING_MODE, _informationToPlayerPrefs);
         if (!_markerInstanciated)
         {
             _markerInstanciated = Instantiate(_platformMarkerPrefab, _currentPlatform.transform);

@@ -1,3 +1,4 @@
+using DataStorage;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,9 +20,12 @@ namespace Login
         [SerializeField] public UnityEvent<string> _onFailedLogin;
         [SerializeField] private LoginRestApi _loginRestApi;
 
+        private DataStorageManager _dataStorageManager;
+
         private void Start()
         {
-            FindObjectOfType<GameplaySound>().PlayMainMenuSound();
+            _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
+            AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.MainSound, true);
         }
 
         public bool ComprobeMissFields()
@@ -82,9 +86,11 @@ namespace Login
 
         private void GameEvents_SuccessfulLogin(User obj)
         {
-            PlayerPrefs.SetString("username", _emailInput.InputField.text);
-            PlayerPrefs.SetString("password", _passwordInput.InputField.text);
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetString("username", _emailInput.InputField.text);
+            //PlayerPrefs.SetString("password", _passwordInput.InputField.text);
+            //PlayerPrefs.Save();
+            _dataStorageManager.Save("username", _emailInput.InputField.text);
+            _dataStorageManager.Save("password", _passwordInput.InputField.text);
             _onSuccessLogin?.Invoke();
         }
 

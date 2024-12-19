@@ -33,7 +33,7 @@ public class CategoryModeController : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<GameplaySound>().PlayCategoryModeSound();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.CategoryModeSound, true);
     }
 
     private void OnEnable()

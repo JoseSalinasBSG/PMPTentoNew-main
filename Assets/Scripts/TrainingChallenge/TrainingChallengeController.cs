@@ -48,7 +48,7 @@ public class TrainingChallengeController : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<GameplaySound>().PlayTrainingChallengeSound();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.TrainingChallengeSound, true);
     }
 
     private void GetQuestions()

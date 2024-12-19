@@ -51,7 +51,7 @@ public class DailyReviewController : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<GameplaySound>().PlayMainMenuSound();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.MainSound, true);
         List<QuestionItem> items = new List<QuestionItem>();
         items = _pmpService.GetAllIncorrectQuestions();
         foreach (Transform child in _nameListContainer.transform)

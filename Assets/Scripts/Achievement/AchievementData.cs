@@ -1,3 +1,4 @@
+using DataStorage;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,14 +13,14 @@ public class AchievementListContainer
 public class AchievementData : ScriptableObject
 {
     [Serializable]
-    public class Achievement 
+    public class Achievement
     {
         public string Name;
         public int ConsecutiveAnswer;
         public int CurrentCounter;
         public int MaxCounter;
         public int CurrentLevel;
-        public int MaxLevel;           
+        public int MaxLevel;
 
         //public int MaxCounterDifficulty;
         public int GiftsObtained;
@@ -27,6 +28,8 @@ public class AchievementData : ScriptableObject
     }
 
     public AchievementListContainer achievementListContainer;
+
+    private DataStorageManager _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
     private void OnEnable()
     {
         LoadLocalData();
@@ -82,9 +85,10 @@ public class AchievementData : ScriptableObject
         // {
         //     Debug.Log("Save successful");
         // }
-        
-        PlayerPrefs.SetString("AchieveData", JsonUtility.ToJson(achievementListContainer));//guarda la cadena JSON en la clave "Achieve Data"
-        PlayerPrefs.Save();//para que se guarden de inmediato
+
+        //PlayerPrefs.SetString("AchieveData", JsonUtility.ToJson(achievementListContainer));//guarda la cadena JSON en la clave "Achieve Data"
+        //PlayerPrefs.Save();//para que se guarden de inmediato
+        _dataStorageManager.Save("AchieveData", achievementListContainer);
     }
 
     private void LoadLocalData()
@@ -95,10 +99,12 @@ public class AchievementData : ScriptableObject
         //
         //     Debug.Log("Load complete");
         // }    
-        if (PlayerPrefs.HasKey("AchieveData"))//verifica si existe la clave AchieveData
+        //if (PlayerPrefs.HasKey("AchieveData"))//verifica si existe la clave AchieveData
+        if (_dataStorageManager.HasKey("AchieveData"))//verifica si existe la clave AchieveData
         {//si hay datos guardados previamente, se cargaran
-            JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("AchieveData"), achievementListContainer);//obtiene el valor asociado a la clave como cadena y sobreescribe los datos en
-                                                                                                          //el objeto achievementListContainer con los datos deserializados del JSON obtenido
+            //JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("AchieveData"), achievementListContainer);//obtiene el valor asociado a la clave como cadena y sobreescribe los datos en
+            //                                                                                              //el objeto achievementListContainer con los datos deserializados del JSON obtenido
+            JsonUtility.FromJsonOverwrite(_dataStorageManager.Load<string>("AchieveData"), achievementListContainer);
         }
         else
         { 

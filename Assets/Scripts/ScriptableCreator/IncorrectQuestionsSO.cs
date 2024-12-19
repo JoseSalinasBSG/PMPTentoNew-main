@@ -1,3 +1,4 @@
+using DataStorage;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,15 +21,18 @@ namespace ScriptableCreator
     {
         public IncorrectQuestionsContainer questions;
 
-    public void SaveIncorrectQuestion(QuestionItem questionItem)
+        private DataStorageManager _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
+
+        public void SaveIncorrectQuestion(QuestionItem questionItem)
         {
             if (questions.IncorrectQuestionsList.Exists(x => x.idSimuladorPmpPregunta == questionItem.idSimuladorPmpPregunta))
             {
                 return;
             }
             questions.IncorrectQuestionsList.Add(questionItem);   
-            PlayerPrefs.SetString("IncorrectQuestions", JsonUtility.ToJson( questions));
-            Debug.Log(PlayerPrefs.GetString("IncorrectQuestions"));
+            //PlayerPrefs.SetString("IncorrectQuestions", JsonUtility.ToJson( questions));
+            _dataStorageManager.Save("IncorrectQuestions", questions);
+            //Debug.Log(PlayerPrefs.GetString("IncorrectQuestions"));
         }
     }
 }
