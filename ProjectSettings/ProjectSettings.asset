@@ -162,7 +162,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.BSgrupo.GamePMPTento
+    Android: com.BSGInstitute.GamePMPTento
     Standalone: com.DefaultCompany.GamePMP
     iPhone: com.BSGInstitute.GamePMPTento
   buildNumber:
