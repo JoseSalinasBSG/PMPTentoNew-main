@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public abstract class InputBase : MonoBehaviour
@@ -11,15 +8,12 @@ public abstract class InputBase : MonoBehaviour
 #region serializeFields variables
     [SerializeField] protected TMP_InputField _inputField;
     [SerializeField] protected Constants _constants;
-
     [SerializeField] protected TextMeshProUGUI _label;
     [SerializeField] protected TextMeshProUGUI _message;
     [SerializeField] private Image _image;
-
     [SerializeField] protected Sprite _spriteError;
     [SerializeField] protected Sprite _spriteDefault;
-    [SerializeField] protected Sprite _spriteSelect;
-    
+    [SerializeField] protected Sprite _spriteSelect;    
     [SerializeField] protected string _placeholderTextDefault;
    
     #endregion
@@ -84,16 +78,13 @@ public abstract class InputBase : MonoBehaviour
         Application.focusChanged -= OnApplicationFocus;
     }
     private void OnInputFieldFocusLost(string arg0)
-    {
-        
+    {        
         SaveTextOnCache(_inputField.text);
-        Debug.Log($"Text cached: {_inputField.text}");
     }
 
     private void OnInputFieldTextChanged(string arg0)
     {
         SaveTextOnCache(_inputField.text);
-        Debug.Log($"Text changed: {arg0}");
     }
 
     private void OnApplicationFocus(bool hasFocus)
@@ -101,14 +92,11 @@ public abstract class InputBase : MonoBehaviour
         if (!hasFocus)
         {
             SaveTextOnCache(_inputField.text);
-            Debug.Log($"Cached text on focus lost");
         }
         else
         {
             _inputField.text = GetTextFromCache(_inputField.name);
             // _placeholderText.text = GetTextFromCache(_inputField.name);
-            Debug.Log($"Cached text on focus gain");
-            // Debug.Log($"Text loaded: {GetTextFromCache(_inputField.name)} in {_inputField.name}");
         }
     }
     
@@ -118,16 +106,11 @@ public abstract class InputBase : MonoBehaviour
         {
             return;
         }
-
-        // Si ya existe un valor, actualízalo
-        // Si no existe, añádelo
         _textCache[_inputField.name] = arg0;
-        Debug.Log($"Cached text: {GetTextFromCache(_inputField.name)} in {_inputField.name}");
     }
     
     protected string GetTextFromCache(string key)
     {
-        // Debug.Log($"Cached get value: {_textCache[key]}");
         return _textCache[key];
     }
 
@@ -263,10 +246,4 @@ public abstract class InputBase : MonoBehaviour
         return false;
     }
     #endregion
-    //
-    // #region private Methods
-    //
-    //
-    //     
-    // #endregion
 }

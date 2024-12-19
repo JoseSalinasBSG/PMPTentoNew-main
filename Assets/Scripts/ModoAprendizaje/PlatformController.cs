@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using CameraUI;
 using Unity.Mathematics;
 using UnityEngine;
@@ -22,22 +19,6 @@ namespace ModoAprendizaje
 
         private float _currentPercentage;
         private float _lastPosition;
-        #endregion
-
-        #region Unity Methods
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            // CreatePlatforms();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
-
         #endregion
 
         #region Methods

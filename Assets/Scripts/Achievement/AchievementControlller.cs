@@ -45,7 +45,6 @@ public class AchievementControlller : MonoBehaviour
         {
             if (counter == maxGoodStreakList[i])//si es igual al contador ConsecutiveAnser
             {
-                Debug.Log($"Alcanzo Racha de {maxGoodStreakList[i]} preguntas");
                 GameEvents.OnGoodStreaked?.Invoke();
                 OnMaxGoodStreakReached?.Invoke(maxGoodStreakList[i]);
                 UpdateAchievementData(maxGoodStreakList[i], SetDateAchievement(), achievementOrigin);//a�ado al contador de rachas de achivement data a traves del metodo StreakCounter

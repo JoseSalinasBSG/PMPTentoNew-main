@@ -250,6 +250,7 @@ public class LearningModeController : MonoBehaviour
 
     public void SendRetrieveAttempt()
     {
+        Debug.Log("SendRetrieveAttempt");
         _userData.AddCounter(_questionController.CurrentQuestion.idTask);
     }
 }

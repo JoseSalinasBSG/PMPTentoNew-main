@@ -73,7 +73,6 @@ public class Roulette : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("UseRoulette"))
         {
-            Debug.Log(DateTime.Parse(PlayerPrefs.GetString("UseRoulette")));
             var timeUsedRoulette = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
             if (timeUsedRoulette < DateTime.Today)
             {
@@ -100,7 +99,6 @@ public class Roulette : MonoBehaviour
             {                
                 while (_rouletteItems[i-1].RouletteItemData._ItemRouletteSo== _rouletteSO.RouletteItems[randomData]._ItemRouletteSo)//comparar el power up scriptable object del elemento anterior con el obtenido en el SO rouletteSO debido al randomData
                 {
-                    Debug.Log("randomData recalculado");
                     randomData = Random.Range(0, _rouletteSO.RouletteItems.Length);//recalcular el randomData
                 }
             }
@@ -108,10 +106,8 @@ public class Roulette : MonoBehaviour
             //En el ultimo item hacer lo mismo y ademas comparar con el primer elemento ya que colinda con el ultimo, y deben estar juntos dos powerups
             if (i==itemsLength-1)
             {
-                Debug.Log("Ultima posición");
                 while (_rouletteItems[i - 1].RouletteItemData._ItemRouletteSo == _rouletteSO.RouletteItems[randomData]._ItemRouletteSo || _rouletteItems[0].RouletteItemData._ItemRouletteSo == _rouletteSO.RouletteItems[randomData]._ItemRouletteSo)
                 {
-                    Debug.Log("randomData final recalculado");
                     randomData = Random.Range(0, _rouletteSO.RouletteItems.Length);//recalcular el randomData
                 }
             }
@@ -128,11 +124,6 @@ public class Roulette : MonoBehaviour
         }
         */
     }
-    
-    private void ComputeItemsPosition()
-    {
-        
-    }
 
     void Update()
     {
@@ -148,7 +139,6 @@ public class Roulette : MonoBehaviour
         }
         else
         {
-
             if (_canRotate)//evalua si se puede rotar habiendo cumplido los parametros
             {
                 _currentRotationSpeed = Mathf.SmoothStep(_currentRotationSpeed, 0f, _deceleration * Time.unscaledDeltaTime);//suaviza la disminucion de velocidad desde _currentRotationSpeed a 0
@@ -302,11 +292,9 @@ public class Roulette : MonoBehaviour
     public void PointerUp()//se activa desde el event trigger pointer up
     {
         _currentRotationSpeed = Touchscreen.current.delta.magnitude;
-        Debug.Log(_currentRotationSpeed);
         if (_currentRotationSpeed < _minSpeedDrag && _currentRotationSpeed >5)
         {
             _onInitRotation?.Invoke();
-            Debug.Log(_currentRotationSpeed + " poca velocidad, agregando velocidad personalizada");
             _currentRotationSpeed += 80;
             _canRotate = true;//indica que se puede rotar si cumple lo necesario
         }

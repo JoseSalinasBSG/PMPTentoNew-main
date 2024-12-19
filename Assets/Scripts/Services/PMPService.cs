@@ -85,7 +85,6 @@ public class PMPService : MonoBehaviour
             var response = request.downloadHandler.text;
             var questions = JsonUtility.FromJson<QuestionInformationExam>(response);
             GameEvents.QuestionsRetrieved?.Invoke(questions);
-            Debug.Log("success " + response );
         }
     }
     
@@ -110,7 +109,6 @@ public class PMPService : MonoBehaviour
         else
         {
             var response = request.downloadHandler.text;
-            Debug.Log(response);
             var domains = JsonUtility.FromJson<ResponseOfRegisterExam>(response);
             GameEvents.ExamCreated?.Invoke(domains);
         }

@@ -164,7 +164,6 @@ public class LoginRestApi : MonoBehaviour
 
     public IEnumerator GetAchievementData(int userId)//obtiene datos de achievement en login
     {
-        Debug.Log("GetAchievementData");
         _finishRequest = _haveError = false;
         using (UnityWebRequest request = new UnityWebRequest(urlGetAchievements + userId, "GET"))
         {

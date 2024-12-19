@@ -148,7 +148,6 @@ public class GlosaryChallengeController : MonoBehaviour
                         {
                             randomIndexInDefinition = Random.Range(0, totalToChange) * 2 + 1;
                         }
-                        Debug.Log(randomIndexInConcept + " " + randomIndexInDefinition);
                         actualValuesToConcept.Add(randomIndexInConcept, randomIndexInConcept);
                         actualValuesToDefinition.Add(randomIndexInDefinition, randomIndexInDefinition);
                         _actualIndices.Remove(_optionChoose[randomIndexInConcept].ID);

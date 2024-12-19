@@ -91,6 +91,7 @@ public class UserInfo
     public string urlAvatar;
     public Sprite spriteAvatar;
 }
+
 [CreateAssetMenu(fileName = "User Data", menuName = "User data")]
 public class ScriptableObjectUser : ScriptableObject
 {
@@ -103,7 +104,6 @@ public class ScriptableObjectUser : ScriptableObject
         GameEvents.NewInstuctorId += GameEvents_NewInstuctorId;
         GameEvents.RequestExperienceChange += GameEvents_RequestExperienceChange;
         GameEvents.RequestCoinsChange += GameEvents_RequestCoinsChange;
-
     }
 
     private void GameEvents_RequestExperienceChange(float obj)
@@ -133,28 +133,25 @@ public class ScriptableObjectUser : ScriptableObject
 
     private void GameEvents_NewInstuctorId(int index)
     {
-        Debug.Log("configurando instructor ID");
         userInfo.haveInstructor = true;
         userInfo.idInstructor = index;
         PlayerPrefs.SetInt("HaveInstructor", index);
         PlayerPrefs.Save();
-
         //GameEvents.InstructorSelected?.Invoke();
-
     }
 
     private void GameEvents_NameChanged(string username)
     {
         // userInfo.username = username;
-        PlayerPrefs.SetString("Username",username);
+        PlayerPrefs.SetString("Username", username);
         PlayerPrefs.Save();
     }
     private void GameEvents_NewUsername(string username)
     {
         userInfo.haveUsername = true;
         // userInfo.username = username;
-        PlayerPrefs.SetString("Username",username);
-        PlayerPrefs.SetInt("HaveUsername",1);
+        PlayerPrefs.SetString("Username", username);
+        PlayerPrefs.SetInt("HaveUsername", 1);
         PlayerPrefs.Save();
         //GameEvents.UsernameSelected?.Invoke();
     }
@@ -165,6 +162,8 @@ public class ScriptableObjectUser : ScriptableObject
         if (item != null)
         {
             item.timesToRetrive.Add(DateTime.Now.AddSeconds(10));
+            //userInfo.LearningModeState.ItemStates.Add(item);
+            Debug.Log("add counter item exists: " + userInfo.LearningModeState.ItemStates.FirstOrDefault(x => x.id == idTask).timesToRetrive.Count);
         }
         else
         {
@@ -174,6 +173,7 @@ public class ScriptableObjectUser : ScriptableObject
             };
             item.timesToRetrive.Add(DateTime.Now.AddSeconds(10));
             userInfo.LearningModeState.ItemStates.Add(item);
+            Debug.Log("add counter item does not exists: " + userInfo.LearningModeState.ItemStates.Count);
         }
     }
 }

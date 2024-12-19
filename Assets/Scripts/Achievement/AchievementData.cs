@@ -36,20 +36,16 @@ public class AchievementData : ScriptableObject
     {
         var achievement = achievementListContainer.achievementList[index];//accedo al indice index de la lista de clase Achievement osea al SO AchievementData
         achievement.CurrentCounter++;//accedo al contador y lo aumento
-        Debug.Log($"Se aument� Current Counter: {achievement.CurrentCounter}");
 
         if (achievement.CurrentCounter >= achievement.MaxCounter)//accedo a los campos de la lista y comparo si CurrentCounter es mayor igual que MaxCounter
         {
             achievement.CurrentLevel++;//aumentamos un Nivel
-            Debug.Log($"Alcanzo Max Counter, se aument� Current Level:{achievement.CurrentLevel}");
             if (achievement.CurrentLevel>=achievement.MaxLevel)
             {
                 achievement.CurrentLevel = 0;
-                //Debug.Log($"Se reinicio Current Level:{achievement.CurrentLevel}");
 
             }
             achievement.CurrentCounter = 0;//reiniciamos
-            //Debug.Log($"Se reinicio Current Counter:{achievement.CurrentCounter}");
             //AddMaxCounterDifficulty(index);
             AddGiftsObtained(index);
         }
