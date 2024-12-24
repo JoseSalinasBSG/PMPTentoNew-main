@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DataStorage;
 using ScriptableCreator;
 using TMPro;
 using UnityEngine;
@@ -26,16 +25,9 @@ namespace PowerUp
         [SerializeField] private PowerUpListener _powerUpMoreTimeI;
 
         private PowerUpListener _currentListener;
-
-        private DataStorageManager _dataStorageManager;
         #endregion
 
         #region Unity Methods
-
-        private void Start()
-        {
-            _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
-        }
 
         private void OnEnable()
         {
@@ -106,9 +98,8 @@ namespace PowerUp
         public void BuySecondOportunity(int amount )
         {
             _powerUpSecondOportunity.amount += amount;
-            //PlayerPrefs.SetInt("pu_secondOportunity", _powerUpSecondOportunity.amount);
-            //PlayerPrefs.Save();
-            _dataStorageManager.Save("pu_secondOportunity", _powerUpSecondOportunity.amount);
+            PlayerPrefs.SetInt("pu_secondOportunity", _powerUpSecondOportunity.amount);
+            PlayerPrefs.Save();
             _powerUpSecondOportunity.Raise();
         }
         
@@ -126,9 +117,8 @@ namespace PowerUp
         public void BuyTrueOption(int amount )
         {
             _powerUpTrueOption.amount += amount;
-            //PlayerPrefs.SetInt("pu_trueOption", _powerUpTrueOption.amount);
-            //PlayerPrefs.Save();
-            _dataStorageManager.Save("pu_trueOption", _powerUpTrueOption.amount);
+            PlayerPrefs.SetInt("pu_trueOption", _powerUpTrueOption.amount);
+            PlayerPrefs.Save();
             _powerUpTrueOption.Raise();
         }
         
@@ -148,9 +138,8 @@ namespace PowerUp
         public void BuyDeleteOption(int amount )
         {
             _powerUpDeleteOption.amount += amount;
-            //PlayerPrefs.SetInt("pu_deleteOption", _powerUpDeleteOption.amount);
-            //PlayerPrefs.Save();
-            _dataStorageManager.Save("pu_deleteOption", _powerUpDeleteOption.amount);
+            PlayerPrefs.SetInt("pu_deleteOption", _powerUpDeleteOption.amount);
+            PlayerPrefs.Save();
             _powerUpDeleteOption.Raise();
         }
         
@@ -168,9 +157,8 @@ namespace PowerUp
         public void BuyNextQuestion(int amount )
         {
             _powerUpNextQuestion.amount += amount;
-            //PlayerPrefs.SetInt("pu_nextQuestion", _powerUpNextQuestion.amount);
-            //PlayerPrefs.Save();
-            _dataStorageManager.Save("pu_nextQuestion", _powerUpNextQuestion.amount);
+            PlayerPrefs.SetInt("pu_nextQuestion", _powerUpNextQuestion.amount);
+            PlayerPrefs.Save();
             _powerUpNextQuestion.Raise();
         }
         
@@ -188,9 +176,8 @@ namespace PowerUp
         public void BuyMoreTime(int amount )
         {
             _powerUpMoreTime.amount += amount;
-            //PlayerPrefs.SetInt("pu_moreTime", _powerUpMoreTime.amount);
-            //PlayerPrefs.Save();
-            _dataStorageManager.Save("pu_moreTime", _powerUpMoreTime.amount);
+            PlayerPrefs.SetInt("pu_moreTime", _powerUpMoreTime.amount);
+            PlayerPrefs.Save();
             _powerUpMoreTime.Raise();
         }
 

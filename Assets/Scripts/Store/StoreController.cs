@@ -1,6 +1,5 @@
  using System;
 using Button;
-using DataStorage;
 using ScriptableCreator;
 using TMPro;
 using UnityEngine;
@@ -61,21 +60,20 @@ public class StoreController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timeRemainingRoulette;
     private StoreItem _currentItem;
 
-    private DataStorageManager _dataStorageManager;
-
     public float CoinsFromUser => _user.userInfo.user.detail.totalCoins;
+<<<<<<< HEAD
 
     private void Start()
     {
     }
 
+=======
+>>>>>>> parent of 3771358 (fix: [Refactor] SaveData with Adapter Pattern)
     private void Update()
     {
-        //if (PlayerPrefs.HasKey("UseRoulette"))
-        if (_dataStorageManager.HasKey("UseRoulette"))
+        if (PlayerPrefs.HasKey("UseRoulette"))
         {
-            //DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-            DateTime lastUseTime = DateTime.Parse(_dataStorageManager.Load<string>("UseRoulette"));
+            DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
             TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
             TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
             _timeRemainingRoulette.text = "El giro de la ruleta estará \r\ndisponible nuevamente en: " + string.Format("{0:D2}:{1:D2}:{2:D2}", timeRemaining.Hours, timeRemaining.Minutes, timeRemaining.Seconds);
@@ -84,17 +82,17 @@ public class StoreController : MonoBehaviour
 
     private void OnEnable()
     {
+<<<<<<< HEAD
         _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
         //if (PlayerPrefs.HasKey("UseRoulette"))//verifica si fue usada la ruleta
         if (_dataStorageManager.HasKey("UseRoulette"))//verifica si fue usada la ruleta
+=======
+        if (PlayerPrefs.HasKey("UseRoulette"))//verifica si fue usada la ruleta
+>>>>>>> parent of 3771358 (fix: [Refactor] SaveData with Adapter Pattern)
         {
             //Debug.Log(DateTime.Parse(PlayerPrefs.GetString("UseRoulette")));
             //var timeUsedRoulette = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-
-
-            //DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-            DateTime lastUseTime = DateTime.Parse(_dataStorageManager.Load<string>("UseRoulette"));
-
+            DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
             TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
             TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
 

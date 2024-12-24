@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DataStorage;
 using ScriptableCreator;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -17,13 +16,7 @@ public class UserManager : MonoBehaviour
     [SerializeField] private ScripableObjectPowerUp _powerUpMoreTime;
 
     public bool EndFinishLoadData, EndFinishLoadAvatar;
-
-    private DataStorageManager _storeManager;
-
-    private void Start()
-    {
-    }
-
+    
     private void OnEnable()
     {
         EndFinishLoadData = false;
@@ -108,19 +101,20 @@ public class UserManager : MonoBehaviour
 
     void Initialize()
     {
-        _storeManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
-
         if (!_userSO)
         {
             _userSO = Resources.Load<ScriptableObjectUser>("User Data");
         }
 
-        //if (PlayerPrefs.HasKey("username") && PlayerPrefs.HasKey("password"))
-        if (_storeManager.HasKey("username") && _storeManager.HasKey("password"))
+        if (PlayerPrefs.HasKey("username") && PlayerPrefs.HasKey("password"))
         {
+<<<<<<< HEAD
             //_userService.GetUSer(PlayerPrefs.GetString("username"), PlayerPrefs.GetString("password"));
             //Debug.LogError("username: " + _storeManager.Load<string>("username") + " password: " + _storeManager.Load<string>("password"));
             _userService.GetUSer(_storeManager.Load<string>("username"), _storeManager.Load<string>("password"));
+=======
+            _userService.GetUSer(PlayerPrefs.GetString("username"), PlayerPrefs.GetString("password"));
+>>>>>>> parent of 3771358 (fix: [Refactor] SaveData with Adapter Pattern)
         }
         else
         {

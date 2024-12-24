@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DataStorage;
 using Extras;
 using ScriptableCreator;
 using UnityEngine;
@@ -17,8 +16,6 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioSource _musicAudioSource;
 
     public AudioSettingsSO AudioSettings => _audioSettings;
-
-    private DataStorageManager _dataStorageManager;
     
     public enum ActualSound
     {
@@ -36,9 +33,7 @@ public class AudioManager : Singleton<AudioManager>
     public ActualSound actualSound;
     private void Start()
     {
-        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
         Initialize();
-
     }
 
     private void OnEnable()
@@ -69,21 +64,14 @@ public class AudioManager : Singleton<AudioManager>
 
     void Initialize()
     {
-        //if (PlayerPrefs.HasKey("SounEffectVolume"))
-        if (_dataStorageManager.HasKey("SounEffectVolume"))
+        if (PlayerPrefs.HasKey("SounEffectVolume"))
         {
-            //AudioEvents.SFXVolumeChanged?.Invoke(PlayerPrefs.GetFloat("SounEffectVolume"));
-            AudioEvents.SFXVolumeChanged?.Invoke(_dataStorageManager.Load<float>("SounEffectVolume"));
-
-
+            AudioEvents.SFXVolumeChanged?.Invoke(PlayerPrefs.GetFloat("SounEffectVolume"));
             // AudioEvents_OnSFXVolumeChanged();
         }
-        //if (PlayerPrefs.HasKey("MusicVolume"))
-        if (_dataStorageManager.HasKey("MusicVolume"))
+        if (PlayerPrefs.HasKey("MusicVolume"))
         {
-            //AudioEvents.MusicVolumeChanged?.Invoke(PlayerPrefs.GetFloat("MusicVolume"));
-            AudioEvents.MusicVolumeChanged?.Invoke(_dataStorageManager.Load<float>("MusicVolume"));
-
+            AudioEvents.MusicVolumeChanged?.Invoke(PlayerPrefs.GetFloat("MusicVolume"));
             // AudioEvents_OnMusicVolumeChanged(PlayerPrefs.GetFloat("MusicVolume"));
         }
         
