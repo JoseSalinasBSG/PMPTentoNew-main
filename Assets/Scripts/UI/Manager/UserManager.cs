@@ -40,6 +40,7 @@ public class UserManager : MonoBehaviour
     private void GameEvents_ErrorGetAvatar()
     {
         EndFinishLoadData = true;
+        EndFinishLoadAvatar = true;
     }
 
     private void GameEvents_SuccessGetAvatar()

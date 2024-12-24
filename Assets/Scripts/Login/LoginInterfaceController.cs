@@ -21,6 +21,8 @@ namespace Login
         // Start is called before the first frame update
         IEnumerator Start()
         {
+            Debug.Log("_userManager.EndFinishLoadData: " + _userManager.EndFinishLoadData);
+            Debug.Log("_userManager.EndFinishLoadAvatar: " + _userManager.EndFinishLoadAvatar);
             yield return new WaitUntil(() =>_userManager.EndFinishLoadData && _userManager.EndFinishLoadAvatar );
             //Debug.Log("terminado 2");
             ComprobeLogin();
