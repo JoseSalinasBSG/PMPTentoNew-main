@@ -2,9 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-//<summary>
-//Este script se encarga de comprobar si el usuario ha iniciado sesión
-//</summary>
+///<summary>
+/// Controlador de la interfaz de usuario para el inicio de sesión.
+/// Gestiona la lógica de visualización de diferentes pantallas (Login, Username, Instructor)
+/// y verifica el estado de inicio de sesión del usuario.
+///</summary>
 
 namespace Login
 {
@@ -17,12 +19,10 @@ namespace Login
         [SerializeField] private ScriptableObjectInstructor _objectInstructor;
         [SerializeField] private UnityEvent _onFinishLoginConfiguration;
         [SerializeField] private UserManager _userManager;
-
-        // Start is called before the first frame update
+        
         IEnumerator Start()
         {
             yield return new WaitUntil(() =>_userManager.EndFinishLoadData && _userManager.EndFinishLoadAvatar );
-            //Debug.Log("terminado 2");
             ComprobeLogin();
         }
 
@@ -35,7 +35,6 @@ namespace Login
         private void GameEvents_InstructorSelected()
         {
             ComprobeInstructor();
-
         }
 
         private void OnDisable()

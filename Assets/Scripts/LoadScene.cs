@@ -1,11 +1,11 @@
-using DataStorage;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-//<summary>
-//LoadScene se encarga de cargar los distintos scenes del juego
-//</summary>
+///<summary>
+/// LoadScene gestiona la carga de escenas en el juego, incluyendo el cambio de escenas por nombre, recarga de la escena actual, carga asíncrona y salida del juego.
+/// También permite manejar eventos previos a la carga de una escena.
+///</summary>
 
 namespace Scene
 {
@@ -13,36 +13,14 @@ namespace Scene
     {
         #region Variables
         [SerializeField] private ScriptableObjectScenes _objectScenes;
-        [SerializeField] private UnityEvent _onBeforeLoadScene;        
+        [SerializeField] private UnityEvent _onBeforeLoadScene;
         private AsyncOperation loadingOperation;
         private bool _initLoadAsync;
-
-        private DataStorageManager _dataStorageManager;
         public ScriptableObjectScenes ObjectScenes
         {
             get => _objectScenes;
             set => _objectScenes = value;
         }
-        #endregion
-
-        #region Unity Methods
-
-        private void Start()
-        {
-            _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
-        }
-
-        // private void Update()
-        // {
-        //     if (!_initLoadAsync)
-        //     {
-        //         return;
-        //     }
-        //     if (loadingOperation.progress >= .9f )
-        //     {
-        //         loadingOperation.allowSceneActivation = true;
-        //     }
-        // }
         #endregion
 
         #region Methods
@@ -76,8 +54,7 @@ namespace Scene
 
         public void LogOut()
         {
-            //PlayerPrefs.DeleteAll();
-            _dataStorageManager.DeleteAll();
+            PlayerPrefs.DeleteAll();
             LoadSceneUsingName("Login");
         }
         #endregion

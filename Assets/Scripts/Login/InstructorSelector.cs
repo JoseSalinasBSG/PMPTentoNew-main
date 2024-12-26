@@ -6,19 +6,18 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
-//<summary>
-//clase que se encarga de manejar la seleccion y asignacion del instructor al usuario
-//</summary>
+///<summary>
+/// Clase encargada de gestionar la selección de instructores en el sistema, incluyendo la navegación entre instructores,
+/// activación/desactivación de botones, y la asignación del instructor seleccionado al usuario. 
+/// Además, realiza la actualización de datos relacionados mediante una solicitud a una API.
+///</summary>
 
 public class InstructorSelector : MonoBehaviour
 {
     [SerializeField] private ScriptableObjectInstructor _objectInstructor;
     [SerializeField] private ScriptableObjectUser _objectUser;
-    //[SerializeField] private PathToInstantiateInstructor _pathToInstantiateInstructor;
     [SerializeField] private ButtonAnimation _buttonNext;
     [SerializeField] private ButtonAnimation _buttonPrevious;
-    //[SerializeField] private Transform _container;
-    //[SerializeField] private GameObject _instructorPlatform;
     [SerializeField] private string url = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
     [SerializeField] private UnityEvent _onSelectInstructor;
     [SerializeField] private UnityEvent _onStart;
@@ -26,46 +25,6 @@ public class InstructorSelector : MonoBehaviour
     [SerializeField] private UnityEvent OnNextButtonSelected;
 
     private int index = 0;
-    //private List<GameObject> _instructors = new List<GameObject>();
-
-    //<summary>
-    //Ya no se esta instanciando el instructor ahora solo se maneja la activacion y desactivacion del elemento UI para visualizarlo
-    //</summary>
-
-    // public void ClearListInsructor()
-    // {
-    //     Debug.Log("limpiando ");
-
-    //     for (int j = 0; j < _instructors.Count; j++)
-    //     {
-    //         Destroy(_instructors[j]);
-    //     }
-    //     _instructors.Clear();
-    // }
-
-    // public void InstantiateInstructor()
-    // {
-    //     _pathToInstantiateInstructor.transform.rotation = Quaternion.Euler(0, 0, 0);
-    //     for (int i = 0; i < _objectInstructor.instructors.Length; i++)
-    //     {
-    //         (Vector3, Vector3) posRot = _pathToInstantiateInstructor.GetPositionToInstantiate(i);
-    //         var instant = Instantiate(_objectInstructor.instructors[i].prefab, posRot.Item1, quaternion.identity, _container);
-    //         instant.layer = 3;
-    //         foreach (Renderer child in instant.GetComponentsInChildren<Renderer>())
-    //         {
-    //             child.gameObject.layer = 3;
-    //         }
-    //         // for (int j = 0; j < instant.transform.childCount; j++)
-    //         // {
-    //         //     instant.transform.GetChild(j).gameObject.layer = 6;
-    //         // }
-    //         instant.transform.forward = posRot.Item2;
-    //         Instantiate(_instructorPlatform, posRot.Item1, Quaternion.identity).transform.parent = instant.transform;
-
-    //         _instructors.Add(instant);
-    //     }
-    // }
-
     private void Start()
     {
         _onStart?.Invoke();
@@ -74,7 +33,6 @@ public class InstructorSelector : MonoBehaviour
     public void InitValues()
     {
         index = 0;
-        //InstantiateInstructor();
         ComprobeNext();
         ComprobePrevious();
     }
@@ -84,14 +42,11 @@ public class InstructorSelector : MonoBehaviour
         InitValues();
     }
 
-
-
     public void GetNextInstructor()
     {
         index++;
         ComprobeNext();
         ComprobePrevious();
-        //_pathToInstantiateInstructor.RotateToItem(index); //Ya no se esta instanciando el instructor
         OnNextButtonSelected?.Invoke();
     }
 
@@ -126,7 +81,6 @@ public class InstructorSelector : MonoBehaviour
         index--;
         ComprobeNext();
         ComprobePrevious();
-        //_pathToInstantiateInstructor.RotateToItem(index);
         OnPreviousButtonSelected?.Invoke();
     }
     public void SelectInstructor()
@@ -135,7 +89,6 @@ public class InstructorSelector : MonoBehaviour
         _buttonPrevious.DisableButton();
         GameEvents.RequesNewUsername?.Invoke();
         StartCoroutine(GetGamificationData(index));
-        // GameEvents.NewInstuctorId?.Invoke(index);
     }
 
     public IEnumerator GetGamificationData(int instructorId)
@@ -179,7 +132,7 @@ public class InstructorSelector : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text);
+                    Debug.Log(request.downloadHandler.text +" - Error: "+e.Message);
                     _objectUser.userInfo.haveUser = false;
                     GameEvents.WrongWhenNewUsername?.Invoke();
                 }

@@ -1,25 +1,23 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using DataStorage;
 using Extras;
-using ScriptableCreator;
 using UnityEngine;
+
+// <summary>
+// Este script maneja el sistema de audio en el juego, incluyendo la reproducción de efectos de sonido y música, y el ajuste de volúmenes en función de los eventos que ocurren en el juego.
+// Además, gestiona el volumen del audio a través de un sistema de eventos y ajusta la mezcla del audio en el AudioMixer usando decibelios. 
+// El script también se encarga de guardar y cargar los valores de volumen usando PlayerPrefs para que se mantengan entre sesiones del juego.
+// </summary>
 
 public class AudioManager : Singleton<AudioManager>
 {
+    [SerializeField] private AudioSettingsSO _audioSettings;
+    [SerializeField] private AudioSource _sFXAudioSource;
+    [SerializeField] private AudioSource _musicAudioSource;
+    public AudioSettingsSO AudioSettings => _audioSettings;
     public const string SFX_VOLUME = "SFXVolume";
     private const string MUSIC_VOLUME = "MusicVolume";
     private const string MASTER_VOLUME = "MasterVolume";
 
-    [SerializeField] private AudioSettingsSO _audioSettings;
-    [SerializeField] private AudioSource _sFXAudioSource;
-    [SerializeField] private AudioSource _musicAudioSource;
-
-    public AudioSettingsSO AudioSettings => _audioSettings;
-
-    private DataStorageManager _dataStorageManager;
-    
     public enum ActualSound
     {
         main,
@@ -32,13 +30,11 @@ public class AudioManager : Singleton<AudioManager>
         gameWon,
         gameLost
     }
-
     public ActualSound actualSound;
+
     private void Start()
     {
-        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
         Initialize();
-
     }
 
     private void OnEnable()
@@ -69,24 +65,15 @@ public class AudioManager : Singleton<AudioManager>
 
     void Initialize()
     {
-        //if (PlayerPrefs.HasKey("SounEffectVolume"))
-        if (_dataStorageManager.HasKey("SounEffectVolume"))
+        if (PlayerPrefs.HasKey("SounEffectVolume"))
         {
-            //AudioEvents.SFXVolumeChanged?.Invoke(PlayerPrefs.GetFloat("SounEffectVolume"));
-            AudioEvents.SFXVolumeChanged?.Invoke(_dataStorageManager.Load<float>("SounEffectVolume"));
-
-
-            // AudioEvents_OnSFXVolumeChanged();
+            AudioEvents.SFXVolumeChanged?.Invoke(PlayerPrefs.GetFloat("SounEffectVolume"));
         }
-        //if (PlayerPrefs.HasKey("MusicVolume"))
-        if (_dataStorageManager.HasKey("MusicVolume"))
+        if (PlayerPrefs.HasKey("MusicVolume"))
         {
-            //AudioEvents.MusicVolumeChanged?.Invoke(PlayerPrefs.GetFloat("MusicVolume"));
-            AudioEvents.MusicVolumeChanged?.Invoke(_dataStorageManager.Load<float>("MusicVolume"));
-
-            // AudioEvents_OnMusicVolumeChanged(PlayerPrefs.GetFloat("MusicVolume"));
+            AudioEvents.MusicVolumeChanged?.Invoke(PlayerPrefs.GetFloat("MusicVolume"));
         }
-        
+
     }
 
     void AudioEvents_OnMusicVolumeChanged(float volume)
@@ -111,14 +98,12 @@ public class AudioManager : Singleton<AudioManager>
     {
         _musicAudioSource.Stop();
         _musicAudioSource.PlayOneShot(audioClip);
-        // StartCoroutine(PlaySFXAtPointDelayed(audioClip, position, delay, loop));
     }
 
     public void PlayMusic(AudioClip audioClip, Vector3 position, float delay = 0, bool loop = false)
     {
         _musicAudioSource.Stop();
         _musicAudioSource.PlayOneShot(audioClip);
-        // StartCoroutine(PlaySFXAtPointDelayed(audioClip, position, delay, loop));
     }
 
     IEnumerator PlaySFXAtPointDelayed(AudioClip audioClip, Vector3 position, float delay, bool loop)
@@ -135,6 +120,7 @@ public class AudioManager : Singleton<AudioManager>
             _sFXAudioSource.Stop();
         }
     }
+
     static float ConvertLinearToDecibel(float linearVolume)
     {
         return Mathf.Log10(Mathf.Max(0.0001f, linearVolume)) * 20.0f;

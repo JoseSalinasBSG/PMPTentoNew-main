@@ -1,100 +1,67 @@
- using System;
+using System;
 using Button;
-using DataStorage;
 using ScriptableCreator;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+///<summary>
+/// Este controlador gestiona las interacciones con la tienda dentro del juego, incluyendo la visualización y compra de potenciadores. 
+/// Los potenciadores disponibles se definen mediante objetos ScriptableObject y se muestran en la interfaz de usuario con precios variables y descuentos aplicados. 
+/// El script también maneja el sistema de ruleta, habilitando o deshabilitando la opción de girar la ruleta dependiendo del tiempo transcurrido desde su último uso. 
+/// Cuando un jugador compra un potenciador, se actualizan las estadísticas del usuario (como monedas y potenciadores disponibles), y se gestiona un pop-up de confirmación de compra. 
+/// Además, el controlador maneja la visualización de un contador para el tiempo restante hasta que la ruleta esté disponible nuevamente.
+///</summary>
 
 public class StoreController : MonoBehaviour
 {
     [SerializeField] private ScriptableObjectUser _user;
 
     [Header("Power ups scriptable objects")]
-    [SerializeField]
-    private ScripableObjectPowerUp _powerUpSecondOportunity;
-    private bool areItemsInstanciated = false;
-
+    [SerializeField] private ScripableObjectPowerUp _powerUpSecondOportunity;
     [SerializeField] private ScripableObjectPowerUp _powerUpTrueOption;
     [SerializeField] private ScripableObjectPowerUp _powerUpDeleteOption;
     [SerializeField] private ScripableObjectPowerUp _powerUpNextQuestion;
     [SerializeField] private ScripableObjectPowerUp _powerUpMoreTime;
+    private bool areItemsInstanciated = false;
 
     [Header("Power ups interfaces")]
-    [SerializeField]
-    private TextMeshProUGUI _powerUpSecondOportunityI;
-
+    [SerializeField] private TextMeshProUGUI _powerUpSecondOportunityI;
     [SerializeField] private TextMeshProUGUI _powerUpTrueOptionI;
     [SerializeField] private TextMeshProUGUI _powerUpDeleteOptionI;
     [SerializeField] private TextMeshProUGUI _powerUpNextQuestionI;
     [SerializeField] private TextMeshProUGUI _powerUpMoreTimeI;
 
     [Header("Power ups scriptable objects")]
-    [SerializeField]
-    private Sprite _spriteSecondOportunity;
-
+    [SerializeField] private Sprite _spriteSecondOportunity;
     [SerializeField] private Sprite _spriteTrueOption;
     [SerializeField] private Sprite _spriteDeleteOption;
     [SerializeField] private Sprite _spriteNextQuestion;
     [SerializeField] private Sprite _spriteMoreTime;
 
-    [Header("General")][SerializeField] private Transform _GeneralContainer;
+    [Header("General")]
+    [SerializeField] private Transform _GeneralContainer;
     [SerializeField] private StoreSection _storeSectionPrefab;
     [SerializeField] private StoreItem _storeItemPrefab;
     [SerializeField] private Transform _offset;
-    //[SerializeField] private TextMeshProUGUI _totalCoinsLabel;
-    //[SerializeField] private TextMeshProUGUI _totalExperienceLabel;
-    //[SerializeField] private TextMeshProUGUI _usernameLabel;
 
     [Header("Pop-up compra")]
-    [SerializeField]
-    private FadeUI _popupCompra;
-
+    [SerializeField] private FadeUI _popupCompra;
     [SerializeField] private TextMeshProUGUI _messageCompra;
     [SerializeField] private Image _imageCompra;
     [SerializeField] private TextMeshProUGUI _amountLabel;
+
     [Header("Roulette")]
-    [SerializeField]
-    private ButtonAnimation _rouletteButton;
-    [SerializeField]
-    private ButtonAnimation _rouletteButtonUsed;
+    [SerializeField] private ButtonAnimation _rouletteButton;
+    [SerializeField] private ButtonAnimation _rouletteButtonUsed;
     [SerializeField] private TextMeshProUGUI _timeRemainingRoulette;
     private StoreItem _currentItem;
-
-    private DataStorageManager _dataStorageManager;
-
     public float CoinsFromUser => _user.userInfo.user.detail.totalCoins;
-
-    private void Start()
-    {
-    }
-
-    private void Update()
-    {
-        //if (PlayerPrefs.HasKey("UseRoulette"))
-        if (_dataStorageManager.HasKey("UseRoulette"))
-        {
-            //DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-            DateTime lastUseTime = DateTime.Parse(_dataStorageManager.Load<string>("UseRoulette"));
-            TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
-            TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
-            _timeRemainingRoulette.text = "El giro de la ruleta estará \r\ndisponible nuevamente en: " + string.Format("{0:D2}:{1:D2}:{2:D2}", timeRemaining.Hours, timeRemaining.Minutes, timeRemaining.Seconds);
-        }
-    }
-
     private void OnEnable()
     {
-        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
-        //if (PlayerPrefs.HasKey("UseRoulette"))//verifica si fue usada la ruleta
-        if (_dataStorageManager.HasKey("UseRoulette"))//verifica si fue usada la ruleta
+        if (PlayerPrefs.HasKey("UseRoulette") && PlayerPrefs.GetString("UseRoulette") != "{}")//verifica si fue usada la ruleta
         {
-            //Debug.Log(DateTime.Parse(PlayerPrefs.GetString("UseRoulette")));
-            //var timeUsedRoulette = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-
-
-            //DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-            DateTime lastUseTime = DateTime.Parse(_dataStorageManager.Load<string>("UseRoulette"));
-
+            DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
             TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
             TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
 
@@ -102,7 +69,6 @@ public class StoreController : MonoBehaviour
             {//desactiva ruleta
                 _rouletteButton.gameObject.SetActive(false);
                 _rouletteButtonUsed.gameObject.SetActive(true);
-                //_timeRemainingRoulette.text = "El giro de la ruleta estará \r\ndisponible nuevamente en: " +timeRemaining;
                 _rouletteButton.GetComponent<PassScrollEvents>().enabled = false;
             }
             else
@@ -112,9 +78,6 @@ public class StoreController : MonoBehaviour
                 _rouletteButton.GetComponent<PassScrollEvents>().enabled = true;
             }
         }
-        //_usernameLabel.text = _user.userInfo.user.detail.usernameG;
-        //_totalCoinsLabel.text = _user.userInfo.user.detail.totalCoins.ToString();
-        //_totalExperienceLabel.text = _user.userInfo.user.detail.totalExperience.ToString();
 
         _powerUpSecondOportunityI.text = _user.userInfo.user.detail.secondChance.ToString();
         _powerUpTrueOptionI.text = _user.userInfo.user.detail.findCorrectAnswer.ToString();
@@ -124,7 +87,6 @@ public class StoreController : MonoBehaviour
         GameEvents.CoinsChanged += GameEvents_CoinsChanged;
         GameEvents.ExperienceChanged += GameEvents_ExperienceChanged;
         GameEvents.DetailChanged += GameEvents_DetailChanged;
-
 
         if (areItemsInstanciated)
         {
@@ -150,7 +112,6 @@ public class StoreController : MonoBehaviour
         }
 
         // Verdadera opcion
-
         itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
         itemInstantiaded.SetData("Mostrar respuesta");
         for (int i = 0; i < 3; i++)
@@ -170,7 +131,6 @@ public class StoreController : MonoBehaviour
         }
 
         // Descartar alternativa
-
         itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
         itemInstantiaded.SetData("Descartar alternativa");
         for (int i = 0; i < 3; i++)
@@ -190,7 +150,6 @@ public class StoreController : MonoBehaviour
         }
 
         // Siguiente pregunta
-
         itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
         itemInstantiaded.SetData("Saltar pregunta");
         for (int i = 0; i < 3; i++)
@@ -205,12 +164,10 @@ public class StoreController : MonoBehaviour
             {
                 costItem = (_powerUpNextQuestion.unitCost * (i + 1) - _powerUpNextQuestion.discount * (i + 1));
             }
-
             storeItem.SetData(this, costItem, i + 1, _spriteNextQuestion, _powerUpNextQuestion);
         }
 
         // Mas Tiempo
-
         itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
         itemInstantiaded.SetData("Aumento de tiempo");
         for (int i = 0; i < 3; i++)
@@ -233,6 +190,19 @@ public class StoreController : MonoBehaviour
         areItemsInstanciated = true;
     }
 
+
+    private void Update()
+    {
+        if (PlayerPrefs.HasKey("UseRoulette") && PlayerPrefs.GetString("UseRoulette") != "{}")
+        {
+            DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
+            TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
+            TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
+            _timeRemainingRoulette.text = "El giro de la ruleta estará \r\ndisponible nuevamente en: " + string.Format("{0:D2}:{1:D2}:{2:D2}", timeRemaining.Hours, timeRemaining.Minutes, timeRemaining.Seconds);
+        }
+    }
+
+
     private void GameEvents_DetailChanged()
     {
         _powerUpSecondOportunityI.text = _user.userInfo.user.detail.secondChance.ToString();
@@ -246,13 +216,12 @@ public class StoreController : MonoBehaviour
 
     private void GameEvents_ExperienceChanged()
     {
-        //_totalExperienceLabel.text = _user.userInfo.user.detail.totalExperience.ToString();
+        
     }
 
     private void GameEvents_CoinsChanged()
     {
-        //_totalCoinsLabel.text = _user.userInfo.user.detail.totalCoins.ToString();
-        // _totalCoinsLabel.text = _user.userInfo.totalCoins.ToString();
+        
     }
 
     public void OpenPopUpCompra(StoreItem storeItem)
@@ -289,10 +258,6 @@ public class StoreController : MonoBehaviour
 
         _user.userInfo.user.detail.totalCoins -= (int)_currentItem.Cost;
         GameEvents.RequestUpdateDetail?.Invoke();
-        // _currentItem.PowerUp.amount += _currentItem.Amount;
-        // PlayerPrefs.GetInt(_currentItem.PowerUp.nameInPlayerPrefs, _currentItem.PowerUp.amount);
-        // PlayerPrefs.Save();
-        // _currentItem.PowerUp.Raise();
     }
 
     public string GetPowerUpName()

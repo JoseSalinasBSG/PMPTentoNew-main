@@ -21,7 +21,7 @@ MonoBehaviour:
       idContacto: 0
       clave: 
       userName: pruebaxjrivera@bsginstitute.net
-      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.p48e3QlyBkVjVS9usxAwbV737_YyBYqcXQwl3zfHIReXSxnc5Mbz4g.oJ7v0XHx9kojempGu3uZXQ.sHrKeahxysJ7tECROcf3_sWouqmPIcaeJEA-02ZwAbwQrieLZdm7WT-hl8rItedohrZbSCO_5-NJzydRx71px9zxr3fKC5VrEgzI_ytw_Ooi9040yTSyrbByTcAaQ_qoKv2_FATDL-_wcF6vOi6JNUmQ0Hv8AYj4SwUGWIdO60Tt5sdapYF586viSod1yWozR-rZty_C5nVQ9nyXEw-IoENsUdhBqBbCS0FHLGqaWdiFF8v7HajhqebQZaTtE7YGOZrYzR5qQ-PwnzihuRprefqpns1DBirvx2227cnnJ4toSghPbrzmupTgQo2LO0lNI8JEX5kdkWB_7eKiw17ho2012u4wKbQtbNbKjUmnF485LzL7waYLpotrd7KuceQQ8HLRxRjdZD0kYvLa4diGAn1B75wa35kGspL0LhS2a8TvJPUjDinakQfm2fHdAkCx0A5nKr672Gcl7kX5eQX-qRT7IRdblVxvqB4vwEG2eyd4mbLY-_7pp_BlGZyHAqvekQeFjsElJHCAkBeAUTW5I0CPWEHn-YpuTZuV_gujxbTls_T4adj8sRL7chHhS7M3qEWYsIqIjt_lJtK4DOs61YBo9vajIFwwwaSORUuEFXm_sKT4MFd2tvV4F5GSF6gE.1BHfQxdJo6seeBLD6-gK2g
+      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.7eeBMOiEMGXHHZpcvLnx7fySkO34qEsJ2HJz2sDLnm1X7HJ7QnqFtg.9LZqqX2wGThkHiTAMngoSQ._YKJW6DxkMHaPnh8b_GHZm4zCtER0YbzFM_zCP0ZGKjDSLoT2UCkMTEEMXqoPtVJDU4VKKARw3rR5O_uwfX84hsx6DMXQ7emxmp4tZVzG0NupjclgVEilFJ7FtHRUo7UWCK6pPeSaaWBlPpRd6Sh6UEsFxLw7-IPMLNfn1BHhWokAG9TrBDQUgtmhSYUAnVCL3qMzKbVu5qMYurv3ThwoL3zxjnD1JraYNmfuobZ_qBZEK-JLssZOmDEKfS-ynMCfW8Hck8MmdtgJgUt0YE5cjopeFj9J7CDQSi08jxB4GThvT_1q4XBY8seR3o2nRrpkVqUlIVYQh4w2ZgrzOAS_jAwdoau14Bjtywm2hkmMAxamdz0B20dF-TkzQSSV76SbsE6hGOOMe7i_MW1TX7-pYFQGs4r1lroJeVXFf02YvNoJZh9pa6LqEy6JZZkN3a8Pt5MQdEWfr2L-dcVipC3wpRNi9SuOBmOp8os3X4X61vj4pfRs0ClIuSPtcoTpL02frzPUcU0FrA1EQ0sXI-Pi-sVxl84tfjmN2JJFDTbvX_vFThjLvTEZLePgTKbIlbxhkV-gSo2XHny6MbOL_aGIBiih3H9YMulkwmB0_J2DZ0W3OjcwQaDqnELYtSKr3WD.ucblMQAtlT7KSkaWK1w8Ow
       tipoCarrera: 1
       correoEnc: 
       telEnc: 
@@ -30,27 +30,27 @@ MonoBehaviour:
       detail:
         idCaracteristicaGamificacion: 1
         idAlumno: 9818325
-        usernameG: testT
+        usernameG: Js
         instructorID: 1
-        totalCoins: 947
-        totalExperience: 15835
-        discardOption: 62
-        skipQuestion: 391
-        findCorrectAnswer: 281
-        increaseTime: 415
-        secondChance: 6
+        totalCoins: 93
+        totalExperience: 36180
+        discardOption: 440
+        skipQuestion: 1024
+        findCorrectAnswer: 1021
+        increaseTime: 46464
+        secondChance: 1877585
       achievements:
         id: 1
         idAlumno: 9818325
-        streak4: 54
-        streak6: 25
-        streak8: 14
-        streak10: 11
-        streak4Date: 16/11/2024 10:48:44 a. m.
-        streak6Date: 16/11/2024 10:48:00 a. m.
-        streak8Date: 16/11/2024 10:48:06 a. m.
-        streak10Date: 16/11/2024 10:48:16 a. m.
-        streak4Origin: "Modo Categor\xEDa"
+        streak4: 123
+        streak6: 42
+        streak8: 23
+        streak10: 14
+        streak4Date: 23/12/2024 9:38:09 a. m.
+        streak6Date: 21/12/2024 11:45:07 a. m.
+        streak8Date: 21/12/2024 11:45:24 a. m.
+        streak10Date: 18/12/2024 7:06:39 p. m.
+        streak4Origin: Desafio Entrenamiento
         streak6Origin: "Modo Categor\xEDa"
         streak8Origin: "Modo Categor\xEDa"
         streak10Origin: "Modo Categor\xEDa"
