@@ -9804,11 +9804,11 @@ MonoBehaviour:
   _rouletteSO: {fileID: 11400000, guid: 6836fddc85a005e45a603180395db1ee, type: 2}
   _userSO: {fileID: 11400000, guid: 2f47c0a4eb7b9cf4a9cf3eccaac92c96, type: 2}
   _rouletteTransform: {fileID: 7424930983286234624}
-  _speedRotationWithDrag: 220
-  _velocidadWithoutDrag: 0.3
-  _minSpeed: 0.02
-  _minSpeedDrag: 30
-  _deceleration: 5
+  _speedRotationWithDrag: 70
+  _velocidadWithoutDrag: 0.07
+  _minSpeed: 0.03
+  _minSpeedDrag: 70
+  _deceleration: 7
   _onInitRotation:
     m_PersistentCalls:
       m_Calls:

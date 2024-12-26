@@ -2,35 +2,31 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-//<summary>
-//Script que controla el scroll de la pantalla y el movimiento del canvas con el teclado
-//</summary>
+// <summary>
+// Este script controla el desplazamiento de la pantalla y el ajuste del canvas en respuesta al teclado virtual (en dispositivos móviles).
+// Permite que el contenido del ScrollRect se desplace para asegurar que el campo de entrada (input field) sea visible cuando el teclado está activo.
+// Además, maneja el comportamiento del canvas para ajustar su posición dependiendo de si el teclado está visible o no, asegurando una experiencia de usuario fluida al escribir en los campos de entrada.
+// Se toma en cuenta la altura del teclado y el tiempo de desplazamiento del canvas para proporcionar un movimiento suave tanto cuando el teclado aparece como cuando desaparece.
+// </summary>
 
 public class KeyboardController : MonoBehaviour
 {
-    private TMP_InputField _inputField;
     [SerializeField] private ScrollRect _scrollRect;
     [SerializeField] private RectTransform _relativeRect;
     private RectTransform _inputFieldRectTransform;
     private RectTransform _scrollRectTransform;
-
-
+    private TMP_InputField _inputField;
     private float _keyboardHeight;
     private float _timeToMoveCanvasWithKeyboard;
     private float _timeToMoveCanvasWithoutKeyboard;
     private float _movementDuration = .3f;
     private Vector3[] _scrollCoorners = new Vector3[4];
 
-
     // private TouchScreenKeyboard _keyboard;
     private InputBase _inputFieldManager;
     private void Start()
     {
-        // #if UNITY_ANDROID
-        //         TouchScreenKeyboard.Android.consumesOutsideTouches = true;
-        // #endif
         _scrollRectTransform = _scrollRect.GetComponent<RectTransform>();
-        // TouchScreenKeyboard.hideInput = false;
     }
 
     public void SetInputField(TMP_InputField rectTransform)
@@ -38,55 +34,12 @@ public class KeyboardController : MonoBehaviour
         _inputFieldRectTransform = rectTransform.GetComponent<RectTransform>();
         _inputFieldManager = rectTransform.GetComponent<InputBase>();
         _inputField = rectTransform;
-        // if (_keyboard != null)
-        // {
-        //     _keyboard.active = false;
-        //     TouchScreenKeyboard.hideInput = true;
-        // }
-        // Invoke(nameof(GetKeyboard), .3f);
     }
-
-    // public void GetKeyboard()
-    // {
-    //     if (!_inputFieldManager.IsEmail)
-    //     {
-    //         _keyboard = TouchScreenKeyboard.Open(_inputField.text, TouchScreenKeyboardType.Default, false, _inputField.multiLine, true,
-    //             false, "", _inputField.characterLimit);
-    //     }
-    //     else
-    //     {
-    //         _keyboard = TouchScreenKeyboard.Open(_inputField.text, TouchScreenKeyboardType.EmailAddress);
-    //     }
-    //     _keyboard.text = _inputField.text;
-    //     _inputField.onValueChanged.AddListener(Call);
-    // }
-    // private void Call(string arg0)
-    // {
-    //     _inputField.caretPosition = 0;
-    //     if (_inputFieldManager.IsEmail)
-    //     {
-    //         _inputFieldManager.ComproveEmailFormat(arg0);
-    //         return;
-    //     }
-    //     _inputFieldManager.ComprovePasswordFormat(arg0);
-    // }
-    // #if UNITY_ANDROID
-    //     private void LateUpdate()
-    //     {
-    //         if (_keyboard != null && _keyboard.status == TouchScreenKeyboard.Status.Visible)
-    //         {
-    //             _inputField.text = _keyboard.text;
-    //         }
-    //
-    //         
-    //     }
-    // #endif
     private void Update()
     {
         if (TouchScreenKeyboard.visible)
         {
             _timeToMoveCanvasWithoutKeyboard = 0;
-            // _scrollRect.verticalNormalizedPosition = 0;
 #if UNITY_ANDROID
 
             if (_keyboardHeight == 0)
@@ -105,8 +58,6 @@ public class KeyboardController : MonoBehaviour
             var positionTemp = new Vector2(_scrollRect.content.anchoredPosition.x, actualOffset);
 
             _scrollRectTransform.offsetMin = positionTemp;
-            // _scrollRect.verticalNormalizedPosition += (Screen.height - (_keyboardHeight + _inputFieldRectTransform )/ Screen.height;
-            // Debug.Log(_keyboardHeight + " " + _scrollRect.verticalNormalizedPosition + " " + _inputFieldRectTransform.position.y + " " + Screen.height + " " + Screen.safeArea.height + " " + Screen.safeArea.yMin + " " + Screen.safeArea.yMax);
             _scrollRectTransform.GetWorldCorners(_scrollCoorners);
             var diff = _scrollCoorners[0].y - (_inputFieldRectTransform.position.y - _inputFieldRectTransform.rect.height);
             if (diff >= 0)
@@ -123,6 +74,7 @@ public class KeyboardController : MonoBehaviour
             {
                 _timeToMoveCanvasWithoutKeyboard = Time.time;
             }
+
             var actualOffset = Mathf.SmoothStep(_keyboardHeight, 0, (Time.time - _timeToMoveCanvasWithoutKeyboard) / _movementDuration);
             var positionTemp = new Vector2(_scrollRect.content.anchoredPosition.x, actualOffset);
             _scrollRectTransform.offsetMin = positionTemp;

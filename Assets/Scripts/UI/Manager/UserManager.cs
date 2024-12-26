@@ -1,27 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using ScriptableCreator;
 using UnityEngine;
-using UnityEngine.Serialization;
+
+// <summary>
+// La clase UserManager se encarga de gestionar los datos del usuario, incluyendo la obtención de la información del usuario y su avatar.
+// Escucha los eventos relacionados con la carga de los datos del usuario y actualiza los estados correspondientes, como la carga de los detalles del usuario y avatar.
+// Además, gestiona las opciones de poder del usuario, como la oportunidad de segunda chance, tiempo adicional, opción de omitir preguntas, y encontrar la respuesta correcta.
+// Los datos del usuario se cargan desde un servicio externo utilizando credenciales almacenadas en PlayerPrefs o desde un ScriptableObject local.
+// </summary>
 
 public class UserManager : MonoBehaviour
 {
-    private ScriptableObjectUser _userSO;
     [SerializeField] private UserService _userService;
     [SerializeField] private ScripableObjectPowerUp _powerUpSecondOportunity;
     [SerializeField] private ScripableObjectPowerUp _powerUpTrueOption;
     [SerializeField] private ScripableObjectPowerUp _powerUpDeleteOption;
     [SerializeField] private ScripableObjectPowerUp _powerUpNextQuestion;
     [SerializeField] private ScripableObjectPowerUp _powerUpMoreTime;
-
+    private ScriptableObjectUser _userSO;
     public bool EndFinishLoadData, EndFinishLoadAvatar;
 
     private void OnEnable()
     {
         EndFinishLoadData = false;
         Initialize();
-        // InitPowerUpData();
         GameEvents.SuccessGetUser += GameEvent_SuccessGetUser;
         GameEvents.SuccessGetUserDetail += GameEvent_SuccessGetUserDetail;
         GameEvents.ErrorGetUser += GameEvents_ErrorGetUser;
@@ -32,8 +33,7 @@ public class UserManager : MonoBehaviour
 
     private void GameEvents_ErrorGetAvatar()
     {
-        EndFinishLoadData = true;
-        //EndFinishLoadAvatar = true;
+        EndFinishLoadAvatar = true;
     }
 
     private void GameEvents_SuccessGetAvatar()
@@ -49,13 +49,10 @@ public class UserManager : MonoBehaviour
         GameEvents.ErrorGetUserDetail -= GameEvents_ErrorGetUserDetail;
         GameEvents.SuccessGetAvatar -= GameEvents_SuccessGetAvatar;
         GameEvents.ErrorGetAvatar -= GameEvents_ErrorGetAvatar;
-
     }
 
     private void GameEvents_ErrorGetUserDetail()
     {
-        Debug.Log("error get user detail");
-
         _userSO.userInfo.haveUsername = false;
         _userSO.userInfo.haveInstructor = false;
         EndFinishLoadData = true;
@@ -63,8 +60,6 @@ public class UserManager : MonoBehaviour
 
     private void GameEvents_ErrorGetUser()
     {
-        Debug.Log("error get user");
-
         _userSO.userInfo.haveUsername = false;
         _userSO.userInfo.haveInstructor = false;
         EndFinishLoadData = true;
@@ -98,7 +93,6 @@ public class UserManager : MonoBehaviour
         _userService.GetUserAchievement(_userSO.userInfo.user.idAlumno);//obtiene datos user achievement de endpoint
     }
 
-
     void Initialize()
     {
         if (!_userSO)
@@ -120,110 +114,5 @@ public class UserManager : MonoBehaviour
             EndFinishLoadAvatar = true;
             return;
         }
-
-        // if (PlayerPrefs.HasKey("UserInfo") )
-        // {
-        //     _userSO.userInfo.haveUser= true;
-        //     _userSO.userInfo.user = JsonUtility.FromJson<User>(PlayerPrefs.GetString("UserInfo"));
-        //     GameEvents.GetUserExam?.Invoke(_userSO.userInfo.user.userName);
-        // }
-        // else
-        // {
-        //     _userSO.userInfo.haveUser = false;
-        //     _userSO.userInfo.user = new User();
-        // }
-        // if (PlayerPrefs.HasKey("HaveUsername") && PlayerPrefs.HasKey("Username"))
-        // {
-        //     _userSO.userInfo.haveUsername = true;
-        //     _userSO.userInfo.username = PlayerPrefs.GetString("Username");
-        // }
-        // else
-        // {
-        //     _userSO.userInfo.haveUsername = false;
-        //     _userSO.userInfo.username = "";
-        // }
-        //
-        // if (PlayerPrefs.HasKey("HaveInstructor"))
-        // {
-        //     _userSO.userInfo.haveInstructor = true;
-        //     _userSO.userInfo.idInstructor = PlayerPrefs.GetInt("HaveInstructor");
-        // }
-        // else
-        // {
-        //     _userSO.userInfo.haveInstructor = false;
-        //     _userSO.userInfo.idInstructor = -1;
-        // }
-        // if (PlayerPrefs.HasKey("TotalExperience"))
-        // {
-        //     _userSO.userInfo.totalExperience = PlayerPrefs.GetFloat("TotalExperience");
-        // }
-        // else
-        // {
-        //     _userSO.userInfo.totalExperience = 100;
-        // }
-        // if (PlayerPrefs.HasKey("TotalCoins"))
-        // {
-        //     _userSO.userInfo.totalCoins = PlayerPrefs.GetFloat("TotalCoins");
-        // }
-        // else
-        // {
-        //     _userSO.userInfo.totalCoins = 100;
-        // }
-        // Debug.Log("terminado 1");
-        // EndFinishLoadData = true;
     }
-
-    // private void InitPowerUpData()
-    // {
-    //     if (PlayerPrefs.HasKey("pu_secondOportunity"))
-    //     {
-    //         _powerUpSecondOportunity.amount = PlayerPrefs.GetInt("pu_secondOportunity");
-    //     }
-    //     else
-    //     {
-    //         _powerUpSecondOportunity.amount = 5;
-    //         PlayerPrefs.SetInt("pu_secondOportunity", _powerUpSecondOportunity.amount);
-    //         PlayerPrefs.Save();
-    //     }
-    //     if (PlayerPrefs.HasKey("pu_trueOption"))
-    //     {
-    //         _powerUpTrueOption.amount = PlayerPrefs.GetInt("pu_trueOption");
-    //     }
-    //     else
-    //     {
-    //         _powerUpTrueOption.amount = 5;
-    //         PlayerPrefs.SetInt("pu_trueOption", _powerUpTrueOption.amount);
-    //         PlayerPrefs.Save();
-    //     }
-    //     if (PlayerPrefs.HasKey("pu_deleteOption"))
-    //     {
-    //         _powerUpDeleteOption.amount = PlayerPrefs.GetInt("pu_deleteOption");
-    //     }
-    //     else
-    //     {
-    //         _powerUpDeleteOption.amount = 5;
-    //         PlayerPrefs.SetInt("pu_deleteOption", _powerUpDeleteOption.amount);
-    //         PlayerPrefs.Save();
-    //     }
-    //     if (PlayerPrefs.HasKey("pu_nextQuestion"))
-    //     {
-    //         _powerUpNextQuestion.amount = PlayerPrefs.GetInt("pu_nextQuestion");
-    //     }
-    //     else
-    //     {
-    //         _powerUpNextQuestion.amount = 5;
-    //         PlayerPrefs.SetInt("pu_nextQuestion", _powerUpNextQuestion.amount);
-    //         PlayerPrefs.Save();
-    //     }
-    //     if (PlayerPrefs.HasKey("pu_moreTime"))
-    //     {
-    //         _powerUpMoreTime.amount = PlayerPrefs.GetInt("pu_moreTime");
-    //     }
-    //     else
-    //     {
-    //         _powerUpMoreTime.amount = 5;
-    //         PlayerPrefs.SetInt("pu_moreTime", _powerUpMoreTime.amount);
-    //         PlayerPrefs.Save();
-    //     }
-    // }
 }

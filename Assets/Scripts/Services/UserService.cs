@@ -6,22 +6,23 @@ using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.Networking;
 
+// <summary>
+// La clase UserService gestiona las solicitudes HTTP para obtener y actualizar los detalles del usuario y sus logros en el servidor, así como obtener el avatar del usuario.
+// Los detalles del usuario se recuperan de una API externa y se almacenan en un ScriptableObject para su uso dentro del juego.
+// Además, la clase maneja la autenticación del usuario y la carga de logros, actualizando las características del usuario en el servidor mediante peticiones POST.
+// También se encarga de generar la URL del avatar del usuario y descargar la imagen SVG asociada, convirtiéndola en un sprite que se utiliza en el juego.
+// Los eventos relacionados con la actualización de datos, logros y avatar son gestionados mediante eventos de Unity.
+// </summary>
+
 public class UserService : MonoBehaviour
 {
     [SerializeField] private ScriptableObjectUser _scriptableObjectUser;
 
-    private readonly string _urlToUpdate =
-        "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
-
-    private readonly string _urlToUpdateAchievement =
-        "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/RegistrarLogroAlumno";
-
+    private readonly string _urlToUpdate = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
+    private readonly string _urlToUpdateAchievement = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/RegistrarLogroAlumno";
     private readonly string _urlToGetUser = "https://api-portalweb.bsginstitute.com/api/AspNetUser/authenticate";
-
-    private readonly string _urlToGetUserDetail =
-        "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion/";
+    private readonly string _urlToGetUserDetail = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion/";
     private readonly string urlToCredentials = "https://api-portalweb.bsginstitute.com/api/CredencialPortalPmp";
-
     private readonly string _urlToGetUserAchievements = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerLogroAlumno?IdRegistroAlumno=0&IdAlumno=";
 
     private bool _haveError;
@@ -106,12 +107,7 @@ public class UserService : MonoBehaviour
                         {
                             _scriptableObjectUser.userInfo.haveUsername = false;
                         }
-                        if (_scriptableObjectUser.userInfo.user.detail.idCaracteristicaGamificacion != 0)
-                        {
-                            //Debug.Log("idcaracteristicaGamificacion 1");
-                        }
                     }
-
                     GameEvents.SuccessGetUserDetail?.Invoke();
                 }
                 catch (Exception e)
@@ -120,7 +116,6 @@ public class UserService : MonoBehaviour
                     _scriptableObjectUser.userInfo.haveUser = false;
                 }
             }
-
             _finishRequest = true;
         }
     }
@@ -187,7 +182,6 @@ public class UserService : MonoBehaviour
             yield return request.SendWebRequest();
             if (request.responseCode >= 400)
             {
-                // _buttonChangeUsername.interactable = true;
                 Debug.Log(request.error);
             }
             else
@@ -198,19 +192,11 @@ public class UserService : MonoBehaviour
                     if (detail)
                     {
                         GameEvents.DetailChanged?.Invoke();
-                        Debug.Log(true);
-                    }
-                    else
-                    {
-                        Debug.Log(false);
-                        // _buttonChangeUsername.interactable = true;
                     }
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text + " " + e);
-                    // _scriptableObjectUser.userInfo.haveUser = false;
-                    // _buttonChangeUsername.interactable = true;
+                    Debug.Log(request.downloadHandler.text + " - " + e.Message);
                 }
             }
         }
@@ -230,31 +216,17 @@ public class UserService : MonoBehaviour
             yield return request.SendWebRequest();
             if (request.responseCode >= 400)
             {
-                // _buttonChangeUsername.interactable = true;
                 Debug.Log(request.error);
-
             }
             else
             {
                 try
                 {
                     bool achievement = Convert.ToBoolean(request.downloadHandler.text);//comprueba si devuelve true o false
-                    if (achievement)//si es true es exitoso
-                    {
-                        //GameEvents.AchievementsChanged?.Invoke();//falta llenar metodo
-                        //Debug.Log("UpdateUserAchievements");
-                    }
-                    else
-                    {
-                        //Debug.Log("UpdateUserAchievementes false");
-                        // _buttonChangeUsername.interactable = true;
-                    }
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text + " " + e);
-                    // _scriptableObjectUser.userInfo.haveUser = false;
-                    // _buttonChangeUsername.interactable = true;
+                    Debug.Log(request.downloadHandler.text + " - " + e.Message);
                 }
             }
         }

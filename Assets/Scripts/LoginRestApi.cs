@@ -7,9 +7,11 @@ using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.Networking;
 
-//<summary>
-//LoginRestApi se encarga de realizar las peticiones a la API para obtener datos del usuario
-//</summary>
+///<summary>
+/// LoginRestApi maneja la comunicación con la API para autenticar al usuario, obtener datos de gamificación, logros y avatares personalizados. 
+/// Implementa métodos para enviar solicitudes POST y GET, procesar respuestas, y actualizar datos relacionados con el usuario.
+///</summary>
+
 
 public class LoginRestApi : MonoBehaviour
 {
@@ -17,14 +19,12 @@ public class LoginRestApi : MonoBehaviour
     [SerializeField] private string urlToMoreDetail = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion";
     [SerializeField] private string urlToCredentials = "https://api-portalweb.bsginstitute.com/api/CredencialPortalPmp";
     [SerializeField] private string urlGetAchievements = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerLogroAlumno?IdRegistroAlumno=0&IdAlumno=";
-
     [SerializeField] private ScriptableObjectUser _objectUser;
     [SerializeField] private LoginController _loginController;
-    // [SerializeField] private string username = "pruebaxjrivera@bsginstitute.net";
-    // [SerializeField] private string password = "BSgrupo123";
 
     public bool _finishRequest;
     public bool _haveError;
+
     public IEnumerator PostLoginRoutine(string username, string password)
     {
         _finishRequest = _haveError = false;
@@ -58,34 +58,29 @@ public class LoginRestApi : MonoBehaviour
                 try
                 {
                     _objectUser.userInfo.user = JsonUtility.FromJson<User>(request.downloadHandler.text);//se deserializa respuesta JSON y llenamos el objeto user
-                    //Debug.Log("PostLoginCORUOTUINE");
                     if (_objectUser.userInfo.user.excepcion.excepcionGenerada)//fallo
                     {
                         _objectUser.userInfo.haveUser = false;
                         GameEvents.FailedLogin?.Invoke(_objectUser.userInfo.user.excepcion.descripcionGeneral);
-                        // _loginController._onFailedLogin?.Invoke(_objectUser.userInfo.user.excepcion.descripcionGeneral);
                     }
                     else//es exitosa
                     {
                         StartCoroutine(GetGamificationData(_objectUser.userInfo.user.idAlumno));//llamo endpoint, para llenar el detail
                         StartCoroutine(GetAchievementData(_objectUser.userInfo.user.idAlumno));//llamo endpoint, para llenar el achievement
                         _objectUser.userInfo.haveUser = true;
-                        // GameEvents.SuccessfulLogin?.Invoke(_objectUser.userInfo.user);
 
                         GameEvents.GetUserExam?.Invoke(_objectUser.userInfo.user.userName);//para crear un ID para generar un ID de examen
                         GameEvents.GetNameExam?.Invoke(_objectUser.userInfo.user.idAlumno.ToString());
-                        // _loginController._onSuccessLogin?.Invoke();
                     }
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text + " - " + e.ToString());
+                    Debug.Log(request.downloadHandler.text + " - " + e.Message);
                     _objectUser.userInfo.haveUser = false;
                     _loginController._onErrorInLogin?.Invoke("Se tuvo un error interno, vuelva a intentarlo mas tarde");
                 }
 
             }
-            // PlayerPrefs.SetString("userInfo", JsonUtility.ToJson(_objectUser.userInfo));
             _finishRequest = true;
         }
     }
@@ -123,7 +118,6 @@ public class LoginRestApi : MonoBehaviour
                     {
                         _objectUser.userInfo.haveUser = false;
                         GameEvents.FailedLogin?.Invoke(_objectUser.userInfo.user.excepcion.descripcionGeneral);
-                        // _loginController._onFailedLogin?.Invoke(_objectUser.userInfo.user.excepcion.descripcionGeneral);
                     }
                     else
                     {
@@ -139,25 +133,19 @@ public class LoginRestApi : MonoBehaviour
 
                         if (_objectUser.userInfo.user.detail.idCaracteristicaGamificacion != 0)//0 es que es un objeto nuevo y 1 que ya hay informacion almacenada
                         {
-                            //Debug.Log("idcaracteristicaGamificacion 1");
                             GameEvents.NewInstuctorId?.Invoke(_objectUser.userInfo.user.detail.instructorID);//le colocamos el id del instructor que ya se tiene para que se use
                         }
                         GameEvents.SuccessfulLogin?.Invoke(_objectUser.userInfo.user);
-
-                        // GameEvents.GetUserExam?.Invoke(_objectUser.userInfo.user.userName);
-                        // GameEvents.GetNameExam?.Invoke(_objectUser.userInfo.user.idAlumno.ToString());
-                        // _loginController._onSuccessLogin?.Invoke();
                     }
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text + " - " + e.ToString());
+                    Debug.Log(request.downloadHandler.text + " - " + e.Message);
                     _objectUser.userInfo.haveUser = false;
                     _loginController._onErrorInLogin?.Invoke("Se tuvo un error interno, vuelva a intentarlo mas tarde");
                 }
 
             }
-            // PlayerPrefs.SetString("userInfo", JsonUtility.ToJson(_objectUser.userInfo));
             _finishRequest = true;
         }
     }
@@ -195,7 +183,6 @@ public class LoginRestApi : MonoBehaviour
                     {
                         _objectUser.userInfo.haveUser = false;
                         GameEvents.FailedLogin?.Invoke(_objectUser.userInfo.user.excepcion.descripcionGeneral);
-                        // _loginController._onFailedLogin?.Invoke(_objectUser.userInfo.user.excepcion.descripcionGeneral);
                     }
                     else//es exitosa
                     {
@@ -214,9 +201,6 @@ public class LoginRestApi : MonoBehaviour
                             GameEvents.NewInstuctorId?.Invoke(_objectUser.userInfo.user.detail.instructorID);//le colocamos el id del instructor que ya se tiene para que se use
                         }
                         GameEvents.SuccessfulLogin?.Invoke(_objectUser.userInfo.user);
-                        // GameEvents.GetUserExam?.Invoke(_objectUser.userInfo.user.userName);
-                        // GameEvents.GetNameExam?.Invoke(_objectUser.userInfo.user.idAlumno.ToString());
-                        // _loginController._onSuccessLogin?.Invoke();
                     }
                 }
                 catch (Exception e)
@@ -226,7 +210,6 @@ public class LoginRestApi : MonoBehaviour
                     _loginController._onErrorInLogin?.Invoke("Se tuvo un error interno, vuelva a intentarlo mas tarde");
                 }
             }
-            // PlayerPrefs.SetString("userInfo", JsonUtility.ToJson(_objectUser.userInfo));
             _finishRequest = true;
         }
     }
@@ -344,18 +327,21 @@ public class DataLogin
     public string username;
     public string password;
 }
+
 [Serializable]
 public class DataLoginToCredentials
 {
     public string username;
     public string clave;
 }
+
 [Serializable]
 public class ResponseToAvatar
 {
     public AvatarInfo avatar;
     public bool contieneAvatar;
 }
+
 [Serializable]
 public class AvatarInfo
 {

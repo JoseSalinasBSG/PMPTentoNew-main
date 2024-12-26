@@ -1,8 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using ScriptableCreator;
 using UnityEngine;
+
+///<summary>
+/// Controlador que gestiona la recuperación y almacenamiento de preguntas incorrectas.
+/// Carga las preguntas incorrectas guardadas en `PlayerPrefs` al habilitar el objeto
+/// y las almacena en un objeto ScriptableObject.
+///</summary>
 
 public class IncorrectQuestionsController : MonoBehaviour
 {
@@ -14,8 +17,6 @@ public class IncorrectQuestionsController : MonoBehaviour
         {
             var stringQuestions = PlayerPrefs.GetString("IncorrectQuestions");
             _incorrectQuestions.questions = JsonUtility.FromJson<IncorrectQuestionsContainer>(stringQuestions);
-            // AudioEvents_OnSFXVolumeChanged();
-            Debug.Log(stringQuestions);
         }
         else
         {
