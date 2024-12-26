@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad9f6be95d8c3446849ae19b031baed, type: 3}
   m_Name: Power Up Second Oportunity
   m_EditorClassIdentifier: 
-  amount: 0
+  amount: 7584
   unitCost: 120
   discount: 36
   nameInPlayerPrefs: pu_secondOportunity

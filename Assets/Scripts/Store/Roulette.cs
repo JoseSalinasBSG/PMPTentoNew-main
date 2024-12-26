@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -46,29 +44,6 @@ public class Roulette : MonoBehaviour
     private bool _useRoulette;
     private RouletteItem selecetdItem;
 
-
-    private void Start()
-    {
-        // Modo 1
-        // for (int i = 0; i < _rouletteSO.RouletteItems.Length; i++)
-        // {
-        //     var s = Random.Range(0, Math.Min(4, freeFieldsTotal) + 1);
-        //     for (int j = 0; j < s; j++)
-        //     {
-        //         var randomIndex = Random.Range(0, _rouletteItems.Count); 
-        //         
-        //         _rouletteItems[randomIndex].SetData(_rouletteSO.RouletteItems[i]);
-        //         Debug.Log(_rouletteSO.RouletteItems[i]._ItemRouletteSo.name + " campo: " + _rouletteItems[randomIndex].name);
-        //         _rouletteItems.RemoveAt(randomIndex);
-        //     }
-        //     freeFieldsTotal -= s;
-        //     
-        // }
-        // Modo 2
-
-        
-    }
-
     private void OnEnable()
     {
         if (PlayerPrefs.HasKey("UseRoulette"))
@@ -83,7 +58,6 @@ public class Roulette : MonoBehaviour
             return;
         }
         GenerateRoulette();
-
     }
 
     //GENERAR RULETA
@@ -115,15 +89,6 @@ public class Roulette : MonoBehaviour
             _rouletteItems[i].SetData(_rouletteSO.RouletteItems[randomData]);//con ese numero aleatorio se decide que item de la lista de items a aleatorizar se usara y con el metodo SetData se setea en el item i
             // _rouletteItems.RemoveAt(s);
         }
-        /*
-        //PARA ESPACIO VACIO        
-        var temp =_rouletteItems.FirstOrDefault(x => !x.HaveInformation);//busca el primer elemento de la coleccion donde HaveInformation es false
-        if (temp != null)
-        {
-            temp.ImageItem.color = new Color(0, 0, 0, 0);
-            temp.AmountLabel.text = String.Empty;
-        }
-        */
     }
 
     void Update()
