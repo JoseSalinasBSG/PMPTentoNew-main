@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -200,22 +201,21 @@ public class Roulette : MonoBehaviour
             switch (item.powerUpSO.nameInPlayerPrefs)
             {
                 case "pu_deleteOption":
-                    _userSO.userInfo.user.detail.discardOption += item.powerUpSO.amount;
+                    _userSO.userInfo.user.detail.discardOption += selecetdItem.Amount;
                     break;
                 case "pu_moreTime":
-                    _userSO.userInfo.user.detail.increaseTime += item.powerUpSO.amount;
+                    _userSO.userInfo.user.detail.increaseTime += selecetdItem.Amount;
                     break;
                 case "pu_nextQuestion":
-                    _userSO.userInfo.user.detail.skipQuestion += item.powerUpSO.amount;
+                    _userSO.userInfo.user.detail.skipQuestion += selecetdItem.Amount;
                     break;
                 case "pu_secondOportunity":
-                    _userSO.userInfo.user.detail.secondChance += item.powerUpSO.amount;
+                    _userSO.userInfo.user.detail.secondChance += selecetdItem.Amount;
                     break;
                 case "pu_trueOption":
-                    _userSO.userInfo.user.detail.findCorrectAnswer += item.powerUpSO.amount;
+                    _userSO.userInfo.user.detail.findCorrectAnswer += selecetdItem.Amount;
                     break;
             }
-            item.powerUpSO.amount += selecetdItem.Amount;
             GameEvents.RequestUpdateDetail?.Invoke();
         }
         else if (selecetdItem.RouletteItemData._ItemRouletteSo.GetType() == typeof(CoinsItemRoulette))

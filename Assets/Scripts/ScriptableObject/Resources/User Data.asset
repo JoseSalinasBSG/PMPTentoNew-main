@@ -21,7 +21,7 @@ MonoBehaviour:
       idContacto: 0
       clave: 
       userName: pruebaxjrivera@bsginstitute.net
-      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.7eeBMOiEMGXHHZpcvLnx7fySkO34qEsJ2HJz2sDLnm1X7HJ7QnqFtg.9LZqqX2wGThkHiTAMngoSQ._YKJW6DxkMHaPnh8b_GHZm4zCtER0YbzFM_zCP0ZGKjDSLoT2UCkMTEEMXqoPtVJDU4VKKARw3rR5O_uwfX84hsx6DMXQ7emxmp4tZVzG0NupjclgVEilFJ7FtHRUo7UWCK6pPeSaaWBlPpRd6Sh6UEsFxLw7-IPMLNfn1BHhWokAG9TrBDQUgtmhSYUAnVCL3qMzKbVu5qMYurv3ThwoL3zxjnD1JraYNmfuobZ_qBZEK-JLssZOmDEKfS-ynMCfW8Hck8MmdtgJgUt0YE5cjopeFj9J7CDQSi08jxB4GThvT_1q4XBY8seR3o2nRrpkVqUlIVYQh4w2ZgrzOAS_jAwdoau14Bjtywm2hkmMAxamdz0B20dF-TkzQSSV76SbsE6hGOOMe7i_MW1TX7-pYFQGs4r1lroJeVXFf02YvNoJZh9pa6LqEy6JZZkN3a8Pt5MQdEWfr2L-dcVipC3wpRNi9SuOBmOp8os3X4X61vj4pfRs0ClIuSPtcoTpL02frzPUcU0FrA1EQ0sXI-Pi-sVxl84tfjmN2JJFDTbvX_vFThjLvTEZLePgTKbIlbxhkV-gSo2XHny6MbOL_aGIBiih3H9YMulkwmB0_J2DZ0W3OjcwQaDqnELYtSKr3WD.ucblMQAtlT7KSkaWK1w8Ow
+      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.bfWDTAJDXgrT8CuwqoGzhFcH2mEWgVp2bF3YUSfpuusCqkCPm6JjvA.ddpTcDGj-QvAmuHwUs_NRg.MY1-dgOwshmHe8mJkj1H5apwtBnEMf53HqdRXhnn8h5WTZMUyxvfp3lbRP8sGjFFAH7YTsGocClz0v5qaMVflMD99URVC8vpczZlZdR8lkc3oiPWs8U95v0RoIAIlXfqwHSiTdUmaqv-zINoWwNj36yhhnZEZgb87O8UEh5H7dye_TIGVpUwiOV_bs9cBSItUCObOvvNaQ2mSjcs9J5QE8Rm9UVnvVY9JHbj2XpYwEDcSwnVhZn16YJa7_OVQ_M_WfTfdAYoQ-x16QqFM6bRufKva47Rk9CNm8NkTXxash0Crw4VaxbKupqci91pg4xBDT-s1QgHZKPO1BpxOyrzTX6ugvtCjrJkvklvcgD2FSVyHnyhwGwCyvJ2AuCQGNyD-VPi0VRw9QfcNpwJ5ze7er0u26dqjZMR3HanU5i0jzh7sTsPBpsIoj341zV8bHdslHn1E1af2ImCfcr7IrEOV5WvUsMyv6F3s0r2hPvVWfALea08SAOBnRL8ihIxXz7k_gM6C_kPWcLQSsLIgAUhcA1AzLiYazBLo9qXZlhYiqsn34jgOhvC7b5lTEBq125Xe31uEeBxUQ-3ZxoOTOVwXmiCBChvE_w-6PvEo8pcP3rU0qyB_OU0-Sqdd8pDJ-Ku.kJl03pIAOnI4UNjjdp_d6Q
       tipoCarrera: 1
       correoEnc: 
       telEnc: 
@@ -30,23 +30,23 @@ MonoBehaviour:
       detail:
         idCaracteristicaGamificacion: 1
         idAlumno: 9818325
-        usernameG: Js
-        instructorID: 1
-        totalCoins: 93
-        totalExperience: 36180
-        discardOption: 440
-        skipQuestion: 1024
-        findCorrectAnswer: 1021
-        increaseTime: 46464
-        secondChance: 1877585
+        usernameG: test
+        instructorID: 0
+        totalCoins: 398
+        totalExperience: 36960
+        discardOption: 786
+        skipQuestion: 57
+        findCorrectAnswer: 548
+        increaseTime: 541
+        secondChance: 345
       achievements:
         id: 1
         idAlumno: 9818325
-        streak4: 123
+        streak4: 124
         streak6: 42
         streak8: 23
         streak10: 14
-        streak4Date: 23/12/2024 9:38:09 a. m.
+        streak4Date: 26/12/2024 11:21:32 a. m.
         streak6Date: 21/12/2024 11:45:07 a. m.
         streak8Date: 21/12/2024 11:45:24 a. m.
         streak10Date: 18/12/2024 7:06:39 p. m.
@@ -64,7 +64,7 @@ MonoBehaviour:
     haveUser: 1
     haveUsername: 1
     haveInstructor: 1
-    idInstructor: 1
+    idInstructor: 0
     haveAvatar: 1
     urlAvatar: https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Round&hairColor=Black&facialHairType=BeardMedium&facialHairColor=Black&clotheType=ShirtVNeck&clotheColor=Red&eyeType=Side&eyebrowType=DefaultNatural&mouthType=Disbelief&skinColor=Light
     spriteAvatar: {fileID: 0}
