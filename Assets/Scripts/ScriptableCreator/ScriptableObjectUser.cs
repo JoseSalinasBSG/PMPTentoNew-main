@@ -150,21 +150,9 @@ public class ScriptableObjectUser : ScriptableObject
     {
         userInfo.haveUsername = true;
         // userInfo.username = username;
-<<<<<<< HEAD
-
-        //PlayerPrefs.SetString("Username",username);
-        //PlayerPrefs.SetInt("HaveUsername",1);
-        //PlayerPrefs.Save();
-
-        _dataStorageManager.Save("Username", username);
-        _dataStorageManager.Save("HaveUsername", 1);
-
-
-=======
         PlayerPrefs.SetString("Username",username);
         PlayerPrefs.SetInt("HaveUsername",1);
         PlayerPrefs.Save();
->>>>>>> parent of 3771358 (fix: [Refactor] SaveData with Adapter Pattern)
         //GameEvents.UsernameSelected?.Invoke();
     }
 

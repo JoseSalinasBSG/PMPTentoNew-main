@@ -61,14 +61,6 @@ public class StoreController : MonoBehaviour
     private StoreItem _currentItem;
 
     public float CoinsFromUser => _user.userInfo.user.detail.totalCoins;
-<<<<<<< HEAD
-
-    private void Start()
-    {
-    }
-
-=======
->>>>>>> parent of 3771358 (fix: [Refactor] SaveData with Adapter Pattern)
     private void Update()
     {
         if (PlayerPrefs.HasKey("UseRoulette"))
@@ -82,13 +74,7 @@ public class StoreController : MonoBehaviour
 
     private void OnEnable()
     {
-<<<<<<< HEAD
-        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
-        //if (PlayerPrefs.HasKey("UseRoulette"))//verifica si fue usada la ruleta
-        if (_dataStorageManager.HasKey("UseRoulette"))//verifica si fue usada la ruleta
-=======
         if (PlayerPrefs.HasKey("UseRoulette"))//verifica si fue usada la ruleta
->>>>>>> parent of 3771358 (fix: [Refactor] SaveData with Adapter Pattern)
         {
             //Debug.Log(DateTime.Parse(PlayerPrefs.GetString("UseRoulette")));
             //var timeUsedRoulette = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));

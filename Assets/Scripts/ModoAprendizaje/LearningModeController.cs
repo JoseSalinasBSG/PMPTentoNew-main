@@ -55,13 +55,7 @@ public class LearningModeController : MonoBehaviour
 
     private void OnEnable()
     {
-<<<<<<< HEAD
-        _dataStorageManager = new DataStorageManager(new PlayerPrefsStorageAdapter());
-        //if (!PlayerPrefs.HasKey(PREFS_INFO_LEARNING_MODE))
-        if (!_dataStorageManager.HasKey(PREFS_INFO_LEARNING_MODE))
-=======
         if (!PlayerPrefs.HasKey(PREFS_INFO_LEARNING_MODE))
->>>>>>> parent of 3771358 (fix: [Refactor] SaveData with Adapter Pattern)
         {
             haveInformationStored = false;
         }
