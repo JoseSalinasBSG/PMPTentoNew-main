@@ -8,11 +8,11 @@ namespace PowerUp
         #region Variables
 
         [SerializeField] private ScriptableObjectUser _objectUser;
-        [SerializeField] private ScripableObjectPowerUp _powerUpSecondOportunity;
-        [SerializeField] private ScripableObjectPowerUp _powerUpTrueOption;
-        [SerializeField] private ScripableObjectPowerUp _powerUpDeleteOption;
-        [SerializeField] private ScripableObjectPowerUp _powerUpNextQuestion;
-        [SerializeField] private ScripableObjectPowerUp _powerUpMoreTime;        
+        [SerializeField] private PowerUpSO _powerUpSecondOportunity;
+        [SerializeField] private PowerUpSO _powerUpTrueOption;
+        [SerializeField] private PowerUpSO _powerUpDeleteOption;
+        [SerializeField] private PowerUpSO _powerUpNextQuestion;
+        [SerializeField] private PowerUpSO _powerUpMoreTime;        
         [SerializeField] private PowerUpListener _powerUpSecondOportunityI;
         [SerializeField] private PowerUpListener _powerUpTrueOptionI;
         [SerializeField] private PowerUpListener _powerUpDeleteOptionI;

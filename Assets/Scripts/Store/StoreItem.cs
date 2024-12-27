@@ -17,78 +17,82 @@ using UnityEngine.UI;
 /// </summary>
 
 
-public class StoreItem : MonoBehaviour
+namespace Store
 {
-    [SerializeField] private TextMeshProUGUI _amountLabel;
-    [SerializeField] private TextMeshProUGUI _costLabel;
-    [SerializeField] private ScripableObjectPowerUp _powerUp;
-    [SerializeField] private Image _image;
-    [SerializeField] private ButtonAnimation _buttonAnimation;
-
-    private StoreController _storeController;
-    public Action<int> SendEvent;
-    private float _cost;
-    private int _amount;
-    public float Cost => _cost;
-    public string NamePowerUp => _powerUp.nameInPlayerPrefs;
-    public int Amount => _amount;
-    public ScripableObjectPowerUp PowerUp => _powerUp;
-    public Sprite SpriteFromImage => _image.sprite;
-
-    public void SetData(StoreController storeController, float cost, int amount, Sprite sprite, ScripableObjectPowerUp powerUp)
+    public class StoreItem : MonoBehaviour
     {
-        _storeController = storeController;
+        [SerializeField] private TextMeshProUGUI _amountLabel;
+        [SerializeField] private TextMeshProUGUI _costLabel;
+        [SerializeField] private PowerUpSO _powerUp;
+        [SerializeField] private Image _image;
+        [SerializeField] private ButtonAnimation _buttonAnimation;
 
-        PassScrollEvents passScroll = gameObject.GetComponent<PassScrollEvents>();
-        _cost = cost;
-        _amount = amount;
-        if (_cost > storeController.CoinsFromUser)
+        private StoreController _storeController;
+        public Action<int> SendEvent;
+        private float _cost;
+        private int _amount;
+        public float Cost => _cost;
+        public string NamePowerUp => _powerUp.nameInPlayerPrefs;
+        public int Amount => _amount;
+        public PowerUpSO PowerUp => _powerUp;
+        public Sprite SpriteFromImage => _image.sprite;
+
+        public void SetData(StoreController storeController, float cost, int amount, Sprite sprite, PowerUpSO powerUp)
         {
-            passScroll.enabled = false;
-            _costLabel.color = Color.red;
-            _buttonAnimation.DisableButton();
+            _storeController = storeController;
+
+            PassScrollEvents passScroll = gameObject.GetComponent<PassScrollEvents>();
+            _cost = cost;
+            _amount = amount;
+            if (_cost > storeController.CoinsFromUser)
+            {
+                passScroll.enabled = false;
+                _costLabel.color = Color.red;
+                _buttonAnimation.DisableButton();
+            }
+            else
+            {
+                passScroll.enabled = true;
+                _costLabel.color = Color.black;
+                _buttonAnimation.EnableButton();
+            }
+            _costLabel.text = $"{_cost}";
+            _amountLabel.text = $"x{_amount}";
+            _image.sprite = sprite;
+            _powerUp = powerUp;
         }
-        else
+
+        public void BuyItem()
         {
-            passScroll.enabled = true;
-            _costLabel.color = Color.black;
-            _buttonAnimation.EnableButton();
+            if (_cost > _storeController.CoinsFromUser)
+                return;
+
+            _storeController.OpenPopUpCompra(this);
         }
-        _costLabel.text = $"{_cost}";
-        _amountLabel.text = $"x{_amount}";
-        _image.sprite = sprite;
-        _powerUp = powerUp;
-    }
 
-    public void BuyItem()
-    {
-        if (_cost > _storeController.CoinsFromUser)
-            return;
-
-        _storeController.OpenPopUpCompra(this);
-    }
-
-    private void OnEnable()
-    {
-        GameEvents.CoinsChanged += GameEvents_CoinsChanged;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.CoinsChanged -= GameEvents_CoinsChanged;
-    }
-
-    private void GameEvents_CoinsChanged()
-    {
-        if (_cost > _storeController.CoinsFromUser)
+        private void OnEnable()
         {
-            _costLabel.color = Color.red;
-            _buttonAnimation.DisableButton();
+            GameEvents.CoinsChanged += GameEvents_CoinsChanged;
         }
-        else
+
+        private void OnDisable()
         {
-            _costLabel.color = Color.black;
-            _buttonAnimation.EnableButton();
+            GameEvents.CoinsChanged -= GameEvents_CoinsChanged;
+        }
+
+        private void GameEvents_CoinsChanged()
+        {
+            if (_cost > _storeController.CoinsFromUser)
+            {
+                _costLabel.color = Color.red;
+                _buttonAnimation.DisableButton();
+            }
+            else
+            {
+                _costLabel.color = Color.black;
+                _buttonAnimation.EnableButton();
+            }
         }
     }
+
 }

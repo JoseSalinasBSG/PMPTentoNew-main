@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace ScriptableCreator
 {
-    [CreateAssetMenu(menuName = "Power Up", fileName = "Power Up")]
-    public class ScripableObjectPowerUp : ScriptableObject
+    //[CreateAssetMenu(menuName = "Power Up", fileName = "Power Up")]
+    public abstract class PowerUpSO : ScriptableObject
     {
         public int amount;
         public float unitCost;
@@ -14,7 +14,7 @@ namespace ScriptableCreator
 
         private List<PowerUpListener> _listeners = new List<PowerUpListener>();
 
-        public void Raise()
+        public virtual void Raise()
         {
             for (int i = _listeners.Count - 1; i >= 0; i--)
             {
@@ -22,15 +22,20 @@ namespace ScriptableCreator
             }
         }
 
-        public void RegisterListener(PowerUpListener listener)
+        public virtual void RegisterListener(PowerUpListener listener)
         {
             _listeners.Add(listener);
         }
 
-        public void UnregisterListener(PowerUpListener listener)
+        public virtual void UnregisterListener(PowerUpListener listener)
         {
             _listeners.Remove(listener);
         }
+
+        public abstract void ApplyPowerUp(ScriptableObjectUser scriptableObjectUser, int amount);
+        public abstract int GetAmount(ScriptableObjectUser scriptableObjectUser);
+
+        public abstract string GetName();
     }
 
 }

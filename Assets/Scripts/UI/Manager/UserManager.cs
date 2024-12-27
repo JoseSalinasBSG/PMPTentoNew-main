@@ -11,11 +11,11 @@ using UnityEngine;
 public class UserManager : MonoBehaviour
 {
     [SerializeField] private UserService _userService;
-    [SerializeField] private ScripableObjectPowerUp _powerUpSecondOportunity;
-    [SerializeField] private ScripableObjectPowerUp _powerUpTrueOption;
-    [SerializeField] private ScripableObjectPowerUp _powerUpDeleteOption;
-    [SerializeField] private ScripableObjectPowerUp _powerUpNextQuestion;
-    [SerializeField] private ScripableObjectPowerUp _powerUpMoreTime;
+    [SerializeField] private PowerUpSO _powerUpSecondOportunity;
+    [SerializeField] private PowerUpSO _powerUpTrueOption;
+    [SerializeField] private PowerUpSO _powerUpDeleteOption;
+    [SerializeField] private PowerUpSO _powerUpNextQuestion;
+    [SerializeField] private PowerUpSO _powerUpMoreTime;
     private ScriptableObjectUser _userSO;
     public bool EndFinishLoadData, EndFinishLoadAvatar;
 
