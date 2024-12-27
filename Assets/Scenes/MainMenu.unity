@@ -309,7 +309,7 @@ RectTransform:
   m_Father: {fileID: 1657819662}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.64025646, y: 1}
+  m_AnchorMax: {x: 0.64028573, y: 1}
   m_AnchoredPosition: {x: 0, y: -1.7249999}
   m_SizeDelta: {x: 20, y: 11.29}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5356,7 +5356,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 37449456}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.64025646
+  m_Size: 0.64028573
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12383,7 +12383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.000061, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1134340376464040862
@@ -13650,8 +13650,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 947.32007, y: -90.65814}
-  m_SizeDelta: {x: 265.77335, y: 161.31628}
+  m_AnchoredPosition: {x: 947.39484, y: -90.643005}
+  m_SizeDelta: {x: 265.79828, y: 161.28601}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1530193868733019514
 MonoBehaviour:
@@ -15064,7 +15064,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.000061, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &2021700860782730264
@@ -16226,8 +16226,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 480.93335, y: -350}
-  m_SizeDelta: {x: 961.8667, y: 700}
+  m_AnchoredPosition: {x: 480.99573, y: -350}
+  m_SizeDelta: {x: 961.99146, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &2446577796022688123
 RectTransform:
@@ -16596,7 +16596,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8007331836931732196}
   m_HandleRect: {fileID: 9099302459662459706}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -23601,7 +23601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -19.99997, y: 0}
   m_SizeDelta: {x: -72.136, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4463662550760254579
@@ -26770,8 +26770,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1263.0934, y: -90.65814}
-  m_SizeDelta: {x: 265.77335, y: 161.31628}
+  m_AnchoredPosition: {x: 1263.1931, y: -90.643005}
+  m_SizeDelta: {x: 265.79828, y: 161.28601}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &5090491790691343026
 MonoBehaviour:
@@ -33630,8 +33630,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 315.77335, y: -90.65814}
-  m_SizeDelta: {x: 265.77335, y: 161.31628}
+  m_AnchoredPosition: {x: 315.79828, y: -90.643005}
+  m_SizeDelta: {x: 265.79828, y: 161.28601}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &6457623386042042440
 MonoBehaviour:
@@ -37834,8 +37834,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 631.5467, y: -90.65814}
-  m_SizeDelta: {x: 265.77335, y: 161.31628}
+  m_AnchoredPosition: {x: 631.59656, y: -90.643005}
+  m_SizeDelta: {x: 265.79828, y: 161.28601}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &7801433031470832926
 GameObject:
@@ -40646,21 +40646,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _user: {fileID: 11400000, guid: 2f47c0a4eb7b9cf4a9cf3eccaac92c96, type: 2}
-  _powerUpSecondOportunity: {fileID: 11400000, guid: 72a1f2080ebcfe54199410c9f34b42ef, type: 2}
-  _powerUpTrueOption: {fileID: 11400000, guid: b90c8e18f785bf24690c106e176124f7, type: 2}
-  _powerUpDeleteOption: {fileID: 11400000, guid: 5f4ca4ad9839dcf499046b6730956fc5, type: 2}
-  _powerUpNextQuestion: {fileID: 11400000, guid: baa0e82d7d157af4c91e4fff3d3b4f1a, type: 2}
-  _powerUpMoreTime: {fileID: 11400000, guid: 9026b1be2dac5c140aaca71b68c20ffb, type: 2}
-  _powerUpSecondOportunityI: {fileID: 3007422013438305047}
-  _powerUpTrueOptionI: {fileID: 1840234731120972973}
-  _powerUpDeleteOptionI: {fileID: 4164671430728612707}
-  _powerUpNextQuestionI: {fileID: 6696715688146983852}
-  _powerUpMoreTimeI: {fileID: 4191596582920762179}
-  _spriteSecondOportunity: {fileID: 21300000, guid: aa7fbdb488bc5224d8b8d014e3c686ce, type: 3}
-  _spriteTrueOption: {fileID: 21300000, guid: 15f74bf298135074aa4377da32ce6c5b, type: 3}
-  _spriteDeleteOption: {fileID: 21300000, guid: e9228dc8260059e40a6753dd6f465ec3, type: 3}
-  _spriteNextQuestion: {fileID: 21300000, guid: 7c7d036b2a2f16a4f88918637f123263, type: 3}
-  _spriteMoreTime: {fileID: 21300000, guid: 2f5794210ada48a4f8d2becd53123310, type: 3}
+  _powerUpConfigList:
+  - storeSectionName: Segunda Oportunidad
+    powerUpSO: {fileID: 11400000, guid: 51afdcb7ae36b94489b601cc27ff8a66, type: 2}
+    powerUpText: {fileID: 6171208573204180427}
+    powerUpSprite: {fileID: 21300000, guid: aa7fbdb488bc5224d8b8d014e3c686ce, type: 3}
+  - storeSectionName: Saltar Pregunta
+    powerUpSO: {fileID: 11400000, guid: b746d5419555b6642ae6a4da24396eb2, type: 2}
+    powerUpText: {fileID: 5668325258688633547}
+    powerUpSprite: {fileID: 21300000, guid: 7c7d036b2a2f16a4f88918637f123263, type: 3}
+  - storeSectionName: Descartar Alternativa
+    powerUpSO: {fileID: 11400000, guid: cb9b975908e10fb4ea64c23d19aa0326, type: 2}
+    powerUpText: {fileID: 491638065836390620}
+    powerUpSprite: {fileID: 21300000, guid: e9228dc8260059e40a6753dd6f465ec3, type: 3}
+  - storeSectionName: Mostrar Respuesta
+    powerUpSO: {fileID: 11400000, guid: 10d9dd5db3a55a9449afbfa6d308699b, type: 2}
+    powerUpText: {fileID: 7288614794900382049}
+    powerUpSprite: {fileID: 21300000, guid: 15f74bf298135074aa4377da32ce6c5b, type: 3}
+  - storeSectionName: Aumentar Tiempo
+    powerUpSO: {fileID: 11400000, guid: 3c22dad94d9a97240aeae42de5421f74, type: 2}
+    powerUpText: {fileID: 8482425719022040304}
+    powerUpSprite: {fileID: 21300000, guid: 2f5794210ada48a4f8d2becd53123310, type: 3}
   _GeneralContainer: {fileID: 7485037734933617384}
   _storeSectionPrefab: {fileID: 569946863229316933, guid: 7b5334a1a9b3fee499a834fcd450975e, type: 3}
   _storeItemPrefab: {fileID: 1251550018962827328, guid: c55d03d0ec9f51649bad7e650ebdb11c, type: 3}
@@ -42824,8 +42830,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -90.65814}
-  m_SizeDelta: {x: 265.77335, y: 161.31628}
+  m_AnchoredPosition: {x: 0, y: -90.643005}
+  m_SizeDelta: {x: 265.79828, y: 161.28601}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &9133007329117290281
 MonoBehaviour:

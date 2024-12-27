@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using PowerUp;
 using UnityEngine;
 
-namespace ScriptableCreator
+namespace ScriptableCreator.PowerUpSOC
 {
     //[CreateAssetMenu(menuName = "Power Up", fileName = "Power Up")]
     public abstract class PowerUpSO : ScriptableObject
@@ -32,7 +32,7 @@ namespace ScriptableCreator
             _listeners.Remove(listener);
         }
 
-        public abstract void ApplyPowerUp(ScriptableObjectUser scriptableObjectUser, int amount);
+        public abstract void Apply(ScriptableObjectUser scriptableObjectUser, int amount);
         public abstract int GetAmount(ScriptableObjectUser scriptableObjectUser);
 
         public abstract string GetName();

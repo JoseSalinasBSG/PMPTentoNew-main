@@ -1,4 +1,4 @@
-using ScriptableCreator;
+using ScriptableCreator.PowerUpSOC;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Roulette-PowerUp", fileName = "RoulettePowerUpSO")]

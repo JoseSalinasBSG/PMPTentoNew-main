@@ -1,4 +1,4 @@
-using ScriptableCreator;
+using ScriptableCreator.PowerUpSOC;
 using UnityEngine;
 
 namespace PowerUp
@@ -55,7 +55,7 @@ namespace PowerUp
 
             if (_powerUpMoreTimeI)
             {
-                _powerUpMoreTimeI.Amount = detail.increaseTime;
+                _powerUpMoreTimeI.Amount = detail.moreTime;
             }
         } 
 
@@ -140,7 +140,7 @@ namespace PowerUp
         
         public void UseMoreTime()
         {
-            _objectUser.userInfo.user.detail.increaseTime--;            
+            _objectUser.userInfo.user.detail.moreTime--;            
             _currentListener = _powerUpMoreTimeI;
             GameEvents.RequestUpdateDetail?.Invoke();
         }

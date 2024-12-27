@@ -1,4 +1,4 @@
-using ScriptableCreator;
+using ScriptableCreator.PowerUpSOC;
 using UnityEngine;
 
 // <summary>
@@ -79,7 +79,7 @@ public class UserManager : MonoBehaviour
         }
 
         _powerUpDeleteOption.amount = _userSO.userInfo.user.detail.discardOption;
-        _powerUpMoreTime.amount = _userSO.userInfo.user.detail.increaseTime;
+        _powerUpMoreTime.amount = _userSO.userInfo.user.detail.moreTime;
         _powerUpNextQuestion.amount = _userSO.userInfo.user.detail.skipQuestion;
         _powerUpSecondOportunity.amount = _userSO.userInfo.user.detail.secondChance;
         _powerUpTrueOption.amount = _userSO.userInfo.user.detail.findCorrectAnswer;

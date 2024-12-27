@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Button;
-using ScriptableCreator;
+using PowerUp;
+using ScriptableCreator.PowerUpSOC;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,26 +22,7 @@ namespace Store
         [SerializeField] private ScriptableObjectUser _user;
 
         [Header("Power ups scriptable objects")]
-        [SerializeField] private PowerUpSO _powerUpSecondOportunity;
-        [SerializeField] private PowerUpSO _powerUpTrueOption;
-        [SerializeField] private PowerUpSO _powerUpDeleteOption;
-        [SerializeField] private PowerUpSO _powerUpNextQuestion;
-        [SerializeField] private PowerUpSO _powerUpMoreTime;
-        private bool areItemsInstanciated = false;
-
-        [Header("Power ups interfaces")]
-        [SerializeField] private TextMeshProUGUI _powerUpSecondOportunityI;
-        [SerializeField] private TextMeshProUGUI _powerUpTrueOptionI;
-        [SerializeField] private TextMeshProUGUI _powerUpDeleteOptionI;
-        [SerializeField] private TextMeshProUGUI _powerUpNextQuestionI;
-        [SerializeField] private TextMeshProUGUI _powerUpMoreTimeI;
-
-        [Header("Power ups scriptable objects")]
-        [SerializeField] private Sprite _spriteSecondOportunity;
-        [SerializeField] private Sprite _spriteTrueOption;
-        [SerializeField] private Sprite _spriteDeleteOption;
-        [SerializeField] private Sprite _spriteNextQuestion;
-        [SerializeField] private Sprite _spriteMoreTime;
+        [SerializeField] private List<PowerUpConfig> _powerUpConfigList;
 
         [Header("General")]
         [SerializeField] private Transform _GeneralContainer;
@@ -57,6 +40,8 @@ namespace Store
         [SerializeField] private ButtonAnimation _rouletteButton;
         [SerializeField] private ButtonAnimation _rouletteButtonUsed;
         [SerializeField] private TextMeshProUGUI _timeRemainingRoulette;
+
+        private bool areItemsInstanciated = false;
         private StoreItem _currentItem;
         public float CoinsFromUser => _user.userInfo.user.detail.totalCoins;
         private void OnEnable()
@@ -70,101 +55,9 @@ namespace Store
             {
                 return;
             }
-            var itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
-            // Segunda oportunidad
-            itemInstantiaded.SetData("Segunda oportunidad");
-            for (int i = 0; i < 3; i++)
-            {
-                var storeItem = Instantiate(_storeItemPrefab, itemInstantiaded.Container);
-                float costItem = 0;
-                if (i == 0)
-                {
-                    costItem = _powerUpSecondOportunity.unitCost;
-                }
-                else
-                {
-                    costItem = (_powerUpSecondOportunity.unitCost * (i + 1) - _powerUpSecondOportunity.discount * (i + 1));
-                }
 
-                storeItem.SetData(this, costItem, i + 1, _spriteSecondOportunity, _powerUpSecondOportunity);
-            }
+            InstantiateStoreItems();
 
-            // Verdadera opcion
-            itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
-            itemInstantiaded.SetData("Mostrar respuesta");
-            for (int i = 0; i < 3; i++)
-            {
-                var storeItem = Instantiate(_storeItemPrefab, itemInstantiaded.Container);
-                float costItem = 0;
-                if (i == 0)
-                {
-                    costItem = _powerUpTrueOption.unitCost;
-                }
-                else
-                {
-                    costItem = (_powerUpTrueOption.unitCost * (i + 1) - _powerUpTrueOption.discount * (i + 1));
-                }
-
-                storeItem.SetData(this, costItem, i + 1, _spriteTrueOption, _powerUpTrueOption);
-            }
-
-            // Descartar alternativa
-            itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
-            itemInstantiaded.SetData("Descartar alternativa");
-            for (int i = 0; i < 3; i++)
-            {
-                var storeItem = Instantiate(_storeItemPrefab, itemInstantiaded.Container);
-                float costItem = 0;
-                if (i == 0)
-                {
-                    costItem = _powerUpDeleteOption.unitCost;
-                }
-                else
-                {
-                    costItem = (_powerUpDeleteOption.unitCost * (i + 1) - _powerUpDeleteOption.discount * (i + 1));
-                }
-
-                storeItem.SetData(this, costItem, i + 1, _spriteDeleteOption, _powerUpDeleteOption);
-            }
-
-            // Siguiente pregunta
-            itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
-            itemInstantiaded.SetData("Saltar pregunta");
-            for (int i = 0; i < 3; i++)
-            {
-                var storeItem = Instantiate(_storeItemPrefab, itemInstantiaded.Container);
-                float costItem = 0;
-                if (i == 0)
-                {
-                    costItem = _powerUpNextQuestion.unitCost;
-                }
-                else
-                {
-                    costItem = (_powerUpNextQuestion.unitCost * (i + 1) - _powerUpNextQuestion.discount * (i + 1));
-                }
-                storeItem.SetData(this, costItem, i + 1, _spriteNextQuestion, _powerUpNextQuestion);
-            }
-
-            // Mas Tiempo
-            itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
-            itemInstantiaded.SetData("Aumento de tiempo");
-            for (int i = 0; i < 3; i++)
-            {
-                var storeItem = Instantiate(_storeItemPrefab, itemInstantiaded.Container);
-                float costItem = 0;
-                if (i == 0)
-                {
-                    costItem = _powerUpMoreTime.unitCost;
-                }
-                else
-                {
-                    costItem = (_powerUpMoreTime.unitCost * (i + 1) - _powerUpMoreTime.discount * (i + 1));
-                }
-
-                storeItem.SetData(this, costItem, i + 1, _spriteMoreTime, _powerUpMoreTime);
-            }
-
-            Instantiate(_offset, _GeneralContainer);
             areItemsInstanciated = true;
         }
 
@@ -200,11 +93,36 @@ namespace Store
 
         private void UpdatePowerUpTexts()
         {
-            _powerUpSecondOportunityI.text = _user.userInfo.user.detail.secondChance.ToString();
-            _powerUpTrueOptionI.text = _user.userInfo.user.detail.findCorrectAnswer.ToString();
-            _powerUpDeleteOptionI.text = _user.userInfo.user.detail.discardOption.ToString();
-            _powerUpNextQuestionI.text = _user.userInfo.user.detail.skipQuestion.ToString();
-            _powerUpMoreTimeI.text = _user.userInfo.user.detail.increaseTime.ToString();
+            foreach (var powerUpConfig in _powerUpConfigList)
+            {
+                powerUpConfig.UpdateTextPowerUp(_user);
+            }
+        }
+
+        private void InstantiateStoreItems()
+        {
+            foreach (var powerUpConfig in _powerUpConfigList)
+            {
+                var storeSection = Instantiate(_storeSectionPrefab, _GeneralContainer);
+                storeSection.SetData(powerUpConfig.storeSectionName);
+
+                for (int i = 0; i < 3; i++)
+                {
+                    var storeItem = Instantiate(_storeItemPrefab, storeSection.Container);
+                    float costItem = 0;
+                    if (i == 0)
+                    {
+                        costItem = powerUpConfig.powerUpSO.unitCost;
+                    }
+                    else
+                    {
+                        costItem = (powerUpConfig.powerUpSO.unitCost * (i + 1) - powerUpConfig.powerUpSO.discount * (i + 1));
+                    }
+                    storeItem.SetData(this, costItem, i + 1, powerUpConfig.powerUpSprite, powerUpConfig.powerUpSO);
+                }
+
+            }
+            Instantiate(_offset, _GeneralContainer);
         }
 
         private void Update()
@@ -221,11 +139,8 @@ namespace Store
 
         private void GameEvents_DetailChanged()
         {
-            _powerUpSecondOportunityI.text = _user.userInfo.user.detail.secondChance.ToString();
-            _powerUpTrueOptionI.text = _user.userInfo.user.detail.findCorrectAnswer.ToString();
-            _powerUpDeleteOptionI.text = _user.userInfo.user.detail.discardOption.ToString();
-            _powerUpNextQuestionI.text = _user.userInfo.user.detail.skipQuestion.ToString();
-            _powerUpMoreTimeI.text = _user.userInfo.user.detail.increaseTime.ToString();
+            UpdatePowerUpTexts();
+
             GameEvents.CoinsChanged?.Invoke();
             GameEvents.ExperienceChanged?.Invoke();
         }
@@ -253,24 +168,7 @@ namespace Store
 
         public void BuyItem()
         {
-            switch (_currentItem.NamePowerUp)
-            {
-                case "pu_deleteOption":
-                    _user.userInfo.user.detail.discardOption += _currentItem.Amount;
-                    break;
-                case "pu_moreTime":
-                    _user.userInfo.user.detail.increaseTime += _currentItem.Amount;
-                    break;
-                case "pu_nextQuestion":
-                    _user.userInfo.user.detail.skipQuestion += _currentItem.Amount;
-                    break;
-                case "pu_secondOportunity":
-                    _user.userInfo.user.detail.secondChance += _currentItem.Amount;
-                    break;
-                case "pu_trueOption":
-                    _user.userInfo.user.detail.findCorrectAnswer += _currentItem.Amount;
-                    break;
-            }
+            _currentItem.PowerUp.Apply(_user, _currentItem.Amount);
 
             _user.userInfo.user.detail.totalCoins -= (int)_currentItem.Cost;
             GameEvents.RequestUpdateDetail?.Invoke();
@@ -278,21 +176,7 @@ namespace Store
 
         public string GetPowerUpName()
         {
-            switch (_currentItem.NamePowerUp)
-            {
-                case "pu_deleteOption":
-                    return "descartar alternativa";
-                case "pu_moreTime":
-                    return "aumento de tiempo";
-                case "pu_nextQuestion":
-                    return "saltar pregunta";
-                case "pu_secondOportunity":
-                    return "segunda oportunidad";
-                case "pu_trueOption":
-                    return "mostrar respuesta";
-                default:
-                    return "";
-            }
+            return _currentItem.PowerUp.GetName();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using ScriptableCreator;
+using ScriptableCreator.PowerUpSOC;
 using TMPro;
 using UnityEngine;
 
@@ -8,14 +8,14 @@ namespace Store
     [Serializable]
     public class PowerUpConfig 
     {
-        public string sectionNamePowerUp;
-        public PowerUpSO scripableObjectPowerUp;
-        public TextMeshProUGUI textPowerUp;
-        public Sprite spritePowerUp;
+        public string storeSectionName;
+        public PowerUpSO powerUpSO;
+        public TextMeshProUGUI powerUpText;
+        public Sprite powerUpSprite;
 
         public void UpdateTextPowerUp(ScriptableObjectUser scriptableObjectUser)
         {
-            textPowerUp.text = scriptableObjectUser.userInfo.user.detail.secondChance.ToString();
+            powerUpText.text = powerUpSO.GetAmount(scriptableObjectUser).ToString();
         }
     }
 }

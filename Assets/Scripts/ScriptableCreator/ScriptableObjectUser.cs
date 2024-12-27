@@ -36,7 +36,7 @@ public class UserDetail
     public int discardOption;
     public int skipQuestion;
     public int findCorrectAnswer;
-    public int increaseTime;
+    public int moreTime;
     public int secondChance;
 }
 [Serializable]

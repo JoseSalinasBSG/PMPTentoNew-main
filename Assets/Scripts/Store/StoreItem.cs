@@ -1,6 +1,6 @@
 using System;
 using Button;
-using ScriptableCreator;
+using ScriptableCreator.PowerUpSOC;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

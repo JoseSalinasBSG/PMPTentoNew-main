@@ -1,4 +1,5 @@
-using ScriptableCreator;
+using ScriptableCreator.PowerUpSOC;
+using Store;
 using UnityEngine;
 
 public interface IStoreItem
