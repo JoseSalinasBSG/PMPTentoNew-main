@@ -209,28 +209,27 @@ public class Roulette : MonoBehaviour
 
         if (selecetdItem.RouletteItemData._ItemRouletteSo.GetType() == typeof(PowerUpItemRoulette))
         {
-            UnityEngine.Debug.LogError($"selectedItem: {selecetdItem.name}");
             var item = selecetdItem.RouletteItemData._ItemRouletteSo as PowerUpItemRoulette;
-            switch (item.powerUpSO.nameInPlayerPrefs)
-            {
-                case "pu_deleteOption":
-                    _userSO.userInfo.user.detail.discardOption += selecetdItem.Amount;
-                    break;
-                case "pu_moreTime":
-                    _userSO.userInfo.user.detail.moreTime += selecetdItem.Amount;
-                    break;
-                case "pu_nextQuestion":
-                    _userSO.userInfo.user.detail.skipQuestion += selecetdItem.Amount;
-                    break;
-                case "pu_secondOportunity":
-                    _userSO.userInfo.user.detail.secondChance += selecetdItem.Amount;
-                    break;
-                case "pu_trueOption":
-                    _userSO.userInfo.user.detail.findCorrectAnswer += selecetdItem.Amount;
-                    break;
-            }
+            //switch (item.powerUpSO.nameInPlayerPrefs)
+            //{
+            //    case "pu_deleteOption":
+            //        _userSO.userInfo.user.detail.discardOption += selecetdItem.Amount;
+            //        break;
+            //    case "pu_moreTime":
+            //        _userSO.userInfo.user.detail.moreTime += selecetdItem.Amount;
+            //        break;
+            //    case "pu_nextQuestion":
+            //        _userSO.userInfo.user.detail.skipQuestion += selecetdItem.Amount;
+            //        break;
+            //    case "pu_secondOportunity":
+            //        _userSO.userInfo.user.detail.secondChance += selecetdItem.Amount;
+            //        break;
+            //    case "pu_trueOption":
+            //        _userSO.userInfo.user.detail.findCorrectAnswer += selecetdItem.Amount;
+            //        break;
+            //}
 
-            //item.powerUpSO.Apply(_userSO, item.powerUpSO.amount);
+            item.powerUpSO.AddPowerUpToUser(_userSO, selecetdItem.Amount);
 
             GameEvents.RequestUpdateDetail?.Invoke();
         }

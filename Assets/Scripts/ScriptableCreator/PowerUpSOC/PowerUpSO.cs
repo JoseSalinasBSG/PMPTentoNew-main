@@ -31,8 +31,12 @@ namespace ScriptableCreator.PowerUpSOC
         {
             _listeners.Remove(listener);
         }
+        public virtual void AddCoinsToUser(ScriptableObjectUser scriptableObjectUser, int amount)
+        {
+            scriptableObjectUser.userInfo.user.detail.totalCoins += amount;
+        }
 
-        public abstract void Apply(ScriptableObjectUser scriptableObjectUser, int amount);
+        public abstract void AddPowerUpToUser(ScriptableObjectUser scriptableObjectUser, int amount);
         public abstract int GetAmount(ScriptableObjectUser scriptableObjectUser);
 
         public abstract string GetName();

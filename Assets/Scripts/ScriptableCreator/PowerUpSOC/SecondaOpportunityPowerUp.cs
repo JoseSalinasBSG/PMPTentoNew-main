@@ -5,7 +5,7 @@ namespace ScriptableCreator.PowerUpSOC
     [CreateAssetMenu(menuName = "Power Up/SecondaOpportunityPowerUp", fileName = "SecondaOpportunityPowerUp")]
     public class SecondaOpportunityPowerUp : PowerUpSO
     {
-        public override void Apply(ScriptableObjectUser scriptableObjectUser, int amount)
+        public override void AddPowerUpToUser(ScriptableObjectUser scriptableObjectUser, int amount)
         {
             scriptableObjectUser.userInfo.user.detail.secondChance += amount;
         }

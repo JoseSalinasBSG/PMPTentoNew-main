@@ -5,7 +5,7 @@ namespace ScriptableCreator.PowerUpSOC
     [CreateAssetMenu(menuName = "Power Up/TrueOptionPowerUp", fileName = "TrueOptionPowerUp")]
     public class TrueOptionPowerUp : PowerUpSO
     {
-        public override void Apply(ScriptableObjectUser scriptableObjectUser, int amount)
+        public override void AddPowerUpToUser(ScriptableObjectUser scriptableObjectUser, int amount)
         {
             scriptableObjectUser.userInfo.user.detail.findCorrectAnswer += amount;
         }
