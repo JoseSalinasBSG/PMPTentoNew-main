@@ -15,7 +15,8 @@ namespace Store
 
         public void UpdateTextPowerUp(ScriptableObjectUser scriptableObjectUser)
         {
-            powerUpText.text = powerUpSO.GetAmount(scriptableObjectUser).ToString();
+            //powerUpText.text = powerUpSO.GetAmount(scriptableObjectUser).ToString();
+            powerUpText.text = scriptableObjectUser.GetPowerUpAmount(powerUpSO).ToString();
         }
     }
 }

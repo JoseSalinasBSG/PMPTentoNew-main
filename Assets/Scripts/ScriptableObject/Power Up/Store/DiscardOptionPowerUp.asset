@@ -16,3 +16,4 @@ MonoBehaviour:
   unitCost: 150
   discount: 30
   nameInPlayerPrefs: pu_deleteOption
+  nameToShowInStore: "Descartar Opci\xF3n"

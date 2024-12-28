@@ -229,13 +229,15 @@ public class Roulette : MonoBehaviour
             //        break;
             //}
 
-            item.powerUpSO.AddPowerUpToUser(_userSO, selecetdItem.Amount);
+            //item.powerUpSO.AddPowerUpToUser(_userSO, selecetdItem.Amount);
+            _userSO.AddPowerUp(item.powerUpSO, selecetdItem.Amount);
 
             GameEvents.RequestUpdateDetail?.Invoke();
         }
         else if (selecetdItem.RouletteItemData._ItemRouletteSo.GetType() == typeof(CoinsItemRoulette))
         {
-            _userSO.userInfo.user.detail.totalCoins += selecetdItem.Amount;
+            //_userSO.userInfo.user.detail.totalCoins += selecetdItem.Amount;
+            _userSO.AddCoins(selecetdItem.Amount);
             GameEvents.RequestUpdateDetail?.Invoke();
         }
     }

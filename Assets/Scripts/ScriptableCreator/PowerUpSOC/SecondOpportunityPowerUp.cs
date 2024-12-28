@@ -3,7 +3,7 @@
 namespace ScriptableCreator.PowerUpSOC
 {
     [CreateAssetMenu(menuName = "Power Up/SecondaOpportunityPowerUp", fileName = "SecondaOpportunityPowerUp")]
-    public class SecondaOpportunityPowerUp : PowerUpSO
+    public class SecondOpportunityPowerUp : PowerUpSO
     {
         public override void AddPowerUpToUser(ScriptableObjectUser scriptableObjectUser, int amount)
         {
@@ -12,10 +12,6 @@ namespace ScriptableCreator.PowerUpSOC
         public override int GetAmount(ScriptableObjectUser scriptableObjectUser)
         {
             return scriptableObjectUser.userInfo.user.detail.secondChance;
-        }
-        public override string GetName()
-        {
-            return "Segunda oportunidad";
         }
     }
 }

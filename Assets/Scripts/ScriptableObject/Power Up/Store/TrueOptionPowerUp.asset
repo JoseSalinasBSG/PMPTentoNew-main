@@ -16,3 +16,4 @@ MonoBehaviour:
   unitCost: 180
   discount: 54
   nameInPlayerPrefs: pu_trueOption
+  nameToShowInStore: "Opci\xF3n Correcta"

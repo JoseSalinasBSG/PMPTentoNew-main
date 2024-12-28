@@ -14,11 +14,6 @@ namespace ScriptableCreator.PowerUpSOC
         {
             return scriptableObjectUser.userInfo.user.detail.discardOption;
         }
-
-        public override string GetName()
-        {
-            return "Descartar opción";
-        }
     }
 
 }

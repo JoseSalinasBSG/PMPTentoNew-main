@@ -13,9 +13,5 @@ namespace ScriptableCreator.PowerUpSOC
         {
             return scriptableObjectUser.userInfo.user.detail.moreTime;
         }
-        public override string GetName()
-        {
-            return "Más tiempo";
-        }
     }
 }

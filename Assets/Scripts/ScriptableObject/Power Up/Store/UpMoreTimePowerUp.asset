@@ -16,3 +16,4 @@ MonoBehaviour:
   unitCost: 50
   discount: 15
   nameInPlayerPrefs: pu_moreTime
+  nameToShowInStore: Aumentar Tiempo

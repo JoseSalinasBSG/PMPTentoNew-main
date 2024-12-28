@@ -168,9 +168,12 @@ namespace Store
 
         public void BuyItem()
         {
-            _currentItem.PowerUp.AddPowerUpToUser(_user, _currentItem.Amount);
+            //_currentItem.PowerUp.AddPowerUpToUser(_user, _currentItem.Amount);
+            _user.AddPowerUp(_currentItem.PowerUp, _currentItem.Amount);
 
-            _user.userInfo.user.detail.totalCoins -= (int)_currentItem.Cost;
+            //_user.userInfo.user.detail.totalCoins -= (int)_currentItem.Cost;
+            _user.RemoveCoins((int)_currentItem.Cost);
+
             GameEvents.RequestUpdateDetail?.Invoke();
         }
 

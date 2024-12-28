@@ -13,9 +13,5 @@ namespace ScriptableCreator.PowerUpSOC
         {
             return scriptableObjectUser.userInfo.user.detail.skipQuestion;
         }
-        public override string GetName()
-        {
-            return "Siguiente pregunta";
-        }
     }
 }

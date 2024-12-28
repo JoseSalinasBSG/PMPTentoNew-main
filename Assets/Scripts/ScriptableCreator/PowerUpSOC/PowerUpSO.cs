@@ -11,6 +11,7 @@ namespace ScriptableCreator.PowerUpSOC
         public float unitCost;
         public float discount;
         public string nameInPlayerPrefs;
+        public string nameToShowInStore;
 
         private List<PowerUpListener> _listeners = new List<PowerUpListener>();
 
@@ -39,7 +40,10 @@ namespace ScriptableCreator.PowerUpSOC
         public abstract void AddPowerUpToUser(ScriptableObjectUser scriptableObjectUser, int amount);
         public abstract int GetAmount(ScriptableObjectUser scriptableObjectUser);
 
-        public abstract string GetName();
+        public virtual string GetName()
+        {
+            return nameToShowInStore;
+        }
     }
 
 }

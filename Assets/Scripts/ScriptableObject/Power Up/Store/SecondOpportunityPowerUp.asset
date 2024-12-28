@@ -16,3 +16,4 @@ MonoBehaviour:
   unitCost: 120
   discount: 36
   nameInPlayerPrefs: pu_secondOpotunity
+  nameToShowInStore: Segunda Oportunidad

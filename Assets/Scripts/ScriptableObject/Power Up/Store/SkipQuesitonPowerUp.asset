@@ -16,3 +16,4 @@ MonoBehaviour:
   unitCost: 80
   discount: 24
   nameInPlayerPrefs: pu_nextQuestion
+  nameToShowInStore: Saltar Pregunta

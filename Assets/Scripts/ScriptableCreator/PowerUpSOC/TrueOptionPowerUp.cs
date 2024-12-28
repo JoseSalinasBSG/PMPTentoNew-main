@@ -13,9 +13,5 @@ namespace ScriptableCreator.PowerUpSOC
         {
             return scriptableObjectUser.userInfo.user.detail.findCorrectAnswer;
         }
-        public override string GetName()
-        {
-            return "Opción verdadera";
-        }
     }
 }
