@@ -370,7 +370,6 @@ public class UserService : MonoBehaviour
             _scriptableObjectUser.userInfo.spriteAvatar = sprite;
             Debug.Log("creado: " + _scriptableObjectUser.userInfo.urlAvatar);
             Debug.Log("creado: " + _scriptableObjectUser.userInfo.spriteAvatar);
-            Debug.Log("creado: " + _scriptableObjectUser.userInfo.haveAvatar);
             GameEvents.SuccessGetAvatar?.Invoke();
         }
     }

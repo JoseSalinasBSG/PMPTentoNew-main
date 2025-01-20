@@ -12,9 +12,6 @@ public class AchievementControlller : MonoBehaviour
     [SerializeField] private ScriptableObjectUser _objectUser;
     [SerializeField] private string achievementOrigin;
 
-
-    //private bool _hasReachedMaxGoodStreak;
-
     private void OnEnable()
     {
         GameEvents.OnGoodStreaked += GoodStreak;
@@ -48,20 +45,9 @@ public class AchievementControlller : MonoBehaviour
                 GameEvents.OnGoodStreaked?.Invoke();
                 OnMaxGoodStreakReached?.Invoke(maxGoodStreakList[i]);
                 UpdateAchievementData(maxGoodStreakList[i], SetDateAchievement(), achievementOrigin);//a�ado al contador de rachas de achivement data a traves del metodo StreakCounter
-                //_hasReachedMaxGoodStreak = true;
             }
 
         }
-        /*
-        if (counter >= maxGoodStreakList[0] && !_hasReachedMaxGoodStreak)//si counter alcanzo o supero maxGoodStreak
-        {
-            Debug.Log("Alcanzo Racha");
-            GameEvents.OnGoodStreaked?.Invoke();
-            OnMaxGoodStreakReached?.Invoke(maxGoodStreakList[0]);
-            _hasReachedMaxGoodStreak = true;
-            
-        }*/
-
     }
     private string SetDateAchievement()
     {
@@ -80,9 +66,6 @@ public class AchievementControlller : MonoBehaviour
         switch (verifier)
         {
             case 4:
-                //achievementListContainer.achievementList[0].Streak4Questions++;
-                //achievementListContainer.achievementList[0].Streak4Date = date;
-                //achievementListContainer.achievementList[0].lastOriginStreak4 = origin;
                 _objectUser.userInfo.user.achievements.streak4++;
                 _objectUser.userInfo.user.achievements.streak4Date=date;
                 _objectUser.userInfo.user.achievements.streak4Origin=origin;
@@ -105,8 +88,6 @@ public class AchievementControlller : MonoBehaviour
                 _objectUser.userInfo.user.achievements.streak10Origin = origin;
                 break;
         }
-        //SaveLocalData();
         GameEvents.RequestUpdateAchievements?.Invoke();
     }
-
 }
