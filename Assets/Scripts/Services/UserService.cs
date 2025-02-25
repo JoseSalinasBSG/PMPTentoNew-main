@@ -156,7 +156,6 @@ public class UserService : MonoBehaviour
                             _scriptableObjectUser.userInfo.haveUsername = false;
                         }
                     }
-                    GameEvents.SuccessGetUserDetail?.Invoke();
                 }
                 catch (Exception e)
                 {
@@ -266,6 +265,7 @@ public class UserService : MonoBehaviour
             {
                 try
                 {
+                    Debug.Log(request.downloadHandler.text);
                     _scriptableObjectUser.userInfo.user = JsonUtility.FromJson<User>(request.downloadHandler.text);
                     if (_scriptableObjectUser.userInfo.user.excepcion.excepcionGenerada)
                     {
