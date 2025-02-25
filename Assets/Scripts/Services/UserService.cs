@@ -156,7 +156,7 @@ public class UserService : MonoBehaviour
                             _scriptableObjectUser.userInfo.haveUsername = false;
                         }
                     }
-                    GameEvents.SuccessGetUserDetail?.Invoke();
+                    // GameEvents.SuccessGetUserDetail?.Invoke();
                 }
                 catch (Exception e)
                 {

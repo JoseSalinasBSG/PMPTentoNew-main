@@ -102,6 +102,8 @@ public class UserManager : MonoBehaviour
 
         if ((PlayerPrefs.HasKey("username") && PlayerPrefs.GetString("username") != "{}") && (PlayerPrefs.HasKey("password") && PlayerPrefs.GetString("password") != "{}"))
         {
+            print($" Username: {PlayerPrefs.GetString("username")} is type: {PlayerPrefs.GetString("username").GetType()}");
+            print($" Password: {PlayerPrefs.GetString("password")} is type: {PlayerPrefs.GetString("password").GetType()}");
             _userService.GetUSer(PlayerPrefs.GetString("username"), PlayerPrefs.GetString("password"));
         }
         else
