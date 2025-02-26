@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using ScriptableCreator.PowerUpSOC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ public class UserDetail
     public int discardOption;
     public int skipQuestion;
     public int findCorrectAnswer;
-    public int increaseTime;
+    public int moreTime;
     public int secondChance;
 }
 [Serializable]
@@ -177,6 +178,59 @@ public class ScriptableObjectUser : ScriptableObject
             };
 
             userInfo.LearningModeState.ItemStates.Add(item);
+        }
+    }
+
+    public void AddCoins(int amount)
+    {
+        userInfo.user.detail.totalCoins += amount;
+    }
+
+    public void RemoveCoins(int amount)
+    {
+        userInfo.user.detail.totalCoins -= amount;
+    }
+
+    public void AddPowerUp(PowerUpSO powerUp, int amount)
+    {
+        switch (powerUp)
+        {
+            case TrueOptionPowerUp trueOptionPowerUp:
+                userInfo.user.detail.findCorrectAnswer += amount;
+                break;
+            case SkipQuesitonPowerUp skipQuestionPowerUp:
+                userInfo.user.detail.skipQuestion += amount;
+                break;
+            case UpMoreTimePowerUp upMoreTimePowerUp:
+                    userInfo.user.detail.moreTime += amount;
+                break;
+            case SecondOpportunityPowerUp secondOpportunityPowerUp:
+                userInfo.user.detail.secondChance += amount;
+                break;
+            case DiscardOptionPowerUp discardOptionPowerUp:
+                userInfo.user.detail.discardOption += amount;
+                break;
+            default:
+                throw new ArgumentException("Tipo de power-up no soportado");
+        }
+    }
+
+    public int GetPowerUpAmount(PowerUpSO powerUp)
+    {
+        switch (powerUp)
+        {
+            case TrueOptionPowerUp trueOptionPowerUp:
+                return userInfo.user.detail.findCorrectAnswer;
+            case SkipQuesitonPowerUp skipQuestionPowerUp:
+                return userInfo.user.detail.skipQuestion;
+            case UpMoreTimePowerUp upMoreTimePowerUp:
+                return userInfo.user.detail.moreTime;
+            case SecondOpportunityPowerUp secondOpportunityPowerUp:
+                return userInfo.user.detail.secondChance;
+            case DiscardOptionPowerUp discardOptionPowerUp:
+                return userInfo.user.detail.discardOption;
+            default:
+                throw new ArgumentException("Tipo de power-up no soportado");
         }
     }
 

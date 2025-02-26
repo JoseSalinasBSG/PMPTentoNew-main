@@ -1,4 +1,4 @@
-using ScriptableCreator;
+using ScriptableCreator.PowerUpSOC;
 using UnityEngine;
 
 // <summary>
@@ -11,11 +11,11 @@ using UnityEngine;
 public class UserManager : MonoBehaviour
 {
     [SerializeField] private UserService _userService;
-    [SerializeField] private ScripableObjectPowerUp _powerUpSecondOportunity;
-    [SerializeField] private ScripableObjectPowerUp _powerUpTrueOption;
-    [SerializeField] private ScripableObjectPowerUp _powerUpDeleteOption;
-    [SerializeField] private ScripableObjectPowerUp _powerUpNextQuestion;
-    [SerializeField] private ScripableObjectPowerUp _powerUpMoreTime;
+    [SerializeField] private PowerUpSO _powerUpSecondOportunity;
+    [SerializeField] private PowerUpSO _powerUpTrueOption;
+    [SerializeField] private PowerUpSO _powerUpDeleteOption;
+    [SerializeField] private PowerUpSO _powerUpNextQuestion;
+    [SerializeField] private PowerUpSO _powerUpMoreTime;
     private ScriptableObjectUser _userSO;
     public bool EndFinishLoadData, EndFinishLoadAvatar;
 
@@ -79,7 +79,7 @@ public class UserManager : MonoBehaviour
         }
 
         _powerUpDeleteOption.amount = _userSO.userInfo.user.detail.discardOption;
-        _powerUpMoreTime.amount = _userSO.userInfo.user.detail.increaseTime;
+        _powerUpMoreTime.amount = _userSO.userInfo.user.detail.moreTime;
         _powerUpNextQuestion.amount = _userSO.userInfo.user.detail.skipQuestion;
         _powerUpSecondOportunity.amount = _userSO.userInfo.user.detail.secondChance;
         _powerUpTrueOption.amount = _userSO.userInfo.user.detail.findCorrectAnswer;
@@ -102,6 +102,8 @@ public class UserManager : MonoBehaviour
 
         if ((PlayerPrefs.HasKey("username") && PlayerPrefs.GetString("username") != "{}") && (PlayerPrefs.HasKey("password") && PlayerPrefs.GetString("password") != "{}"))
         {
+            print($" Username: {PlayerPrefs.GetString("username")} is type: {PlayerPrefs.GetString("username").GetType()}");
+            print($" Password: {PlayerPrefs.GetString("password")} is type: {PlayerPrefs.GetString("password").GetType()}");
             _userService.GetUSer(PlayerPrefs.GetString("username"), PlayerPrefs.GetString("password"));
         }
         else

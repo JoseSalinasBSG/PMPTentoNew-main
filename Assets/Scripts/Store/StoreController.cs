@@ -1,281 +1,185 @@
 using System;
+using System.Collections.Generic;
 using Button;
-using ScriptableCreator;
+using PowerUp;
+using ScriptableCreator.PowerUpSOC;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-///<summary>
-/// Este controlador gestiona las interacciones con la tienda dentro del juego, incluyendo la visualización y compra de potenciadores. 
-/// Los potenciadores disponibles se definen mediante objetos ScriptableObject y se muestran en la interfaz de usuario con precios variables y descuentos aplicados. 
-/// El script también maneja el sistema de ruleta, habilitando o deshabilitando la opción de girar la ruleta dependiendo del tiempo transcurrido desde su último uso. 
-/// Cuando un jugador compra un potenciador, se actualizan las estadísticas del usuario (como monedas y potenciadores disponibles), y se gestiona un pop-up de confirmación de compra. 
-/// Además, el controlador maneja la visualización de un contador para el tiempo restante hasta que la ruleta esté disponible nuevamente.
-///</summary>
-
-public class StoreController : MonoBehaviour
+namespace Store
 {
-    [SerializeField] private ScriptableObjectUser _user;
+    ///<summary>
+    /// Este controlador gestiona las interacciones con la tienda dentro del juego, incluyendo la visualización y compra de potenciadores. 
+    /// Los potenciadores disponibles se definen mediante objetos ScriptableObject y se muestran en la interfaz de usuario con precios variables y descuentos aplicados. 
+    /// El script también maneja el sistema de ruleta, habilitando o deshabilitando la opción de girar la ruleta dependiendo del tiempo transcurrido desde su último uso. 
+    /// Cuando un jugador compra un potenciador, se actualizan las estadísticas del usuario (como monedas y potenciadores disponibles), y se gestiona un pop-up de confirmación de compra. 
+    /// Además, el controlador maneja la visualización de un contador para el tiempo restante hasta que la ruleta esté disponible nuevamente.
+    ///</summary>
 
-    [Header("Power ups scriptable objects")]
-    [SerializeField] private ScripableObjectPowerUp _powerUpSecondOportunity;
-    [SerializeField] private ScripableObjectPowerUp _powerUpTrueOption;
-    [SerializeField] private ScripableObjectPowerUp _powerUpDeleteOption;
-    [SerializeField] private ScripableObjectPowerUp _powerUpNextQuestion;
-    [SerializeField] private ScripableObjectPowerUp _powerUpMoreTime;
-    private bool areItemsInstanciated = false;
-
-    [Header("Power ups interfaces")]
-    [SerializeField] private TextMeshProUGUI _powerUpSecondOportunityI;
-    [SerializeField] private TextMeshProUGUI _powerUpTrueOptionI;
-    [SerializeField] private TextMeshProUGUI _powerUpDeleteOptionI;
-    [SerializeField] private TextMeshProUGUI _powerUpNextQuestionI;
-    [SerializeField] private TextMeshProUGUI _powerUpMoreTimeI;
-
-    [Header("Power ups scriptable objects")]
-    [SerializeField] private Sprite _spriteSecondOportunity;
-    [SerializeField] private Sprite _spriteTrueOption;
-    [SerializeField] private Sprite _spriteDeleteOption;
-    [SerializeField] private Sprite _spriteNextQuestion;
-    [SerializeField] private Sprite _spriteMoreTime;
-
-    [Header("General")]
-    [SerializeField] private Transform _GeneralContainer;
-    [SerializeField] private StoreSection _storeSectionPrefab;
-    [SerializeField] private StoreItem _storeItemPrefab;
-    [SerializeField] private Transform _offset;
-
-    [Header("Pop-up compra")]
-    [SerializeField] private FadeUI _popupCompra;
-    [SerializeField] private TextMeshProUGUI _messageCompra;
-    [SerializeField] private Image _imageCompra;
-    [SerializeField] private TextMeshProUGUI _amountLabel;
-
-    [Header("Roulette")]
-    [SerializeField] private ButtonAnimation _rouletteButton;
-    [SerializeField] private ButtonAnimation _rouletteButtonUsed;
-    [SerializeField] private TextMeshProUGUI _timeRemainingRoulette;
-    private StoreItem _currentItem;
-    public float CoinsFromUser => _user.userInfo.user.detail.totalCoins;
-    private void OnEnable()
+    public class StoreController : MonoBehaviour
     {
-        if (PlayerPrefs.HasKey("UseRoulette") && PlayerPrefs.GetString("UseRoulette") != "{}")//verifica si fue usada la ruleta
-        {
-            DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-            TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
-            TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
+        [SerializeField] private ScriptableObjectUser _user;
 
-            if (timeSinceLastUse < TimeSpan.FromHours(24))//es igual a la fecha de hoy
-            {//desactiva ruleta
-                _rouletteButton.gameObject.SetActive(false);
-                _rouletteButtonUsed.gameObject.SetActive(true);
-                _rouletteButton.GetComponent<PassScrollEvents>().enabled = false;
+        [Header("Power ups scriptable objects")]
+        [SerializeField] private List<PowerUpConfig> _powerUpConfigList;
+
+        [Header("General")]
+        [SerializeField] private Transform _GeneralContainer;
+        [SerializeField] private StoreSection _storeSectionPrefab;
+        [SerializeField] private StoreItem _storeItemPrefab;
+        [SerializeField] private Transform _offset;
+
+        [Header("Pop-up compra")]
+        [SerializeField] private FadeUI _popupCompra;
+        [SerializeField] private TextMeshProUGUI _messageCompra;
+        [SerializeField] private Image _imageCompra;
+        [SerializeField] private TextMeshProUGUI _amountLabel;
+
+        [Header("Roulette")]
+        [SerializeField] private ButtonAnimation _rouletteButton;
+        [SerializeField] private ButtonAnimation _rouletteButtonUsed;
+        [SerializeField] private TextMeshProUGUI _timeRemainingRoulette;
+
+        private bool areItemsInstanciated = false;
+        private StoreItem _currentItem;
+        public float CoinsFromUser => _user.userInfo.user.detail.totalCoins;
+        private void OnEnable()
+        {
+            HandleRouletteState();
+
+            UpdatePowerUpTexts();
+            SubscribeToGameEvents();
+
+            if (areItemsInstanciated)
+            {
+                return;
             }
-            else
-            {//activa ruleta
-                _rouletteButton.gameObject.SetActive(true);
-                _rouletteButtonUsed.gameObject.SetActive(false);
-                _rouletteButton.GetComponent<PassScrollEvents>().enabled = true;
+
+            InstantiateStoreItems();
+
+            areItemsInstanciated = true;
+        }
+
+        private void HandleRouletteState()
+        {
+            if (PlayerPrefs.HasKey("UseRoulette") && PlayerPrefs.GetString("UseRoulette") != "{}")//verifica si fue usada la ruleta
+            {
+                DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
+                TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
+                TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
+
+                if (timeSinceLastUse < TimeSpan.FromHours(24))//es igual a la fecha de hoy
+                {//desactiva ruleta
+                    _rouletteButton.gameObject.SetActive(false);
+                    _rouletteButtonUsed.gameObject.SetActive(true);
+                    _rouletteButton.GetComponent<PassScrollEvents>().enabled = false;
+                }
+                else
+                {//activa ruleta
+                    _rouletteButton.gameObject.SetActive(true);
+                    _rouletteButtonUsed.gameObject.SetActive(false);
+                    _rouletteButton.GetComponent<PassScrollEvents>().enabled = true;
+                }
             }
         }
 
-        _powerUpSecondOportunityI.text = _user.userInfo.user.detail.secondChance.ToString();
-        _powerUpTrueOptionI.text = _user.userInfo.user.detail.findCorrectAnswer.ToString();
-        _powerUpDeleteOptionI.text = _user.userInfo.user.detail.discardOption.ToString();
-        _powerUpNextQuestionI.text = _user.userInfo.user.detail.skipQuestion.ToString();
-        _powerUpMoreTimeI.text = _user.userInfo.user.detail.increaseTime.ToString();
-        GameEvents.CoinsChanged += GameEvents_CoinsChanged;
-        GameEvents.ExperienceChanged += GameEvents_ExperienceChanged;
-        GameEvents.DetailChanged += GameEvents_DetailChanged;
-
-        if (areItemsInstanciated)
+        private void SubscribeToGameEvents()
         {
-            return;
-        }
-        var itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
-        // Segunda oportunidad
-        itemInstantiaded.SetData("Segunda oportunidad");
-        for (int i = 0; i < 3; i++)
-        {
-            var storeItem = Instantiate(_storeItemPrefab, itemInstantiaded.Container);
-            float costItem = 0;
-            if (i == 0)
-            {
-                costItem = _powerUpSecondOportunity.unitCost;
-            }
-            else
-            {
-                costItem = (_powerUpSecondOportunity.unitCost * (i + 1) - _powerUpSecondOportunity.discount * (i + 1));
-            }
-
-            storeItem.SetData(this, costItem, i + 1, _spriteSecondOportunity, _powerUpSecondOportunity);
+            GameEvents.CoinsChanged += GameEvents_CoinsChanged;
+            GameEvents.ExperienceChanged += GameEvents_ExperienceChanged;
+            GameEvents.DetailChanged += GameEvents_DetailChanged;
         }
 
-        // Verdadera opcion
-        itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
-        itemInstantiaded.SetData("Mostrar respuesta");
-        for (int i = 0; i < 3; i++)
+        private void UpdatePowerUpTexts()
         {
-            var storeItem = Instantiate(_storeItemPrefab, itemInstantiaded.Container);
-            float costItem = 0;
-            if (i == 0)
+            foreach (var powerUpConfig in _powerUpConfigList)
             {
-                costItem = _powerUpTrueOption.unitCost;
+                powerUpConfig.UpdateTextPowerUp(_user);
             }
-            else
-            {
-                costItem = (_powerUpTrueOption.unitCost * (i + 1) - _powerUpTrueOption.discount * (i + 1));
-            }
-
-            storeItem.SetData(this, costItem, i + 1, _spriteTrueOption, _powerUpTrueOption);
         }
 
-        // Descartar alternativa
-        itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
-        itemInstantiaded.SetData("Descartar alternativa");
-        for (int i = 0; i < 3; i++)
+        private void InstantiateStoreItems()
         {
-            var storeItem = Instantiate(_storeItemPrefab, itemInstantiaded.Container);
-            float costItem = 0;
-            if (i == 0)
+            foreach (var powerUpConfig in _powerUpConfigList)
             {
-                costItem = _powerUpDeleteOption.unitCost;
-            }
-            else
-            {
-                costItem = (_powerUpDeleteOption.unitCost * (i + 1) - _powerUpDeleteOption.discount * (i + 1));
-            }
+                var storeSection = Instantiate(_storeSectionPrefab, _GeneralContainer);
+                storeSection.SetData(powerUpConfig.storeSectionName);
 
-            storeItem.SetData(this, costItem, i + 1, _spriteDeleteOption, _powerUpDeleteOption);
+                for (int i = 0; i < 3; i++)
+                {
+                    var storeItem = Instantiate(_storeItemPrefab, storeSection.Container);
+                    float costItem = 0;
+                    if (i == 0)
+                    {
+                        costItem = powerUpConfig.powerUpSO.unitCost;
+                    }
+                    else
+                    {
+                        costItem = (powerUpConfig.powerUpSO.unitCost * (i + 1) - powerUpConfig.powerUpSO.discount * (i + 1));
+                    }
+                    storeItem.SetData(this, costItem, i + 1, powerUpConfig.powerUpSprite, powerUpConfig.powerUpSO);
+                }
+
+            }
+            Instantiate(_offset, _GeneralContainer);
         }
 
-        // Siguiente pregunta
-        itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
-        itemInstantiaded.SetData("Saltar pregunta");
-        for (int i = 0; i < 3; i++)
+        private void Update()
         {
-            var storeItem = Instantiate(_storeItemPrefab, itemInstantiaded.Container);
-            float costItem = 0;
-            if (i == 0)
+            if (PlayerPrefs.HasKey("UseRoulette") && PlayerPrefs.GetString("UseRoulette") != "{}")
             {
-                costItem = _powerUpNextQuestion.unitCost;
+                DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
+                TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
+                TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
+                _timeRemainingRoulette.text = "El giro de la ruleta estará \r\ndisponible nuevamente en: " + string.Format("{0:D2}:{1:D2}:{2:D2}", timeRemaining.Hours, timeRemaining.Minutes, timeRemaining.Seconds);
             }
-            else
-            {
-                costItem = (_powerUpNextQuestion.unitCost * (i + 1) - _powerUpNextQuestion.discount * (i + 1));
-            }
-            storeItem.SetData(this, costItem, i + 1, _spriteNextQuestion, _powerUpNextQuestion);
         }
 
-        // Mas Tiempo
-        itemInstantiaded = Instantiate(_storeSectionPrefab, _GeneralContainer);
-        itemInstantiaded.SetData("Aumento de tiempo");
-        for (int i = 0; i < 3; i++)
-        {
-            var storeItem = Instantiate(_storeItemPrefab, itemInstantiaded.Container);
-            float costItem = 0;
-            if (i == 0)
-            {
-                costItem = _powerUpMoreTime.unitCost;
-            }
-            else
-            {
-                costItem = (_powerUpMoreTime.unitCost * (i + 1) - _powerUpMoreTime.discount * (i + 1));
-            }
 
-            storeItem.SetData(this, costItem, i + 1, _spriteMoreTime, _powerUpMoreTime);
+        private void GameEvents_DetailChanged()
+        {
+            UpdatePowerUpTexts();
+
+            GameEvents.CoinsChanged?.Invoke();
+            GameEvents.ExperienceChanged?.Invoke();
         }
 
-        Instantiate(_offset, _GeneralContainer);
-        areItemsInstanciated = true;
-    }
-
-
-    private void Update()
-    {
-        if (PlayerPrefs.HasKey("UseRoulette") && PlayerPrefs.GetString("UseRoulette") != "{}")
+        private void GameEvents_ExperienceChanged()
         {
-            DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-            TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
-            TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
-            _timeRemainingRoulette.text = "El giro de la ruleta estará \r\ndisponible nuevamente en: " + string.Format("{0:D2}:{1:D2}:{2:D2}", timeRemaining.Hours, timeRemaining.Minutes, timeRemaining.Seconds);
-        }
-    }
 
-
-    private void GameEvents_DetailChanged()
-    {
-        _powerUpSecondOportunityI.text = _user.userInfo.user.detail.secondChance.ToString();
-        _powerUpTrueOptionI.text = _user.userInfo.user.detail.findCorrectAnswer.ToString();
-        _powerUpDeleteOptionI.text = _user.userInfo.user.detail.discardOption.ToString();
-        _powerUpNextQuestionI.text = _user.userInfo.user.detail.skipQuestion.ToString();
-        _powerUpMoreTimeI.text = _user.userInfo.user.detail.increaseTime.ToString();
-        GameEvents.CoinsChanged?.Invoke();
-        GameEvents.ExperienceChanged?.Invoke();
-    }
-
-    private void GameEvents_ExperienceChanged()
-    {
-        
-    }
-
-    private void GameEvents_CoinsChanged()
-    {
-        
-    }
-
-    public void OpenPopUpCompra(StoreItem storeItem)
-    {
-        _currentItem = storeItem;
-        _imageCompra.sprite = _currentItem.SpriteFromImage;
-        string pot = _currentItem.Amount > 1 ? "potenciador" : "potenciadores";
-        _messageCompra.text = $"Está a punto de comprar {_currentItem.Amount} {pot} para {GetPowerUpName()}";
-        _amountLabel.text = $"x{_currentItem.Amount}";
-        _popupCompra.gameObject.SetActive(true);
-        _popupCompra.FadeInTransition();
-    }
-
-    public void BuyItem()
-    {
-        switch (_currentItem.NamePowerUp)
-        {
-            case "pu_deleteOption":
-                _user.userInfo.user.detail.discardOption += _currentItem.Amount;
-                break;
-            case "pu_moreTime":
-                _user.userInfo.user.detail.increaseTime += _currentItem.Amount;
-                break;
-            case "pu_nextQuestion":
-                _user.userInfo.user.detail.skipQuestion += _currentItem.Amount;
-                break;
-            case "pu_secondOportunity":
-                _user.userInfo.user.detail.secondChance += _currentItem.Amount;
-                break;
-            case "pu_trueOption":
-                _user.userInfo.user.detail.findCorrectAnswer += _currentItem.Amount;
-                break;
         }
 
-        _user.userInfo.user.detail.totalCoins -= (int)_currentItem.Cost;
-        GameEvents.RequestUpdateDetail?.Invoke();
-    }
-
-    public string GetPowerUpName()
-    {
-        switch (_currentItem.NamePowerUp)
+        private void GameEvents_CoinsChanged()
         {
-            case "pu_deleteOption":
-                return "descartar alternativa";
-            case "pu_moreTime":
-                return "aumento de tiempo";
-            case "pu_nextQuestion":
-                return "saltar pregunta";
-            case "pu_secondOportunity":
-                return "segunda oportunidad";
-            case "pu_trueOption":
-                return "mostrar respuesta";
-            default:
-                return "";
+
+        }
+
+        public void OpenPopUpCompra(StoreItem storeItem)
+        {
+            _currentItem = storeItem;
+            _imageCompra.sprite = _currentItem.SpriteFromImage;
+            string pot = _currentItem.Amount > 1 ? "potenciador" : "potenciadores";
+            _messageCompra.text = $"Está a punto de comprar {_currentItem.Amount} {pot} para {GetPowerUpName()}";
+            _amountLabel.text = $"x{_currentItem.Amount}";
+            _popupCompra.gameObject.SetActive(true);
+            _popupCompra.FadeInTransition();
+        }
+
+        public void BuyItem()
+        {
+            //_currentItem.PowerUp.AddPowerUpToUser(_user, _currentItem.Amount);
+            _user.AddPowerUp(_currentItem.PowerUp, _currentItem.Amount);
+
+            //_user.userInfo.user.detail.totalCoins -= (int)_currentItem.Cost;
+            _user.RemoveCoins((int)_currentItem.Cost);
+
+            GameEvents.RequestUpdateDetail?.Invoke();
+        }
+
+        public string GetPowerUpName()
+        {
+            return _currentItem.PowerUp.GetName();
         }
     }
 }

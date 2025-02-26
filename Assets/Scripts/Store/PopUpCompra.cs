@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Store;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;

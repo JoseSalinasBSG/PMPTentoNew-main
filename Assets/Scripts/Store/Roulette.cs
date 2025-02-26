@@ -156,6 +156,12 @@ public class Roulette : MonoBehaviour
                 selecetdItem = _rouletteItems[i];//asigna elemento escogido a selecetdItem
             }
         }
+        if (selecetdItem == null)
+        {
+            UnityEngine.Debug.LogError("No item selected.");
+            return;
+        }
+
         //Update data
         BuyItem();
 
@@ -193,32 +199,43 @@ public class Roulette : MonoBehaviour
         {
             return;
         }
+        if (selecetdItem == null || selecetdItem.RouletteItemData == null || selecetdItem.RouletteItemData._ItemRouletteSo == null)
+        {
+            UnityEngine.Debug.LogError("selecetdItem or its data is null.");
+            return;
+        }
+
         if (selecetdItem.RouletteItemData._ItemRouletteSo.GetType() == typeof(PowerUpItemRoulette))
         {
             var item = selecetdItem.RouletteItemData._ItemRouletteSo as PowerUpItemRoulette;
-            switch (item.powerUpSO.nameInPlayerPrefs)
-            {
-                case "pu_deleteOption":
-                    _userSO.userInfo.user.detail.discardOption += selecetdItem.Amount;
-                    break;
-                case "pu_moreTime":
-                    _userSO.userInfo.user.detail.increaseTime += selecetdItem.Amount;
-                    break;
-                case "pu_nextQuestion":
-                    _userSO.userInfo.user.detail.skipQuestion += selecetdItem.Amount;
-                    break;
-                case "pu_secondOportunity":
-                    _userSO.userInfo.user.detail.secondChance += selecetdItem.Amount;
-                    break;
-                case "pu_trueOption":
-                    _userSO.userInfo.user.detail.findCorrectAnswer += selecetdItem.Amount;
-                    break;
-            }
+            //switch (item.powerUpSO.nameInPlayerPrefs)
+            //{
+            //    case "pu_deleteOption":
+            //        _userSO.userInfo.user.detail.discardOption += selecetdItem.Amount;
+            //        break;
+            //    case "pu_moreTime":
+            //        _userSO.userInfo.user.detail.moreTime += selecetdItem.Amount;
+            //        break;
+            //    case "pu_nextQuestion":
+            //        _userSO.userInfo.user.detail.skipQuestion += selecetdItem.Amount;
+            //        break;
+            //    case "pu_secondOportunity":
+            //        _userSO.userInfo.user.detail.secondChance += selecetdItem.Amount;
+            //        break;
+            //    case "pu_trueOption":
+            //        _userSO.userInfo.user.detail.findCorrectAnswer += selecetdItem.Amount;
+            //        break;
+            //}
+
+            //item.powerUpSO.AddPowerUpToUser(_userSO, selecetdItem.Amount);
+            _userSO.AddPowerUp(item.powerUpSO, selecetdItem.Amount);
+
             GameEvents.RequestUpdateDetail?.Invoke();
         }
         else if (selecetdItem.RouletteItemData._ItemRouletteSo.GetType() == typeof(CoinsItemRoulette))
         {
-            _userSO.userInfo.user.detail.totalCoins += selecetdItem.Amount;
+            //_userSO.userInfo.user.detail.totalCoins += selecetdItem.Amount;
+            _userSO.AddCoins(selecetdItem.Amount);
             GameEvents.RequestUpdateDetail?.Invoke();
         }
     }

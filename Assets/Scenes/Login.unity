@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -704,11 +704,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _userService: {fileID: 213234114}
-  _powerUpSecondOportunity: {fileID: 11400000, guid: 72a1f2080ebcfe54199410c9f34b42ef, type: 2}
-  _powerUpTrueOption: {fileID: 11400000, guid: b90c8e18f785bf24690c106e176124f7, type: 2}
-  _powerUpDeleteOption: {fileID: 11400000, guid: 5f4ca4ad9839dcf499046b6730956fc5, type: 2}
-  _powerUpNextQuestion: {fileID: 11400000, guid: baa0e82d7d157af4c91e4fff3d3b4f1a, type: 2}
-  _powerUpMoreTime: {fileID: 11400000, guid: 9026b1be2dac5c140aaca71b68c20ffb, type: 2}
+  _powerUpSecondOportunity: {fileID: 11400000, guid: 51afdcb7ae36b94489b601cc27ff8a66, type: 2}
+  _powerUpTrueOption: {fileID: 11400000, guid: 10d9dd5db3a55a9449afbfa6d308699b, type: 2}
+  _powerUpDeleteOption: {fileID: 11400000, guid: cb9b975908e10fb4ea64c23d19aa0326, type: 2}
+  _powerUpNextQuestion: {fileID: 11400000, guid: b746d5419555b6642ae6a4da24396eb2, type: 2}
+  _powerUpMoreTime: {fileID: 11400000, guid: 3c22dad94d9a97240aeae42de5421f74, type: 2}
   EndFinishLoadData: 0
   EndFinishLoadAvatar: 0
 --- !u!114 &213234114
