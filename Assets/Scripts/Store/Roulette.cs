@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -166,7 +165,6 @@ public class Roulette : MonoBehaviour
         //Update data
         BuyItem();
 
-        //PARTICULA
         //Show particle effects 
         _uiParticle.transform.position = selecetdItem.transform.position;//setea la posicion de la particula en el item seleccionado en la ruleta
         ClearParticles();

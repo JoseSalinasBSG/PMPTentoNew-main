@@ -156,7 +156,7 @@ public class UserService : MonoBehaviour
                             _scriptableObjectUser.userInfo.haveUsername = false;
                         }
                     }
-                    GameEvents.SuccessGetUserDetail?.Invoke();
+                    // GameEvents.SuccessGetUserDetail?.Invoke();
                 }
                 catch (Exception e)
                 {
@@ -370,7 +370,6 @@ public class UserService : MonoBehaviour
             _scriptableObjectUser.userInfo.spriteAvatar = sprite;
             Debug.Log("creado: " + _scriptableObjectUser.userInfo.urlAvatar);
             Debug.Log("creado: " + _scriptableObjectUser.userInfo.spriteAvatar);
-            Debug.Log("creado: " + _scriptableObjectUser.userInfo.haveAvatar);
             GameEvents.SuccessGetAvatar?.Invoke();
         }
     }

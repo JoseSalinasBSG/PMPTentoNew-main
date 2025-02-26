@@ -96,6 +96,7 @@ public class InstructorSelector : MonoBehaviour
         using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
         {
             _objectUser.userInfo.user.detail.instructorID = instructorId;
+            _objectUser.userInfo.user.detail.idAlumno = _objectUser.userInfo.user.idAlumno;
             UserDetail dataLogin = _objectUser.userInfo.user.detail;
 
             var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataLogin));
@@ -112,7 +113,7 @@ public class InstructorSelector : MonoBehaviour
             {
                 _objectUser.userInfo.haveUser = false;
                 GameEvents.WrongWhenNewUsername?.Invoke();
-                Debug.Log(request.error);
+                Debug.LogError(request.error);
             }
             else
             {

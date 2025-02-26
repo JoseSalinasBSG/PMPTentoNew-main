@@ -14,8 +14,7 @@ public class MainMenuUIManager : MonoBehaviour
         UIEvents.GameModesShow += UIEvent_GameModesShow;
         UIEvents.GameChallengesShow += UIEvent_GameChallengesShow;
         UIEvents.ChooseInstructorShow += UIEvent_ChooseInstructorShow;
-        UIEvents.NotificationShow += UIEvent_NotificationShow;
-        
+        UIEvents.NotificationShow += UIEvent_NotificationShow;        
         UIEvents.SettingHide += UIEvent_SettingHide;
         UIEvents.GameModesHide += UIEvent_GameModesHide;
         UIEvents.GameChallengesHide += UIEvent_GameChallengesHide;
@@ -29,8 +28,7 @@ public class MainMenuUIManager : MonoBehaviour
         UIEvents.GameModesShow -= UIEvent_GameModesShow;
         UIEvents.GameChallengesShow -= UIEvent_GameChallengesShow;
         UIEvents.ChooseInstructorShow -= UIEvent_ChooseInstructorShow;
-        UIEvents.NotificationShow -= UIEvent_NotificationShow;
-        
+        UIEvents.NotificationShow -= UIEvent_NotificationShow;        
         UIEvents.SettingHide -= UIEvent_SettingHide;
         UIEvents.GameModesHide -= UIEvent_GameModesHide;
         UIEvents.GameChallengesHide -= UIEvent_GameChallengesHide;

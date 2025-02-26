@@ -43,7 +43,6 @@ public class LoginRestApi : MonoBehaviour
             if (request.responseCode == 401)
             {
                 _objectUser.userInfo.user = JsonUtility.FromJson<User>(request.downloadHandler.text);//se deserializa respuesta JSON a un objeto user
-
                 _objectUser.userInfo.haveUser = false;
                 GameEvents.ErrorLogin?.Invoke(_objectUser.userInfo.user.excepcion.descripcionGeneral);
             }
@@ -205,7 +204,7 @@ public class LoginRestApi : MonoBehaviour
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text + " - " + e.ToString());
+                    Debug.Log(request.downloadHandler.text + " - " + e.Message);
                     _objectUser.userInfo.haveUser = false;
                     _loginController._onErrorInLogin?.Invoke("Se tuvo un error interno, vuelva a intentarlo mas tarde");
                 }
