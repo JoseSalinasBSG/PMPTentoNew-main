@@ -12,7 +12,7 @@ public class PopupAchievementUI : MonoBehaviour
     [SerializeField] private ShareSocial valueToShare;
     public void ShowAchievementMaxGoodStreakText(int value)//metodo que se llama en editor para setear valores de UI achivement
     {
-        string text = $"�Alcanzaste una racha de {value} respuestas correctas seguidas!";
+        string text = $"!Alcanzaste una racha de {value} respuestas correctas seguidas!";
         achievementText.SetText(text);
         AddMessageNotificationPanel(text);
 
