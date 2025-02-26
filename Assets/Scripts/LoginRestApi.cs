@@ -110,7 +110,7 @@ public class LoginRestApi : MonoBehaviour
             else
             {
                 try
-                {
+                {  
                     var detail = JsonUtility.FromJson<UserDetail>(request.downloadHandler.text);
                     _objectUser.userInfo.user.detail = detail;//llenamos el detail
                     if (_objectUser.userInfo.user.excepcion.excepcionGenerada)
