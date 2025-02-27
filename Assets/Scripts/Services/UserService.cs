@@ -172,6 +172,8 @@ public class UserService : MonoBehaviour
         using (UnityWebRequest request = new UnityWebRequest(_urlToUpdate, "POST"))
         {
             UserDetail dataLogin = _scriptableObjectUser.userInfo.user.detail;
+            
+            print($" Update User Detail: {JsonUtility.ToJson(dataLogin)}");
 
             var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataLogin));
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);

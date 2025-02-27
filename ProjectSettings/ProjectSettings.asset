@@ -268,7 +268,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{dedicated}: Downloads/user.keystore'
+  AndroidKeystoreName: C:/Users/ADMIN/Documents/key/user.keystore
   AndroidKeyaliasName: production
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidEnableArm64MTE: 0

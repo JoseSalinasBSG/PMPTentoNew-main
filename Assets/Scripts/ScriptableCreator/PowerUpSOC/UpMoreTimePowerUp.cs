@@ -7,11 +7,11 @@ namespace ScriptableCreator.PowerUpSOC
     {
         public override void AddPowerUpToUser(ScriptableObjectUser scriptableObjectUser, int amount)
         {
-            scriptableObjectUser.userInfo.user.detail.moreTime += amount;
+            scriptableObjectUser.userInfo.user.detail.increaseTime += amount;
         }
         public override int GetAmount(ScriptableObjectUser scriptableObjectUser)
         {
-            return scriptableObjectUser.userInfo.user.detail.moreTime;
+            return scriptableObjectUser.userInfo.user.detail.increaseTime;
         }
     }
 }

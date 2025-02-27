@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class User
@@ -37,7 +38,7 @@ public class UserDetail
     public int discardOption;
     public int skipQuestion;
     public int findCorrectAnswer;
-    public int moreTime;
+    [FormerlySerializedAs("moreTime")] public int increaseTime;
     public int secondChance;
 }
 [Serializable]
@@ -202,7 +203,7 @@ public class ScriptableObjectUser : ScriptableObject
                 userInfo.user.detail.skipQuestion += amount;
                 break;
             case UpMoreTimePowerUp upMoreTimePowerUp:
-                    userInfo.user.detail.moreTime += amount;
+                    userInfo.user.detail.increaseTime += amount;
                 break;
             case SecondOpportunityPowerUp secondOpportunityPowerUp:
                 userInfo.user.detail.secondChance += amount;
@@ -224,7 +225,7 @@ public class ScriptableObjectUser : ScriptableObject
             case SkipQuesitonPowerUp skipQuestionPowerUp:
                 return userInfo.user.detail.skipQuestion;
             case UpMoreTimePowerUp upMoreTimePowerUp:
-                return userInfo.user.detail.moreTime;
+                return userInfo.user.detail.increaseTime;
             case SecondOpportunityPowerUp secondOpportunityPowerUp:
                 return userInfo.user.detail.secondChance;
             case DiscardOptionPowerUp discardOptionPowerUp:

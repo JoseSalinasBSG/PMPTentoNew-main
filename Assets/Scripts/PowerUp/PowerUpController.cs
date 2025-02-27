@@ -37,7 +37,7 @@ namespace PowerUp
             UpdatePowerUpAmount(_powerUpTrueOptionI, detail.findCorrectAnswer);
             UpdatePowerUpAmount(_powerUpDeleteOptionI, detail.discardOption);
             UpdatePowerUpAmount(_powerUpNextQuestionI, detail.skipQuestion);
-            UpdatePowerUpAmount(_powerUpMoreTimeI, detail.moreTime);
+            UpdatePowerUpAmount(_powerUpMoreTimeI, detail.increaseTime);
         }
 
         private void UpdatePowerUpAmount(PowerUpListener listener, int amount)
@@ -95,7 +95,7 @@ namespace PowerUp
         public void UseNextQuestion() => UsePowerUp(_powerUpNextQuestionI, ref _objectUser.userInfo.user.detail.skipQuestion);
         public void BuyNextQuestion(int amount) => BuyPowerUp(_powerUpNextQuestion, amount, _powerUpNextQuestion.nameInPlayerPrefs);
 
-        public void UseMoreTime() => UsePowerUp(_powerUpMoreTimeI, ref _objectUser.userInfo.user.detail.moreTime);
+        public void UseMoreTime() => UsePowerUp(_powerUpMoreTimeI, ref _objectUser.userInfo.user.detail.increaseTime);
         public void BuyMoreTime(int amount) => BuyPowerUp(_powerUpMoreTime, amount, _powerUpMoreTime.nameInPlayerPrefs);
 
 
