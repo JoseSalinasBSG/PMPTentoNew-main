@@ -172,6 +172,8 @@ public class UserService : MonoBehaviour
         using (UnityWebRequest request = new UnityWebRequest(_urlToUpdate, "POST"))
         {
             UserDetail dataLogin = _scriptableObjectUser.userInfo.user.detail;
+            
+            print($" Update User Detail: {JsonUtility.ToJson(dataLogin)}");
 
             var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataLogin));
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
@@ -206,6 +208,7 @@ public class UserService : MonoBehaviour
         using (UnityWebRequest request = new UnityWebRequest(_urlToUpdateAchievement, "POST"))
         {
             UserAchievements dataAchievement = _scriptableObjectUser.userInfo.user.achievements;
+            dataAchievement.idAlumno = _scriptableObjectUser.userInfo.user.idAlumno;
 
             var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataAchievement));
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
@@ -222,6 +225,7 @@ public class UserService : MonoBehaviour
                 try
                 {
                     bool achievement = Convert.ToBoolean(request.downloadHandler.text);//comprueba si devuelve true o false
+                    print($" Update User Achievements: {achievement}");
                 }
                 catch (Exception e)
                 {

@@ -92,7 +92,7 @@ public class PMPService : MonoBehaviour
     {
         UnityWebRequest request = new UnityWebRequest(PMPUrl.RegisterExam, "POST");
         
-        
+        print($" Data to Register Exam -> {JsonUtility.ToJson(_dataToRegisterSo.dataToRegisterExam)}");
         var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(_dataToRegisterSo.dataToRegisterExam));
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
