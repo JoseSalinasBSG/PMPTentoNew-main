@@ -123,16 +123,15 @@ public class ByteToAudioSource : MonoBehaviour
         StartCoroutine(IStartTTS());
     }
 
+    /// <summary>
+    /// Limpia el texto eliminando referencias a "PMBOK Guide" y frases de respuestas correctas.
+    /// </summary>
     private string CleanText(string text)
     {
         if (string.IsNullOrWhiteSpace(text)) return text;
 
-        // Eliminar "PMBOK" y todo lo que sigue
-        int index = text.IndexOf("PMBOK® Guide");
-        if (index != -1)
-        {
-            text = text.Substring(0, index).Trim();
-        }
+        // Eliminar "PMBOK Guide" o "PMBOK® Guide" y todo lo que sigue
+        // text = Regex.Replace(text, @"PMBOK(®)? Guide.*", "", RegexOptions.IgnoreCase).Trim();
 
         // Eliminar frases de respuestas correctas
         text = Regex.Replace(text, @"La respuesta correcta es la [A-Da-d]\)\.", "", RegexOptions.IgnoreCase);
