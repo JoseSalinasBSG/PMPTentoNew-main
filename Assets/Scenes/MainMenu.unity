@@ -14091,11 +14091,11 @@ MonoBehaviour:
   _rouletteSO: {fileID: 11400000, guid: 6836fddc85a005e45a603180395db1ee, type: 2}
   _userSO: {fileID: 11400000, guid: 2f47c0a4eb7b9cf4a9cf3eccaac92c96, type: 2}
   _rouletteTransform: {fileID: 7424930983286234624}
-  _speedRotationWithDrag: 180
-  _velocidadWithoutDrag: 180
-  _minSpeed: 0.01
-  _minSpeedDrag: 0.01
-  _deceleration: 6
+  _speedRotationWithDrag: 90
+  _velocidadWithoutDrag: 0.09
+  _minSpeed: 0.09
+  _minSpeedDrag: 90
+  _deceleration: 5
   _onInitRotation:
     m_PersistentCalls:
       m_Calls:
@@ -40569,7 +40569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96862745, g: 0.9290412, b: 0.9019608, a: 1}
+  m_Color: {r: 0.99607843, g: 0.85490197, b: 0.69411767, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

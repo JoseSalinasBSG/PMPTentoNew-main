@@ -17,41 +17,41 @@ MonoBehaviour:
       id: 
       idProveedor: 0
       cursos: 3
-      idAlumno: 10045280
+      idAlumno: 9628416
       idContacto: 0
       clave: 
-      userName: wruiz@bsginstitute.com
-      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.BInfaPZJobFun0EPzxkDnCmqY2k47Whzk6dy_A7vWSIfQDlVWADhCA.JK0gmQmf1s2KnAZ8iv_raA.mVyBl9lq0bXrBJT6uyEfjCcfciWkTeBCkKdF3NFtDTx93EHEEbjm5Qg6qp8Ki9NyC6D3pN_Zfk_pyUKiVhG_mY86hOPGHIel6R6koPXU2yYWaaw5yUFZNLlJupC5YF8awS6DKVfYFGxaRyO6OGqlqxHU3ZXNsq-fW9z5ma9hCY7H0Y-0DEZcZDuapxq3TnedrmVs9YphWKUaYj5r_jkdWQDWSKWo3PLwATNUE3LIU60iqMoKWyr4VSkEafZwpHQrkXAnVtvwlEKBrFnRDwH7nihjovojE6pmpqQ7-cfpiB4431CQkLwIkuNQ8GburaTPeJM3X2QTOs9hvxJQf5GRRkqPQGnzDJWEUWuurtQPydJRrqVrHkDTxdM9NAYh4N7Dk1MPK0EATRuLPGqJc8zcemXTnc8HolxnlQFAvx-nx9Nwt8u_kJr5QGGW0h1odg4q306Cz6P54Wka8KhCqcU1TVdAm6lg2-44gHSv73iV6d29i9S_5UXpArVYWtTM06tCTngwPr8Sq4oJotm3ryyCL5qjBxxjtUxBRaQkrg0vo5g01wtJrtxRlxz0BlhsvU3n43UnAiKbBBuVhQ4p0wV25oUOVIck_dDiUL4NKEPBiOE.egWyfYz3jDB8j_7CaPgm3g
+      userName: cip154850@gmail.com
+      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.44T7bUXdmUVRKd4GqiewZs3Tl9EZNlGqZQ06NPxhD54xKSGzN8CEag.hFtSe7X81CQazpbnp2d9oQ.rVEeOpfbH7f5-x4gdNDgfl_dfkEPO0TGAW2nDh4xiz6cY1QvXW7qTwHwjC5v2OpbYQukHgeKOz8avruOxnv9cpjlEhd9afo-5laaR8IADQZ2hHcsd7BUh9tNRUXNW_9hYob840XcCCvmqg0jy6scP2Ukb80T4Twx3RCLHuG333lJL6BqqrAJ-o4TUr2IXlDZxgVPeMB7QPsEmKgrNPQD4OA5gKlnb4sLlzELf9gKPtd2O8k5qaBuaSR5uFsBTEhaIpsljdX0Wg_PTtbabDqdg3p-cS9jopKV4oSadjDYD2Msv8aTDLonRtcNxEsznoQJHiSqLDNeeTzLHidrm95JcyomObKTR48K-sDJS8DrvWlzi0ocDknzRIu-vM21K4l700FC69Sj8kfuHkBZEpj2tEPyJTatx7yhwYPX7ksx4oTvvS2dDwMJbSKvN_54sPJxcPCqAZmuYOC9fJGsdeXsREuXu9-ZYLbU2VDPt2yjwM6W7lXYhgplgBlbb5s7PLR3V-RuosS1CqUEj-tMtS4a6SxVvbaGnCxNB36UN6bo27fKkiobMNuMiNrcv-9Ctt_3Z4c16Y90aoJtdalm-1uiYQ.Ic8-g4vdARBmOR4YIXHMkg
       tipoCarrera: 0
       correoEnc: 
       telEnc: 
       userAgent: 
       userIp: 
       detail:
-        idCaracteristicaGamificacion: 317
-        idAlumno: 10045280
-        usernameG: Walter
+        idCaracteristicaGamificacion: 307
+        idAlumno: 9628416
+        usernameG: pruebis
         instructorID: 0
-        totalCoins: 97304
-        totalExperience: 1030
-        discardOption: 998
-        skipQuestion: 1002
-        findCorrectAnswer: 1002
-        increaseTime: 1002
-        secondChance: 1002
+        totalCoins: 1000039
+        totalExperience: 2050
+        discardOption: 999
+        skipQuestion: 999
+        findCorrectAnswer: 999
+        increaseTime: 999
+        secondChance: 990
       achievements:
-        id: 5
-        idAlumno: 10045280
-        streak4: 3
-        streak6: 1
+        id: 6
+        idAlumno: 9628416
+        streak4: 1
+        streak6: 0
         streak8: 0
         streak10: 0
-        streak4Date: 2/27/2025 10:16:34 a. m.
-        streak6Date: 2/27/2025 10:24:11 a. m.
+        streak4Date: 26/02/2025 16:16:07
+        streak6Date: 
         streak8Date: 
         streak10Date: 
         streak4Origin: "Modo Categor\xEDa"
-        streak6Origin: "Modo Categor\xEDa"
+        streak6Origin: 
         streak8Origin: 
         streak10Origin: 
         usuario: 
