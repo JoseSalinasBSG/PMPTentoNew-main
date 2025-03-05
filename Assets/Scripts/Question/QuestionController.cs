@@ -221,7 +221,7 @@ namespace Question
             _onSelectOption?.Invoke();
             AchievementControlller _achievementController = FindObjectOfType<AchievementControlller>();//referencio achievement controller
             int lastElement = _achievementController.maxGoodStreakList.Last();//accedo al ultimo elemento de la lista maxGoodStreakList en AchievementController
-
+        
             if (_currentQuestion.idCorrectOption == id)//compara el id de la opcion seleccionada con el de la correcta
             {
                 if (_numberOfConsecutiveAnswers < lastElement)
