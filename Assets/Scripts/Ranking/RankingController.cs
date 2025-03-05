@@ -14,22 +14,24 @@ public class RankingController : MonoBehaviour
 {
     [SerializeField] private GameObject rankingPanel;
     [SerializeField] private GameObject rankingWithExtraItemPanel;
-    
+
     [SerializeField] private DataUserAll dataUserAll;
     [SerializeField] private List<PodiumItem> _podio;
     [SerializeField] private Transform _rankingContainer;
     [SerializeField] private PodiumItem _rankingItemPrefab;
     [SerializeField] private ScrollRect _scrollRect;
     [SerializeField] private int currentAmountUsersOnRanking = 0;
-    private bool _hasReachedBottom = false; 
+    private bool _hasReachedBottom = false;
     [SerializeField] private List<DataUsers> listDataUserAll;
     [SerializeField] private ScriptableObjectUser _userScriptableObject;
     [SerializeField] private Transform _myRankingItemContainer;
+    private static readonly Color customColor = new Color(247f / 255f, 237f / 255f, 230f / 255f); // F7EDE6
+
 
     private void Awake()
     {
         listDataUserAll = new List<DataUsers>();
-        
+
         rankingPanel.SetActive(false);
         rankingWithExtraItemPanel.SetActive(false);
     }
@@ -40,7 +42,7 @@ public class RankingController : MonoBehaviour
         if (arg0.y == 0 && !_hasReachedBottom)
         {
             _hasReachedBottom = true;
-        
+
             // Execute your one-time method here
             // CreateItemToRankingContainer(listDataUserAll, 10);
         }
@@ -53,7 +55,7 @@ public class RankingController : MonoBehaviour
 
     private void ExecuteOnceOnScrollBottom()
     {
-        
+
     }
 
     private void OnEnable()
@@ -85,7 +87,7 @@ public class RankingController : MonoBehaviour
             _scrollRect = rankingPanel.GetComponentInChildren<ScrollRect>();
         }
         _rankingContainer = _scrollRect.content;
-            
+
         listDataUserAll = dataUserAll.Users;//accediendo a lista de SO DataUserAll
 
         listDataUserAll = OrderPositions(listDataUserAll);//devuelve lista ordenada
@@ -94,13 +96,13 @@ public class RankingController : MonoBehaviour
         if (listDataUserAll.Count > 0)
         {
             infoUsers = listDataUserAll[0];//posicion 1 
-            _podio[0].SetDataPodio(infoUsers.userName, infoUsers.totalExperience.ToString(), infoUsers.id,infoUsers.spriteAvatarUser);//seteamos data en la posicion 1 del podio
+            _podio[0].SetDataPodio(infoUsers.userName, infoUsers.totalExperience.ToString(), infoUsers.id, infoUsers.spriteAvatarUser);//seteamos data en la posicion 1 del podio
             currentAmountUsersOnRanking++;
             if (listDataUserAll.Count > 1)
             {
                 //Debug.Log("mas de 1");
                 infoUsers = listDataUserAll[1];//posicion 2
-                _podio[1].SetDataPodio(infoUsers.userName, infoUsers.totalExperience.ToString(), infoUsers.id,infoUsers.spriteAvatarUser);//seteamos data en la posicion 2 del podio
+                _podio[1].SetDataPodio(infoUsers.userName, infoUsers.totalExperience.ToString(), infoUsers.id, infoUsers.spriteAvatarUser);//seteamos data en la posicion 2 del podio
                 currentAmountUsersOnRanking++;
                 if (listDataUserAll.Count > 2)
                 {
@@ -111,7 +113,7 @@ public class RankingController : MonoBehaviour
                 else
                 {
                     //Debug.Log("else1");
-                    _podio[2].SetDataPodio("", "-", -1,null);
+                    _podio[2].SetDataPodio("", "-", -1, null);
                 }
             }
             else
@@ -138,8 +140,18 @@ public class RankingController : MonoBehaviour
         {
             var item = Instantiate(_rankingItemPrefab, _rankingContainer);
             infoUsers = listDataUserAll[i];
+            int userId = _userScriptableObject.userInfo.user.idAlumno;
+
+            if (infoUsers.id == userId)
+            {
+                Image rankingItemImage = item.GetComponentInParent<Image>(true); // Evita buscar por nombre
+                Debug.Log(rankingItemImage.name);
+                if (rankingItemImage != null)
+                {
+                    rankingItemImage.color = customColor; // Aplica el color personalizado
+                }
+            }
             item.SetData(infoUsers.position.ToString(), infoUsers.userName, infoUsers.totalExperience.ToString(), infoUsers.id, infoUsers.spriteAvatarUser);
-            print("i: " + i);
         }
 
         var myRankingItem = _myRankingItemContainer.GetComponent<PodiumItem>();
@@ -156,7 +168,7 @@ public class RankingController : MonoBehaviour
             item.SetData(i.ToString(), dataUsers.userName, dataUsers.totalExperience.ToString(), dataUsers.id, dataUsers.spriteAvatarUser);
         }
     }
-    
+
 
     public List<DataUsers> OrderPositions(List<DataUsers> toOrder)//metodo para ordenar una lista del tipo DataUsers, retorna lo mismo
     {

@@ -410,11 +410,6 @@ public class GetUsersApi : MonoBehaviour
         if (!exists)
         {
             dataUserAll.Users.Add(userData);
-            Debug.Log($"Usuario {userData.id} agregado al ranking.");
-        }
-        else
-        {
-            Debug.Log($"Usuario {userData.id} ya existe en el ranking.");
         }
     }
 
