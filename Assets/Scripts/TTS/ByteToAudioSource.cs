@@ -106,7 +106,7 @@ public class ByteToAudioSource : MonoBehaviour
 
     private const string API_URL = "https://translate.google.com/translate_tts"; // URL de la API de Google.
     private const string LANG = "es"; // Idioma para la síntesis de texto.
-    private const int MAX_LENGTH = 150; // Longitud máxima permitida para cada segmento.
+    private const int MAX_LENGTH = 180; // Longitud máxima permitida para cada segmento.
 
     private Dictionary<string, AudioClip> audioCache = new Dictionary<string, AudioClip>(); // Caché local para los clips descargados.
 
@@ -118,10 +118,28 @@ public class ByteToAudioSource : MonoBehaviour
 
     public void StartTTS(string text)
     {
-        this.text = text;
+        this.text = CleanText(text);
         StopAllCoroutines(); // Detiene cualquier reproducción o descarga previa.
         StartCoroutine(IStartTTS());
     }
+
+    /// <summary>
+    /// Limpia el texto eliminando referencias a "PMBOK Guide" y frases de respuestas correctas.
+    /// </summary>
+    private string CleanText(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return text;
+
+        // Eliminar "PMBOK Guide" o "PMBOK® Guide" y todo lo que sigue
+        // text = Regex.Replace(text, @"PMBOK(®)? Guide.*", "", RegexOptions.IgnoreCase).Trim();
+
+        // Eliminar frases de respuestas correctas
+        text = Regex.Replace(text, @"La respuesta correcta es la [A-Da-d]\)\.", "", RegexOptions.IgnoreCase);
+        text = Regex.Replace(text, @"Las respuestas correctas son ([A-Da-d]\))+( y [A-Da-d]\))?\.", "", RegexOptions.IgnoreCase);
+
+        return text.Trim();
+    }
+
 
     public void StopTTS()
     {
@@ -142,8 +160,8 @@ public class ByteToAudioSource : MonoBehaviour
                 yield return new WaitForSeconds(_audioSource.clip.length - 0.3f);
                 continue;
             }
-
             var url = GenerateUrl(part, LANG);
+
             using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
             {
                 yield return www.SendWebRequest();
@@ -151,6 +169,7 @@ public class ByteToAudioSource : MonoBehaviour
                 if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogError("Error al descargar el audio: " + www.error);
+                    Debug.LogError("Respuesta del servidor: " + www.downloadHandler.text); // Imprime la respuesta del servidor.
                     continue;
                 }
 
@@ -167,20 +186,35 @@ public class ByteToAudioSource : MonoBehaviour
     private List<string> SplitText(string text, int maxLength = MAX_LENGTH)
     {
         List<string> parts = new List<string>();
-        var sentences = Regex.Split(text, @"(?<=[.!?¿()]) +"); // Divide en oraciones.
+        var sentences = Regex.Split(text, @"(?<=[.!?¿()])\s+");
         string currentPart = "";
 
         foreach (var sentence in sentences)
         {
-            if ((currentPart + sentence).Length <= maxLength)
+            if (sentence.Length > maxLength)
+            {
+                // Si una oración es más larga que el límite, la dividimos en palabras
+                var words = sentence.Split(' ');
+                foreach (var word in words)
+                {
+                    if ((currentPart.Length + word.Length + 1) <= maxLength)
+                    {
+                        currentPart += word + " ";
+                    }
+                    else
+                    {
+                        parts.Add(currentPart.Trim());
+                        currentPart = word + " ";
+                    }
+                }
+            }
+            else if ((currentPart.Length + sentence.Length) <= maxLength)
             {
                 currentPart += sentence + " ";
             }
             else
             {
-                if (!string.IsNullOrWhiteSpace(currentPart))
-                    parts.Add(currentPart.Trim());
-
+                parts.Add(currentPart.Trim());
                 currentPart = sentence + " ";
             }
         }
@@ -190,6 +224,7 @@ public class ByteToAudioSource : MonoBehaviour
 
         return parts;
     }
+
 }
 
 /*******************************************************************************************************************/
