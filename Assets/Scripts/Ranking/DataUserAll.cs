@@ -9,12 +9,12 @@ public class DataUserAll : ScriptableObject
     public class DataUsers
     {
         public int id;
+        // public int position;
         public string userName;
         public int totalExperience;        
         public AvatarUsers avatar;
         public string urlAvatarUser;
         public Sprite spriteAvatarUser;
-        public int position;//posicion en el ranking
  
     }
     [Serializable]
