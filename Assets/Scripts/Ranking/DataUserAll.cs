@@ -14,6 +14,7 @@ public class DataUserAll : ScriptableObject
         public AvatarUsers avatar;
         public string urlAvatarUser;
         public Sprite spriteAvatarUser;
+        public int position;//posicion en el ranking
  
     }
     [Serializable]
