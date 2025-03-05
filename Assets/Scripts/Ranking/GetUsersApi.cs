@@ -338,7 +338,7 @@ public class GetUsersApi : MonoBehaviour
         // Ordenar stats por totalExperience en orden descendente
         var sortedStats = stats.Children.OrderByDescending(node => node["totalExperience"].AsInt).ToList();
 
-        int maxAvatarsToDownload = 11;
+        int maxAvatarsToDownload = 10;
         for (int i = 0; i < sortedStats.Count && i < maxAvatarsToDownload; i++)
         {
             DataUserAll.DataUsers user = new DataUserAll.DataUsers();

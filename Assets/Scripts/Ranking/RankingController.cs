@@ -74,11 +74,13 @@ public class RankingController : MonoBehaviour
 
         if (dataUserAll.Users.Count > 10)
         {
+            rankingPanel.SetActive(false);
             rankingWithExtraItemPanel.SetActive(true);
             _scrollRect = rankingWithExtraItemPanel.GetComponentInChildren<ScrollRect>();
         }
         else
         {
+            rankingWithExtraItemPanel.SetActive(false);
             rankingPanel.SetActive(true);
             _scrollRect = rankingPanel.GetComponentInChildren<ScrollRect>();
         }
@@ -132,16 +134,17 @@ public class RankingController : MonoBehaviour
         }
 
         //correra a partir de la cuarta posicion
-        for (int i = 3; i < listDataUserAll.Count; i++)
+        for (int i = 3; i < listDataUserAll.Count - 1; i++)
         {
             var item = Instantiate(_rankingItemPrefab, _rankingContainer);
             infoUsers = listDataUserAll[i];
-            item.SetData(i.ToString(), infoUsers.userName, infoUsers.totalExperience.ToString(), infoUsers.id, infoUsers.spriteAvatarUser);
+            item.SetData(infoUsers.position.ToString(), infoUsers.userName, infoUsers.totalExperience.ToString(), infoUsers.id, infoUsers.spriteAvatarUser);
             print("i: " + i);
         }
-        
-        // var myRankingItem = Instantiate(_rankingItemPrefab, _myRankingItemContainer);
-        // myRankingItem.SetData("1", _userScriptableObject.userInfo.user.userName, _userScriptableObject.userInfo.user.detail.totalExperience.ToString(), _userScriptableObject.userInfo.user, _userScriptableObject.userInfo.user.spriteAvatarUser);
+
+        var myRankingItem = _myRankingItemContainer.GetComponent<PodiumItem>();
+        Debug.Log(myRankingItem.name);
+        myRankingItem.SetData(dataUserAll.Users[10].position.ToString(), dataUserAll.Users[10].userName, dataUserAll.Users[10].totalExperience.ToString(), dataUserAll.Users[10].id, dataUserAll.Users[10].spriteAvatarUser);
     }
     private void CreateItemToRankingContainer(List<DataUsers> listDataUserAll, int count = 0)
     {
