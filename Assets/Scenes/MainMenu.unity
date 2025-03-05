@@ -6840,7 +6840,7 @@ MonoBehaviour:
   _scrollRect: {fileID: 358720255}
   currentAmountUsersOnRanking: 0
   listDataUserAll: []
-  _userScriptableObject: {fileID: 0}
+  _userScriptableObject: {fileID: 11400000, guid: 2f47c0a4eb7b9cf4a9cf3eccaac92c96, type: 2}
   _myRankingItemContainer: {fileID: 5600880719510258589}
 --- !u!4 &1124365630
 Transform:

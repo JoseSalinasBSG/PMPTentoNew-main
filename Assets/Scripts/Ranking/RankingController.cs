@@ -25,7 +25,7 @@ public class RankingController : MonoBehaviour
     [SerializeField] private List<DataUsers> listDataUserAll;
     [SerializeField] private ScriptableObjectUser _userScriptableObject;
     [SerializeField] private Transform _myRankingItemContainer;
-    private static readonly Color customColor = new Color(247f / 255f, 237f / 255f, 230f / 255f); // F7EDE6
+    private static readonly Color customColor = new Color(254f / 255f, 218f / 255f, 177f / 255f); // FEDAB1
 
 
     private void Awake()
