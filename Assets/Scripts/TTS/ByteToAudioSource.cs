@@ -1,21 +1,21 @@
 //old code for TTS:
 //********************************************************************************************************************
-/*using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Text.RegularExpressions;
-using UnityEngine.Networking;
-using System.Threading.Tasks;
 
-public class ByteToAudioSource : MonoBehaviour
-{
-    [SerializeField] private AudioSource _audioSource; // AudioSource para reproducir los audios.
-    [SerializeField] private string text; // Texto de entrada para convertir en audio.
-    [SerializeField] private List<string> parts; // Partes del texto dividido.
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
+// using System.Text.RegularExpressions;
+// using UnityEngine.Networking;
 
-    private const string API_URL = "https://translate.google.com/translate_tts"; // URL de la API de Google.
-    private const string LANG = "es"; // Idioma para la síntesis de texto.
-    private const int MAX_LENGTH = 200; // Longitud máxima permitida para cada segmento.
+// public class ByteToAudioSource : MonoBehaviour
+// {
+//     [SerializeField] private AudioSource _audioSource; // AudioSource para reproducir los audios.
+//     [SerializeField] private string text; // Texto de entrada para convertir en audio.
+//     [SerializeField] private List<string> parts; // Partes del texto dividido.
+
+//     private const string API_URL = "https://translate.google.com/translate_tts"; // URL de la API de Google.
+//     private const string LANG = "es"; // Idioma para la síntesis de texto.
+//     private const int MAX_LENGTH = 70; // Longitud máxima permitida para cada segmento.
 
     private string GenerateUrl(string text, string lang)
     {
@@ -69,27 +69,28 @@ public class ByteToAudioSource : MonoBehaviour
         }
     }
 
-    private List<string> SplitText(string text, int maxLength = MAX_LENGTH)
-    {
-        List<string> parts = new List<string>();
-        var sentences = Regex.Split(text, @"(?<=[.!?¿()]) +"); // Divide el texto en oraciones.
+//     private List<string> SplitText(string text, int maxLength = MAX_LENGTH)
+//     {
+//         List<string> parts = new List<string>();
+//         var sentences = Regex.Split(text, @"(?<=[.!?¿()]) +"); // Divide el texto en oraciones.
 
-        foreach (string sentence in sentences)
-        {
-            if (sentence.Length <= maxLength)
-            {
-                parts.Add(sentence);
-            }
-            else
-            {
-                // Si la oración es demasiado larga, la divide en fragmentos más pequeños.
-                parts.AddRange(Regex.Split(sentence, @"(?<=[-:,.!¿?]) +"));
-            }
-        }
-        return parts;
-    }
-}*/
-// ********************************************************************************************************************
+//         foreach (string sentence in sentences)
+//         {
+//             if (sentence.Length <= maxLength)
+//             {
+//                 parts.Add(sentence);
+//             }
+//             else
+//             {
+//                 // Si la oración es demasiado larga, la divide en fragmentos más pequeños.
+//                 parts.AddRange(Regex.Split(sentence, @"(?<=[-:,.!¿?]) +"));
+//             }
+//         }
+//         return parts;
+//     }
+// }
+
+//********************************************************************************************************************
 
 /*
 using System.Collections;
@@ -106,7 +107,7 @@ public class ByteToAudioSource : MonoBehaviour
 
     private const string API_URL = "https://translate.google.com/translate_tts"; // URL de la API de Google.
     private const string LANG = "es"; // Idioma para la síntesis de texto.
-    private const int MAX_LENGTH = 150; // Longitud máxima permitida para cada segmento.
+    private const int MAX_LENGTH = 180; // Longitud máxima permitida para cada segmento.
 
     private Dictionary<string, AudioClip> audioCache = new Dictionary<string, AudioClip>(); // Caché local para los clips descargados.
 
@@ -118,10 +119,28 @@ public class ByteToAudioSource : MonoBehaviour
 
     public void StartTTS(string text)
     {
-        this.text = text;
+        this.text = CleanText(text);
         StopAllCoroutines(); // Detiene cualquier reproducción o descarga previa.
         StartCoroutine(IStartTTS());
     }
+
+    /// <summary>
+    /// Limpia el texto eliminando referencias a "PMBOK Guide" y frases de respuestas correctas.
+    /// </summary>
+    private string CleanText(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return text;
+
+        // Eliminar "PMBOK Guide" o "PMBOK® Guide" y todo lo que sigue
+        // text = Regex.Replace(text, @"PMBOK(®)? Guide.*", "", RegexOptions.IgnoreCase).Trim();
+
+        // Eliminar frases de respuestas correctas
+        text = Regex.Replace(text, @"La respuesta correcta es la [A-Da-d]\)\.", "", RegexOptions.IgnoreCase);
+        text = Regex.Replace(text, @"Las respuestas correctas son ([A-Da-d]\))+( y [A-Da-d]\))?\.", "", RegexOptions.IgnoreCase);
+
+        return text.Trim();
+    }
+
 
     public void StopTTS()
     {
@@ -142,8 +161,8 @@ public class ByteToAudioSource : MonoBehaviour
                 yield return new WaitForSeconds(_audioSource.clip.length - 0.3f);
                 continue;
             }
-
             var url = GenerateUrl(part, LANG);
+
             using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
             {
                 yield return www.SendWebRequest();
@@ -151,6 +170,7 @@ public class ByteToAudioSource : MonoBehaviour
                 if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogError("Error al descargar el audio: " + www.error);
+                    Debug.LogError("Respuesta del servidor: " + www.downloadHandler.text); // Imprime la respuesta del servidor.
                     continue;
                 }
 
@@ -167,20 +187,35 @@ public class ByteToAudioSource : MonoBehaviour
     private List<string> SplitText(string text, int maxLength = MAX_LENGTH)
     {
         List<string> parts = new List<string>();
-        var sentences = Regex.Split(text, @"(?<=[.!?¿()]) +"); // Divide en oraciones.
+        var sentences = Regex.Split(text, @"(?<=[.!?¿()])\s+");
         string currentPart = "";
 
         foreach (var sentence in sentences)
         {
-            if ((currentPart + sentence).Length <= maxLength)
+            if (sentence.Length > maxLength)
+            {
+                // Si una oración es más larga que el límite, la dividimos en palabras
+                var words = sentence.Split(' ');
+                foreach (var word in words)
+                {
+                    if ((currentPart.Length + word.Length + 1) <= maxLength)
+                    {
+                        currentPart += word + " ";
+                    }
+                    else
+                    {
+                        parts.Add(currentPart.Trim());
+                        currentPart = word + " ";
+                    }
+                }
+            }
+            else if ((currentPart.Length + sentence.Length) <= maxLength)
             {
                 currentPart += sentence + " ";
             }
             else
             {
-                if (!string.IsNullOrWhiteSpace(currentPart))
-                    parts.Add(currentPart.Trim());
-
+                parts.Add(currentPart.Trim());
                 currentPart = sentence + " ";
             }
         }
@@ -190,174 +225,7 @@ public class ByteToAudioSource : MonoBehaviour
 
         return parts;
     }
+
 }
-*/
 
-
-// ********************************************************************************************************************
-
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.Networking;
-
-public class ByteToAudioSource : MonoBehaviour
-{
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private string text;
-    [SerializeField] private List<string> parts;
-
-    private const string API_URL = "https://translate.google.com/translate_tts";
-    private const string LANG = "es";
-    private const int MAX_LENGTH = 200;
-
-    private CancellationTokenSource _cts;
-
-    private string GenerateUrl(string text, string lang)
-    {
-        var encodedText = UnityWebRequest.EscapeURL(text);
-        return $"{API_URL}?ie=UTF-8&tl={lang}&client=tw-ob&q={encodedText}";
-    }
-
-    public void StartTTS(string text)
-    {
-        this.text = text;
-        _ = StartTTSAsync(text);
-    }
-
-
-    public async System.Threading.Tasks.Task StartTTSAsync(string text, CancellationToken token = default)
-    {
-        if (string.IsNullOrWhiteSpace(text))
-        {
-            Debug.LogWarning("Text is null or empty.");
-            return;
-        }
-
-        _cts?.Cancel();
-        _cts = CancellationTokenSource.CreateLinkedTokenSource(token);
-        this.text = text;
-        parts = SplitText(this.text);
-
-        for (int i = 0; i < parts.Count; i++)
-        {
-            _cts.Token.ThrowIfCancellationRequested();
-            string url = GenerateUrl(parts[i], LANG);
-
-            using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
-            {
-                var op = www.SendWebRequest();
-                while (!op.isDone && !_cts.Token.IsCancellationRequested)
-                    await System.Threading.Tasks.Task.Yield();
-
-                _cts.Token.ThrowIfCancellationRequested();
-
-                if (www.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.LogError("Error downloading audio: " + www.error);
-                    continue;
-                }
-
-                AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
-                await PlayAudioClipAsync(clip, _cts.Token);
-            }
-        }
-    }
-
-    /*public async System.Threading.Tasks.Task StartTTSAsync(string text, CancellationToken token = default)
-    {
-        if (string.IsNullOrWhiteSpace(text))
-        {
-            Debug.LogWarning("Text is null or empty.");
-            return;
-        }
-
-        _cts?.Cancel();
-        _cts = CancellationTokenSource.CreateLinkedTokenSource(token);
-        this.text = text;
-
-        _cts.Token.ThrowIfCancellationRequested();
-        string url = GenerateUrl(this.text, LANG);
-
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
-        {
-            var op = www.SendWebRequest();
-            while (!op.isDone && !_cts.Token.IsCancellationRequested)
-                await System.Threading.Tasks.Task.Yield();
-
-            _cts.Token.ThrowIfCancellationRequested();
-
-            if (www.result != UnityWebRequest.Result.Success)
-            {
-                Debug.LogError("Error downloading audio\: " + www.error);
-                return;
-            }
-
-            AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
-            await PlayAudioClipAsync(clip, _cts.Token);
-        }
-    }*/
-
-    private async System.Threading.Tasks.Task PlayAudioClipAsync(AudioClip clip, CancellationToken token)
-    {
-        try
-        {
-            _audioSource.clip = clip;
-            _audioSource.Play();
-            float duration = Mathf.Max(0f, clip.length - 0.3f);
-            int delayMs = (int)(duration * 1000f);
-            await System.Threading.Tasks.Task.Delay(delayMs, token);
-        }
-        catch (TaskCanceledException)
-        {
-            Debug.Log("Task was canceled.");
-        }
-    }
-
-    public void StopTTS()
-    {
-        _cts?.Cancel();
-        _audioSource.Stop();
-    }
-
-    /*private List<string> SplitText(string text, int maxLength = MAX_LENGTH)
-    {
-        List<string> parts = new List<string>();
-        var sentences = Regex.Split(text, @"(?<=[.!?¿()]) +");
-        foreach (string sentence in sentences)
-        {
-            if (sentence.Length <= maxLength) parts.Add(sentence);
-            else parts.AddRange(Regex.Split(sentence, @"(?<=[-:,.!¿?]) +"));
-        }
-        return parts;
-    }*/
-
-    public List<string> SplitText(string text, int maxLength = MAX_LENGTH)
-    {
-        List<string> parts = new List<string>();
-        var sentences = Regex.Split(text, @"(?<=[.!?¿()])\s+");
-
-        foreach (string sentence in sentences)
-        {
-            if (sentence.Length > maxLength)
-            {
-                // Further split long sentences into chunks
-                int startIndex = 0;
-                while (startIndex < sentence.Length)
-                {
-                    int length = Mathf.Min(maxLength, sentence.Length - startIndex);
-                    parts.Add(sentence.Substring(startIndex, length).Trim());
-                    startIndex += length;
-                }
-            }
-            else
-            {
-                parts.Add(sentence.Trim());
-            }
-        }
-
-        return parts;
-    }
-}
+/*******************************************************************************************************************/
