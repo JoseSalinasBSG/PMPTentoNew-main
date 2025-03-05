@@ -16,44 +16,44 @@ MonoBehaviour:
     user:
       id: 
       idProveedor: 0
-      cursos: 41
-      idAlumno: 9964027
+      cursos: 3
+      idAlumno: 10045280
       idContacto: 0
       clave: 
-      userName: aarcana@bsginstitute.com
-      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.H_FObw-VUxEjbq5Vvsw2q1lgQ2gel1_dv0KkmPlXkd-e3vw8gprk1g.8Fl7ApULrtjjfvYGtiKSRw.jGtYBHHlZTVKGO0ogMg2Na2mdf8Od5CibHN0uUuC1ZfpfLu--totBHkBjnet6bkz7DQ4AiO_fxcstP1ilk5t8--UH83b2TbivxrIkv40oVHw8YIQl46Jg0YS8sAC5dXRFtGWV_VQsZyv5DJOAujBa6wX06eX0z30u2x7q6TmHtfQondkWX2Byoq4zhUX4qz2Y2BbXEZXMPApuK4OrrkcK7DPvxPj-XFFudrhhtkhi4YY-xD2bqh7g5NpOwSNfoCT5RbmvnUhzaI5FcWD0Q6FlzIs4dUqr8h2yEPDaNZwDlvZSAO7pvxz5x8Ylns2u1SA60e-VxaBC6KEV1UTUwK3KW1qOkX4gd6D33FQAeFvdJ20DgrD3HxNMbM99Y3vulBgEQPdj29YAoDrIx-JJ6ltFoGe-jRqWNtjJC3u1ZhKNvqDu-CsrCmpeJkOzmK1r4cdT-_TlRIZQaFnKvZn4R1VXkkUQA3UjGD7K9zDHWJrOuMR3cLGYeyvUG4kWei7rI_IhZaVqKjUtlQrYwS1LJWGxZyv6Kb7J6LuuJGS-q0wDVFc4DeT3K4TnBNujLeVIlcOUSUyennBZT-TNaIwjfcTMV1GBaiCyy19BwocjFdD8Ow.CV4o6VCF5apcB-b7m9GH9A
+      userName: wruiz@bsginstitute.com
+      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.BInfaPZJobFun0EPzxkDnCmqY2k47Whzk6dy_A7vWSIfQDlVWADhCA.JK0gmQmf1s2KnAZ8iv_raA.mVyBl9lq0bXrBJT6uyEfjCcfciWkTeBCkKdF3NFtDTx93EHEEbjm5Qg6qp8Ki9NyC6D3pN_Zfk_pyUKiVhG_mY86hOPGHIel6R6koPXU2yYWaaw5yUFZNLlJupC5YF8awS6DKVfYFGxaRyO6OGqlqxHU3ZXNsq-fW9z5ma9hCY7H0Y-0DEZcZDuapxq3TnedrmVs9YphWKUaYj5r_jkdWQDWSKWo3PLwATNUE3LIU60iqMoKWyr4VSkEafZwpHQrkXAnVtvwlEKBrFnRDwH7nihjovojE6pmpqQ7-cfpiB4431CQkLwIkuNQ8GburaTPeJM3X2QTOs9hvxJQf5GRRkqPQGnzDJWEUWuurtQPydJRrqVrHkDTxdM9NAYh4N7Dk1MPK0EATRuLPGqJc8zcemXTnc8HolxnlQFAvx-nx9Nwt8u_kJr5QGGW0h1odg4q306Cz6P54Wka8KhCqcU1TVdAm6lg2-44gHSv73iV6d29i9S_5UXpArVYWtTM06tCTngwPr8Sq4oJotm3ryyCL5qjBxxjtUxBRaQkrg0vo5g01wtJrtxRlxz0BlhsvU3n43UnAiKbBBuVhQ4p0wV25oUOVIck_dDiUL4NKEPBiOE.egWyfYz3jDB8j_7CaPgm3g
       tipoCarrera: 0
       correoEnc: 
       telEnc: 
       userAgent: 
       userIp: 
       detail:
-        idCaracteristicaGamificacion: 309
-        idAlumno: 9964027
-        usernameG: testaarcana
-        instructorID: 1
-        totalCoins: 120
-        totalExperience: 210
-        discardOption: 6
-        skipQuestion: 3
-        findCorrectAnswer: 3
-        increaseTime: 3
-        secondChance: 4
+        idCaracteristicaGamificacion: 317
+        idAlumno: 10045280
+        usernameG: Walter
+        instructorID: 0
+        totalCoins: 97304
+        totalExperience: 1030
+        discardOption: 998
+        skipQuestion: 1002
+        findCorrectAnswer: 1002
+        increaseTime: 1002
+        secondChance: 1002
       achievements:
-        id: 1
-        idAlumno: 9818325
-        streak4: 131
-        streak6: 46
-        streak8: 25
-        streak10: 15
-        streak4Date: 2/21/2025 9:21:11 p. m.
-        streak6Date: 2/21/2025 9:21:16 p. m.
-        streak8Date: 2/18/2025 8:48:54 p. m.
-        streak10Date: 01/02/2025 11:33:43
+        id: 5
+        idAlumno: 10045280
+        streak4: 3
+        streak6: 1
+        streak8: 0
+        streak10: 0
+        streak4Date: 2/27/2025 10:16:34 a. m.
+        streak6Date: 2/27/2025 10:24:11 a. m.
+        streak8Date: 
+        streak10Date: 
         streak4Origin: "Modo Categor\xEDa"
         streak6Origin: "Modo Categor\xEDa"
-        streak8Origin: "Modo Categor\xEDa"
-        streak10Origin: "Modo Categor\xEDa"
+        streak8Origin: 
+        streak10Origin: 
         usuario: 
       excepcion:
         excepcionGenerada: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
     haveUser: 1
     haveUsername: 1
     haveInstructor: 1
-    idInstructor: 1
+    idInstructor: 0
     haveAvatar: 0
     urlAvatar: https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Round&hairColor=Black&facialHairType=BeardMedium&facialHairColor=Black&clotheType=ShirtVNeck&clotheColor=Red&eyeType=Side&eyebrowType=DefaultNatural&mouthType=Disbelief&skinColor=Light
     spriteAvatar: {fileID: 0}
