@@ -336,6 +336,7 @@ public class GetUsersApi : MonoBehaviour
     private async void SaveDataAllUsers(SimpleJSON.JSONNode stats)
     {
         dataUserAll.Users.Clear();
+        var indexLastPlayer = dataUserAll.Users.FindIndex( user => user.id == _user.userInfo.user.detail.idAlumno);
         int maxAvatarsToDownload = 10;
         for (int i = 0; i < stats.Count && i < maxAvatarsToDownload; i++)
         {
@@ -343,6 +344,8 @@ public class GetUsersApi : MonoBehaviour
             user.id = stats[i]["idAlumno"];
             user.userName = stats[i]["usernameG"];
             user.totalExperience = stats[i]["totalExperience"];
+            // user.position = i;
+            // if(i == maxAvatarsToDownload) user.position = indexLastPlayer;
 
             //objeto avatar
             DataUserAll.AvatarUsers avatar = new DataUserAll.AvatarUsers();

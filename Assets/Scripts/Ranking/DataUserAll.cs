@@ -9,6 +9,7 @@ public class DataUserAll : ScriptableObject
     public class DataUsers
     {
         public int id;
+        // public int position;
         public string userName;
         public int totalExperience;        
         public AvatarUsers avatar;
