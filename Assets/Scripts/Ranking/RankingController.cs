@@ -25,6 +25,8 @@ public class RankingController : MonoBehaviour
     [SerializeField] private List<DataUsers> listDataUserAll;
     [SerializeField] private ScriptableObjectUser _userScriptableObject;
     [SerializeField] private Transform _myRankingItemContainer;
+    
+    private const int TOP_USERS = 10;
 
     private void Awake()
     {
@@ -72,11 +74,14 @@ public class RankingController : MonoBehaviour
     {
         if (dataUserAll.Users.Count == 0) return;
 
-        if (dataUserAll.Users.Count > 10)
+        if (dataUserAll.Users.Count > TOP_USERS)
         {
             rankingPanel.SetActive(false);
             rankingWithExtraItemPanel.SetActive(true);
             _scrollRect = rankingWithExtraItemPanel.GetComponentInChildren<ScrollRect>();
+            var myRankingItem = _myRankingItemContainer.GetComponent<PodiumItem>();
+            Debug.Log(myRankingItem.name);
+            myRankingItem.SetData(dataUserAll.Users[TOP_USERS].position.ToString(), dataUserAll.Users[TOP_USERS].userName, dataUserAll.Users[TOP_USERS].totalExperience.ToString(), dataUserAll.Users[TOP_USERS].id, dataUserAll.Users[10].spriteAvatarUser);
         }
         else
         {
@@ -134,7 +139,7 @@ public class RankingController : MonoBehaviour
         }
 
         //correra a partir de la cuarta posicion
-        for (int i = 3; i < listDataUserAll.Count - 1; i++)
+        for (int i = 3; i < TOP_USERS; i++)
         {
             var item = Instantiate(_rankingItemPrefab, _rankingContainer);
             infoUsers = listDataUserAll[i];
@@ -142,9 +147,7 @@ public class RankingController : MonoBehaviour
             print("i: " + i);
         }
 
-        var myRankingItem = _myRankingItemContainer.GetComponent<PodiumItem>();
-        Debug.Log(myRankingItem.name);
-        myRankingItem.SetData(dataUserAll.Users[10].position.ToString(), dataUserAll.Users[10].userName, dataUserAll.Users[10].totalExperience.ToString(), dataUserAll.Users[10].id, dataUserAll.Users[10].spriteAvatarUser);
+       
     }
     private void CreateItemToRankingContainer(List<DataUsers> listDataUserAll, int count = 0)
     {
