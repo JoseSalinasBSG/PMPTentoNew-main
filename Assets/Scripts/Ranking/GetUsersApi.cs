@@ -219,7 +219,6 @@ using TMPro;
 using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Linq;
 
 [Serializable]
 public class DataToRequireRanking
@@ -307,6 +306,7 @@ public class GetUsersApi : MonoBehaviour
     private IEnumerator GetData(int minExperience, int maxExperience)
     {
         GameEvents.RequestRanking?.Invoke();
+        //using (UnityWebRequest request = new UnityWebRequest(URL, "POST"))
         using (UnityWebRequest request = new UnityWebRequest(URL, "POST"))
         {
             DataToRequireRanking dataLogin = new DataToRequireRanking() { MinExperience = minExperience, MaxExperience = maxExperience };
@@ -326,6 +326,7 @@ public class GetUsersApi : MonoBehaviour
             {
                 string json = request.downloadHandler.text;//almacena respuesta del endpoint
                 Debug.Log(json);
+                // dataUserAll.Users = JsonUtility.FromJson<DataUserAll.DataUsers>(json).Users;
                 SimpleJSON.JSONNode stats = SimpleJSON.JSON.Parse(json);//convierte respuesta a json
                 SaveDataAllUsers(stats);
             }
@@ -335,57 +336,39 @@ public class GetUsersApi : MonoBehaviour
     private async void SaveDataAllUsers(SimpleJSON.JSONNode stats)
     {
         dataUserAll.Users.Clear();
-        // Ordenar stats por totalExperience en orden descendente
-        var sortedStats = stats.Children.OrderByDescending(node => node["totalExperience"].AsInt).ToList();
-
-        int maxAvatarsToDownload = 11;
-        for (int i = 0; i < sortedStats.Count && i < maxAvatarsToDownload; i++)
+        var indexLastPlayer = dataUserAll.Users.FindIndex( user => user.id == _user.userInfo.user.detail.idAlumno);
+        int maxAvatarsToDownload = 10;
+        for (int i = 0; i < stats.Count && i < maxAvatarsToDownload; i++)
         {
             DataUserAll.DataUsers user = new DataUserAll.DataUsers();
-            user.id = sortedStats[i]["idAlumno"];
-            user.userName = sortedStats[i]["usernameG"];
-            user.totalExperience = sortedStats[i]["totalExperience"];
-            user.position = i + 1;//posicion en el ranking
+            user.id = stats[i]["idAlumno"];
+            user.userName = stats[i]["usernameG"];
+            user.totalExperience = stats[i]["totalExperience"];
+            // user.position = i;
+            // if(i == maxAvatarsToDownload) user.position = indexLastPlayer;
 
             //objeto avatar
             DataUserAll.AvatarUsers avatar = new DataUserAll.AvatarUsers();
-            avatar.idAvatar = sortedStats[i]["avatar"]["idAvatar"];
-            avatar.idAlumno = sortedStats[i]["avatar"]["idAlumno"];
-            avatar.nombres = sortedStats[i]["avatar"]["nombres"];
-            avatar.topC = sortedStats[i]["avatar"]["topC"];
-            avatar.accessories = sortedStats[i]["avatar"]["accessories"];
-            avatar.hair_Color = sortedStats[i]["avatar"]["hair_Color"];
-            avatar.facial_Hair = sortedStats[i]["avatar"]["facial_Hair"];
-            avatar.facial_Hair_Color = sortedStats[i]["avatar"]["facial_Hair_Color"];
-            avatar.clothes = sortedStats[i]["avatar"]["clothes"];
-            avatar.clothes_Color = sortedStats[i]["avatar"]["clothes_Color"];
-            avatar.eyes = sortedStats[i]["avatar"]["eyes"];
-            avatar.eyesbrow = sortedStats[i]["avatar"]["eyesbrow"];
-            avatar.mouth = sortedStats[i]["avatar"]["mouth"];
-            avatar.skin = sortedStats[i]["avatar"]["skin"];
+            avatar.idAvatar = stats[i]["avatar"]["idAvatar"];
+            avatar.idAlumno = stats[i]["avatar"]["idAlumno"];
+            avatar.nombres = stats[i]["avatar"]["nombres"];
+            avatar.topC = stats[i]["avatar"]["topC"];
+            avatar.accessories = stats[i]["avatar"]["accessories"];
+            avatar.hair_Color = stats[i]["avatar"]["hair_Color"];
+            avatar.facial_Hair = stats[i]["avatar"]["facial_Hair"];
+            avatar.facial_Hair_Color = stats[i]["avatar"]["facial_Hair_Color"];
+            avatar.clothes = stats[i]["avatar"]["clothes"];
+            avatar.clothes_Color = stats[i]["avatar"]["clothes_Color"];
+            avatar.eyes = stats[i]["avatar"]["eyes"];
+            avatar.eyesbrow = stats[i]["avatar"]["eyesbrow"];
+            avatar.mouth = stats[i]["avatar"]["mouth"];
+            avatar.skin = stats[i]["avatar"]["skin"];
 
             user.avatar = avatar;//asignar objeto avatar al usuario
-            user.urlAvatarUser = GenerateUrlToAvatarForRanking(avatar);
             dataUserAll.Users.Add(user);
+            user.urlAvatarUser = GenerateUrlToAvatarForRanking(avatar);
+            //StartCoroutine(downloadSVGUsersRanking(user.urlAvatarUser,i));
         }
-
-        DataUserAll.DataUsers newUser = new DataUserAll.DataUsers
-        {
-            id = _user.userInfo.user.idAlumno,
-            userName = _user.userInfo.user.detail.usernameG,
-            totalExperience = _user.userInfo.user.detail.totalExperience,
-            urlAvatarUser = _user.userInfo.urlAvatar,
-        };
-
-        int indice = sortedStats.FindIndex(x => x["idAlumno"].AsInt == _user.userInfo.user.idAlumno);
-        if (indice != -1)
-        {
-            newUser.position = indice + 1;
-        }
-
-        AddUserIfNotExists(newUser);
-
-
         // Descarga de avatares en lotes
         for (int i = 0; i < dataUserAll.Users.Count; i += batchSize)
         {
@@ -396,28 +379,9 @@ public class GetUsersApi : MonoBehaviour
             }
             await System.Threading.Tasks.Task.WhenAll(tasks);
         }
+        //Debug.Log("Se completó el llenado de Avatars de usuarios");
+        //GameEvents.RankingRetrieved?.Invoke();
     }
-
-    /// <summary>
-    /// Compara la lista de usuarios actuales con el usuario proporcionado y lo agrega si no existe.
-    /// </summary>
-    /// <param name="userData">Información del usuario a verificar.</param>
-    private void AddUserIfNotExists(DataUserAll.DataUsers userData)
-    {
-        // Verifica si el usuario ya está en la lista
-        bool exists = dataUserAll.Users.Any(u => u.id == _user.userInfo.user.idAlumno);
-
-        if (!exists)
-        {
-            dataUserAll.Users.Add(userData);
-            Debug.Log($"Usuario {userData.id} agregado al ranking.");
-        }
-        else
-        {
-            Debug.Log($"Usuario {userData.id} ya existe en el ranking.");
-        }
-    }
-
 
     private async System.Threading.Tasks.Task DownloadAvatarAsync(DataUserAll.DataUsers user, int index)
     {
