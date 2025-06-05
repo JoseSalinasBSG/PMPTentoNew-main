@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,14 @@ public class ButtonsGroup : MonoBehaviour
     {
         get => _options;
         set => _options = value;
+    }
+
+    private void Start()
+    {
+        for(int i = 0; i < _options.Count; i++)
+        {
+            _options[i].ID = i;
+        }
     }
 
     public OptionGC OldSelectedButton

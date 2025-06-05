@@ -101,7 +101,7 @@ public class AudioSettingsSO : ScriptableObject
 
     private void OnEnable()
     {
-        Debug.Log("on enable in audiosettingsSO");
+        //Debug.Log("on enable in audiosettingsSO");
         AudioEvents.MasterVolumeChanged += AudioEvents_MasterVolumeChanged;
         AudioEvents.MusicVolumeChanged += AudioEvents_MusicVolumeChanged;
         AudioEvents.SFXVolumeChanged += AudioEvents_SFXVolumeChanged;
@@ -109,7 +109,7 @@ public class AudioSettingsSO : ScriptableObject
 
     private void OnDisable()
     {
-        Debug.Log("on disable in audiosettingsSO");
+        //Debug.Log("on disable in audiosettingsSO");
         AudioEvents.MasterVolumeChanged -= AudioEvents_MasterVolumeChanged;
         AudioEvents.MusicVolumeChanged -= AudioEvents_MusicVolumeChanged;
         AudioEvents.SFXVolumeChanged -= AudioEvents_SFXVolumeChanged;

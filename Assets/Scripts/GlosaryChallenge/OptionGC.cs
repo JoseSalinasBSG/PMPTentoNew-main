@@ -18,9 +18,11 @@ public class OptionGC : MonoBehaviour
     [SerializeField] private Color defaultColor;
     [SerializeField] private EventTrigger _eventTrigger;
     [SerializeField] private CanvasGroup _canvasGroup;
+
+    [Header("Unity Events")]
     [SerializeField] private UnityEvent OnOptionSelected;
     [SerializeField] private UnityEvent OnCorrectOptionSetted;
-    [SerializeField] private UnityEvent OnIncorrectOptionSetted;
+        [SerializeField] private UnityEvent OnIncorrectOptionSetted;
     [SerializeField] private UnityEvent OnAnimationRestarted;
 
     private int _id;
@@ -81,6 +83,12 @@ public class OptionGC : MonoBehaviour
         _image.color = defaultColor;
         _selectedInGC = false;
     }
+
+    public bool IsSelectedInGC()
+    {
+        return _selectedInGC;
+    }
+
     public void SetCorrectOption()
     {
         _image.color = _correctColor;

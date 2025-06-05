@@ -1,9 +1,10 @@
 using JetBrains.Annotations;
+using ScriptableCreator.PowerUpSOC;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class User
@@ -37,7 +38,7 @@ public class UserDetail
     public int discardOption;
     public int skipQuestion;
     public int findCorrectAnswer;
-    public int increaseTime;
+    [FormerlySerializedAs("moreTime")] public int increaseTime;
     public int secondChance;
 }
 [Serializable]
@@ -91,6 +92,7 @@ public class UserInfo
     public string urlAvatar;
     public Sprite spriteAvatar;
 }
+
 [CreateAssetMenu(fileName = "User Data", menuName = "User data")]
 public class ScriptableObjectUser : ScriptableObject
 {
@@ -103,7 +105,6 @@ public class ScriptableObjectUser : ScriptableObject
         GameEvents.NewInstuctorId += GameEvents_NewInstuctorId;
         GameEvents.RequestExperienceChange += GameEvents_RequestExperienceChange;
         GameEvents.RequestCoinsChange += GameEvents_RequestCoinsChange;
-
     }
 
     private void GameEvents_RequestExperienceChange(float obj)
@@ -133,14 +134,12 @@ public class ScriptableObjectUser : ScriptableObject
 
     private void GameEvents_NewInstuctorId(int index)
     {
-        Debug.Log("configurando instructor ID");
         userInfo.haveInstructor = true;
         userInfo.idInstructor = index;
         PlayerPrefs.SetInt("HaveInstructor", index);
         PlayerPrefs.Save();
 
         //GameEvents.InstructorSelected?.Invoke();
-
     }
 
     private void GameEvents_NameChanged(string username)
@@ -161,19 +160,79 @@ public class ScriptableObjectUser : ScriptableObject
 
     public void AddCounter(int idTask)
     {
+        // Encuentra el item existente
         var item = userInfo.LearningModeState.ItemStates.FirstOrDefault(x => x.id == idTask);
+
         if (item != null)
         {
+            // Si el item existe, añade un nuevo tiempo
+            item.timesToRetrive ??= new List<DateTime>();
             item.timesToRetrive.Add(DateTime.Now.AddSeconds(10));
         }
         else
         {
+            // Si el item no existe, créalo y añádelo
             item = new ItemState
             {
-                id = idTask
+                id = idTask,
+                timesToRetrive = new List<DateTime> { DateTime.Now.AddSeconds(10) }
             };
-            item.timesToRetrive.Add(DateTime.Now.AddSeconds(10));
+
             userInfo.LearningModeState.ItemStates.Add(item);
         }
     }
+
+    public void AddCoins(int amount)
+    {
+        userInfo.user.detail.totalCoins += amount;
+    }
+
+    public void RemoveCoins(int amount)
+    {
+        userInfo.user.detail.totalCoins -= amount;
+    }
+
+    public void AddPowerUp(PowerUpSO powerUp, int amount)
+    {
+        switch (powerUp)
+        {
+            case TrueOptionPowerUp trueOptionPowerUp:
+                userInfo.user.detail.findCorrectAnswer += amount;
+                break;
+            case SkipQuesitonPowerUp skipQuestionPowerUp:
+                userInfo.user.detail.skipQuestion += amount;
+                break;
+            case UpMoreTimePowerUp upMoreTimePowerUp:
+                    userInfo.user.detail.increaseTime += amount;
+                break;
+            case SecondOpportunityPowerUp secondOpportunityPowerUp:
+                userInfo.user.detail.secondChance += amount;
+                break;
+            case DiscardOptionPowerUp discardOptionPowerUp:
+                userInfo.user.detail.discardOption += amount;
+                break;
+            default:
+                throw new ArgumentException("Tipo de power-up no soportado");
+        }
+    }
+
+    public int GetPowerUpAmount(PowerUpSO powerUp)
+    {
+        switch (powerUp)
+        {
+            case TrueOptionPowerUp trueOptionPowerUp:
+                return userInfo.user.detail.findCorrectAnswer;
+            case SkipQuesitonPowerUp skipQuestionPowerUp:
+                return userInfo.user.detail.skipQuestion;
+            case UpMoreTimePowerUp upMoreTimePowerUp:
+                return userInfo.user.detail.increaseTime;
+            case SecondOpportunityPowerUp secondOpportunityPowerUp:
+                return userInfo.user.detail.secondChance;
+            case DiscardOptionPowerUp discardOptionPowerUp:
+                return userInfo.user.detail.discardOption;
+            default:
+                throw new ArgumentException("Tipo de power-up no soportado");
+        }
+    }
+
 }

@@ -39,6 +39,7 @@ public class ChangeUsernameSender : SenderEvent
             using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
             {
                 _objectUser.userInfo.user.detail.usernameG = username;
+                _objectUser.userInfo.user.detail.idAlumno = _objectUser.userInfo.user.idAlumno;
                 UserDetail dataLogin = _objectUser.userInfo.user.detail;
 
                 var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataLogin));

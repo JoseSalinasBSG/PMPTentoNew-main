@@ -1,18 +1,14 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
-public class PassScrollEvents : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerClickHandler
+public class PassScrollEvents : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     public ScrollRect scrollRect;
-    private bool isDragging=false;
+    private bool isDragging = false;
     [SerializeField] UnityEvent onPointerClick;
-    [SerializeField] bool hasScrollHorizontal=false;
+    [SerializeField] bool hasScrollHorizontal = false;
 
     void Start()
     {
@@ -22,7 +18,7 @@ public class PassScrollEvents : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         }
         else
         {
-            scrollRect=GetComponentInParent<ScrollRect>();//scroll rect de padre mas cercano
+            scrollRect = GetComponentInParent<ScrollRect>();//scroll rect de padre mas cercano
         }
     }
 
@@ -59,7 +55,6 @@ public class PassScrollEvents : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         {
             return;//cancela OnPointerClick
         }
-        Debug.Log("OnPointerClick");
         onPointerClick?.Invoke();//llama al evento onPointerClick y a todos sus metodos suscritos en el inspector
     }
 

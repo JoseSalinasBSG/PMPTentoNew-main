@@ -13,4 +13,334 @@ MonoBehaviour:
   m_Name: IncorrectQuestionSO
   m_EditorClassIdentifier: 
   questions:
-    IncorrectQuestionsList: []
+    IncorrectQuestionsList:
+    - id: 1210428
+      idSimuladorPmpDominio: 4
+      idSimuladorPmpTarea: 15
+      idSimuladorPmpPregunta: 2070
+      ejecutado: 0
+      pregunta:
+        id: 2070
+        enunciado: "Eres la Directora del proyecto \"Dise\xF1o del ecoparque en la
+          zona selv\xE1tica de tu pais\". Est\xE1s gestionando tu equipo y planeas
+          definir los reconocimientos y recompensas basado en la pir\xE1mide de Maslow.
+          En el an\xE1lisis de los miembros de tu equipo identificas que la l\xEDder
+          t\xE9cnica tiene una gran autoconfianza, competencia, adem\xE1s de gozar
+          del aprecio y reconocimiento de sus compa\xF1eros. \xBFQu\xE9 tipo de motivaci\xF3n
+          ser\xE1 la m\xE1s efectiva para ella?"
+        idSimuladorTipoRespuesta: 1
+        tieneRetroalimentacion: 1
+        urlRetroalimentacionVideo: https://players.brightcove.net/6267108632001/rEr9tuuTvS_default/index.html?videoId=6318477001112
+        retroalimentacion: "Est\xE1 en el nivel 4 de la pir\xE1mide de Maslow. Cubiertas
+          las necesidades de estima: necesidad del respeto a uno mismo y las dem\xE1s
+          personas. El siguiente nivel es el 5 donde aparece la necesidad de autorrealizaci\xF3n
+          o autoactualizaci\xF3n y a trav\xE9s de su satisfacci\xF3n se encuentra
+          un sentido a la vida mediante el desarrollo de una actividad. PMBOK\xAE
+          Guide 9.4.2.5 Reconocimientos y recompensas"
+        activo: 1
+        respuesta:
+        - id: 8321
+          respuesta: Hacerle sentir parte del equipo y de la empresa
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 8322
+          respuesta: Ofrecerle un trabajo que le de un mayor sentido a la vida mediante
+            el desarrollo de esa actividad.
+          valor: 1
+          correcto: true
+          respuestaSelecionada: 0
+        - id: 8323
+          respuesta: Facilitarle mayor independencia y libertad
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 8324
+          respuesta: Un sustancioso aumento de ingresos y recursos
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+      dominioNombre: Personas
+      tareaNombre: 2 - Liderar equipo
+    - id: 1210430
+      idSimuladorPmpDominio: 4
+      idSimuladorPmpTarea: 15
+      idSimuladorPmpPregunta: 2091
+      ejecutado: 0
+      pregunta:
+        id: 2091
+        enunciado: "Eres el Gerente del proyecto \"Construcci\xF3n de un centro comercial
+          de tiendas y restaurantes de productos latinoamericanos\". Entre las actividades
+          que realizar\xE1s para dirigir el extenso equipo de proyecto que tienes
+          a tu cargo, incluyes todas las siguientes excepto:"
+        idSimuladorTipoRespuesta: 1
+        tieneRetroalimentacion: 1
+        urlRetroalimentacionVideo: https://players.brightcove.net/6267108632001/rEr9tuuTvS_default/index.html?videoId=6318474128112
+        retroalimentacion: "Entre las actividades que implica dirigir el equipo de
+          proyecto est\xE1n las de seguir el desempe\xF1o de los miembros del equipo,
+          darles retroalimentaci\xF3n sobre c\xF3mo est\xE1n ejecutando su trabajo,
+          resolver conflictos que puedan surgir as\xED como gestionar cambios en
+          el equipo del proyecto. PMBOK\xAE Guide 9.5 Dirigir al equipo"
+        activo: 1
+        respuesta:
+        - id: 8405
+          respuesta: "Hacer seguimiento al desempe\xF1o del equipo"
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 8406
+          respuesta: Gestionar los conflictos
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 8407
+          respuesta: Ajustar el estilo de liderazgo a la voluntad y capacidad del
+            equipo para realizar el trabajo
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 8408
+          respuesta: Seleccionar los miembros del equipo mejor calificados para relizar
+            las tareas.
+          valor: 1
+          correcto: true
+          respuestaSelecionada: 0
+      dominioNombre: Personas
+      tareaNombre: 2 - Liderar equipo
+    - id: 1210458
+      idSimuladorPmpDominio: 4
+      idSimuladorPmpTarea: 20
+      idSimuladorPmpPregunta: 2128
+      ejecutado: 0
+      pregunta:
+        id: 2128
+        enunciado: "Te nombraron directora de proyecto de un proyecto en ejecuci\xF3n.
+          El anterior gerente de proyecto renunci\xF3 y junto a el l\xEDder t\xE9cnico.
+          Antes de buscar un l\xEDder t\xE9cnico sustituto, quieres ver la informaci\xF3n
+          acerca de las tareas, deberes y responsabilidades, as\xED como las cualidades
+          m\xEDnimas aceptables que debe poseer esa persona. \xBFD\xF3nde la buscar\xE1s?"
+        idSimuladorTipoRespuesta: 1
+        tieneRetroalimentacion: 1
+        urlRetroalimentacionVideo: https://players.brightcove.net/6267108632001/rEr9tuuTvS_default/index.html?videoId=6318476156112
+        retroalimentacion: "La descripci\xF3n del cargo se refiere a las tareas,
+          los deberes y responsabilidades del cargo, en tanto que las especificaciones
+          del cargo se ocupan de los requisitos que el ocupante necesita cumplir.
+          Por tanto, las asignaciones de personal se hacen de acuerdo con esas descripciones
+          y esas especificaciones. PMBOK\xAE Guide 9.1 Planificar la Gesti\xF3n de
+          recursos"
+        activo: 1
+        respuesta:
+        - id: 8553
+          respuesta: Organigramas
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 8554
+          respuesta: "Matriz de asignaci\xF3n de responsabilidades"
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 8555
+          respuesta: "Descripci\xF3n de puestos de trabajo"
+          valor: 1
+          correcto: true
+          respuestaSelecionada: 0
+        - id: 8556
+          respuesta: Estructura de desglose de recursos
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+      dominioNombre: Personas
+      tareaNombre: "7 - Abordar y eliminar los impedimentos, obst\xE1culos y bloqueadores
+        para el equipo"
+    - id: 1210480
+      idSimuladorPmpDominio: 4
+      idSimuladorPmpTarea: 14
+      idSimuladorPmpPregunta: 1832
+      ejecutado: 0
+      pregunta:
+        id: 1832
+        enunciado: "Est\xE1s dirigiendo el proyecto de compra de una empresa e integraci\xF3n
+          de estructura, procesos y sistemas con los de tu compa\xF1\xEDa. El proyecto
+          es complejo y no conviene dar pasos en falso. En el proyecto deben participar
+          activamente pr\xE1cticamente todos los departamentos tanto de la empresa
+          adquirida como los de la tuya. Cuando llevas seis meses de trabajo, te
+          llama el responsable de sistemas enfadado. Te indica que haz aprobado un
+          cambio en el alcance del proyecto que tendr\xE1 consecuencias muy negativas
+          para la integraci\xF3n de los sistemas de contabilidad. No entiende c\xF3mo
+          nadie repar\xF3 en ello. Le pides disculpas dici\xE9ndole que fue una sugerencia
+          del patrocinador y que te pareci\xF3 una magn\xEDfica idea. \xBFQu\xE9
+          es lo m\xE1s probable que haya fallado?"
+        idSimuladorTipoRespuesta: 1
+        tieneRetroalimentacion: 1
+        urlRetroalimentacionVideo: https://players.brightcove.net/6267108632001/rEr9tuuTvS_default/index.html?videoId=6318472898112
+        retroalimentacion: "El problema no es ni que no estuvieran los requisitos
+          claros ni que el responsable de sistemas no tenga la \xFAltima versi\xF3n
+          de la documentaci\xF3n sino que se aprobara un cambio sin tener en cuenta
+          a los interesados y su implicaci\xF3n en el resto del proyecto. No se ha
+          llevado a cabo el proceso de realizar el control integrado de cambios.
+          PMBOK\xAE Guide 4.6. Realizar el control integrado de cambios"
+        activo: 1
+        respuesta:
+        - id: 7369
+          respuesta: "Nada, el patrocinador tiene la \xFAltima palabra y el responsable
+            de sistemas debe entenderlo"
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 7370
+          respuesta: "El plan de gesti\xF3n de la configuraci\xF3n no se ha ejecutado
+            correctamente"
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 7371
+          respuesta: "No se ha seguido el plan de gesti\xF3n de cambios"
+          valor: 1
+          correcto: true
+          respuestaSelecionada: 0
+        - id: 7372
+          respuesta: "No se realiz\xF3 una adecuada recopilaci\xF3n de requisitos
+            y una completa documentaci\xF3n de los mismos"
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+      dominioNombre: Personas
+      tareaNombre: 1 - Gestionar conflictos
+    - id: 1210562
+      idSimuladorPmpDominio: 4
+      idSimuladorPmpTarea: 14
+      idSimuladorPmpPregunta: 1957
+      ejecutado: 0
+      pregunta:
+        id: 1957
+        enunciado: "La gesti\xF3n integrada de cambios tiene por objetivo que las
+          modificaciones a los documentos, entregables o l\xEDneas de base asociadas
+          con el proyecto se identifiquen, documenten y aprueben o rechacen previa
+          evaluaci\xF3n de su conveniencia. \xBFCu\xE1l de las siguientes afirmaciones
+          define mejor el papel del Project Manager en relaci\xF3n a la gesti\xF3n
+          integrada de cambios en un proyecto?"
+        idSimuladorTipoRespuesta: 1
+        tieneRetroalimentacion: 1
+        urlRetroalimentacionVideo: https://players.brightcove.net/6267108632001/rEr9tuuTvS_default/index.html?videoId=6318473915112
+        retroalimentacion: "El Project manager, como se ha comentado a lo largo de
+          este manual debe tener una actitud proactiva y no reducir su trabajo a
+          seguir los cambios que se producen sino a preverlos y actuar sobre las
+          causas que producen los cambios tomando las medidas necesarias previamente
+          para que estos cambios no sean necesarios. PMBOK\xAE Guide 4.6 Realizar
+          el control integrado de cambios y 5.6 Controlar el alcance"
+        activo: 1
+        respuesta:
+        - id: 7869
+          respuesta: Evitar los cambios en el proyecto.
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 7870
+          respuesta: Actuar sobre los factores que afectan a los cambios.
+          valor: 1
+          correcto: true
+          respuestaSelecionada: 0
+        - id: 7871
+          respuesta: Monitorizar y controlar los cambios para asegurar que benefician
+            al proyecto.
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 7872
+          respuesta: "Hacer caso al cliente y poner en pr\xE1ctica lo que \xE9ste
+            indique."
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+      dominioNombre: Personas
+      tareaNombre: 1 - Gestionar conflictos
+    - id: 1210642
+      idSimuladorPmpDominio: 5
+      idSimuladorPmpTarea: 45
+      idSimuladorPmpPregunta: 1925
+      ejecutado: 0
+      pregunta:
+        id: 1925
+        enunciado: "Te han ascendido como Director de portafolios y ahora debes monitorear
+          varios programas y proyectos. Un miembro de la organizaci\xF3n te felicita
+          por el ascenso y te pregunta cu\xE1l es la diferencia de un director de
+          portafolios y un director de proyectos. Le indicas que hay muchas diferencias
+          pero la principal es:"
+        idSimuladorTipoRespuesta: 1
+        tieneRetroalimentacion: 1
+        urlRetroalimentacionVideo: https://players.brightcove.net/6267108632001/rEr9tuuTvS_default/index.html?videoId=6318473904112
+        retroalimentacion: "El portfolio de la compa\xF1\xEDa, que incluir\xE1 programas,
+          proyectos y otros trabajos, es el que define la visi\xF3n, misi\xF3n y
+          objetivos estrat\xE9gicos que el grupo de programas y proyectos como parte
+          de la cartera (portfolio) deber\xE1 ayudar a alcanzar. PMBOK\xAE Guide
+          1.4.2 Gesti\xF3n del portafolio"
+        activo: 1
+        respuesta:
+        - id: 7741
+          respuesta: "El portafolio es la colecci\xF3n de proyectos, programas y
+            operaciones para alcanzar los objetivos estrat\xE9gicos."
+          valor: 1
+          correcto: true
+          respuestaSelecionada: 0
+        - id: 7742
+          respuesta: "El portafolio es un esfuerzo temporal para crear un producto
+            o servicio \xFAnico."
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 7743
+          respuesta: "El portafolio es un grupo de proyectos con un objetivo com\xFAn."
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 7744
+          respuesta: "No hay diferencias, es un cargo pol\xEDtico"
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+      dominioNombre: Entorno empresarial
+      tareaNombre: 1 - Planificar y gestionar el cumplimiento de proyectos
+    - id: 1210662
+      idSimuladorPmpDominio: 1
+      idSimuladorPmpTarea: 30
+      idSimuladorPmpPregunta: 1933
+      ejecutado: 0
+      pregunta:
+        id: 1933
+        enunciado: "Pilar, Gerente del proyecto, est\xE1 observando c\xF3mo se desarrolla
+          el proyecto y poniendo en marcha acciones correctivas cuando algo est\xE1
+          fuera de control. \xBFCu\xE1l de la siguiente informaci\xF3n no utilizar\xE1
+          como entrada para ese proceso?"
+        idSimuladorTipoRespuesta: 1
+        tieneRetroalimentacion: 1
+        urlRetroalimentacionVideo: https://players.brightcove.net/6267108632001/rEr9tuuTvS_default/index.html?videoId=6318473205112
+        retroalimentacion: "La solicitudes de cambio son una salida, no una entrada,
+          del proceso Monitorear y controlar el trabajo del proyecto, proceso en
+          el que se supervisa, controla y proponen acciones correctivas, entre otras
+          actividades. PMBOK\xAE Guide (4.5.1 Monitorear y Controlar el Trabajo de
+          Proyecto - Entradas)"
+        activo: 1
+        respuesta:
+        - id: 7773
+          respuesta: "El plan para la direcci\xF3n del proyecto"
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 7774
+          respuesta: Las solicitudes de cambio
+          valor: 1
+          correcto: true
+          respuestaSelecionada: 0
+        - id: 7775
+          respuesta: "Informaci\xF3n de desempe\xF1o"
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+        - id: 7776
+          respuesta: Los factores ambientales de la empresa
+          valor: 0
+          correcto: false
+          respuestaSelecionada: 0
+      dominioNombre: Proceso
+      tareaNombre: '3 - Evaluar y gestionar los riesgos '

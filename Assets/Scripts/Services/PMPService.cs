@@ -85,7 +85,6 @@ public class PMPService : MonoBehaviour
             var response = request.downloadHandler.text;
             var questions = JsonUtility.FromJson<QuestionInformationExam>(response);
             GameEvents.QuestionsRetrieved?.Invoke(questions);
-            Debug.Log("success " + response );
         }
     }
     
@@ -93,7 +92,7 @@ public class PMPService : MonoBehaviour
     {
         UnityWebRequest request = new UnityWebRequest(PMPUrl.RegisterExam, "POST");
         
-        
+        print($" Data to Register Exam -> {JsonUtility.ToJson(_dataToRegisterSo.dataToRegisterExam)}");
         var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(_dataToRegisterSo.dataToRegisterExam));
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
@@ -110,7 +109,6 @@ public class PMPService : MonoBehaviour
         else
         {
             var response = request.downloadHandler.text;
-            Debug.Log(response);
             var domains = JsonUtility.FromJson<ResponseOfRegisterExam>(response);
             GameEvents.ExamCreated?.Invoke(domains);
         }

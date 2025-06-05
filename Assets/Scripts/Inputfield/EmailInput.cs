@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class EmailInput : InputBase
 {
+    protected override void Start()
+    {
+        base.Start();
+    }
 
     public override void CheckNullField()
     {
-        if (_inputField.text == "" || _inputField.text.Length == 0)
+        if (_inputField.text == string.Empty || _inputField.text.Length == 0)
         {
             // Debug.Log("xd");
             // Dejo campos vacios
             SetAppearanceToError();
             _placeholderText.text = _placeholderTextDefault;
+            _inputField.text = GetTextFromCache(_inputField.name);
             _label.gameObject.SetActive(false);
             _message.gameObject.SetActive(true);
             _message.text = _constants.fieldEmpty;

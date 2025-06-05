@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +6,9 @@ public class AudioSettingView : MonoBehaviour
     [SerializeField] private Slider _musicVolumeSlider;
     [SerializeField] private Slider _soundEffectVolumeSlider;
 
-    
     private void OnEnable()
     {
         var res = Resources.Load<AudioSettingsSO>("AudioSettings_Data");
-        Debug.Log(res.MusicVolume);
-        Debug.Log(res.SoundEffectsVolume);
         _musicVolumeSlider.value = res.MusicVolume;
         _soundEffectVolumeSlider.value = res.SoundEffectsVolume;
         AudioEvents.MusicSliderSet += MusicVolumeSetHandler;

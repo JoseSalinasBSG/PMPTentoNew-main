@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PlatformItem : MonoBehaviour
@@ -39,8 +36,8 @@ public class PlatformItem : MonoBehaviour
         public int index;
         public string description;
         public string tittle;
-        public int attempt;    
-        public int totalTasks;    
+        public int attempt;
+        public int totalTasks;
     }
     private PlatformInformation _information;
 
@@ -86,12 +83,11 @@ public class PlatformItem : MonoBehaviour
     {
         if (Information.id == obj)
         {
-            Debug.Log($"tarea con id {obj} encontrado");
             Attempts++;
-                if (!ButtonTrigger.enabled)
-                {
-                    ButtonTrigger.enabled = true;
-                }
+            if (!ButtonTrigger.enabled)
+            {
+                ButtonTrigger.enabled = true;
+            }
         }
     }
 }

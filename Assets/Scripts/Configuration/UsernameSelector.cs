@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Text;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -13,10 +12,7 @@ namespace Configuration
     public class UsernameSelector : MonoBehaviour
     {
         [SerializeField] private TMP_InputField _inputUsername;
-
-        [SerializeField] private string url =
-            "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
-
+        [SerializeField] private string url = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
         [SerializeField] private ScriptableObjectUser _objectUser;
         [SerializeField] private EventTrigger _buttonEventTriggerChangeUsername;
         [SerializeField] private UnityEvent OnUsernameSetted;
@@ -34,6 +30,7 @@ namespace Configuration
             using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
             {
                 _objectUser.userInfo.user.detail.usernameG = username;
+                _objectUser.userInfo.user.detail.idAlumno = _objectUser.userInfo.user.idAlumno;
                 UserDetail dataLogin = _objectUser.userInfo.user.detail;
 
                 var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataLogin));
@@ -46,6 +43,9 @@ namespace Configuration
                     "Mozilla/5.0 (Windows NT 6.1; Unity 3D; ZFBrowser 3.1.0; UnityTests 1.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36");
 
                 yield return request.SendWebRequest();
+                
+                print($" Response code: {request.responseCode}");
+                
                 if (request.responseCode >= 400)
                 {
                     _objectUser.userInfo.haveUser = false;
@@ -59,17 +59,19 @@ namespace Configuration
                         bool detail = Convert.ToBoolean(request.downloadHandler.text);
                         if (detail)
                         {
+                            print($"Username setted: {username}");
                             GameEvents.NewUsername?.Invoke(_inputUsername.text);
                         }
                         else
                         {
+                            print($" Username not setted: {username}");
                             _buttonEventTriggerChangeUsername.enabled = true;
                         }
 
                     }
                     catch (Exception e)
                     {
-                        Debug.Log(request.downloadHandler.text);
+                        Debug.LogError(request.downloadHandler.text + " " + e);
                         _objectUser.userInfo.haveUser = false;
                         _buttonEventTriggerChangeUsername.enabled = true;
                     }

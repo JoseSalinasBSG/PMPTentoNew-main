@@ -3,6 +3,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
+///<summary>
+/// Controlador de notificaciones para el inicio de sesión.
+/// Maneja la visualización y el flujo de notificaciones de error y éxito,
+/// permitiendo mostrar mensajes personalizados por un tiempo definido y ejecutando eventos al finalizar.
+///</summary>
+
 namespace Notification
 {
     public class NotificationLoginController : MonoBehaviour

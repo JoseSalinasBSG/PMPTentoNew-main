@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NotificationSender : MonoBehaviour
@@ -9,7 +7,7 @@ public class NotificationSender : MonoBehaviour
     [SerializeField] private string nameCanal = "CanalNotificacion";
     [SerializeField] private string descriptionCanal = "Canal para notificacion";
     [SerializeField] private string titleNotification = "Vuelve a ingresar - test ";
-    [SerializeField] private string textNotification = "Notificación para volver a jugar - test ";
+    [SerializeField] private string textNotification = "Notificaciï¿½n para volver a jugar - test ";
 
     private int counter = 0;
 

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Button;
 using TMPro;
 using UnityEngine;

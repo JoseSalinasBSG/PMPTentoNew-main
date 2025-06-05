@@ -1,5 +1,11 @@
-using System;
 using UnityEngine;
+
+// <summary>
+// La clase SettingsPresenter se encarga de la sincronización entre el modelo de configuraciones de audio y la interfaz de usuario (UI).
+// Escucha los eventos de la UI relacionados con los cambios de volumen (maestro, música y SFX) y actualiza el modelo en consecuencia.
+// También escucha los eventos del modelo y actualiza la UI con los nuevos valores de volumen.
+// Los ajustes de audio y los datos del usuario se cargan desde los recursos cuando el script es habilitado.
+// </summary>
 
 public class SettingsPresenter : MonoBehaviour
 {
@@ -47,7 +53,6 @@ public class SettingsPresenter : MonoBehaviour
     public void AudioEvents_SFXSliderChanged(float sliderValue)
     {
         float volume = sliderValue / 100f;
-        // Debug.Log(volume);
         AudioEvents.SFXVolumeChanged?.Invoke(volume);
     }
 
@@ -57,9 +62,6 @@ public class SettingsPresenter : MonoBehaviour
         AudioEvents.MusicVolumeChanged?.Invoke(volume);
     }
     
-    
-    // Model event handlers (response if Model data externally modified,
-    // e.g. loading preferences from disk)
     private void AudioEvents_ModelMasterVolumeChanged(float volume)
     {
         // Process the master volume change from the Model

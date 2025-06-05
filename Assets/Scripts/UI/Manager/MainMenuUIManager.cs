@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenuUIManager : MonoBehaviour
@@ -9,19 +6,15 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private FadeUI _gameChallengesPopup;
     [SerializeField] private FadeUI _gameConfigurationPopup;
     [SerializeField] private FadeUI _chooseInstructorPopup;
-    [SerializeField] private FadeUI _notificationPopup;
+    [SerializeField] private FadeUI _notificationPopup;    
     
-    
-    // [Header("Views")]
-    // [SerializeField]
     private void OnEnable()
     {
         UIEvents.SettingShow += UIEvent_SettingShow;
         UIEvents.GameModesShow += UIEvent_GameModesShow;
         UIEvents.GameChallengesShow += UIEvent_GameChallengesShow;
         UIEvents.ChooseInstructorShow += UIEvent_ChooseInstructorShow;
-        UIEvents.NotificationShow += UIEvent_NotificationShow;
-        
+        UIEvents.NotificationShow += UIEvent_NotificationShow;        
         UIEvents.SettingHide += UIEvent_SettingHide;
         UIEvents.GameModesHide += UIEvent_GameModesHide;
         UIEvents.GameChallengesHide += UIEvent_GameChallengesHide;
@@ -35,8 +28,7 @@ public class MainMenuUIManager : MonoBehaviour
         UIEvents.GameModesShow -= UIEvent_GameModesShow;
         UIEvents.GameChallengesShow -= UIEvent_GameChallengesShow;
         UIEvents.ChooseInstructorShow -= UIEvent_ChooseInstructorShow;
-        UIEvents.NotificationShow -= UIEvent_NotificationShow;
-        
+        UIEvents.NotificationShow -= UIEvent_NotificationShow;        
         UIEvents.SettingHide -= UIEvent_SettingHide;
         UIEvents.GameModesHide -= UIEvent_GameModesHide;
         UIEvents.GameChallengesHide -= UIEvent_GameChallengesHide;
@@ -48,15 +40,12 @@ public class MainMenuUIManager : MonoBehaviour
     {
         _gameConfigurationPopup.gameObject.SetActive(true);
         _gameConfigurationPopup.FadeInTransition();
-        var _audioSettingsSO = Resources.Load<AudioSettingsSO>("AudioSettings_Data");//carga datos de Resources
-     
+        var _audioSettingsSO = Resources.Load<AudioSettingsSO>("AudioSettings_Data");//carga datos de Resources     
 
         // Update values to Sliders 
         float masterVolume = _audioSettingsSO.MasterVolume * 100f;
         float sfxVolume = _audioSettingsSO.SoundEffectsVolume * 100f;
         float musicVolume = _audioSettingsSO.MusicVolume * 100f;
-        Debug.Log(musicVolume);
-        Debug.Log(sfxVolume);
         //Notify the view of default values from the model
         AudioEvents.MasterSliderSet?.Invoke(masterVolume);
         AudioEvents.SFXSliderSet?.Invoke(sfxVolume);
@@ -81,8 +70,7 @@ public class MainMenuUIManager : MonoBehaviour
     {
         _notificationPopup.gameObject.SetActive(true);
         _notificationPopup.FadeInTransition();
-    }
-    
+    }   
     
     private void UIEvent_SettingHide()
     {
@@ -111,8 +99,7 @@ public class MainMenuUIManager : MonoBehaviour
     }
     public void CloseConfigurationPopup()//cerrar menu de configuracion, se ejecuta el metodo al presionar en icono config
     {
-        UIEvents.SettingHide?.Invoke();
-     
+        UIEvents.SettingHide?.Invoke();     
     }
     public void OpenGameModesPopup()
     {

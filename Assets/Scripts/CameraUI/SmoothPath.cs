@@ -87,7 +87,7 @@ public class SmoothPath : MonoBehaviour
         if (!endTransition)
         {
             endTransition = true;
-            Debug.Log("Finalizo transicion");
+            //Debug.Log("Finalizo transicion");
             _onEndTransition.Invoke();
             UIEvents.EndFooterButtonAnimation.Invoke();
             currentTransition = false;

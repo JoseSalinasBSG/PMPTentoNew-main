@@ -39,7 +39,7 @@ namespace PowerUp
         }
         public void UsePowerUp()
         {
-            if (_numUses <2 && Amount >0)
+            if (_numUses <1 && Amount >0)
             {
                 _onUsePowerUp?.Invoke();
             }

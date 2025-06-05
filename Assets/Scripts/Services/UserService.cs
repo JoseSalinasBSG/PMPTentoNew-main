@@ -1,29 +1,29 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.Networking;
 
+// <summary>
+// La clase UserService gestiona las solicitudes HTTP para obtener y actualizar los detalles del usuario y sus logros en el servidor, así como obtener el avatar del usuario.
+// Los detalles del usuario se recuperan de una API externa y se almacenan en un ScriptableObject para su uso dentro del juego.
+// Además, la clase maneja la autenticación del usuario y la carga de logros, actualizando las características del usuario en el servidor mediante peticiones POST.
+// También se encarga de generar la URL del avatar del usuario y descargar la imagen SVG asociada, convirtiéndola en un sprite que se utiliza en el juego.
+// Los eventos relacionados con la actualización de datos, logros y avatar son gestionados mediante eventos de Unity.
+// </summary>
+
 public class UserService : MonoBehaviour
 {
     [SerializeField] private ScriptableObjectUser _scriptableObjectUser;
 
-    private readonly string _urlToUpdate =
-        "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
-
-    private readonly string _urlToUpdateAchievement =
-        "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/RegistrarLogroAlumno";
-
+    private readonly string _urlToUpdate = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
+    private readonly string _urlToUpdateAchievement = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/RegistrarLogroAlumno";
     private readonly string _urlToGetUser = "https://api-portalweb.bsginstitute.com/api/AspNetUser/authenticate";
-
-    private readonly string _urlToGetUserDetail =
-        "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion/";
+    private readonly string _urlToGetUserDetail = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion/";
     private readonly string urlToCredentials = "https://api-portalweb.bsginstitute.com/api/CredencialPortalPmp";
-
-    private readonly string _urlToGetUserAchievements="http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerLogroAlumno?IdRegistroAlumno=0&IdAlumno=";
+    private readonly string _urlToGetUserAchievements = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerLogroAlumno?IdRegistroAlumno=0&IdAlumno=";
 
     private bool _haveError;
     private bool _finishRequest;
@@ -107,13 +107,7 @@ public class UserService : MonoBehaviour
                         {
                             _scriptableObjectUser.userInfo.haveUsername = false;
                         }
-
-                        if (_scriptableObjectUser.userInfo.user.detail.idCaracteristicaGamificacion != 0)
-                        {
-                            Debug.Log("idcaracteristicaGamificacion 1");
-                        }
                     }
-
                     GameEvents.SuccessGetUserDetail?.Invoke();
                 }
                 catch (Exception e)
@@ -122,7 +116,6 @@ public class UserService : MonoBehaviour
                     _scriptableObjectUser.userInfo.haveUser = false;
                 }
             }
-
             _finishRequest = true;
         }
     }
@@ -162,13 +155,7 @@ public class UserService : MonoBehaviour
                         {
                             _scriptableObjectUser.userInfo.haveUsername = false;
                         }
-
-                        if (_scriptableObjectUser.userInfo.user.detail.idCaracteristicaGamificacion != 0)
-                        {
-                            Debug.Log("idcaracteristicaGamificacion 1");
-                        }
                     }
-                    GameEvents.SuccessGetUserDetail?.Invoke();
                 }
                 catch (Exception e)
                 {
@@ -185,6 +172,8 @@ public class UserService : MonoBehaviour
         using (UnityWebRequest request = new UnityWebRequest(_urlToUpdate, "POST"))
         {
             UserDetail dataLogin = _scriptableObjectUser.userInfo.user.detail;
+            
+            print($" Update User Detail: {JsonUtility.ToJson(dataLogin)}");
 
             var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataLogin));
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
@@ -194,7 +183,6 @@ public class UserService : MonoBehaviour
             yield return request.SendWebRequest();
             if (request.responseCode >= 400)
             {
-                // _buttonChangeUsername.interactable = true;
                 Debug.Log(request.error);
             }
             else
@@ -205,19 +193,11 @@ public class UserService : MonoBehaviour
                     if (detail)
                     {
                         GameEvents.DetailChanged?.Invoke();
-                        Debug.Log(true);
-                    }
-                    else
-                    {
-                        Debug.Log(false);
-                        // _buttonChangeUsername.interactable = true;
                     }
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text);
-                    // _scriptableObjectUser.userInfo.haveUser = false;
-                    // _buttonChangeUsername.interactable = true;
+                    Debug.Log(request.downloadHandler.text + " - " + e.Message);
                 }
             }
         }
@@ -228,6 +208,7 @@ public class UserService : MonoBehaviour
         using (UnityWebRequest request = new UnityWebRequest(_urlToUpdateAchievement, "POST"))
         {
             UserAchievements dataAchievement = _scriptableObjectUser.userInfo.user.achievements;
+            dataAchievement.idAlumno = _scriptableObjectUser.userInfo.user.idAlumno;
 
             var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataAchievement));
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
@@ -237,31 +218,18 @@ public class UserService : MonoBehaviour
             yield return request.SendWebRequest();
             if (request.responseCode >= 400)
             {
-                // _buttonChangeUsername.interactable = true;
                 Debug.Log(request.error);
-
             }
             else
             {
                 try
                 {
                     bool achievement = Convert.ToBoolean(request.downloadHandler.text);//comprueba si devuelve true o false
-                    if (achievement)//si es true es exitoso
-                    {
-                        //GameEvents.AchievementsChanged?.Invoke();//falta llenar metodo
-                        Debug.Log("UpdateUserAchievements");
-                    }
-                    else
-                    {
-                        Debug.Log("UpdateUserAchievementes false");
-                        // _buttonChangeUsername.interactable = true;
-                    }
+                    print($" Update User Achievements: {achievement}");
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(request.downloadHandler.text);
-                    // _scriptableObjectUser.userInfo.haveUser = false;
-                    // _buttonChangeUsername.interactable = true;
+                    Debug.Log(request.downloadHandler.text + " - " + e.Message);
                 }
             }
         }
@@ -301,6 +269,7 @@ public class UserService : MonoBehaviour
             {
                 try
                 {
+                    Debug.Log(request.downloadHandler.text);
                     _scriptableObjectUser.userInfo.user = JsonUtility.FromJson<User>(request.downloadHandler.text);
                     if (_scriptableObjectUser.userInfo.user.excepcion.excepcionGenerada)
                     {
@@ -324,28 +293,25 @@ public class UserService : MonoBehaviour
             _finishRequest = true;
         }
     }
-public IEnumerator GetAvatar(string username, string password)
+    public IEnumerator GetAvatar(string username, string password)
     {
-        Debug.Log("-> Enviando para obtener avatar");
+        using (UnityWebRequest request = new UnityWebRequest(urlToCredentials, "POST"))
+        {
+            DataLoginToCredentials dataLogin = new DataLoginToCredentials() { username = username, clave = password };
 
-       using (UnityWebRequest request = new UnityWebRequest(urlToCredentials, "POST"))
-       {
-           DataLoginToCredentials dataLogin = new DataLoginToCredentials() { username = username, clave = password};
-            
             var bodyRaw = Encoding.UTF8.GetBytes(JsonUtility.ToJson(dataLogin));
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = new DownloadHandlerBuffer();
-            
+
             request.SetRequestHeader("Content-Type", "application/json");
             request.SetRequestHeader("Accept", "application/json");
             request.SetRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Unity 3D; ZFBrowser 3.1.0; UnityTests 1.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36");
-            Debug.Log("-> Enviando para obtener avatar");
 
             yield return request.SendWebRequest();
-            
+
             if (request.responseCode >= 400)
             {
-                Debug.Log("->"+request.error);
+                Debug.Log("->" + request.error);
                 GameEvents.ErrorGetAvatar?.Invoke();
             }
             else
@@ -353,7 +319,7 @@ public IEnumerator GetAvatar(string username, string password)
                 try
                 {
                     var credential = JsonUtility.FromJson<ResponseToAvatar>(request.downloadHandler.text);
-                    Debug.Log("->"+request.downloadHandler.text);
+                    Debug.Log("->" + request.downloadHandler.text);
                     if (credential.contieneAvatar)
                     {
                         _scriptableObjectUser.userInfo.haveAvatar = true;
@@ -364,23 +330,23 @@ public IEnumerator GetAvatar(string username, string password)
                     {
                         _scriptableObjectUser.userInfo.haveAvatar = false;
                         GameEvents.ErrorGetAvatar?.Invoke();
-                        
+
                     }
                 }
                 catch (Exception e)
                 {
-                    Debug.Log("_>"+request.downloadHandler.text);
+                    Debug.Log("_>" + request.downloadHandler.text + " " + e);
                     _scriptableObjectUser.userInfo.haveAvatar = false;
                     GameEvents.ErrorGetAvatar?.Invoke();
                 }
-                
+
             }
-       }
+        }
     }
     IEnumerator downloadSVG(string url)
     {
         UnityWebRequest www = UnityWebRequest.Get(url);
-     
+
         yield return www.SendWebRequest();
         if (www.isHttpError || www.isNetworkError)
         {
@@ -398,20 +364,18 @@ public IEnumerator GetAvatar(string username, string password)
                 MaxTanAngleDeviation = 0.1f,
                 SamplingStepSize = 0.01f
             };
-         
+
             // Dynamically import the SVG data, and tessellate the resulting vector scene.
             var sceneInfo = SVGParser.ImportSVG(new StringReader(bitString));
             var geoms = VectorUtils.TessellateScene(sceneInfo.Scene, tessOptions);
-         
+
             // Build a sprite with the tessellated geometry
             Sprite sprite = VectorUtils.BuildSprite(geoms, 10.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
             _scriptableObjectUser.userInfo.spriteAvatar = sprite;
             Debug.Log("creado: " + _scriptableObjectUser.userInfo.urlAvatar);
             Debug.Log("creado: " + _scriptableObjectUser.userInfo.spriteAvatar);
-            Debug.Log("creado: " + _scriptableObjectUser.userInfo.haveAvatar);
             GameEvents.SuccessGetAvatar?.Invoke();
-
-        }    
+        }
     }
     private void AddHeader(UnityWebRequest request)
     {

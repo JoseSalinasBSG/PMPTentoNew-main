@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spritePowerUp: {fileID: 21300000, guid: c56f4be38ba73ee478c72b624cf0da90, type: 3}
   spriteIconPowerUp: {fileID: 21300000, guid: 2f5794210ada48a4f8d2becd53123310, type: 3}
-  powerUpSO: {fileID: 11400000, guid: 9026b1be2dac5c140aaca71b68c20ffb, type: 2}
+  powerUpSO: {fileID: 11400000, guid: 3c22dad94d9a97240aeae42de5421f74, type: 2}

@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using ScriptableCreator;
+using ScriptableCreator.PowerUpSOC;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Roulette-PowerUp", fileName = "RoulettePowerUpSO")]
 public class PowerUpItemRoulette : ItemRouletteSO
 {
-    public ScripableObjectPowerUp powerUpSO;
-    public virtual void Raise()
+    public PowerUpSO powerUpSO;
+    public override void Raise()
     {
         
     }

@@ -25,8 +25,6 @@ public class CategoryModeController : MonoBehaviour
 
     private float _experienceAccumulated = 0;
     private float _coinsAccumulated = 0;
-    // [Header("Reward")] 
-    
     private void Awake()
     {
         _numberOfConsecutiveQuestion = -2;
@@ -35,7 +33,7 @@ public class CategoryModeController : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<GameplaySound>().PlayCategoryModeSound();
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.CategoryModeSound, true);
     }
 
     private void OnEnable()

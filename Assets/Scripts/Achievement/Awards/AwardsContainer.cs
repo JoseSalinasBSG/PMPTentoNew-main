@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class AwardsContainer : MonoBehaviour
 {
@@ -12,17 +8,15 @@ public class AwardsContainer : MonoBehaviour
     [SerializeField] TextMeshProUGUI dateText;
     [SerializeField] GameObject awardContent;
     [SerializeField] int typeOfStreak;
-
     [SerializeField] private ScriptableObjectUser _objectUser;
 
 
     public void SetValuesAwards()
     {
         ClearAwards();
-        FillAwards();   
-
+        FillAwards();
     }
-    
+
     private void FillAwards()
     {
 
@@ -60,7 +54,6 @@ public class AwardsContainer : MonoBehaviour
                     Instantiate(awardImage, awardContent.transform);
                     streaksText.text = $"Tienes {_objectUser.userInfo.user.achievements.streak10} rachas de {typeOfStreak} estrellas";
                     dateText.text = $"<b>Ultima racha</b>: {_objectUser.userInfo.user.achievements.streak10Date} - {_objectUser.userInfo.user.achievements.streak10Origin}";
-
                 }
                 break;
         }
@@ -68,7 +61,7 @@ public class AwardsContainer : MonoBehaviour
 
     private void ClearAwards()
     {
-        for (int i = awardContent.transform.childCount-1; i >= 0; i--)
+        for (int i = awardContent.transform.childCount - 1; i >= 0; i--)
         {
             Destroy(awardContent.transform.GetChild(i).gameObject);
         }

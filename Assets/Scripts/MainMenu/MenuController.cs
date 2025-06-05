@@ -13,9 +13,9 @@ namespace MainMenu
     public class MenuController : MonoBehaviour
     {
         [SerializeField] private ScriptableObjectUser _user;
-        [SerializeField] private ScriptableObjectSettings _objectSettings ;
-        [SerializeField] private ScriptableObjectInstructor _objectInstructor ;
-        [SerializeField] private LevelUserSO _levelUserSO ;
+        [SerializeField] private ScriptableObjectSettings _objectSettings;
+        [SerializeField] private ScriptableObjectInstructor _objectInstructor;
+        [SerializeField] private LevelUserSO _levelUserSO;
 
         [SerializeField] private TextMeshProUGUI _username;
         [SerializeField] private TextMeshProUGUI _totalExpirience;
@@ -32,13 +32,14 @@ namespace MainMenu
         [SerializeField] private NotificationToggle _notificationToggle;
         [SerializeField] private Transform _pointToInstantiate;
         [SerializeField] private UnityEvent _onSuccessSaveInformation;
-        [Header("notificators")] [SerializeField]
+        [Header("notificators")]
+        [SerializeField]
         private ScriptableObjectNotificationText _notificationTextUsername;
 
         private GameObject _instructorInstantiated;
         private void Start()
         {
-            FindObjectOfType<GameplaySound>().PlayMainMenuSound();
+            AudioManager.Instance.PlayMusic(AudioManager.Instance.AudioSettings.MainSound, true);
             // if (PlayerPrefs.HasKey("settingInfo"))
             // {
             //     _objectSettings.settingData = JsonUtility.FromJson<ScriptableObjectSettings.SettingData>(PlayerPrefs.GetString("settingInfo"));
@@ -63,7 +64,7 @@ namespace MainMenu
             GameEvents.NewInstuctorId += GameEvents_InstructorChanged;
             GameEvents.CoinsChanged += GameEvents_CoinsChanged;
             GameEvents.ExperienceChanged += GameEvents_ExperienceChanged;
-            GameEvents.UsernameSelected	 += GameEvents_UsernameSelected;
+            GameEvents.UsernameSelected += GameEvents_UsernameSelected;
         }
 
         private void GameEvents_UsernameSelected()
@@ -76,7 +77,7 @@ namespace MainMenu
             GameEvents.NewInstuctorId -= GameEvents_InstructorChanged;
             GameEvents.CoinsChanged -= GameEvents_CoinsChanged;
             GameEvents.ExperienceChanged -= GameEvents_ExperienceChanged;
-            GameEvents.UsernameSelected	 -= GameEvents_UsernameSelected;
+            GameEvents.UsernameSelected -= GameEvents_UsernameSelected;
         }
 
         private void GameEvents_ExperienceChanged()
@@ -97,7 +98,7 @@ namespace MainMenu
         public void PathToInstantiateInstructor()//metodo para instanciar el instructor
         {
             var indexInstructor = _user.userInfo.idInstructor;
-            _instructorInstantiated =Instantiate(_objectInstructor.instructors.FirstOrDefault(x => x.id == indexInstructor)!.prefab,
+            _instructorInstantiated = Instantiate(_objectInstructor.instructors.FirstOrDefault(x => x.id == indexInstructor)!.prefab,
                 _pointToInstantiate.position, _pointToInstantiate.rotation, _pointToInstantiate);//instanciar instructor del prefab en el scriptable object
             _instructorInstantiated.layer = 0;
         }
@@ -115,9 +116,8 @@ namespace MainMenu
             while (_instructorInstantiated)
             {
                 yield return null;
-                Debug.Log("Waiting");
             }
-            _instructorInstantiated =Instantiate(_objectInstructor.instructors.FirstOrDefault(x => x.id == indexInstructor)!.prefab,
+            _instructorInstantiated = Instantiate(_objectInstructor.instructors.FirstOrDefault(x => x.id == indexInstructor)!.prefab,
                 _pointToInstantiate.position, _pointToInstantiate.rotation, _pointToInstantiate);
             _instructorInstantiated.layer = 0;
         }
@@ -153,7 +153,7 @@ namespace MainMenu
 
         public void SaveInstructor()
         {
-            
+
         }
         public void SaveUserInformation()
         {
@@ -172,31 +172,29 @@ namespace MainMenu
 
         public void SetUserLevel()
         {
-            Debug.Log("Seteando nivel");
-
-            if (_user.userInfo.user.detail.totalExperience<=4500)
+            if (_user.userInfo.user.detail.totalExperience <= 4500)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[0];
-                Debug.Log("Nivel Novato");
+                //Debug.Log("Nivel Novato");
                 _experienceToAchieve.text = "de 4500";
             }
             else if (_user.userInfo.user.detail.totalExperience >= 4501 && _user.userInfo.user.detail.totalExperience <= 9500)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[1];
-                Debug.Log("Nivel Experto");
+                //Debug.Log("Nivel Experto");
                 _experienceToAchieve.text = "de 9500";
             }
             else if (_user.userInfo.user.detail.totalExperience >= 9501 && _user.userInfo.user.detail.totalExperience <= 15000)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[2];
-                Debug.Log("Nivel Master");
+                //Debug.Log("Nivel Master");
                 _experienceToAchieve.text = "de 15000";
             }
             else if (_user.userInfo.user.detail.totalExperience >= 15001)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[3];
-                Debug.Log("Nivel Leyenda");
-                _experienceToAchieve.text = null;
+                //Debug.Log("Nivel Leyenda");
+                _experienceToAchieve.text = "de experiencia";
             }
         }
     }

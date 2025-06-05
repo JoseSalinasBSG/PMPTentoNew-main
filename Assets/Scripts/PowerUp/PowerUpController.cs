@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using ScriptableCreator;
-using TMPro;
+using ScriptableCreator.PowerUpSOC;
 using UnityEngine;
 
 namespace PowerUp
@@ -12,12 +8,11 @@ namespace PowerUp
         #region Variables
 
         [SerializeField] private ScriptableObjectUser _objectUser;
-        [SerializeField] private ScripableObjectPowerUp _powerUpSecondOportunity;
-        [SerializeField] private ScripableObjectPowerUp _powerUpTrueOption;
-        [SerializeField] private ScripableObjectPowerUp _powerUpDeleteOption;
-        [SerializeField] private ScripableObjectPowerUp _powerUpNextQuestion;
-        [SerializeField] private ScripableObjectPowerUp _powerUpMoreTime;
-        
+        [SerializeField] private PowerUpSO _powerUpSecondOportunity;
+        [SerializeField] private PowerUpSO _powerUpTrueOption;
+        [SerializeField] private PowerUpSO _powerUpDeleteOption;
+        [SerializeField] private PowerUpSO _powerUpNextQuestion;
+        [SerializeField] private PowerUpSO _powerUpMoreTime;
         [SerializeField] private PowerUpListener _powerUpSecondOportunityI;
         [SerializeField] private PowerUpListener _powerUpTrueOptionI;
         [SerializeField] private PowerUpListener _powerUpDeleteOptionI;
@@ -38,32 +33,20 @@ namespace PowerUp
         private void UpdateAmounts()
         {
             var detail = _objectUser.userInfo.user.detail;
-            if (_powerUpSecondOportunityI)
-            {
-                _powerUpSecondOportunityI.Amount = detail.secondChance;
-                
-            }
+            UpdatePowerUpAmount(_powerUpSecondOportunityI, detail.secondChance);
+            UpdatePowerUpAmount(_powerUpTrueOptionI, detail.findCorrectAnswer);
+            UpdatePowerUpAmount(_powerUpDeleteOptionI, detail.discardOption);
+            UpdatePowerUpAmount(_powerUpNextQuestionI, detail.skipQuestion);
+            UpdatePowerUpAmount(_powerUpMoreTimeI, detail.increaseTime);
+        }
 
-            if (_powerUpTrueOptionI)
+        private void UpdatePowerUpAmount(PowerUpListener listener, int amount)
+        {
+            if (listener != null)
             {
-                _powerUpTrueOptionI.Amount = detail.findCorrectAnswer;
+                listener.Amount = amount;
             }
-
-            if (_powerUpDeleteOptionI)
-            {
-                _powerUpDeleteOptionI.Amount = detail.discardOption;
-            }
-
-            if (_powerUpNextQuestionI)
-            {
-                _powerUpNextQuestionI.Amount = detail.skipQuestion;
-            }
-
-            if (_powerUpMoreTimeI)
-            {
-                _powerUpMoreTimeI.Amount = detail.increaseTime;
-            }
-        } 
+        }
 
         private void OnDisable()
         {
@@ -73,115 +56,50 @@ namespace PowerUp
         {
             if (_currentListener)
             {
-                UpdateAmounts(); 
+                UpdateAmounts();
                 _currentListener.OnEventRaised();
-                _currentListener = null;    
+                _currentListener = null;
             }
-            
+
         }
 
         #endregion
 
         #region Methods
 
-        public void UseSecondOportunity()
-        {
-            // _powerUpSecondOportunity.amount--;
-            _objectUser.userInfo.user.detail.secondChance--;
-            // PlayerPrefs.SetInt("pu_secondOportunity", _powerUpSecondOportunity.amount);
-            // PlayerPrefs.Save();
-            _currentListener = _powerUpSecondOportunityI;
-            GameEvents.RequestUpdateDetail?.Invoke();
-            // _powerUpSecondOportunity.Raise();
-        }
 
-        public void BuySecondOportunity(int amount )
+        public void UsePowerUp(PowerUpListener listener, ref int detailAmount)
         {
-            _powerUpSecondOportunity.amount += amount;
-            PlayerPrefs.SetInt("pu_secondOportunity", _powerUpSecondOportunity.amount);
-            PlayerPrefs.Save();
-            _powerUpSecondOportunity.Raise();
-        }
-        
-        public void UseTrueOption()
-        {
-            // _powerUpTrueOption.amount--;
-            _objectUser.userInfo.user.detail.findCorrectAnswer--;
-            // PlayerPrefs.SetInt("pu_trueOption", _powerUpTrueOption.amount);
-            // PlayerPrefs.Save();
-            _currentListener = _powerUpTrueOptionI;
-            GameEvents.RequestUpdateDetail?.Invoke();
-            // _powerUpTrueOption.Raise();
-        }
-
-        public void BuyTrueOption(int amount )
-        {
-            _powerUpTrueOption.amount += amount;
-            PlayerPrefs.SetInt("pu_trueOption", _powerUpTrueOption.amount);
-            PlayerPrefs.Save();
-            _powerUpTrueOption.Raise();
-        }
-        
-        public void UseDeleteOption()
-        {
-            // _powerUpDeleteOption.amount--;
-            _objectUser.userInfo.user.detail.discardOption--;
-
-            // PlayerPrefs.SetInt("pu_deleteOption", _powerUpDeleteOption.amount);
-            // PlayerPrefs.Save();
-            // _powerUpDeleteOption.Raise();
-            
-            _currentListener = _powerUpDeleteOptionI;
+            detailAmount--;
+            _currentListener = listener;
             GameEvents.RequestUpdateDetail?.Invoke();
         }
 
-        public void BuyDeleteOption(int amount )
+        public void BuyPowerUp(PowerUpSO powerUp, int amount, string playerPrefsKey)
         {
-            _powerUpDeleteOption.amount += amount;
-            PlayerPrefs.SetInt("pu_deleteOption", _powerUpDeleteOption.amount);
+            powerUp.amount += amount;
+            PlayerPrefs.SetInt(playerPrefsKey, powerUp.amount);
             PlayerPrefs.Save();
-            _powerUpDeleteOption.Raise();
-        }
-        
-        public void UseNextQuestion()
-        {
-            // _powerUpNextQuestion.amount--;
-            _objectUser.userInfo.user.detail.skipQuestion--;
-            // PlayerPrefs.SetInt("pu_nextQuestion", _powerUpNextQuestion.amount);
-            // PlayerPrefs.Save();
-            // _powerUpNextQuestion.Raise();
-            _currentListener = _powerUpNextQuestionI;
-            GameEvents.RequestUpdateDetail?.Invoke();
+            powerUp.Raise();
         }
 
-        public void BuyNextQuestion(int amount )
-        {
-            _powerUpNextQuestion.amount += amount;
-            PlayerPrefs.SetInt("pu_nextQuestion", _powerUpNextQuestion.amount);
-            PlayerPrefs.Save();
-            _powerUpNextQuestion.Raise();
-        }
-        
-        public void UseMoreTime()
-        {
-            // _powerUpMoreTime.amount--;
-            _objectUser.userInfo.user.detail.increaseTime--;
-            // PlayerPrefs.SetInt("pu_moreTime", _powerUpMoreTime.amount);
-            // PlayerPrefs.Save();
-            // _powerUpMoreTime.Raise();
-            
-            _currentListener = _powerUpMoreTimeI;
-            GameEvents.RequestUpdateDetail?.Invoke();
-        }
-        public void BuyMoreTime(int amount )
-        {
-            _powerUpMoreTime.amount += amount;
-            PlayerPrefs.SetInt("pu_moreTime", _powerUpMoreTime.amount);
-            PlayerPrefs.Save();
-            _powerUpMoreTime.Raise();
-        }
+        public void UseSecondOportunity() => UsePowerUp(_powerUpSecondOportunityI, ref _objectUser.userInfo.user.detail.secondChance);
+        public void BuySecondOportunity(int amount) => BuyPowerUp(_powerUpSecondOportunity, amount, _powerUpSecondOportunity.nameInPlayerPrefs);
 
-        
+        public void UseTrueOption() => UsePowerUp(_powerUpTrueOptionI, ref _objectUser.userInfo.user.detail.findCorrectAnswer);
+        public void BuyTrueOption(int amount) => BuyPowerUp(_powerUpTrueOption, amount, _powerUpTrueOption.nameInPlayerPrefs);
+
+        public void UseDeleteOption() => UsePowerUp(_powerUpDeleteOptionI, ref _objectUser.userInfo.user.detail.discardOption);
+        public void BuyDeleteOption(int amount) => BuyPowerUp(_powerUpDeleteOption, amount, _powerUpDeleteOption.nameInPlayerPrefs);
+
+        public void UseNextQuestion() => UsePowerUp(_powerUpNextQuestionI, ref _objectUser.userInfo.user.detail.skipQuestion);
+        public void BuyNextQuestion(int amount) => BuyPowerUp(_powerUpNextQuestion, amount, _powerUpNextQuestion.nameInPlayerPrefs);
+
+        public void UseMoreTime() => UsePowerUp(_powerUpMoreTimeI, ref _objectUser.userInfo.user.detail.increaseTime);
+        public void BuyMoreTime(int amount) => BuyPowerUp(_powerUpMoreTime, amount, _powerUpMoreTime.nameInPlayerPrefs);
+
+
+
         #endregion
 
     }
