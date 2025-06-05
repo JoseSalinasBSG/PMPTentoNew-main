@@ -166,12 +166,12 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.BSgrupo.GamePMPTento
     Standalone: com.DefaultCompany.GamePMP
-    iPhone: com.BSGInstitute.GamePMPTento
+    iPhone: com.BSgrupo.GamePMPTento
   buildNumber:
     Bratwurst: 0
     Standalone: 0
     VisionOS: 0
-    iPhone: 1
+    iPhone: 3
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 20
