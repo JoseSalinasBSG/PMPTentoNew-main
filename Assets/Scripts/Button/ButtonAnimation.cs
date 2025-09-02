@@ -11,14 +11,14 @@ namespace Button
         [SerializeField] private ScriptableObjectButton _scriptableObjectButton;
         [SerializeField] private Image _imageButton;
         [SerializeField] private EventTrigger _eventTrigger;
+        [SerializeField] private Color _colorDefault = Color.white;
+        [SerializeField] private Color _colorDisable = new Color(.8f, .8f, .8f, 1);
         public bool toSound = true;
         private int vibrateIndicator;
 
 
         private float _currentTime;
         private Vector3 _startScale;
-        private Color _colorDisable = new Color(.8f, .8f, .8f, 1);
-        private Color _colorDefault = Color.white;
         EventTrigger.Entry entry = new EventTrigger.Entry();
 
         public enum VibrationMode
