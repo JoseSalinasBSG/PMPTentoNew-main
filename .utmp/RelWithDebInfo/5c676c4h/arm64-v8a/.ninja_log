@@ -1,5 +1,5 @@
 # ninja log v5
-65	512	7781055607119717	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	1ebc8631b2a9e5cc
-513	888	7781055610232568	C:/Users/gjusto/Documents/JS_UnityProjects/PMPTentoNew-main/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5c676c4h/obj/arm64-v8a/libswappywrapper.so	75be643cdefd36ba
 2	1035	7784475244201113	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	1ebc8631b2a9e5cc
 1036	2460	7784475258010919	C:/Users/gjusto/Documents/JS_UnityProjects/PMPTentoNew-main/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5c676c4h/obj/arm64-v8a/libswappywrapper.so	75be643cdefd36ba
+0	99	7784482767619569	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	1ebc8631b2a9e5cc
+99	251	7784482768715778	C:/Users/gjusto/Documents/JS_UnityProjects/PMPTentoNew-main/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/5c676c4h/obj/arm64-v8a/libswappywrapper.so	75be643cdefd36ba

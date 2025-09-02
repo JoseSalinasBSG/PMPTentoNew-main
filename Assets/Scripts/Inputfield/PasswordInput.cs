@@ -16,16 +16,12 @@ public class PasswordInput : InputBase
             // Dejo campos vacios
             SetAppearanceToError();
             _placeholderText.text = _placeholderTextDefault;
-            _label.gameObject.SetActive(false);
-            _message.gameObject.SetActive(true);
-            _message.text = _constants.fieldEmpty;
 
         }
         else
         {
             if (!haveError)
             {
-                _message.gameObject.SetActive(false);
                 _inputField.image.sprite = _spriteDefault;
             }
             
@@ -37,7 +33,6 @@ public class PasswordInput : InputBase
         if (!IsEmptyField(message))
         {
             SetAppearanceToNormal();
-            _message.gameObject.SetActive(false);
             haveError = false;
 
         }

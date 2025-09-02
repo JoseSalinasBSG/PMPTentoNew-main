@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -67,7 +66,6 @@ namespace Button
                 UIEvents.PressLoginButton?.Invoke();
             }
             UIEvents.PressVibrateButton?.Invoke(vibrateIndicator);
-            // Debug.Log("call");
         }
 
         private void OnDisable()
