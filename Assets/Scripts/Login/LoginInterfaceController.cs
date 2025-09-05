@@ -104,7 +104,7 @@ namespace Login
         private void GameEvents_UsernameSelected() => ComprobeUsername();
         private void GameEvents_InstructorSelected() => ComprobeInstructor();
 
-        /// <summary>Decide si mostrar Login o avanzar a Username según haveUser.</summary>
+        /// Decide si mostrar Login o avanzar a Username según haveUser.
         public void ComprobeLogin()
         {
             if (_objectUser == null || _objectUser.userInfo == null)
@@ -118,7 +118,7 @@ namespace Login
             else ShowLogin();
         }
 
-        /// <summary>Decide si mostrar Username o avanzar a Instructor según haveUsername.</summary>
+        /// Decide si mostrar Username o avanzar a Instructor según haveUsername.
         public void ComprobeUsername()
         {
             if (_objectUser == null || _objectUser.userInfo == null) { ShowLogin(); return; }
@@ -126,7 +126,7 @@ namespace Login
             else ShowUsername();
         }
 
-        /// <summary>Decide si mostrar Instructor o finalizar el flujo según haveInstructor.</summary>
+        /// Decide si mostrar Instructor o finalizar el flujo según haveInstructor.
         public void ComprobeInstructor()
         {
             if (_objectUser == null || _objectUser.userInfo == null) { ShowLogin(); return; }
@@ -149,58 +149,59 @@ namespace Login
         /// </summary>
         private IEnumerator LoadingSequence()
         {
+            if (_GUILoading == null) yield break;
+
             _GUILoading.gameObject.SetActive(true);
             UpdateLoadingUI(0f);
 
             float elapsed = 0f;
-            float current = 0f;
+            float minDuration = Mathf.Max(_minLoadingSeconds, 0.001f);
             const float nearComplete = 0.9f;
 
             while (true)
             {
                 elapsed += Time.deltaTime;
 
-                // Calcula una diana de progreso según flags o solo por tiempo.
-                float target;
-                if (_syncWithUserManagerFlags && _userManager != null)
-                {
-                    bool ready = _userManager.EndFinishLoadData && _userManager.EndFinishLoadAvatar;
-                    target = ready ? 1f : nearComplete;
-                }
-                else
-                {
-                    target = Mathf.Clamp01(elapsed / Mathf.Max(_minLoadingSeconds, 0.001f));
-                }
+                // Progreso dictado por tiempo (0..1)
+                float timeNorm = Mathf.Clamp01(elapsed / minDuration);
 
-                // Interpola suavemente hacia la diana.
-                current = Mathf.MoveTowards(current, target, Time.deltaTime * 0.6f);
-                UpdateLoadingUI(current);
+                // Objetivo dictado por flags (0.9 hasta estar listo, 1 cuando listo)
+                bool flagsReady = _syncWithUserManagerFlags && _userManager != null
+                    ? (_userManager.EndFinishLoadData && _userManager.EndFinishLoadAvatar)
+                    : true; // si no sincronizas o no hay UserManager, trátalo como listo
 
-                // Condición de salida: cumplida duración mínima y progreso completo.
-                if (elapsed >= _minLoadingSeconds && Mathf.Approximately(current, 1f))
+                float flagTarget = flagsReady ? 1f : nearComplete;
+
+                // Clave: el progreso mostrado NUNCA supera lo permitido por el tiempo
+                // (y tampoco supera 0.9 si las flags no están listas).
+                float progress = Mathf.Min(timeNorm, flagTarget);
+
+                UpdateLoadingUI(progress);
+
+                // Salida: solo cuando terminó el tiempo mínimo Y (si toca) las flags están listas.
+                if (timeNorm >= 1f && flagsReady)
                     break;
 
                 yield return null;
             }
 
+            // Asegura estado final 100% visible al salir.
+            UpdateLoadingUI(1f);
             _GUILoading.gameObject.SetActive(false);
         }
 
-        /// <summary>Actualiza slider y texto de porcentaje en la pantalla de carga.</summary>
+        /// Actualiza slider y texto de porcentaje en la pantalla de carga.
         private void UpdateLoadingUI(float progress)
         {
-            if (_loadingSlider != null) _loadingSlider.value = progress;
+            if (_loadingSlider != null)
+                _loadingSlider.value = progress;
 
-            int percent = Mathf.RoundToInt(progress * 100f);
-            string text = percent.ToString() + "%";
-
+            int percent = Mathf.Clamp(Mathf.RoundToInt(progress * 100f), 0, 100);
             if (_loadingPercentTMP != null)
-                _loadingPercentTMP.text = text;
+                _loadingPercentTMP.text = percent + "%";
         }
 
-        // === Helpers de visibilidad ===
-
-        /// <summary>Desactiva las tres pantallas principales.</summary>
+        /// Desactiva las tres pantallas principales.
         private void HideAllMainCanvases()
         {
             if (_GUILogin != null) _GUILogin.gameObject.SetActive(false);
@@ -208,13 +209,13 @@ namespace Login
             if (_GUIInstructor != null) _GUIInstructor.gameObject.SetActive(false);
         }
 
-        /// <summary>Oculta el Splash si existe.</summary>
+        /// Oculta el Splash si existe.
         private void HideSplash()
         {
             if (_SplashScreen != null) _SplashScreen.gameObject.SetActive(false);
         }
 
-        /// <summary>Activa/desactiva pantallas con una sola llamada.</summary>
+        /// Activa/desactiva pantallas con una sola llamada.
         private void SetUIState(bool login, bool username, bool instructor)
         {
             if (_GUILogin != null) _GUILogin.gameObject.SetActive(login);
@@ -222,8 +223,8 @@ namespace Login
             if (_GUIInstructor != null) _GUIInstructor.gameObject.SetActive(instructor);
         }
 
-        private void ShowLogin()      => SetUIState(login: true,  username: false, instructor: false);
-        private void ShowUsername()   => SetUIState(login: false, username: true,  instructor: false);
+        private void ShowLogin() => SetUIState(login: true, username: false, instructor: false);
+        private void ShowUsername() => SetUIState(login: false, username: true, instructor: false);
         private void ShowInstructor() => SetUIState(login: false, username: false, instructor: true);
     }
 }
