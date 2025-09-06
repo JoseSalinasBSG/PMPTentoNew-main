@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Button;
-using PowerUp;
-using ScriptableCreator.PowerUpSOC;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,18 +32,11 @@ namespace Store
         [SerializeField] private Image _imageCompra;
         [SerializeField] private TextMeshProUGUI _amountLabel;
 
-        [Header("Roulette")]
-        [SerializeField] private ButtonAnimation _rouletteButton;
-        [SerializeField] private ButtonAnimation _rouletteButtonUsed;
-        [SerializeField] private TextMeshProUGUI _timeRemainingRoulette;
-
         private bool areItemsInstanciated = false;
         private StoreItem _currentItem;
         public float CoinsFromUser => _user.userInfo.user.detail.totalCoins;
         private void OnEnable()
         {
-            HandleRouletteState();
-
             UpdatePowerUpTexts();
             SubscribeToGameEvents();
 
@@ -59,29 +48,6 @@ namespace Store
             InstantiateStoreItems();
 
             areItemsInstanciated = true;
-        }
-
-        private void HandleRouletteState()
-        {
-            if (PlayerPrefs.HasKey("UseRoulette") && PlayerPrefs.GetString("UseRoulette") != "{}")//verifica si fue usada la ruleta
-            {
-                DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-                TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
-                TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
-
-                if (timeSinceLastUse < TimeSpan.FromHours(24))//es igual a la fecha de hoy
-                {//desactiva ruleta
-                    _rouletteButton.gameObject.SetActive(false);
-                    _rouletteButtonUsed.gameObject.SetActive(true);
-                    _rouletteButton.GetComponent<PassScrollEvents>().enabled = false;
-                }
-                else
-                {//activa ruleta
-                    _rouletteButton.gameObject.SetActive(true);
-                    _rouletteButtonUsed.gameObject.SetActive(false);
-                    _rouletteButton.GetComponent<PassScrollEvents>().enabled = true;
-                }
-            }
         }
 
         private void SubscribeToGameEvents()
@@ -123,17 +89,6 @@ namespace Store
 
             }
             Instantiate(_offset, _GeneralContainer);
-        }
-
-        private void Update()
-        {
-            if (PlayerPrefs.HasKey("UseRoulette") && PlayerPrefs.GetString("UseRoulette") != "{}")
-            {
-                DateTime lastUseTime = DateTime.Parse(PlayerPrefs.GetString("UseRoulette"));
-                TimeSpan timeSinceLastUse = DateTime.Now - lastUseTime;
-                TimeSpan timeRemaining = TimeSpan.FromHours(24) - timeSinceLastUse;
-                _timeRemainingRoulette.text = "El giro de la ruleta estará \r\ndisponible nuevamente en: " + string.Format("{0:D2}:{1:D2}:{2:D2}", timeRemaining.Hours, timeRemaining.Minutes, timeRemaining.Seconds);
-            }
         }
 
 

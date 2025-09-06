@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: RouletteSecondOportunitySO
   m_EditorClassIdentifier: 
   spritePowerUp: {fileID: 21300000, guid: 5612214f39c259f4bb8388d50401483a, type: 3}
-  spriteIconPowerUp: {fileID: 21300000, guid: aa7fbdb488bc5224d8b8d014e3c686ce, type: 3}
+  spriteIconPowerUp: {fileID: 21300000, guid: 98fe0c46f1555a14da22f015f3a147de, type: 3}
+  colorPowerUp: {r: 0.0627451, g: 0.7254902, b: 0.5058824, a: 1}
   powerUpSO: {fileID: 11400000, guid: 51afdcb7ae36b94489b601cc27ff8a66, type: 2}

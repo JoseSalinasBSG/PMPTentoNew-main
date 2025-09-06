@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: RouletteCoinsSO
   m_EditorClassIdentifier: 
   spritePowerUp: {fileID: 21300000, guid: 0037ff8ca605b88469777b9fc3ed55bd, type: 3}
-  spriteIconPowerUp: {fileID: 21300000, guid: b9aa08949a530704a972d529cd4c3a9b, type: 3}
+  spriteIconPowerUp: {fileID: 21300000, guid: ca6ff42929575254db6cf3b6ebdb9324, type: 3}
+  colorPowerUp: {r: 0.98039216, g: 0.8, b: 0.08235294, a: 1}

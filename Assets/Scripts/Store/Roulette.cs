@@ -91,7 +91,7 @@ public class Roulette : MonoBehaviour
                     randomData = Random.Range(0, _rouletteSO.RouletteItems.Length);//recalcular el randomData
                 }
             }
-            _rouletteItems[i].SetData(_rouletteSO.RouletteItems[randomData]);//con ese numero aleatorio se decide que item de la lista de items a aleatorizar se usara y con el metodo SetData se setea en el item i
+            //_rouletteItems[i].SetData(_rouletteSO.RouletteItems[randomData]);//con ese numero aleatorio se decide que item de la lista de items a aleatorizar se usara y con el metodo SetData se setea en el item i
         }
     }
 
@@ -187,7 +187,7 @@ public class Roulette : MonoBehaviour
         }
         _imageReward.gameObject.SetActive(true);
         _coofigurationMessage.text = "Usted obtuvo las siguiente recompensas:";
-        _imageReward.sprite = selecetdItem.IconItem;//asigna el Icono del powerup obtenido        
+        //_imageReward.sprite = selecetdItem.IconItem;//asigna el Icono del powerup obtenido        
         _finalAmount.text = $"x{selecetdItem.Amount}";
         _rewardContainer.gameObject.SetActive(true);
         _rewardContainer.FadeInTransition();
@@ -208,26 +208,6 @@ public class Roulette : MonoBehaviour
         if (selecetdItem.RouletteItemData._ItemRouletteSo.GetType() == typeof(PowerUpItemRoulette))
         {
             var item = selecetdItem.RouletteItemData._ItemRouletteSo as PowerUpItemRoulette;
-            //switch (item.powerUpSO.nameInPlayerPrefs)
-            //{
-            //    case "pu_deleteOption":
-            //        _userSO.userInfo.user.detail.discardOption += selecetdItem.Amount;
-            //        break;
-            //    case "pu_moreTime":
-            //        _userSO.userInfo.user.detail.moreTime += selecetdItem.Amount;
-            //        break;
-            //    case "pu_nextQuestion":
-            //        _userSO.userInfo.user.detail.skipQuestion += selecetdItem.Amount;
-            //        break;
-            //    case "pu_secondOportunity":
-            //        _userSO.userInfo.user.detail.secondChance += selecetdItem.Amount;
-            //        break;
-            //    case "pu_trueOption":
-            //        _userSO.userInfo.user.detail.findCorrectAnswer += selecetdItem.Amount;
-            //        break;
-            //}
-
-            //item.powerUpSO.AddPowerUpToUser(_userSO, selecetdItem.Amount);
             _userSO.AddPowerUp(item.powerUpSO, selecetdItem.Amount);
 
             GameEvents.RequestUpdateDetail?.Invoke();

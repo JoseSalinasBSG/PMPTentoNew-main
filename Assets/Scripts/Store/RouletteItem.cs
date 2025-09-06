@@ -1,47 +1,61 @@
-
-using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class RouletteItem : MonoBehaviour
 {
-    [SerializeField] private Transform _originPoint;
-    [SerializeField] private RouletteItemData _rouletteItemData;
-    [SerializeField] private Image _imageItem;
-    [SerializeField] private Sprite _iconItem;
-    [SerializeField] private TextMeshProUGUI _amountLabel;
-    public bool _haveInformation;
-    
-    public Image ImageItem => _imageItem;
-    public Sprite IconItem => _iconItem;
-    public TextMeshProUGUI AmountLabel => _amountLabel;
-    private int _amount;
+    [Header("Vista (asigna en Inspector)")]
+    [Tooltip("Image del slice (uGUI) ya configurado como Filled/Radial360. Solo cambia el color.")]
+    [FormerlySerializedAs("_imageItem")]
+    [SerializeField] private Image _sliceImage;
 
+    [Tooltip("Image del ícono que se muestra sobre el slice.")]
+    [SerializeField] private Image _iconImage;
+
+    private RouletteItemData _rouletteItemData;
+    private bool _haveInformation;
+    private int _amount;
     public int Amount => _amount;
+    
     public bool HaveInformation
     {
         get => _haveInformation;
         set => _haveInformation = value;
     }
-
     public RouletteItemData RouletteItemData
     {
         get => _rouletteItemData;
         set => _rouletteItemData = value;
     }
-    public void SetData(RouletteItemData rouletteItemData)
+
+    /// <summary>
+    /// Aplica color (slice), ícono y cantidad desde el SO.
+    /// No modifica rotación ni fillAmount.
+    /// </summary>
+    public void ApplyVisualFromSO(RouletteItemData data)
     {
-        _rouletteItemData = rouletteItemData;
-        
-        //Setear cantidad del item en cuestion
-        _amount = !_rouletteItemData.UseAllAmount ? Random.Range(1, _rouletteItemData.Amount + 1) : _rouletteItemData.Amount;//segun valor de _rouletteItemData.UseAllAmount se ejecutara expresion1 o expresion 2
-        
-        _imageItem.sprite = _rouletteItemData._ItemRouletteSo.spritePowerUp;//asignar la imagen de powerup desde el SO
-        _iconItem = _rouletteItemData._ItemRouletteSo.spriteIconPowerUp;//asignar el icono de powerup desde el SO
-        
-        _amountLabel.text = $"x{_amount}";
-        HaveInformation = true;//Indica que ya se seteo informacion en el espacio de ruleta en cuestion
+        _rouletteItemData = data;
+
+        // Cantidad (guardada para asignar premio y mostrar en popup)
+        _amount = !_rouletteItemData.UseAllAmount
+            ? Random.Range(1, _rouletteItemData.Amount + 1)
+            : _rouletteItemData.Amount;
+
+        var so = _rouletteItemData._ItemRouletteSo;
+
+        // Color del slice
+        if (_sliceImage != null)
+            _sliceImage.color = (so != null) ? so.colorPowerUp : Color.white;
+
+        // Icono
+        if (_iconImage != null && so != null)
+        {
+            _iconImage.sprite = so.spriteIconPowerUp;
+            _iconImage.enabled = _iconImage.sprite != null;
+        }
+
+        _haveInformation = true;
     }
 }

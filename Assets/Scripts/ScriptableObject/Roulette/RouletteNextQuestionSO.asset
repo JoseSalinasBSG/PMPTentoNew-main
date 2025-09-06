@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: RouletteNextQuestionSO
   m_EditorClassIdentifier: 
   spritePowerUp: {fileID: 21300000, guid: 21479ebbe23acdc49a694008dcc6d4ad, type: 3}
-  spriteIconPowerUp: {fileID: 21300000, guid: 7c7d036b2a2f16a4f88918637f123263, type: 3}
+  spriteIconPowerUp: {fileID: 21300000, guid: 16e3fdf0a7678f04f920554324931815, type: 3}
+  colorPowerUp: {r: 0.54509807, g: 0.36078432, b: 0.9647059, a: 1}
   powerUpSO: {fileID: 11400000, guid: b746d5419555b6642ae6a4da24396eb2, type: 2}
