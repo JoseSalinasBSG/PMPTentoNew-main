@@ -26,24 +26,31 @@ namespace Store
         [SerializeField] private PowerUpSO _powerUp;
         [SerializeField] private Image _image;
         [SerializeField] private ButtonAnimation _buttonAnimation;
+        [SerializeField] private Image _backgroundImage;
+        [SerializeField] private Image _buyButtonImage;
 
         private StoreController _storeController;
         public Action<int> SendEvent;
         private float _cost;
         private int _amount;
+        private Color _iconColor;
+        private Color _backgroundColor;
         public float Cost => _cost;
         public string NamePowerUp => _powerUp.nameInPlayerPrefs;
         public int Amount => _amount;
         public PowerUpSO PowerUp => _powerUp;
         public Sprite SpriteFromImage => _image.sprite;
 
-        public void SetData(StoreController storeController, float cost, int amount, Sprite sprite, PowerUpSO powerUp)
+
+        public void SetData(StoreController storeController, float cost, int amount, Sprite sprite, PowerUpSO powerUp, Color iconColor, Color backgroundColor)
         {
             _storeController = storeController;
-
-            PassScrollEvents passScroll = gameObject.GetComponent<PassScrollEvents>();
             _cost = cost;
             _amount = amount;
+            _iconColor = iconColor;
+            _backgroundColor = backgroundColor;
+
+            PassScrollEvents passScroll = gameObject.GetComponent<PassScrollEvents>();
             if (_cost > storeController.CoinsFromUser)
             {
                 passScroll.enabled = false;
@@ -53,12 +60,14 @@ namespace Store
             else
             {
                 passScroll.enabled = true;
-                _costLabel.color = Color.black;
-                _buttonAnimation.EnableButton();
+                _costLabel.color = _iconColor;
+                _buttonAnimation.EnableButton(_backgroundColor);
             }
-            _costLabel.text = $"{_cost}";
+            _costLabel.text = $"${_cost}";
             _amountLabel.text = $"x{_amount}";
             _image.sprite = sprite;
+            _image.color = _iconColor;
+            _buyButtonImage.color = _iconColor;
             _powerUp = powerUp;
         }
 
@@ -67,7 +76,7 @@ namespace Store
             if (_cost > _storeController.CoinsFromUser)
                 return;
 
-            _storeController.OpenPopUpCompra(this);
+            _storeController.SetPopUpsCompra(this);
         }
 
         private void OnEnable()
@@ -89,10 +98,9 @@ namespace Store
             }
             else
             {
-                _costLabel.color = Color.black;
-                _buttonAnimation.EnableButton();
+                _costLabel.color = _iconColor;
+                _buttonAnimation.EnableButton(_backgroundColor);
             }
         }
     }
-
 }

@@ -24,13 +24,16 @@ namespace Store
         [SerializeField] private Transform _GeneralContainer;
         [SerializeField] private StoreSection _storeSectionPrefab;
         [SerializeField] private StoreItem _storeItemPrefab;
-        [SerializeField] private Transform _offset;
 
         [Header("Pop-up compra")]
         [SerializeField] private FadeUI _popupCompra;
         [SerializeField] private TextMeshProUGUI _messageCompra;
         [SerializeField] private Image _imageCompra;
         [SerializeField] private TextMeshProUGUI _amountLabel;
+        [Header("Pop-up Confirmación Compra")]
+        [SerializeField] private Image _iconPowerUpCC;
+        [SerializeField] private TextMeshProUGUI _compraDetail;
+
 
         private bool areItemsInstanciated = false;
         private StoreItem _currentItem;
@@ -53,7 +56,6 @@ namespace Store
         private void SubscribeToGameEvents()
         {
             GameEvents.CoinsChanged += GameEvents_CoinsChanged;
-            GameEvents.ExperienceChanged += GameEvents_ExperienceChanged;
             GameEvents.DetailChanged += GameEvents_DetailChanged;
         }
 
@@ -70,7 +72,7 @@ namespace Store
             foreach (var powerUpConfig in _powerUpConfigList)
             {
                 var storeSection = Instantiate(_storeSectionPrefab, _GeneralContainer);
-                storeSection.SetData(powerUpConfig.storeSectionName);
+                storeSection.SetData(powerUpConfig.storeSectionName, powerUpConfig.powerUpSprite, powerUpConfig.powerUpIconColor);
 
                 for (int i = 0; i < 3; i++)
                 {
@@ -84,11 +86,10 @@ namespace Store
                     {
                         costItem = (powerUpConfig.powerUpSO.unitCost * (i + 1) - powerUpConfig.powerUpSO.discount * (i + 1));
                     }
-                    storeItem.SetData(this, costItem, i + 1, powerUpConfig.powerUpSprite, powerUpConfig.powerUpSO);
+                    storeItem.SetData(this, costItem, i + 1, powerUpConfig.powerUpSprite, powerUpConfig.powerUpSO, powerUpConfig.powerUpIconColor, powerUpConfig.backgroundColor);
                 }
 
             }
-            Instantiate(_offset, _GeneralContainer);
         }
 
 
@@ -100,35 +101,29 @@ namespace Store
             GameEvents.ExperienceChanged?.Invoke();
         }
 
-        private void GameEvents_ExperienceChanged()
-        {
-
-        }
-
         private void GameEvents_CoinsChanged()
         {
 
         }
 
-        public void OpenPopUpCompra(StoreItem storeItem)
+        public void SetPopUpsCompra(StoreItem storeItem)
         {
             _currentItem = storeItem;
             _imageCompra.sprite = _currentItem.SpriteFromImage;
-            string pot = _currentItem.Amount > 1 ? "potenciador" : "potenciadores";
-            _messageCompra.text = $"Está a punto de comprar {_currentItem.Amount} {pot} para {GetPowerUpName()}";
-            _amountLabel.text = $"x{_currentItem.Amount}";
+            _messageCompra.text = $"{GetPowerUpName()}";
+            _amountLabel.text = $"x{_currentItem.Amount} por ${_currentItem.Cost}";
+
+            _iconPowerUpCC.sprite = _currentItem.SpriteFromImage;
+            _compraDetail.text = $"Has comprado <b>{GetPowerUpName()} x{_currentItem.Amount}</b>";
+
             _popupCompra.gameObject.SetActive(true);
             _popupCompra.FadeInTransition();
         }
 
         public void BuyItem()
         {
-            //_currentItem.PowerUp.AddPowerUpToUser(_user, _currentItem.Amount);
             _user.AddPowerUp(_currentItem.PowerUp, _currentItem.Amount);
-
-            //_user.userInfo.user.detail.totalCoins -= (int)_currentItem.Cost;
             _user.RemoveCoins((int)_currentItem.Cost);
-
             GameEvents.RequestUpdateDetail?.Invoke();
         }
 

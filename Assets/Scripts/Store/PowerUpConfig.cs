@@ -12,6 +12,8 @@ namespace Store
         public PowerUpSO powerUpSO;
         public TextMeshProUGUI powerUpText;
         public Sprite powerUpSprite;
+        public Color powerUpIconColor;
+        public Color backgroundColor;
 
         public void UpdateTextPowerUp(ScriptableObjectUser scriptableObjectUser)
         {
