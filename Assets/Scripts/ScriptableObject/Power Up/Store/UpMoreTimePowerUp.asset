@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f1ce1ae350d0841ad6aa6067124437, type: 3}
   m_Name: UpMoreTimePowerUp
   m_EditorClassIdentifier: 
-  amount: 7584
+  amount: 85
   unitCost: 50
   discount: 15
   nameInPlayerPrefs: pu_moreTime

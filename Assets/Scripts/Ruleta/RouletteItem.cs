@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -6,8 +5,8 @@ using Random = UnityEngine.Random;
 
 public class RouletteItem : MonoBehaviour
 {
-    [Header("Vista (asigna en Inspector)")]
-    [Tooltip("Image del slice (uGUI) ya configurado como Filled/Radial360. Solo cambia el color.")]
+    [Header("Vista")]
+    [Tooltip("Image del slice (uGUI) que se colorea).")]
     [FormerlySerializedAs("_imageItem")]
     [SerializeField] private Image _sliceImage;
 
@@ -24,15 +23,17 @@ public class RouletteItem : MonoBehaviour
         get => _haveInformation;
         set => _haveInformation = value;
     }
+
     public RouletteItemData RouletteItemData
     {
         get => _rouletteItemData;
         set => _rouletteItemData = value;
     }
 
+    public RectTransform IconRect => _iconImage != null ? _iconImage.rectTransform : null;
+
     /// <summary>
     /// Aplica color (slice), ícono y cantidad desde el SO.
-    /// No modifica rotación ni fillAmount.
     /// </summary>
     public void ApplyVisualFromSO(RouletteItemData data)
     {

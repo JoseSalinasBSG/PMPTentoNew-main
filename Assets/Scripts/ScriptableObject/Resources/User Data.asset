@@ -32,13 +32,13 @@ MonoBehaviour:
         idAlumno: 9628416
         usernameG: pruebis
         instructorID: 0
-        totalCoins: 1000039
-        totalExperience: 2050
-        discardOption: 999
-        skipQuestion: 999
-        findCorrectAnswer: 999
-        increaseTime: 999
-        secondChance: 990
+        totalCoins: 80
+        totalExperience: 2500
+        discardOption: 5
+        skipQuestion: 1
+        findCorrectAnswer: 7
+        increaseTime: 15
+        secondChance: 9
       achievements:
         id: 6
         idAlumno: 9628416

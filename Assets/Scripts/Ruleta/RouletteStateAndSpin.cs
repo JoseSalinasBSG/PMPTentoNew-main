@@ -14,50 +14,33 @@ public sealed class RouletteStateAndSpin : MonoBehaviour
     private enum State { Ready, Spinning, Cooldown }
 
     [Header("Referencias")]
-    [Tooltip("RectTransform del wheel (el círculo que rota).")]
-    [SerializeField] private RectTransform wheel;
+    [SerializeField] private RectTransform wheel;   // RectTransform del wheel (el círculo que rota).
 
     [Header("UI States (solo activar/desactivar)")]
-    [Tooltip("Objeto del estado LISTO con el botón de '¡Girar!'")]
-    [SerializeField] private GameObject readyGO;
-    [Tooltip("Botón dentro de readyGO que inicia el giro.")]
-    [SerializeField] private UnityEngine.UI.Button readyButton;
-
-    [Tooltip("Objeto del estado GIRANDO (visual '¡Girando!').")]
-    [SerializeField] private GameObject spinningGO;
-
-    [Tooltip("Objeto del estado COOLDOWN (contiene el label del temporizador).")]
-    [SerializeField] private GameObject cooldownGO;
-    [Tooltip("TMP_Text que muestra HH:mm:ss restante dentro de cooldownGO.")]
-    [SerializeField] private TMP_Text cooldownLabel;
+    [SerializeField] private GameObject readyGO;    //Objeto del estado LISTO con el botón de '¡Girar!'
+    [SerializeField] private UnityEngine.UI.Button readyButton; //Botón dentro de readyGO que inicia el giro.
+    [SerializeField] private GameObject spinningGO;  //Objeto del estado GIRANDO (visual '¡Girando!').
+    [SerializeField] private GameObject cooldownGO; //Objeto del estado COOLDOWN (contiene el label del temporizador).
+    [SerializeField] private TMP_Text cooldownLabel;    //TMP_Text que muestra HH:mm:ss restante dentro de cooldownGO.
 
     [Header("Animación de giro")]
     [Tooltip("Duración del giro (s).")]
     [SerializeField, Min(0.3f)] private float spinDuration = 3f;
-    [Tooltip("Revoluciones mínimas completas durante el giro.")]
-    [SerializeField, Min(1)] private int minRevolutions = 3;
-    [Tooltip("Revoluciones máximas completas durante el giro.")]
-    [SerializeField, Min(1)] private int maxRevolutions = 5;
     [Tooltip("Curva de desaceleración (0→1).")]
     [SerializeField] private AnimationCurve ease = AnimationCurve.EaseInOut(0, 0, 1, 1);
-    [Tooltip("Sentido horario (true) o antihorario (false).")]
-    [SerializeField] private bool clockwise = true;
+    private int minRevolutions = 3;
+    private int maxRevolutions = 5;
 
     [Header("Cooldown")]
     [Tooltip("Horas de cooldown tras un giro.")]
     [SerializeField, Min(1)] private int cooldownHours = 24;
-    [Tooltip("Clave PlayerPrefs para guardar el fin de cooldown en UTC (ISO8601).")]
-    [SerializeField] private string ppNextAvailableUtcKey = "RouletteNextAvailableUtc";
 
-    [Header("Control de cuándo iniciar el cooldown")]
-    [Tooltip("Si true, entra a cooldown justo al terminar el giro. Si false, espera a que llames StartCooldownNow().")]
-    [SerializeField] private bool startCooldownOnSpinFinish = true;
+    //Clave PlayerPrefs para guardar el fin de cooldown en UTC (ISO8601).
+    private string ppNextAvailableUtcKey = "RouletteNextAvailableUtc";
 
     [Header("Eventos")]
     public UnityEvent OnSpinStarted;
     public UnityEvent OnSpinFinished;
-    public UnityEvent OnCooldownStarted;
-    public UnityEvent OnCooldownEnded;
 
     // --- Estado interno ---
     private State state = State.Ready;
@@ -117,7 +100,6 @@ public sealed class RouletteStateAndSpin : MonoBehaviour
         if (cooldownLabel) cooldownLabel.text = string.Empty;
 
         if (cdCo != null) { StopCoroutine(cdCo); cdCo = null; }
-        OnCooldownEnded?.Invoke();
     }
 
     private void EnterSpinning()
@@ -142,8 +124,6 @@ public sealed class RouletteStateAndSpin : MonoBehaviour
 
         if (cdCo != null) StopCoroutine(cdCo);
         cdCo = StartCoroutine(CooldownRoutine());
-
-        OnCooldownStarted?.Invoke();
     }
 
     // === Coroutines ===
@@ -153,8 +133,7 @@ public sealed class RouletteStateAndSpin : MonoBehaviour
 
         int revs = UnityEngine.Random.Range(minRevolutions, maxRevolutions + 1);
         float endAngle = UnityEngine.Random.Range(0f, 360f);
-        float sign = clockwise ? -1f : 1f;               // en UI, horario suele ser negativo
-        float delta = sign * (revs * 360f + endAngle);
+        float delta = -1 * (revs * 360f + endAngle);
 
         float t = 0f;
         float dur = Mathf.Max(spinDuration, 0.0001f);
@@ -170,16 +149,6 @@ public sealed class RouletteStateAndSpin : MonoBehaviour
         spinCo = null;
 
         OnSpinFinished?.Invoke();
-
-        if (startCooldownOnSpinFinish)
-        {
-            StartCooldownNow();
-        }
-        else
-        {
-            // Si no arranca cooldown aquí, volvemos a Ready y esperas a llamarlo cuando cierres el popup del premio.
-            EnterReady();
-        }
     }
 
     private IEnumerator CooldownRoutine()

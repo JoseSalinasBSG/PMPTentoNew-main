@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Obsolete("Reemplazado por RouletteStateAndSpin/RoulettePrizeResolver", true)]
 public class RouletteWithDrag : MonoBehaviour
 {
     public RectTransform rouletteTransform;

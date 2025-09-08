@@ -18,20 +18,8 @@ public sealed class RouletteVisualGenerator : MonoBehaviour
     [Tooltip("Contenedor con los 10 hijos (Item1..Item10). Si se deja vacío, se usa este mismo transform.")]
     [SerializeField] private Transform _itemsContainer;
 
-    [Tooltip("Si está activo, recolecta automáticamente los RouletteItem hijos al iniciar.")]
-    [SerializeField] private bool _autoCollect = true;
-
-    [Header("Slices")]
-    [Tooltip("Cantidad de slices. En tu caso, 10.")]
-    [SerializeField, Min(2)] private int _sliceCount = 10;
-
-    [SerializeField] private List<RouletteItem> _items = new List<RouletteItem>();
-
-    private void Reset()
-    {
-        _sliceCount = 10;
-        _autoCollect = true;
-    }
+    private int _sliceCount = 10;
+    private List<RouletteItem> _items = new List<RouletteItem>();
 
     private void Start()
     {
@@ -43,14 +31,11 @@ public sealed class RouletteVisualGenerator : MonoBehaviour
 
         if (_itemsContainer == null) _itemsContainer = transform;
 
-        if (_autoCollect)
+        _items.Clear();
+        for (int i = 0; i < _itemsContainer.childCount; i++)
         {
-            _items.Clear();
-            for (int i = 0; i < _itemsContainer.childCount; i++)
-            {
-                var ri = _itemsContainer.GetChild(i).GetComponent<RouletteItem>();
-                if (ri != null) _items.Add(ri);
-            }
+            var ri = _itemsContainer.GetChild(i).GetComponent<RouletteItem>();
+            if (ri != null) _items.Add(ri);
         }
 
         if (_items.Count != _sliceCount)
@@ -114,10 +99,8 @@ public sealed class RouletteVisualGenerator : MonoBehaviour
                     if (okPrev && okFirst) { chosen = j; break; }
                 }
             }
-
             result.Add(chosen);
         }
-
         return result;
     }
 }

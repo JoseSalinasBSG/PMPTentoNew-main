@@ -17,6 +17,7 @@ using Random = UnityEngine.Random;
 /// que pueden ser power-ups o monedas. También se gestionan eventos de inicio, fracaso y selección de rotación mediante eventos de Unity.
 /// Finalmente, la ruleta se reinicia después de cada uso para ser configurada nuevamente.
 ///</summary>
+[System.Obsolete("Reemplazado por RouletteStateAndSpin/RoulettePrizeResolver", true)]
 
 public class Roulette : MonoBehaviour
 {

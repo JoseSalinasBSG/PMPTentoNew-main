@@ -815,6 +815,94 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   hasScrollHorizontal: 1
+--- !u!1 &81837133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 81837134}
+  - component: {fileID: 81837137}
+  - component: {fileID: 81837136}
+  - component: {fileID: 81837135}
+  m_Layer: 5
+  m_Name: InputBlocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &81837134
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81837133}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1488317600486489985}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &81837135
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81837133}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &81837136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81837133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.050980393}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &81837137
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81837133}
+  m_CullTransparentMesh: 1
 --- !u!1 &83096963
 GameObject:
   m_ObjectHideFlags: 0
@@ -8254,6 +8342,7 @@ GameObject:
   - component: {fileID: 857325183}
   - component: {fileID: 857325184}
   - component: {fileID: 857325185}
+  - component: {fileID: 857325186}
   m_Layer: 5
   m_Name: Roulette
   m_TagString: Untagged
@@ -8307,9 +8396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rouletteSO: {fileID: 11400000, guid: 6836fddc85a005e45a603180395db1ee, type: 2}
   _itemsContainer: {fileID: 1644071754}
-  _autoCollect: 1
-  _sliceCount: 10
-  _items: []
 --- !u!114 &857325185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8329,8 +8415,6 @@ MonoBehaviour:
   cooldownGO: {fileID: 24870075}
   cooldownLabel: {fileID: 1178764749}
   spinDuration: 3
-  minRevolutions: 3
-  maxRevolutions: 5
   ease:
     serializedVersion: 2
     m_Curve:
@@ -8355,29 +8439,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  clockwise: 1
   cooldownHours: 24
-  ppNextAvailableUtcKey: RouletteNextAvailableUtc
-  startCooldownOnSpinFinish: 1
   OnSpinStarted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4204494860513525746}
-        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-        m_MethodName: set_blocksRaycasts
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnSpinFinished:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1734405454}
+      - m_Target: {fileID: 81837133}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -8389,10 +8455,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1734405456}
-        m_TargetAssemblyTypeName: FadeUI, Assembly-CSharp
-        m_MethodName: FadeInTransition
-        m_Mode: 1
+  OnSpinFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 81837133}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8401,24 +8470,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4204494860513525746}
-        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-        m_MethodName: set_blocksRaycasts
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnCooldownStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCooldownEnded:
-    m_PersistentCalls:
-      m_Calls: []
+--- !u!114 &857325186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857325181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a0829701563f1438ce97e60019cc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateAndSpin: {fileID: 857325185}
+  userSO: {fileID: 11400000, guid: 2f47c0a4eb7b9cf4a9cf3eccaac92c96, type: 2}
+  itemsContainer: {fileID: 1644071754}
+  pointer: {fileID: 1460255846}
+  rewardPopup: {fileID: 1734405454}
+  rewardIcon: {fileID: 1436448217}
+  rewardAmountLabel: {fileID: 438111952}
 --- !u!1001 &860293500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15785,10 +15855,10 @@ MonoBehaviour:
   _onEndTransitionFadeout:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1734405454}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 857325186}
+        m_TargetAssemblyTypeName: RoulettePrizeResolver, Assembly-CSharp
+        m_MethodName: CloseRewardPopup
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -22447,6 +22517,7 @@ RectTransform:
   - {fileID: 410939943686333178}
   - {fileID: 230685517546296292}
   - {fileID: 1734405459}
+  - {fileID: 81837134}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -23470,7 +23541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: 99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3fccd3d071c122440849c1ca53cd10ed, type: 2}
   m_sharedMaterial: {fileID: 2025754286801431975, guid: 3fccd3d071c122440849c1ca53cd10ed, type: 2}
@@ -25409,8 +25480,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8007331836931732196}
   m_HandleRect: {fileID: 9099302459662459706}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 0.9999996
+  m_Size: 0.7295671
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -26859,7 +26930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: 99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3fccd3d071c122440849c1ca53cd10ed, type: 2}
   m_sharedMaterial: {fileID: 2025754286801431975, guid: 3fccd3d071c122440849c1ca53cd10ed, type: 2}
@@ -27086,10 +27157,10 @@ RectTransform:
   - {fileID: 721289430}
   m_Father: {fileID: 7485037734933617384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 489.49573, y: -625}
-  m_SizeDelta: {x: 978.99146, y: 1250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 1250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3115205928067272145
 RectTransform:
@@ -30389,7 +30460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: 99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3fccd3d071c122440849c1ca53cd10ed, type: 2}
   m_sharedMaterial: {fileID: 2025754286801431975, guid: 3fccd3d071c122440849c1ca53cd10ed, type: 2}
@@ -30537,7 +30608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: 99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3fccd3d071c122440849c1ca53cd10ed, type: 2}
   m_sharedMaterial: {fileID: 2025754286801431975, guid: 3fccd3d071c122440849c1ca53cd10ed, type: 2}
@@ -41514,7 +41585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: 99
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3fccd3d071c122440849c1ca53cd10ed, type: 2}
   m_sharedMaterial: {fileID: 2025754286801431975, guid: 3fccd3d071c122440849c1ca53cd10ed, type: 2}
@@ -48613,7 +48684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &8929633477853802543
 MonoBehaviour:
   m_ObjectHideFlags: 0
