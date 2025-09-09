@@ -56,12 +56,14 @@ namespace Store
                 passScroll.enabled = false;
                 _costLabel.color = Color.red;
                 _buttonAnimation.DisableButton();
+                _backgroundImage.color = new Color(.8f, .8f, .8f, 1);
             }
             else
             {
                 passScroll.enabled = true;
                 _costLabel.color = _iconColor;
-                _buttonAnimation.EnableButton(_backgroundColor);
+                _buttonAnimation.EnableButton();
+                _backgroundImage.color = backgroundColor;
             }
             _costLabel.text = $"${_cost}";
             _amountLabel.text = $"x{_amount}";
@@ -99,7 +101,8 @@ namespace Store
             else
             {
                 _costLabel.color = _iconColor;
-                _buttonAnimation.EnableButton(_backgroundColor);
+                _buttonAnimation.EnableButton();
+                _backgroundImage.color = _backgroundColor;
             }
         }
     }

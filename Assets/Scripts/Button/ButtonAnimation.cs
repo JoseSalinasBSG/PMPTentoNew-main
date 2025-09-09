@@ -94,10 +94,10 @@ namespace Button
             StartCoroutine(IStartInverseAnimation());
         }
 
-        public void EnableButton(Color? color = null)
+        public void EnableButton()
         {
             _eventTrigger.enabled = true;
-            _imageButton.color = color ?? _colorDefault;
+            _imageButton.color = _colorDefault;
         }
 
         public void DisableButton()

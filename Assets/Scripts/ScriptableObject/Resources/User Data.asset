@@ -16,44 +16,44 @@ MonoBehaviour:
     user:
       id: 
       idProveedor: 0
-      cursos: 3
-      idAlumno: 9628416
+      cursos: 282
+      idAlumno: 9818325
       idContacto: 0
       clave: 
-      userName: cip154850@gmail.com
-      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.44T7bUXdmUVRKd4GqiewZs3Tl9EZNlGqZQ06NPxhD54xKSGzN8CEag.hFtSe7X81CQazpbnp2d9oQ.rVEeOpfbH7f5-x4gdNDgfl_dfkEPO0TGAW2nDh4xiz6cY1QvXW7qTwHwjC5v2OpbYQukHgeKOz8avruOxnv9cpjlEhd9afo-5laaR8IADQZ2hHcsd7BUh9tNRUXNW_9hYob840XcCCvmqg0jy6scP2Ukb80T4Twx3RCLHuG333lJL6BqqrAJ-o4TUr2IXlDZxgVPeMB7QPsEmKgrNPQD4OA5gKlnb4sLlzELf9gKPtd2O8k5qaBuaSR5uFsBTEhaIpsljdX0Wg_PTtbabDqdg3p-cS9jopKV4oSadjDYD2Msv8aTDLonRtcNxEsznoQJHiSqLDNeeTzLHidrm95JcyomObKTR48K-sDJS8DrvWlzi0ocDknzRIu-vM21K4l700FC69Sj8kfuHkBZEpj2tEPyJTatx7yhwYPX7ksx4oTvvS2dDwMJbSKvN_54sPJxcPCqAZmuYOC9fJGsdeXsREuXu9-ZYLbU2VDPt2yjwM6W7lXYhgplgBlbb5s7PLR3V-RuosS1CqUEj-tMtS4a6SxVvbaGnCxNB36UN6bo27fKkiobMNuMiNrcv-9Ctt_3Z4c16Y90aoJtdalm-1uiYQ.Ic8-g4vdARBmOR4YIXHMkg
-      tipoCarrera: 0
+      userName: pruebaxjrivera@bsginstitute.net
+      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.FOYpFpH7-zhCWGKpc5wU1yLk3SW7r6LHTYUMvEIKADtWCLbHChmFZA.23uxdKI-MzjrGHVZ-mrwfA.p04StM0SZIoMxMUgFxtweCCr2b7Vac20j_I0ybYUEhp6RxkN_rPOqw8BeKJURwkON5B4FXQCfwfZJswks2XNF4BtK7eGIeLQXK3_UxK_DY18UTuWyXEaokyP3c1A6kghU6l89zaNv573aUqzl2Qq8rYO5nSYZYie3w2BxNkH4GkIeQ8pZMYlklsMFt1Hv60Fs2IwmNfb_mvD0dwSVKJ6Aun0AMSoDMnNTFyEtrtxlda0iEX0RtuFNV0ddBGkD-4OF6xz9nAohyssC3e13DItbIsarzoGxbG0icfEJQvPvjZ4nnWCzEdD3Tw8Ljd6q5dc4qoXOsJGR1PmYFEqv8KY-g8M28gcKQeYais_9dZ4_ivhQdoe8nhfTTKJ_zjP1DvUVj5_oS8-zeiqP0dWDD3QsHTKaOd2EHfxOSDThConO4Wyr9hh5-T4lgVEr8r2m3yipiJw9WCGIcnSERn-PwXUdaAQLXoWUjyckyjY0dwxny8dtI_4bcFOYdCCQzu3i74IYJXRWPwZBekmgd4j_lNU9YrbN2X0CbrnwWPZLdtgGvFOfQ0V8RAOWzI78SJtmI9K8fJ4kUmVuLyDC6WRa8tBRXeMQ3L97gjglDinx6G4UpQv_tIg-5mXcyHIa4pXYN0Tl98BQ74PKTNueod8l4bqhg.8HxhlTgiqVdQ7LW_ElE9Dg
+      tipoCarrera: 1
       correoEnc: 
       telEnc: 
       userAgent: 
       userIp: 
       detail:
-        idCaracteristicaGamificacion: 307
-        idAlumno: 9628416
-        usernameG: pruebis
-        instructorID: 0
-        totalCoins: 5000
-        totalExperience: 2500
-        discardOption: 8
-        skipQuestion: 3
-        findCorrectAnswer: 7
-        increaseTime: 20
-        secondChance: 10
+        idCaracteristicaGamificacion: 1
+        idAlumno: 9818325
+        usernameG: test
+        instructorID: 1
+        totalCoins: 175
+        totalExperience: 6230
+        discardOption: 29
+        skipQuestion: 30
+        findCorrectAnswer: 31
+        increaseTime: 30
+        secondChance: 24
       achievements:
-        id: 6
-        idAlumno: 9628416
-        streak4: 1
-        streak6: 0
-        streak8: 0
-        streak10: 0
-        streak4Date: 26/02/2025 16:16:07
-        streak6Date: 
-        streak8Date: 
-        streak10Date: 
+        id: 1
+        idAlumno: 9818325
+        streak4: 156
+        streak6: 55
+        streak8: 28
+        streak10: 16
+        streak4Date: 6/06/2025 9:38:43 a. m.
+        streak6Date: 5/06/2025 12:01:49 p. m.
+        streak8Date: 5/06/2025 12:00:38 p. m.
+        streak10Date: 26/02/2025 3:30:42 p. m.
         streak4Origin: "Modo Categor\xEDa"
-        streak6Origin: 
-        streak8Origin: 
-        streak10Origin: 
+        streak6Origin: "Modo Categor\xEDa"
+        streak8Origin: Desafio Entrenamiento
+        streak10Origin: "Modo Categor\xEDa"
         usuario: 
       excepcion:
         excepcionGenerada: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
     haveUser: 1
     haveUsername: 1
     haveInstructor: 1
-    idInstructor: 0
-    haveAvatar: 0
+    idInstructor: 1
+    haveAvatar: 1
     urlAvatar: https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Round&hairColor=Black&facialHairType=BeardMedium&facialHairColor=Black&clotheType=ShirtVNeck&clotheColor=Red&eyeType=Side&eyebrowType=DefaultNatural&mouthType=Disbelief&skinColor=Light
     spriteAvatar: {fileID: 0}
