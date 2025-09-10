@@ -142,6 +142,7 @@ public class TrainingChallengeController : MonoBehaviour
     {
         _rewardItemController.AddCoins((int)_coinsAccumulated);
         _rewardItemController.AddExperience((int)_experienceAccumulated);
+        Debug.Log($"Experiencia acumulada: {_experienceAccumulated}, Monedas acumuladas: {_coinsAccumulated}");
         UIEvents.ShowFinishView?.Invoke();
     }
 

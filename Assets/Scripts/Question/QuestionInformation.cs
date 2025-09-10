@@ -103,12 +103,10 @@ namespace Question
             if (isCorrect)
             {
                 _popupCorrect.SetMessage(message, true);
-                Debug.Log("Correct Answer");
             }
             else
             {
                 _popupIncorrect.SetMessage(message, false);
-                Debug.Log("Incorrect Answer");
             }
         }
 

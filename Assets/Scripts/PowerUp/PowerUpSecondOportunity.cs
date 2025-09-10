@@ -21,7 +21,7 @@ namespace PowerUp
             if (Amount > 0)
             {
                 _imageButton.color = _activeColor;
-                _labelButton.color = _activeColor;
+                _labelButton.color = Color.white;
                 _message.text = "¿Necesitas una segunda oportunidad? ¡Usa tu potenciador y da lo mejor de ti!";
                 _eventTrigger.enabled = true;
             }
@@ -39,7 +39,7 @@ namespace PowerUp
             if (Amount > 0)
             {
                 _imageButton.color = _activeColor;
-                _labelButton.color = _activeColor;
+                _labelButton.color = Color.white;
                 _message.text = "¿Necesitas una segunda oportunidad? ¡Usa tu potenciador y da lo mejor de ti!";
                 _eventTrigger.enabled = true;
             }
