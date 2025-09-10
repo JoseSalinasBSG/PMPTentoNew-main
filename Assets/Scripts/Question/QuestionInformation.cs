@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -9,7 +7,6 @@ namespace Question
     public class QuestionInformation : MonoBehaviour
     {
         #region Variables
-
         [SerializeField] private PopupQuestion _popupIncorrect;
         [SerializeField] private PopupQuestion _popupCorrect;
         [SerializeField] private TextMeshProUGUI _question;
@@ -46,9 +43,6 @@ namespace Question
             set => _opt4 = value;
         }
 
-        #endregion
-
-        #region Unity Methods
         #endregion
 
         #region Methods
@@ -96,7 +90,7 @@ namespace Question
 
             for (int i = 0; i < input.Length; i++)
             {
-                Color color = firstWordColors[i % colorCount]; // Obtener color cíclicamente
+                Color color = firstWordColors[i % colorCount]; // Obtener color cï¿½clicamente
                 string hexColor = ColorUtility.ToHtmlStringRGBA(color); // Convertir color a formato hexadecimal
                 result += $"<b><size={firstWordSize}><color=#{hexColor}>{input[i]}</color></size></b>";
             }
@@ -104,26 +98,19 @@ namespace Question
             input = result;
         }
 
-
-
         public void SetMessage(string message, bool isCorrect)
         {
             if (isCorrect)
             {
-                _popupCorrect.SetMessage(message,true);
-
+                _popupCorrect.SetMessage(message, true);
+                Debug.Log("Correct Answer");
             }
             else
             {
-                _popupIncorrect.SetMessage(message,false);
-
+                _popupIncorrect.SetMessage(message, false);
+                Debug.Log("Incorrect Answer");
             }
         }
-
-        // public void SetMessagePower(string message)
-        // {
-        //     _popupQuestion.SetMessagePower(message);
-        // }
 
         public void  DisableOptions()
         {
@@ -132,7 +119,8 @@ namespace Question
             _opt3.DisableOption();
             _opt4.DisableOption();
         }
-        public void  EnableOptions()
+        
+        public void EnableOptions()
         {
             _opt1.EnableOption();
             _opt2.EnableOption();

@@ -235,7 +235,6 @@ namespace Question
                 if (useProgressQuestion)
                 {
                     _currentQuestion.progressItem.SetCorrectSelection();
-                    _progressQuestion.Label = _numberOfConsecutiveAnswers.ToString();
                 }
                 if (_numberOfConsecutiveAnswers == GetCountSession)//Verifica si se alcanzo el numero de respuestas deseado
                 {

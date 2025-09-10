@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +13,15 @@ public class DailyReviewController : MonoBehaviour
 {
     [SerializeField] private DailyReviewPMPService _pmpService;
     [SerializeField] private QuestionInformation _questionInformation;
+    [SerializeField] private GameObject _correctOptionPopup;
+    [SerializeField] private GameObject _incorrectOptionPopup;
     [SerializeField] private TextMeshProUGUI _textFeedback;
+    [SerializeField] private TextMeshProUGUI _textTaskTitleFeedback;
     [SerializeField] private VideoPlayer _videoFeedback;
     [SerializeField] private DailyReviewNameListItem _nameListItemPrefab;
     [SerializeField] private List<QuestionData> _session;
     [SerializeField] private Transform _nameListContainer;
-
     [SerializeField] private ProgressQuestion _progressQuestion;
-
     [SerializeField] private ButtonAnimation _buttonAnimationStart;
     [SerializeField] private UnityEvent _onFirstQuestion;
     [SerializeField] private UnityEvent _onLastQuestion;
@@ -136,9 +136,7 @@ public class DailyReviewController : MonoBehaviour
 
         _currentQuestion.progressItem.RemoveCurrentItem();
         _onMediumQuestion?.Invoke();
-        // var tempQuestion = _session[CurrentIndex - 1];
         CurrentIndex--;
-        // return tempQuestion;
         ConfigurateQuestion();
         if (IsFirst())
         {
@@ -155,10 +153,7 @@ public class DailyReviewController : MonoBehaviour
 
         _currentQuestion.progressItem.RemoveCurrentItem();
         _onMediumQuestion?.Invoke();
-        // var tempQuestion = _session[CurrentIndex + 1];
         CurrentIndex++;
-        // _onNextQuestion?.Invoke();
-        // return tempQuestion;
         ConfigurateQuestion();
         if (IsLast())
         {
@@ -173,16 +168,17 @@ public class DailyReviewController : MonoBehaviour
         _questionInformation.SetData(_currentQuestion);
         if (_currentQuestion.questionItem.pregunta.tieneRetroalimentacion)
         {
+            _textTaskTitleFeedback.text = _currentQuestion.questionItem.tareaNombre;
             _textFeedback.text = _currentQuestion.questionItem.pregunta.retroalimentacion;
             _videoFeedback.source = VideoSource.Url;
             _videoFeedback.renderMode = VideoRenderMode.MaterialOverride;
             _videoFeedback.targetMaterialRenderer = _videoFeedback.GetComponent<Renderer>();
-            // _videoFeedback.targetMaterialProperty = "_MainTex";
             _videoFeedback.url = _currentQuestion.questionItem.pregunta.urlRetroalimentacionVideo;
             _videoFeedback.isLooping = true;
             _videoFeedback.Play();
-        }	
-        // _currentIndex++;
+        }
+        _incorrectOptionPopup.SetActive(false);
+        _correctOptionPopup.SetActive(false);
     }
     public IEnumerator PlayUrl(string url, float startTime = 0)
     {
@@ -191,31 +187,24 @@ public class DailyReviewController : MonoBehaviour
             Debug.LogError("Bad video url:" + url);
             yield break;
         }
- 
-        // videoPlayerBar.Enabled = false;
-        // videoWaiting.SetActive(true);
- 
+
         if (_videoFeedback.isPlaying || _videoFeedback.isPaused)
         {
             _videoFeedback.Stop();
             _videoFeedback.url = "";
         }
- 
+
         _videoFeedback.url = url;
- 
-        // _videoFeedback = startTime;
         _videoFeedback.Prepare();
     }
- 
+
     public void SetTime(float value)
     {
         _videoFeedback.Stop();
- 
-        // targetTime = value;
         _videoFeedback.Prepare();
     }
- 
-    
+
+
     public bool IsFirst()
     {
         return CurrentIndex <= 0;
@@ -235,12 +224,16 @@ public class DailyReviewController : MonoBehaviour
         if (option.ID.Equals(_currentQuestion.idCorrectOption))
         {
             option.SetCorrectColor();
+            _incorrectOptionPopup.SetActive(false);
+            _correctOptionPopup.SetActive(true);
             _currentQuestion.progressItem.SetCorrectSelection();//setear color en contador de pregunta
-            
+
         }
         else
         {
             option.SetIncorrectColor();
+            _correctOptionPopup.SetActive(false);
+            _incorrectOptionPopup.SetActive(true);
             _currentQuestion.progressItem.SetIncorrectSelection();//setear color en contador de pregunta
         }
 
