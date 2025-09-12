@@ -37,7 +37,7 @@ public class GlosaryChallengeController : MonoBehaviour
     [SerializeField] private float _maxTime;
     [SerializeField] private int _maxNumberOfCouples;
     [SerializeField] private int _cumulativeNumberOfCouples;
-    [SerializeField] private int maxNumberCouplesCorrectSelected = 5;
+    [SerializeField] private int maxNumberCouplesCorrectSelected = 4;
     [SerializeField] private UnityEvent OnMaxNumberCoupleCorrectSelected;
     [SerializeField] private UnityEvent _onGameLost;
     [SerializeField] private UnityEvent _onGameWin;
@@ -46,7 +46,7 @@ public class GlosaryChallengeController : MonoBehaviour
     private List<int> _randomIndices;
     private List<int> _actualIndices = new List<int>();
     private readonly int _indicesPool = 207;
-    private readonly int _maxSelectedIndices = 5;
+    private readonly int _maxSelectedIndices = 4;
     private float _currentTime;
     private List<OptionGC> _optionChoose = new List<OptionGC>();
     private int _numberOfSelectedCouple = 0;
@@ -114,7 +114,7 @@ public class GlosaryChallengeController : MonoBehaviour
 
     public (List<int>, List<int>) GetRandomIndex()
     {
-        return (GenerateRandomList(0, 5), GenerateRandomList(0, 5));
+        return (GenerateRandomList(0, 4), GenerateRandomList(0, 4));
     }
 
     public void Evaluate()
@@ -227,30 +227,6 @@ public class GlosaryChallengeController : MonoBehaviour
     public void StopTimer()
     {
         UseTimer = false;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        for (int i = 0; i < _concepts.Options.Count; i++)
-        {
-            Random.InitState(_concepts.Options[i].ID);
-            Gizmos.color = new Color(
-                Random.Range(0, 1f),
-                Random.Range(0, 1f),
-                Random.Range(0, 1f)
-            );
-            Gizmos.DrawSphere(_concepts.Options[i].transform.position, 20f);
-        }
-        for (int i = 0; i < _definitions.Options.Count; i++)
-        {
-            Random.InitState(_definitions.Options[i].ID);
-            Gizmos.color = new Color(
-                Random.Range(0, 1f),
-                Random.Range(0, 1f),
-                Random.Range(0, 1f)
-            );
-            Gizmos.DrawSphere(_definitions.Options[i].transform.position, 20f);
-        }
     }
 
     private void GameEvents_CorrectlyAnswered()

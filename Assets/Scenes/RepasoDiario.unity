@@ -6563,7 +6563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7451588683415939040, guid: 298431218b8df924ea5ea318225aad88, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7502044673840873372, guid: 298431218b8df924ea5ea318225aad88, type: 3}
       propertyPath: toSound

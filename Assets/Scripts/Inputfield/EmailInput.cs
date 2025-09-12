@@ -11,12 +11,9 @@ public class EmailInput : InputBase
     {
         if (_inputField.text == string.Empty || _inputField.text.Length == 0)
         {
-            // Debug.Log("xd");
-            // Dejo campos vacios
             SetAppearanceToError();
             _placeholderText.text = _placeholderTextDefault;
             _inputField.text = GetTextFromCache(_inputField.name);
-
         }
         else
         {
