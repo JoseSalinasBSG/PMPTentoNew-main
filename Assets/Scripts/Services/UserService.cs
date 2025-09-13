@@ -373,7 +373,6 @@ public class UserService : MonoBehaviour
             Sprite sprite = VectorUtils.BuildSprite(geoms, 10.0f, VectorUtils.Alignment.Center, Vector2.zero, 128, true);
             _scriptableObjectUser.userInfo.spriteAvatar = sprite;
             Debug.Log("creado: " + _scriptableObjectUser.userInfo.urlAvatar);
-            Debug.Log("creado: " + _scriptableObjectUser.userInfo.spriteAvatar);
             GameEvents.SuccessGetAvatar?.Invoke();
         }
     }

@@ -22,8 +22,6 @@ namespace Login
         [Header("Datos / Dependencias")]
         [Tooltip("Scriptable con los datos del usuario (banderas haveUser/haveUsername/haveInstructor).")]
         [SerializeField] private ScriptableObjectUser _objectUser;
-        [Tooltip("Scriptable con datos del instructor (si aplica).")]
-        [SerializeField] private ScriptableObjectInstructor _objectInstructor;
         [Tooltip("Gestor que avisa cuando terminó de cargar datos/avatares.")]
         [SerializeField] private UserManager _userManager;
 

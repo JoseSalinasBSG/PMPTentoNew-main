@@ -14,8 +14,6 @@ namespace Scene
         #region Variables
         [SerializeField] private ScriptableObjectScenes _objectScenes;
         [SerializeField] private UnityEvent _onBeforeLoadScene;
-        private AsyncOperation loadingOperation;
-        private bool _initLoadAsync;
         public ScriptableObjectScenes ObjectScenes
         {
             get => _objectScenes;
