@@ -32,26 +32,26 @@ MonoBehaviour:
         idAlumno: 9818325
         usernameG: test
         instructorID: 1
-        totalCoins: 175
-        totalExperience: 6230
+        totalCoins: 485
+        totalExperience: 8630
         discardOption: 29
         skipQuestion: 30
         findCorrectAnswer: 31
         increaseTime: 30
-        secondChance: 24
+        secondChance: 5
       achievements:
         id: 1
         idAlumno: 9818325
-        streak4: 156
-        streak6: 55
-        streak8: 28
+        streak4: 158
+        streak6: 56
+        streak8: 29
         streak10: 16
-        streak4Date: 6/06/2025 9:38:43 a. m.
-        streak6Date: 5/06/2025 12:01:49 p. m.
-        streak8Date: 5/06/2025 12:00:38 p. m.
+        streak4Date: 15/09/2025 12:04:53 p. m.
+        streak6Date: 15/09/2025 12:05:04 p. m.
+        streak8Date: 15/09/2025 12:05:45 p. m.
         streak10Date: 26/02/2025 3:30:42 p. m.
-        streak4Origin: "Modo Categor\xEDa"
-        streak6Origin: "Modo Categor\xEDa"
+        streak4Origin: Desafio Entrenamiento
+        streak6Origin: Desafio Entrenamiento
         streak8Origin: Desafio Entrenamiento
         streak10Origin: "Modo Categor\xEDa"
         usuario: 
@@ -64,7 +64,7 @@ MonoBehaviour:
     haveUser: 1
     haveUsername: 1
     haveInstructor: 1
-    idInstructor: 1
+    idInstructor: 0
     haveAvatar: 1
     urlAvatar: https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Round&hairColor=Black&facialHairType=BeardMedium&facialHairColor=Black&clotheType=ShirtVNeck&clotheColor=Red&eyeType=Side&eyebrowType=DefaultNatural&mouthType=Disbelief&skinColor=Light
     spriteAvatar: {fileID: 0}

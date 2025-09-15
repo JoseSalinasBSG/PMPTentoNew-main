@@ -140,6 +140,7 @@ public class SurvivorChallengeController : MonoBehaviour
         // GameEvents.RequestCoinsChange?.Invoke(coins);
         GameEvents.RequestUpdateDetail?.Invoke();
     }
+
     private void UIEvents_ShowQuestionView()
     {
         UseTimer = true;
@@ -148,7 +149,7 @@ public class SurvivorChallengeController : MonoBehaviour
     private void GameEvent_RecoveryTime()
     {
         UIEvents_ShowQuestionView();
-        _currentTime = 0;
+        //_currentTime = 0;
     }
     public void GetQuestions()
     {
@@ -177,18 +178,4 @@ public class SurvivorChallengeController : MonoBehaviour
     {
         UseTimer = false;
     }
-    // public void EnableNextPlatform()
-    // {
-    //     _currentPlatform = _platformItems[_currentPlatform.Information.index++];
-    //     _currentPlatform.EnablePlatform();
-    //     if (!_markerInstanciated)
-    //     {
-    //         _markerInstanciated = Instantiate(_platformMarkerPrefab, _currentPlatform.transform);
-    //     }
-    //     else
-    //     {
-    //         _markerInstanciated.transform.parent = _currentPlatform.transform;
-    //     }
-    //     _markerInstanciated.transform.SetLocalPositionAndRotation(new Vector3(0,4,0), quaternion.identity);
-    // }
 }

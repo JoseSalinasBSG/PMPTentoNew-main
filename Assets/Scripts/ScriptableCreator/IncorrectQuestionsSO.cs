@@ -28,7 +28,6 @@ namespace ScriptableCreator
             }
             questions.IncorrectQuestionsList.Add(questionItem);   
             PlayerPrefs.SetString("IncorrectQuestions", JsonUtility.ToJson( questions));
-            Debug.Log(PlayerPrefs.GetString("IncorrectQuestions"));
         }
     }
 }

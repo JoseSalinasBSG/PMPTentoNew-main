@@ -7,8 +7,6 @@ public class PopupAchievementUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI achievementText;
     [SerializeField] private Image awardSprite;
     [SerializeField] private AchievementRewardsSO AchievementRewardsSO;
-    [SerializeField] private TextMeshProUGUI _message;
-    [SerializeField] private TextMeshProUGUI _message_clone;
     [SerializeField] private ShareSocial valueToShare;
     public void ShowAchievementMaxGoodStreakText(int value)//metodo que se llama en editor para setear valores de UI achivement
     {
@@ -31,7 +29,6 @@ public class PopupAchievementUI : MonoBehaviour
                 awardSprite.sprite = AchievementRewardsSO.awardSprite[3];
                 break;
         }
-        _message_clone.text = _message.text;
         valueToShare.valueToShare = value;
 
     }

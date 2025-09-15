@@ -10,6 +10,7 @@ namespace Question
         [SerializeField] private PopupQuestion _popupIncorrect;
         [SerializeField] private PopupQuestion _popupCorrect;
         [SerializeField] private TextMeshProUGUI _question;
+        [SerializeField] private TextMeshProUGUI _achievementFeedbackText;
         [SerializeField] private Option _opt1;
         [SerializeField] private Option _opt2;
         [SerializeField] private Option _opt3;
@@ -102,12 +103,14 @@ namespace Question
         {
             if (isCorrect)
             {
-                _popupCorrect.SetMessage(message, true);
+                _popupCorrect?.SetMessage(message, true);
+                _achievementFeedbackText.text = message;
             }
             else
             {
-                _popupIncorrect.SetMessage(message, false);
+                _popupIncorrect?.SetMessage(message, false);
             }
+            
         }
 
         public void  DisableOptions()

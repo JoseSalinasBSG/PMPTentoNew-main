@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Question;
 using ScriptableCreator;
 using TMPro;
@@ -53,13 +54,11 @@ public class TrainingChallengeController : MonoBehaviour
 
     private void GetQuestions()
     {
-        // _pmpService.Service_GetQuestions(9682);
         UIEvents.ShowLoadingView?.Invoke();
-        // GameEvents.GetNameExam?.Invoke(DateTime.Now.ToString(CultureInfo.CurrentCulture));
         var task = _domainsAndTask.DomainContainer.listaTarea[Random.Range(0, _domainsAndTask.DomainContainer.listaTarea.Length)];
         var response = _pmpService.Service_GetDomainAndTaskNames(task.id);
-        // _DomainLabelInQuestions.text = response.Item1;
-        _TaskLabelInQuestions.text = $"<b>Tarea:</b> {response.Item2}";//Titulo de Tarea, se pone tarea en negrita usando <b>
+        var tituloLimpio = Regex.Replace(response.Item2 ?? "", @"^\s*\d+\s*-\s*", "");
+        _TaskLabelInQuestions.text = $"<b>Tarea:</b> {tituloLimpio}";
         _registerExam.dataToRegisterExam.IdSimuladorPmpTarea = task.id;
         _registerExam.dataToRegisterExam.IdSimuladorPmpDominio = _domainsAndTask.DomainContainer.listaDominio.FirstOrDefault(x => x.id == task.idSimuladorPmpDominio)!.id;
         GameEvents.GetNameExam?.Invoke($"ModoAprendizaje-{_userData.userInfo.user.detail.usernameG}-{task.id}-{task.idSimuladorPmpDominio}-{DateTime.Now.ToString(CultureInfo.CurrentCulture)}");
@@ -125,7 +124,7 @@ public class TrainingChallengeController : MonoBehaviour
             _gameSettings.settingData.DSReward.aditionalBonusCoinsForAchievement * 0;
         _coinsAccumulated += coins;//se actualiza monedas acumuladas
         _userData.userInfo.user.detail.totalCoins += (int)coins;
-        
+
         GameEvents.RequestUpdateDetail?.Invoke();
         GameEvents.RequestCoinsChange?.Invoke(coins);//Invoca evento para notificar el cambio en las monedas
 
@@ -142,14 +141,13 @@ public class TrainingChallengeController : MonoBehaviour
     {
         _rewardItemController.AddCoins((int)_coinsAccumulated);
         _rewardItemController.AddExperience((int)_experienceAccumulated);
-        Debug.Log($"Experiencia acumulada: {_experienceAccumulated}, Monedas acumuladas: {_coinsAccumulated}");
         UIEvents.ShowFinishView?.Invoke();
     }
 
     public void CheckNumberOfConsecutiveQuestion()
     {
         if (_numberOfConsecutiveQuestion >= 0)
-        {//si la variable es 0
+        {
             GameEvents.OnGoodStreaked?.Invoke();//se dispara evento OnGoodStreaked
         }
     }

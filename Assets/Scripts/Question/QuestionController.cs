@@ -89,21 +89,6 @@ namespace Question
         void Start()
         {
             _progressQuestion?.CalculateWidth(10);
-
-            // for (int i = 0; i < 10; i++)
-            // {
-            //     QuestionData questionData = new QuestionData();
-            //     var randomValue = Random.value;
-            //     questionData.idQuestion = randomValue.ToString();
-            //     questionData.question = $"Question nº {randomValue}";
-            //     questionData.options[0]. = $"Question {randomValue} option 1";
-            //     questionData.options[1] = $"Question {randomValue} option 2";
-            //     questionData.options[2] = $"Question {randomValue} option 3";
-            //     questionData.options[3] = $"Question {randomValue} option 4";
-            //     questionData.idCorrectOption = $"Question {randomValue} option 4";
-            //     questionData.progressItem = _progressQuestion.CreateItem();
-            //     _session.Add( questionData);
-            // }
         }
         #endregion
 
