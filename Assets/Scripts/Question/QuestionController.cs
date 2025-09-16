@@ -85,21 +85,12 @@ namespace Question
             ConfigurateQuestion();
             UIEvents.ShowQuestionView?.Invoke();
         }
-        // Start is called before the first frame update
-        void Start()
-        {
-            _progressQuestion?.CalculateWidth(10);
-        }
         #endregion
 
         #region Methods
 
         public void SetData(QuestionItem[] questions)
         {
-            if (useProgressQuestion)
-            {
-                _progressQuestion.CalculateWidth(questions.Length);
-            }
             for (int i = 0; i < questions.Length; i++)
             {
 
@@ -161,8 +152,7 @@ namespace Question
             }
             if (hasProgressController)
             {
-                _currentQuestion.progressItem.RemoveCurrentItem();//remover marcador de pregunta 
-
+                _currentQuestion.progressItem.RemoveItemMarker();//remover marcador de pregunta 
             }
             var tempQuestion = _session[_currentIndex];
             _currentQuestion = tempQuestion;
@@ -179,7 +169,7 @@ namespace Question
         {
             if (_currentIndex <= 0)
                 return;
-            _currentQuestion.progressItem.RemoveCurrentItem();//remover marcador de pregunta
+            _currentQuestion.progressItem.RemoveItemMarker();//remover marcador de pregunta
             _currentIndex--;
 
             var tempQuestion = _session[_currentIndex];
@@ -284,32 +274,7 @@ namespace Question
         {
             _onLostGame?.Invoke();
             GameEvents.GameLost?.Invoke();
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (_currentQuestion == null)
-            {
-                return;
-            }
-            Gizmos.color = Color.green;
-            if (_questionInformation.Opt1.ID == _currentQuestion.idCorrectOption)
-            {
-                Gizmos.DrawSphere(_questionInformation.Opt1.transform.position, 15f);
-                return;
-            }
-            if (_questionInformation.Opt2.ID == _currentQuestion.idCorrectOption)
-            {
-                Gizmos.DrawSphere(_questionInformation.Opt2.transform.position, 15f);
-                return;
-            }
-            if (_questionInformation.Opt3.ID == _currentQuestion.idCorrectOption)
-            {
-                Gizmos.DrawSphere(_questionInformation.Opt3.transform.position, 15f);
-                return;
-            }
-            Gizmos.DrawSphere(_questionInformation.Opt4.transform.position, 15f);
-        }
+        }        
         #endregion
     }
 }

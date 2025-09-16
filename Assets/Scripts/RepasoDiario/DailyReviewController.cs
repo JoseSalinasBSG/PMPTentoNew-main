@@ -90,8 +90,6 @@ public class DailyReviewController : MonoBehaviour
 
     public void SetData(QuestionItem[] questions)
     {
-        _progressQuestion.CalculateWidth(questions.Length);
-
         for (int i = 0; i < questions.Length; i++)
         {
             QuestionData questionData = new QuestionData();
@@ -134,7 +132,7 @@ public class DailyReviewController : MonoBehaviour
             return;
         }
 
-        _currentQuestion.progressItem.RemoveCurrentItem();
+        _currentQuestion.progressItem.RemoveItemMarker();
         _onMediumQuestion?.Invoke();
         CurrentIndex--;
         ConfigurateQuestion();
@@ -151,7 +149,7 @@ public class DailyReviewController : MonoBehaviour
             return;
         }
 
-        _currentQuestion.progressItem.RemoveCurrentItem();
+        _currentQuestion.progressItem.RemoveItemMarker();
         _onMediumQuestion?.Invoke();
         CurrentIndex++;
         ConfigurateQuestion();

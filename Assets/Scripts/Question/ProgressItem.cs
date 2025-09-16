@@ -9,6 +9,7 @@ namespace Question
     {
         #region Variables
 
+        [SerializeField] private Color _defaultTextColor;
         [SerializeField] private Color _defaultColor;
         [SerializeField] private Color _correctColor;
         [SerializeField] private Color _incorrectColor;
@@ -49,11 +50,10 @@ namespace Question
             numberQuestionText.color = Color.white;
         }
 
-        public void RemoveCurrentItem()
+        public void RemoveItemMarker()
         {
             _currentItemMarker.gameObject.SetActive(false);
-            numberQuestionText.color = new Color(75 / 255f, 86 / 255f, 99 / 255f);
-
+            numberQuestionText.color = _defaultTextColor;
         }
 
         public void SetIncorrectSelection()
@@ -66,7 +66,6 @@ namespace Question
         {
             int numQuestion = number + 1;
             numberQuestionText.SetText(numQuestion.ToString());
-            numberQuestionText.color = new Color(75 / 255f, 86 / 255f, 99 / 255f);
         }
 
         #endregion

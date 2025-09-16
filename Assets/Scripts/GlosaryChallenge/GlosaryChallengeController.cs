@@ -91,12 +91,6 @@ public class GlosaryChallengeController : MonoBehaviour
         _rewardItemController.AddExperience((int)_experienceAccumulated);
     }
 
-    public void SendGameFinished()
-    {
-        GameEvents.GameLost?.Invoke();
-        GameEvents.GameWon?.Invoke();
-    }
-
 
     private void SetData()
     {
