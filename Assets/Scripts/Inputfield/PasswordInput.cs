@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PasswordInput : InputBase
 {
     protected override void Start()
@@ -17,14 +13,6 @@ public class PasswordInput : InputBase
             SetAppearanceToError();
             _placeholderText.text = _placeholderTextDefault;
 
-        }
-        else
-        {
-            if (!haveError)
-            {
-                _inputField.image.sprite = _spriteDefault;
-            }
-            
         }
     }
 

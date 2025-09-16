@@ -12,10 +12,10 @@ public abstract class InputBase : MonoBehaviour
     [Tooltip("Imagen del Input si necesitas cambiar el sprite actual (opcional).")]
     [SerializeField] private Image _image;
 
-    [Header("Sprites de estado")]
-    [SerializeField] protected Sprite _spriteError;
-    [SerializeField] protected Sprite _spriteDefault;
-    [SerializeField] protected Sprite _spriteSelect;
+
+    [Header("Objetos de estado")]
+    [SerializeField] protected GameObject _errorObject;
+    [SerializeField] protected GameObject _selectedObject;
 
     [Header("Placeholder")]
     [SerializeField] protected string _placeholderTextDefault;
@@ -80,6 +80,7 @@ public abstract class InputBase : MonoBehaviour
     {
         if (_inputField != null)
         {
+            _inputField.onSelect.AddListener(delegate { SetAppearanceToNormal(); });
             _inputField.onEndEdit.AddListener(OnInputFieldFocusLost);
             _inputField.onValueChanged.AddListener(OnInputFieldTextChanged);
         }
@@ -121,6 +122,7 @@ public abstract class InputBase : MonoBehaviour
     private void OnInputFieldFocusLost(string _)
     {
         if (_inputField == null) return;
+        _selectedObject.SetActive(false);
         SaveTextOnCache(_inputField.text);
     }
 
@@ -177,17 +179,14 @@ public abstract class InputBase : MonoBehaviour
     {
         if (_inputField == null) return;
 
-        var spriteState = new SpriteState
+        if (_inputField.image != null)
         {
-            selectedSprite = _spriteError,
-        };
-        _inputField.spriteState = spriteState;
-
-        if (_inputField.image != null && _spriteError != null)
-            _inputField.image.sprite = _spriteError;
+            _errorObject.SetActive(true);
+            _selectedObject.SetActive(false);
+        }
 
         if (_inputField.textComponent != null)
-            _inputField.textComponent.color = Color.red;
+                _inputField.textComponent.color = Color.red;
 
         if (_placeholderText != null)
             _placeholderText.color = Color.red;
@@ -196,15 +195,20 @@ public abstract class InputBase : MonoBehaviour
     public void SetAppearanceToNormal()
     {
         if (_inputField == null) return;
-
-        var spriteState = new SpriteState
+        
+        if (_inputField.image != null)
         {
-            selectedSprite = _spriteSelect,
-        };
-        _inputField.spriteState = spriteState;
-
-        if (_inputField.image != null && _spriteDefault != null)
-            _inputField.image.sprite = _spriteDefault;
+            if (_inputField.onSelect != null)
+            {
+                _selectedObject.SetActive(true);
+                _errorObject.SetActive(false);
+            }
+            else
+            {
+                _selectedObject.SetActive(false);
+                _errorObject.SetActive(false);
+            }
+        }
 
         if (_inputField.textComponent != null)
             _inputField.textComponent.color = Color.black;

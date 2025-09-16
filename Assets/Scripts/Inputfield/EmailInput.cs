@@ -15,14 +15,6 @@ public class EmailInput : InputBase
             _placeholderText.text = _placeholderTextDefault;
             _inputField.text = GetTextFromCache(_inputField.name);
         }
-        else
-        {
-            if (!haveError)
-            {
-                _inputField.image.sprite = _spriteDefault;
-            }
-            
-        }
     }
 
     public override void ComprobeFormat(string message)
