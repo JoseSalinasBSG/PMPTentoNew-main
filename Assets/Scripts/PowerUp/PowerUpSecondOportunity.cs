@@ -11,6 +11,7 @@ namespace PowerUp
         [SerializeField] private QuestionInformation _questionInformation;
         [SerializeField] private Color _activeColor;
         [SerializeField] private Color _deactiveColor;
+        [SerializeField] private Color _ContadorDefaultColor;
         [SerializeField] private TextMeshProUGUI _message;
         [SerializeField] private TextMeshProUGUI _labelButton;
         [SerializeField] private Image _imageButton;
@@ -21,7 +22,7 @@ namespace PowerUp
             if (Amount > 0)
             {
                 _imageButton.color = _activeColor;
-                _labelButton.color = Color.white;
+                _labelButton.color = _ContadorDefaultColor;
                 _message.text = "¿Necesitas una segunda oportunidad? ¡Usa tu potenciador y da lo mejor de ti!";
                 _eventTrigger.enabled = true;
             }
@@ -39,7 +40,7 @@ namespace PowerUp
             if (Amount > 0)
             {
                 _imageButton.color = _activeColor;
-                _labelButton.color = Color.white;
+                _labelButton.color = _ContadorDefaultColor;
                 _message.text = "¿Necesitas una segunda oportunidad? ¡Usa tu potenciador y da lo mejor de ti!";
                 _eventTrigger.enabled = true;
             }
