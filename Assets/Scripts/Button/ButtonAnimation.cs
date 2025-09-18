@@ -74,6 +74,11 @@ namespace Button
             _eventTrigger.triggers.Remove(entry);
         }
 
+        public void SetDefaultColor(Color color)
+        {
+            _colorDefault = color;
+        }
+
 
         public void StartAnimation()
         {

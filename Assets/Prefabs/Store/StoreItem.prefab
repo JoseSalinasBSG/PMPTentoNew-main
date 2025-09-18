@@ -12,9 +12,6 @@ GameObject:
   - component: {fileID: 680668437408960165}
   - component: {fileID: 8901812705875435767}
   - component: {fileID: 1251550018962827328}
-  - component: {fileID: 8618464715385853533}
-  - component: {fileID: 4137516394886681467}
-  - component: {fileID: 4497828009324473614}
   m_Layer: 5
   m_Name: StoreItem
   m_TagString: Untagged
@@ -99,102 +96,9 @@ MonoBehaviour:
   _costLabel: {fileID: 8603549425481956462}
   _powerUp: {fileID: 0}
   _image: {fileID: 1464213802570030506}
-  _buttonAnimation: {fileID: 4137516394886681467}
+  _buttonAnimation: {fileID: 2531744496630449850}
   _backgroundImage: {fileID: 8901812705875435767}
   _buyButtonImage: {fileID: 256761334581407071}
---- !u!114 &8618464715385853533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24227395991276435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 4137516394886681467}
-          m_TargetAssemblyTypeName: Button.ButtonAnimation, Assembly-CSharp
-          m_MethodName: StartAnimation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 4137516394886681467}
-          m_TargetAssemblyTypeName: Button.ButtonAnimation, Assembly-CSharp
-          m_MethodName: StartInverseAnimation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &4137516394886681467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24227395991276435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cad90f4fa8b10f4fb0f9961706f489d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
-  _imageButton: {fileID: 8901812705875435767}
-  _eventTrigger: {fileID: 8618464715385853533}
-  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
-  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  toSound: 0
-  vibrationMode: 1
---- !u!114 &4497828009324473614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24227395991276435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dae5ac8d3c3a8e4cb1ce5c74f1c2a63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollRect: {fileID: 0}
-  onPointerClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1251550018962827328}
-        m_TargetAssemblyTypeName: StoreItem, Assembly-CSharp
-        m_MethodName: BuyItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  hasScrollHorizontal: 0
 --- !u!1 &445098285565643885
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +110,9 @@ GameObject:
   - component: {fileID: 12016600682258862}
   - component: {fileID: 3722134701598009911}
   - component: {fileID: 256761334581407071}
+  - component: {fileID: 1706535056688987949}
+  - component: {fileID: 2531744496630449850}
+  - component: {fileID: 6843849634541187492}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -271,6 +178,99 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 3
+--- !u!114 &1706535056688987949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445098285565643885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2531744496630449850}
+          m_TargetAssemblyTypeName: Button.ButtonAnimation, Assembly-CSharp
+          m_MethodName: StartAnimation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2531744496630449850}
+          m_TargetAssemblyTypeName: Button.ButtonAnimation, Assembly-CSharp
+          m_MethodName: StartInverseAnimation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2531744496630449850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445098285565643885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cad90f4fa8b10f4fb0f9961706f489d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
+  _imageButton: {fileID: 256761334581407071}
+  _eventTrigger: {fileID: 1706535056688987949}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  toSound: 1
+  vibrationMode: 1
+--- !u!114 &6843849634541187492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445098285565643885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dae5ac8d3c3a8e4cb1ce5c74f1c2a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollRect: {fileID: 0}
+  onPointerClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1251550018962827328}
+        m_TargetAssemblyTypeName: StoreItem, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  hasScrollHorizontal: 0
 --- !u!1 &657339948400353007
 GameObject:
   m_ObjectHideFlags: 0

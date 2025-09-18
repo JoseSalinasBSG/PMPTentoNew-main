@@ -32,13 +32,13 @@ MonoBehaviour:
         idAlumno: 9818325
         usernameG: test
         instructorID: 1
-        totalCoins: 485
+        totalCoins: 98
         totalExperience: 8630
-        discardOption: 29
+        discardOption: 31
         skipQuestion: 30
         findCorrectAnswer: 31
-        increaseTime: 30
-        secondChance: 5
+        increaseTime: 33
+        secondChance: 15
       achievements:
         id: 1
         idAlumno: 9818325

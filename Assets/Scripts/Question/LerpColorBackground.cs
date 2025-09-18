@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Question
@@ -9,10 +7,10 @@ namespace Question
     {
         #region Variables
 
-        [SerializeField] private Color _initColor;
-        [SerializeField] private Color _lastColorCorrect;
-        [SerializeField] private Color _lastColorIncorrect;
-        [SerializeField] private UnityEngine.Camera _camera;
+        [SerializeField] private Color _cameraInitColor;
+        [SerializeField] private Color _cameraLastColorCorrect;
+        [SerializeField] private Color _cameraLastColorIncorrect;
+        [SerializeField] private Camera _camera;
         [SerializeField] private float _duration;
         
         private Color _lastColor;
@@ -50,7 +48,7 @@ namespace Question
         [ContextMenu("start animation")]
         public void StartAnimation(bool isCorrect)
         {
-            _lastColor = isCorrect ? _lastColorCorrect : _lastColorIncorrect;
+            _lastColor = isCorrect ? _cameraLastColorCorrect : _cameraLastColorIncorrect;
             StartCoroutine(IAnimation());
         }
         public void StartInverseAnimation()
@@ -62,7 +60,7 @@ namespace Question
         {
             do
             {
-                _camera.backgroundColor = Color.Lerp(_initColor, _lastColor, _currentTime);
+                _camera.backgroundColor = Color.Lerp(_cameraInitColor, _lastColor, _currentTime);
                 _currentTime += Time.deltaTime / _duration;
                 yield return null;
             } while (_currentTime <= 1);
@@ -75,7 +73,7 @@ namespace Question
             _currentTime = 0;
             do
             {
-                _camera.backgroundColor = Color.Lerp(_lastColor, _initColor, _currentTime);
+                _camera.backgroundColor = Color.Lerp(_lastColor, _cameraInitColor, _currentTime);
                 _currentTime += Time.deltaTime / _duration;
                 yield return null;
             } while (_currentTime <= 1);

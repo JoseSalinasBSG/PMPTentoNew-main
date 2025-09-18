@@ -27,14 +27,12 @@ namespace Store
         [SerializeField] private Image _image;
         [SerializeField] private ButtonAnimation _buttonAnimation;
         [SerializeField] private Image _backgroundImage;
-        [SerializeField] private Image _buyButtonImage;
 
         private StoreController _storeController;
         public Action<int> SendEvent;
         private float _cost;
         private int _amount;
-        private Color _iconColor;
-        private Color _backgroundColor;
+        private Color _powerUpColor;
         public float Cost => _cost;
         public string NamePowerUp => _powerUp.nameInPlayerPrefs;
         public int Amount => _amount;
@@ -42,34 +40,32 @@ namespace Store
         public Sprite SpriteFromImage => _image.sprite;
 
 
-        public void SetData(StoreController storeController, float cost, int amount, Sprite sprite, PowerUpSO powerUp, Color iconColor, Color backgroundColor)
+        public void SetData(StoreController storeController, float cost, int amount, Sprite sprite, PowerUpSO powerUp, Color powerUpColor, Color backgroundColor)
         {
             _storeController = storeController;
             _cost = cost;
             _amount = amount;
-            _iconColor = iconColor;
-            _backgroundColor = backgroundColor;
+            _powerUpColor = powerUpColor;
+            _backgroundImage.color = backgroundColor;
+            _buttonAnimation.SetDefaultColor(powerUpColor);            
 
-            PassScrollEvents passScroll = gameObject.GetComponent<PassScrollEvents>();
+            //PassScrollEvents passScroll = gameObject.GetComponent<PassScrollEvents>();
             if (_cost > storeController.CoinsFromUser)
             {
-                passScroll.enabled = false;
+                //passScroll.enabled = false;
                 _costLabel.color = Color.red;
                 _buttonAnimation.DisableButton();
-                _backgroundImage.color = new Color(.8f, .8f, .8f, 1);
             }
             else
             {
-                passScroll.enabled = true;
-                _costLabel.color = _iconColor;
+                //passScroll.enabled = true;
+                _costLabel.color = _powerUpColor;
                 _buttonAnimation.EnableButton();
-                _backgroundImage.color = backgroundColor;
             }
             _costLabel.text = $"${_cost}";
             _amountLabel.text = $"x{_amount}";
             _image.sprite = sprite;
-            _image.color = _iconColor;
-            _buyButtonImage.color = _iconColor;
+            _image.color = _powerUpColor;
             _powerUp = powerUp;
         }
 
@@ -97,12 +93,12 @@ namespace Store
             {
                 _costLabel.color = Color.red;
                 _buttonAnimation.DisableButton();
+                
             }
             else
             {
-                _costLabel.color = _iconColor;
+                _costLabel.color = _powerUpColor;
                 _buttonAnimation.EnableButton();
-                _backgroundImage.color = _backgroundColor;
             }
         }
     }
