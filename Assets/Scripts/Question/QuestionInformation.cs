@@ -60,6 +60,20 @@ namespace Question
 
         }
 
+        private void Start()
+        {
+            if (_popupCorrect == null)
+            {
+                Debug.LogError("_popupCorrect no está asignado en " + gameObject.name);
+            }
+            if (_popupIncorrect == null)
+            {
+                Debug.LogError("_popupIncorrect no está asignado en " + gameObject.name);
+            }
+
+            Debug.Log("First word colors length: " + (firstWordColors != null ? firstWordColors.Length.ToString() : "null"));
+        }
+
         private string SeparateAndRejoin(string input)
         {
             if (string.IsNullOrEmpty(input))
