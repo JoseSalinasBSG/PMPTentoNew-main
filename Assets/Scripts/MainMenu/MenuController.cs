@@ -101,6 +101,13 @@ namespace MainMenu
             _instructorInstantiated = Instantiate(_objectInstructor.instructors.FirstOrDefault(x => x.id == indexInstructor)!.prefab,
                 _pointToInstantiate.position, _pointToInstantiate.rotation, _pointToInstantiate);//instanciar instructor del prefab en el scriptable object
             _instructorInstantiated.layer = 0;
+
+            // Desactivar el gameobject Avatar
+            Transform avatarChild = _instructorInstantiated.transform.Find("Avatar");
+            if (avatarChild != null)
+            {
+                avatarChild.gameObject.SetActive(false);
+            }
         }
         public void ChangeInstructor()
         {
@@ -120,6 +127,15 @@ namespace MainMenu
             _instructorInstantiated = Instantiate(_objectInstructor.instructors.FirstOrDefault(x => x.id == indexInstructor)!.prefab,
                 _pointToInstantiate.position, _pointToInstantiate.rotation, _pointToInstantiate);
             _instructorInstantiated.layer = 0;
+
+            
+
+            // Desactivar el gameobject Avatar
+            Transform avatarChild = _instructorInstantiated.transform.Find("Avatar");
+            if (avatarChild != null)
+            {
+                avatarChild.gameObject.SetActive(false);
+            }
         }
 
         public void SetUserProperties()
