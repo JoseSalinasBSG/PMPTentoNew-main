@@ -40370,6 +40370,10 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8924221663911865756, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f3f92840d7bbeb479bd4f991edc5804, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8615635367970959352, guid: b6d839297fab6b641bb1be95ac4d6990, type: 3}
