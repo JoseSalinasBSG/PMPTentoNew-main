@@ -652,6 +652,10 @@ PrefabInstance:
       value: Domain Personas button 1
       objectReference: {fileID: 0}
     - target: {fileID: 8342856983869783743, guid: 68e140815e9f5e641932e4328a53800a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce04a0edf2a0a0c46a66c9d9249ed440, type: 3}
+    - target: {fileID: 8342856983869783743, guid: 68e140815e9f5e641932e4328a53800a, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
@@ -941,6 +945,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 167951002}
   _eventTrigger: {fileID: 167951001}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 3
 --- !u!114 &167951001
@@ -1439,6 +1445,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 175939607}
   _eventTrigger: {fileID: 175939611}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 3
 --- !u!114 &175939611
@@ -2966,6 +2974,10 @@ PrefabInstance:
       value: Domain entorno-empresarial button 2
       objectReference: {fileID: 0}
     - target: {fileID: 8342856983869783743, guid: 8941f8442a7747547bd8954ff88b6f42, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5ee83704e1497954ab32c92beac5c085, type: 3}
+    - target: {fileID: 8342856983869783743, guid: 8941f8442a7747547bd8954ff88b6f42, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
@@ -4054,8 +4066,6 @@ MonoBehaviour:
   achievementText: {fileID: 1012713242}
   awardSprite: {fileID: 1012713247}
   AchievementRewardsSO: {fileID: 11400000, guid: 4255e5f942803654599a7221aba85702, type: 2}
-  _message: {fileID: 1012713246}
-  _message_clone: {fileID: 1012713245}
   valueToShare: {fileID: 1012713241}
 --- !u!114 &708024836
 MonoBehaviour:
@@ -4867,6 +4877,7 @@ MonoBehaviour:
   _popupIncorrect: {fileID: 487800848}
   _popupCorrect: {fileID: 1012713239}
   _question: {fileID: 1130874323}
+  _achievementFeedbackText: {fileID: 0}
   _opt1: {fileID: 182303279024611382}
   _opt2: {fileID: 5567934012140133105}
   _opt3: {fileID: 2125055818440338842}
@@ -5437,28 +5448,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6237020253410042574, guid: 893973ff80bfbc24ca8ce59e67b51a5b, type: 3}
   m_PrefabInstance: {fileID: 1012713238}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1012713245 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 705649214615398956, guid: 893973ff80bfbc24ca8ce59e67b51a5b, type: 3}
-  m_PrefabInstance: {fileID: 1012713238}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1012713246 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 821035260445898075, guid: 893973ff80bfbc24ca8ce59e67b51a5b, type: 3}
-  m_PrefabInstance: {fileID: 1012713238}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1012713247 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8316106326196862708, guid: 893973ff80bfbc24ca8ce59e67b51a5b, type: 3}
@@ -5856,7 +5845,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -6172,6 +6161,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 1056146261}
   _eventTrigger: {fileID: 1056146268}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 3
 --- !u!114 &1056146268
@@ -7511,9 +7502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dc79e03e1b62948b12ade2e620f177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initColor: {r: 0, g: 0.627451, b: 0.8509804, a: 1}
-  _lastColorCorrect: {r: 0, g: 0.8078432, b: 0.38823533, a: 1}
-  _lastColorIncorrect: {r: 1, g: 0.07058824, b: 0.08627451, a: 1}
+  _cameraInitColor: {r: 0, g: 0, b: 0, a: 0}
+  _cameraLastColorCorrect: {r: 0, g: 0, b: 0, a: 0}
+  _cameraLastColorIncorrect: {r: 0, g: 0, b: 0, a: 0}
   _camera: {fileID: 963194227}
   _duration: 0.5
 --- !u!1 &1353012851
@@ -8526,7 +8517,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -14547,6 +14538,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 1829076410}
   _eventTrigger: {fileID: 1829076416}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 3
 --- !u!114 &1829076416
@@ -14950,6 +14943,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 1879741274}
   _eventTrigger: {fileID: 1879741277}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 2
 --- !u!114 &1879741277
@@ -15281,6 +15276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Domain Proceso button 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8342856983869783743, guid: 89ecb0c09d2d12c459d9071100aeb5c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e53119c9d1449549a79ce14f2c8d0c2, type: 3}
     - target: {fileID: 8342856983869783743, guid: 89ecb0c09d2d12c459d9071100aeb5c5, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
@@ -20765,11 +20764,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc42feb00a3f572439b14cc4e4dfd598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spacing: 50
-  _widthReference: {fileID: 613188794}
   _container: {fileID: 361029284}
   _prefab: {fileID: 255993327919695358, guid: bacd399d37f63524480da93824485ce6, type: 3}
-  _label: {fileID: 147037503}
 --- !u!114 &2081259375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20949,6 +20945,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 2102957325}
   _eventTrigger: {fileID: 2102957328}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 2
 --- !u!114 &2102957328
@@ -21808,6 +21806,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 4550402916594807826}
   _eventTrigger: {fileID: 61634834988792925}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 1
 --- !u!114 &1429648308486566948
@@ -22041,11 +22041,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 85
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 85
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_LocalScale.x
@@ -22089,11 +22089,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 45
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -45
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 365890132504539882, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -22126,7 +22126,7 @@ PrefabInstance:
     - target: {fileID: 1458083089009004823, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8a41b3304f6fd2b4ca7992ed48fdb531, type: 3}
+      objectReference: {fileID: 21300000, guid: de69bd7804e59764a9f97436266d152c, type: 3}
     - target: {fileID: 6185905826144767499, guid: 9e92f3f15b20ad54fa0851f3e4553ac3, type: 3}
       propertyPath: m_Name
       value: Button - Back
@@ -22922,6 +22922,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 2158403839751084804}
   _eventTrigger: {fileID: 8023473245467709500}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 1
 --- !u!114 &5485997382953145065
@@ -22939,6 +22941,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 817227127901682658}
   _eventTrigger: {fileID: 4772915728747978280}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 1
 --- !u!114 &5567934012140133105
@@ -23331,6 +23335,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 8903819291810927149}
   _eventTrigger: {fileID: 6519993204194170011}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 1
 --- !u!224 &7568519804484736363
@@ -23716,6 +23722,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 8333710759812959711}
   _eventTrigger: {fileID: 1291591699874729587}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 2
 --- !u!1 &8748524691831130087
@@ -23753,6 +23761,8 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 4075166744213592315}
   _eventTrigger: {fileID: 8748524691831130089}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   toSound: 0
   vibrationMode: 2
 --- !u!114 &8748524691831130089
