@@ -29,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 6185905826144767499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.217806, y: 1.217806, z: 1.217806}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3a4aac4baa8ca9848a33d68510af0c00, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de69bd7804e59764a9f97436266d152c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -127,28 +127,16 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
+          m_TargetAssemblyTypeName: Scene.LoadScene, Assembly-CSharp
+          m_MethodName: ReloadCurrentScene
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: MainMenu
             m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
           m_CallState: 2
 --- !u!114 &1066207786677099909
 MonoBehaviour:
@@ -165,3 +153,7 @@ MonoBehaviour:
   _scriptableObjectButton: {fileID: 11400000, guid: afee54e7612f7344ca5fcf4e51b54d64, type: 2}
   _imageButton: {fileID: 1458083089009004823}
   _eventTrigger: {fileID: 8388639283084390409}
+  _colorDefault: {r: 1, g: 1, b: 1, a: 1}
+  _colorDisable: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  toSound: 0
+  vibrationMode: 2
