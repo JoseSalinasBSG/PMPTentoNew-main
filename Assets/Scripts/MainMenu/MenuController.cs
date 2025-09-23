@@ -69,7 +69,7 @@ namespace MainMenu
 
         private void GameEvents_UsernameSelected()
         {
-            _username.text = _user.userInfo.user.detail.usernameG;
+            // _username.text = _user.userInfo.user.detail.usernameG;
         }
 
         private void OnDisable()
@@ -141,7 +141,7 @@ namespace MainMenu
         public void SetUserProperties()
         {
             _userInputField.text = _user.userInfo.user.detail.usernameG;
-            _username.text = _user.userInfo.user.detail.usernameG;
+            // _username.text = _user.userInfo.user.detail.usernameG;
             _totalCoins.text = _user.userInfo.user.detail.totalCoins.ToString();//setear monedas
             _totalExpirience.text = _user.userInfo.user.detail.totalExperience.ToString();//setear experiencia
             SetUserLevel();
@@ -193,24 +193,28 @@ namespace MainMenu
                 _levelIcon.sprite = _levelUserSO.levelSprite[0];
                 //Debug.Log("Nivel Novato");
                 _experienceToAchieve.text = "de 4500";
+                _username.text = "Novato";
             }
             else if (_user.userInfo.user.detail.totalExperience >= 4501 && _user.userInfo.user.detail.totalExperience <= 9500)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[1];
                 //Debug.Log("Nivel Experto");
                 _experienceToAchieve.text = "de 9500";
+                _username.text = "Experto";
             }
             else if (_user.userInfo.user.detail.totalExperience >= 9501 && _user.userInfo.user.detail.totalExperience <= 15000)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[2];
                 //Debug.Log("Nivel Master");
                 _experienceToAchieve.text = "de 15000";
+                _username.text = "Master";
             }
             else if (_user.userInfo.user.detail.totalExperience >= 15001)
             {
                 _levelIcon.sprite = _levelUserSO.levelSprite[3];
                 //Debug.Log("Nivel Leyenda");
                 _experienceToAchieve.text = "de experiencia";
+                _username.text = "Leyenda";
             }
         }
     }

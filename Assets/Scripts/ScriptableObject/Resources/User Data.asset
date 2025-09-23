@@ -21,7 +21,7 @@ MonoBehaviour:
       idContacto: 0
       clave: 
       userName: pruebaxjrivera@bsginstitute.net
-      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.e5bMFJVwKluGMqgmqnSfuwuY6PkMJS89MwZtbpasYriRgRUrxsd0DQ.a11MnujL-0xpfCMcj0u_vQ.CKbpiPkcte5qjm4N8qVWHkpIBBjuykAnb4nDGsO9K-RYi73oKy20_AsjMd-mTUlNkTjaz8S_cwWsI2UNeVOOhUlOyF1vSxVDljRTBh9YiwYH9-_00-eCXk6tooYsDVdELBmHKpHoaCXRLj56xePSaswiHlgm9_SQCiprJIpidR8KqzQdPt9GqYpkGf-zl9OTX6hlPTmjCalbQA8c6sAfinHQGNETYuHn8K2BJP8HRFa1ZRKnhgd7kK6mR2hQAum7xiqzSslMdzqMYDTOvXvBz2ixXyn9DYT2LXPTE1DxCzRZsAEs1OuHhn0M05O-tH6fZYsLg4PWLfLf0fFyKliJYkUMldfqFNyzZpgIQN6WWZLwQ69BCWXkX9mJr9YwflarLQ2Gg8HIx_AxB--fCbM0xOw5UGGfdS-Eggq885iBenf7B0_i83Mp8dCvriP5hhL3EdZnudTII4Ku4VkjgWglnsAPOB_vkxz-qwffxjgsirhcGU74HIKPpVm0ZMx_XLnOcqMCNzT-ETLOR7lLdbUrsWboo-e8CNeILVjEvZI2u-ZtR7UXlyVyEuLuaTlS1l4gR5LfJUtmIcmh4aOeXS-seIH-VvWg-W1VuhGMFtQNWHPuVoH9iKeAn27acLDz1hayHYxvbVeyGyaCQJgjT7li1A.7aomsr2qAGQLK1yGdi3O7Q
+      token: eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidHlwIjoiSldUIn0.ZrJExeDhirpGF_X8r3Oyjrrx_jTaHzaQWYczJjP3VXXMeSI3jISBKA.Up6CqpIyAq8k6g8dl5xsNA.C1y6CbZwp1mETteQt2MEFTLTGuvpLJgpnp0XxjqXMm-YqjGApLW5pkfZ01HViYczbNgOVuGPS_aDLSlCoC3mAQK01gzNP6g_d4O2WP4UFC1EQGOhfZy9vVetiQSlwA6cF7hEDOwIG-nNJ0Rbr57Emu-3RlK2bT2WnX27QkUX7ETZG5a3VdvAOsn85q0o89NJqW2_xkas-3h7H9TM1gOdI8ZzFhiSdJjf_R4spYbLiFPE38l34UmhXeSwy8BNi_M2hg8QVHJvpGJowYYjYX6hPxxvjGIAsZ0Ld7uTqATUp_Q7USdakqX5XyN4c_d6AMc4TgYG5NxCFdTyGwEETezUoyUyWFGIuC79xpn0wzj56CosOd_MiA3GYWkvi1mIZZ_aDtQvhUxHkJpGW58q-hUttDhEZT3qMG8_tbDIpFKRcMTsvxVHECMarcIBZgWB6sfvYzA7ug1BahL3Ge8p6Ih-o-y1UErMK-kA2H2DWlMgwUeAkh-bwsmsnK0iQeixlfTN4Y3iiM7sJI2_SoK4OjHc2Vjgkl0vD2Bn6Gj_uGjXAMeXJh1brbocg3X23EU6XOA7WStRnQji7MhxkwlRis6s3dNUPk6ZYzwwYWndk_V5qFk3C7MXztgUkEI4ivH8X4dp.Ptrbe9cZJ_0_JbCd9nhXMA
       tipoCarrera: 1
       correoEnc: 
       telEnc: 
@@ -31,26 +31,26 @@ MonoBehaviour:
         idCaracteristicaGamificacion: 1
         idAlumno: 9818325
         usernameG: test
-        instructorID: 0
-        totalCoins: 113
-        totalExperience: 8700
-        discardOption: 999
-        skipQuestion: 977
+        instructorID: 1
+        totalCoins: 228
+        totalExperience: 9490
+        discardOption: 31
+        skipQuestion: 999
         findCorrectAnswer: 999
         increaseTime: 999
-        secondChance: 995
+        secondChance: 985
       achievements:
         id: 1
         idAlumno: 9818325
-        streak4: 163
+        streak4: 165
         streak6: 58
         streak8: 31
         streak10: 16
-        streak4Date: 18/09/2025 1:01:53 p. m.
+        streak4Date: 23/09/2025 03:33:00 p. m.
         streak6Date: 18/09/2025 1:02:03 p. m.
         streak8Date: 18/09/2025 1:02:13 p. m.
         streak10Date: 26/02/2025 3:30:42 p. m.
-        streak4Origin: "Desaf\xEDo Supervivencia"
+        streak4Origin: "Modo Categor\xEDa"
         streak6Origin: "Desaf\xEDo Supervivencia"
         streak8Origin: "Desaf\xEDo Supervivencia"
         streak10Origin: "Modo Categor\xEDa"

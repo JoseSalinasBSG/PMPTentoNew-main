@@ -603,7 +603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5822096464112353725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -641,7 +641,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6226129355147115701}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -822,8 +822,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1025,6 +1025,7 @@ MonoBehaviour:
   _questionInformation: {fileID: 0}
   _activeColor: {r: 1, g: 1, b: 1, a: 1}
   _deactiveColor: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
+  _ContadorDefaultColor: {r: 0, g: 0, b: 0, a: 0}
   _message: {fileID: 6300844289339631799}
   _labelButton: {fileID: 5347987211946119738}
   _imageButton: {fileID: 6774976671663091844}

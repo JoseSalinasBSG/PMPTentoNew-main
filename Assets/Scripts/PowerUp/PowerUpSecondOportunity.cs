@@ -19,6 +19,7 @@ namespace PowerUp
         public void UseSecondOportunity()
         {
             _questionInformation.EnableOptions();
+            Debug.Log("Amount before use: " + Amount);
             if (Amount > 0)
             {
                 _imageButton.color = _activeColor;
