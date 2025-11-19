@@ -26,7 +26,7 @@ namespace Configuration
         [SerializeField] private ScriptableObjectUser _objectUser;
 
         [Header("Red")]
-        [SerializeField] private string url = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
+        [SerializeField] private string url = "https://simuladorpmp-api.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
 
         [Header("Eventos")]
         [SerializeField] private UnityEvent OnUsernameSetted;

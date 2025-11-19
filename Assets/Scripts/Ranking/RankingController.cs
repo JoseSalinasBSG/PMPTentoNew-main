@@ -25,9 +25,10 @@ public class RankingController : MonoBehaviour
     [SerializeField] private List<DataUsers> listDataUserAll;
     [SerializeField] private ScriptableObjectUser _userScriptableObject;
     [SerializeField] private Transform _myRankingItemContainer;
-    private static readonly Color customColor = new Color(254f / 255f, 218f / 255f, 177f / 255f); // FEDAB1
+    //private static readonly Color customColor = new Color(254f / 255f, 218f / 255f, 177f / 255f); // FEDAB1
+    private static readonly Color customColor = new Color(4f / 255f, 68f / 255f, 190f / 255f); // 0444BE
 
-    
+
     private const int TOP_USERS = 10;
 
     private void Awake()
@@ -150,10 +151,20 @@ public class RankingController : MonoBehaviour
             if (infoUsers.id == userId)
             {
                 Image rankingItemImage = item.GetComponentInParent<Image>(true); // Evita buscar por nombre
+                // Quiero obtener los dos TextMeshProUGUI hijos del objeto item con nombres específicos
+                var itemPositionText = item.gameObject.transform.Find("Position").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+                var itemUsernameText = item.gameObject.transform.Find("Username").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+
+
                 Debug.Log(rankingItemImage.name);
                 if (rankingItemImage != null)
                 {
                     rankingItemImage.color = customColor; // Aplica el color personalizado
+                    itemPositionText.color = Color.white;
+                    itemUsernameText.color = Color.white;
+                    // Aplicar negrita
+                    itemPositionText.fontStyle = TMPro.FontStyles.Bold;
+                    itemUsernameText.fontStyle = TMPro.FontStyles.Bold;
                 }
             }
             item.SetData(infoUsers.position.ToString(), infoUsers.userName, infoUsers.totalExperience.ToString(), infoUsers.id, infoUsers.spriteAvatarUser);

@@ -16,9 +16,9 @@ using UnityEngine.Networking;
 public class LoginRestApi : MonoBehaviour
 {
     [SerializeField] private string url = "https://api-portalweb.bsginstitute.com/api/AspNetUser/authenticate";
-    [SerializeField] private string urlToMoreDetail = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion";
+    [SerializeField] private string urlToMoreDetail = "https://simuladorpmp-api.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion";
     [SerializeField] private string urlToCredentials = "https://api-portalweb.bsginstitute.com/api/CredencialPortalPmp";
-    [SerializeField] private string urlGetAchievements = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerLogroAlumno?IdRegistroAlumno=0&IdAlumno=";
+    [SerializeField] private string urlGetAchievements = "https://simuladorpmp-api.bsginstitute.com/api/Gamificacion/ObtenerLogroAlumno?IdRegistroAlumno=0&IdAlumno=";
     [SerializeField] private ScriptableObjectUser _objectUser;
     [SerializeField] private LoginController _loginController;
 

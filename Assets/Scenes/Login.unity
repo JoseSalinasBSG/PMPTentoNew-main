@@ -4604,9 +4604,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   url: https://api-portalweb.bsginstitute.com/api/AspNetUser/authenticate
-  urlToMoreDetail: http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion
+  urlToMoreDetail: https://simuladorpmp-api.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion
   urlToCredentials: https://api-portalweb.bsginstitute.com/api/CredencialPortalPmp
-  urlGetAchievements: http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerLogroAlumno?IdRegistroAlumno=0&IdAlumno=
+  urlGetAchievements: https://simuladorpmp-api.bsginstitute.com/api/Gamificacion/ObtenerLogroAlumno?IdRegistroAlumno=0&IdAlumno=
   _objectUser: {fileID: 11400000, guid: 2f47c0a4eb7b9cf4a9cf3eccaac92c96, type: 2}
   _loginController: {fileID: 600175731}
   _finishRequest: 1

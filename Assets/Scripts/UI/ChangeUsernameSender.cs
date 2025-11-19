@@ -10,7 +10,7 @@ public class ChangeUsernameSender : SenderEvent
 {
     private TMP_InputField _usernameField;
     [SerializeField] private string url =
-        "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
+        "https://simuladorpmp-api.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
     [SerializeField] private ScriptableObjectUser _objectUser;
 
     private void OnEnable()

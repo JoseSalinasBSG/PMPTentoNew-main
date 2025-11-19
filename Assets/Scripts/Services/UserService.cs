@@ -18,12 +18,12 @@ public class UserService : MonoBehaviour
 {
     [SerializeField] private ScriptableObjectUser _scriptableObjectUser;
 
-    private readonly string _urlToUpdate = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
-    private readonly string _urlToUpdateAchievement = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/RegistrarLogroAlumno";
+    private readonly string _urlToUpdate = "https://simuladorpmp-api.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
+    private readonly string _urlToUpdateAchievement = "https://simuladorpmp-api.bsginstitute.com/api/Gamificacion/RegistrarLogroAlumno";
     private readonly string _urlToGetUser = "https://api-portalweb.bsginstitute.com/api/AspNetUser/authenticate";
-    private readonly string _urlToGetUserDetail = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion/";
+    private readonly string _urlToGetUserDetail = "https://simuladorpmp-api.bsginstitute.com/api/ConfiguracionSimulador/ObtenerCaracteristicasGamificacion/";
     private readonly string urlToCredentials = "https://api-portalweb.bsginstitute.com/api/CredencialPortalPmp";
-    private readonly string _urlToGetUserAchievements = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerLogroAlumno?IdRegistroAlumno=0&IdAlumno=";
+    private readonly string _urlToGetUserAchievements = "https://simuladorpmp-api.bsginstitute.com/api/Gamificacion/ObtenerLogroAlumno?IdRegistroAlumno=0&IdAlumno=";
 
     private bool _haveError;
     private bool _finishRequest;

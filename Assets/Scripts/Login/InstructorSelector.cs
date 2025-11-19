@@ -18,7 +18,7 @@ public class InstructorSelector : MonoBehaviour
     [SerializeField] private ScriptableObjectUser _objectUser;
     [SerializeField] private ButtonAnimation _buttonNext;
     [SerializeField] private ButtonAnimation _buttonPrevious;
-    [SerializeField] private string url = "http://simuladorpmp-servicio.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
+    [SerializeField] private string url = "https://simuladorpmp-api.bsginstitute.com/api/ConfiguracionSimulador/ActualizarCaracteristicasGamificacion";
     [SerializeField] private UnityEvent _onSelectInstructor;
     [SerializeField] private UnityEvent _onStart;
     [SerializeField] private UnityEvent OnPreviousButtonSelected;

@@ -22,7 +22,7 @@
 // }
 // public class GetUsersApi : MonoBehaviour
 // {
-//     [SerializeField] private string URL = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerRankingGamificacion";
+//     [SerializeField] private string URL = "https://simuladorpmp-api.bsginstitute.com/api/Gamificacion/ObtenerRankingGamificacion";
 //     [SerializeField] private DataUserAll dataUserAll;
 //     [SerializeField] private ScriptableObjectUser _user;
 //     public enum Categories
@@ -230,7 +230,7 @@ public class DataToRequireRanking
 public class GetUsersApi : MonoBehaviour
 {
     //[SerializeField] private EndpointsConfigSO endpointsConfigSO;
-    private string URL = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerRankingGamificacion";
+    private string URL = "https://simuladorpmp-api.bsginstitute.com/api/Gamificacion/ObtenerRankingGamificacion";
     [SerializeField] private DataUserAll dataUserAll;
     [SerializeField] private ScriptableObjectUser _user;
     [SerializeField] private TextMeshProUGUI _categoryTitle;
@@ -517,7 +517,7 @@ public class GetUsersApi : MonoBehaviour
 // }
 // public class GetUsersApi : MonoBehaviour
 // {
-//     [SerializeField] private string URL = "http://simuladorpmp-servicio.bsginstitute.com/api/Gamificacion/ObtenerRankingGamificacion";
+//     [SerializeField] private string URL = "https://simuladorpmp-api.bsginstitute.com/api/Gamificacion/ObtenerRankingGamificacion";
 //     [SerializeField] private DataUserAll dataUserAll;
 //     [SerializeField] private ScriptableObjectUser _user;
 //     [SerializeField] private TextMeshProUGUI _categoryTitle;

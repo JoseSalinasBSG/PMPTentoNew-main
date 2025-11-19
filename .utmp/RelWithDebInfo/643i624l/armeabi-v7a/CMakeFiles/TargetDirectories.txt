@@ -1,0 +1,5 @@
+C:/PROYECTOS VR/PMPTentoNew/.utmp/RelWithDebInfo/643i624l/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/PROYECTOS VR/PMPTentoNew/.utmp/RelWithDebInfo/643i624l/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/PROYECTOS VR/PMPTentoNew/.utmp/RelWithDebInfo/643i624l/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/PROYECTOS VR/PMPTentoNew/.utmp/RelWithDebInfo/643i624l/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+C:/PROYECTOS VR/PMPTentoNew/.utmp/RelWithDebInfo/643i624l/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir
