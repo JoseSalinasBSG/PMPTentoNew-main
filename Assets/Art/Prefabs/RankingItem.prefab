@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 9177443429464966732}
   - component: {fileID: 7112135829099756401}
   - component: {fileID: 7330510771890708623}
-  - component: {fileID: 3039832068689399528}
+  - component: {fileID: 1320469778021137218}
   m_Layer: 5
   m_Name: RankingItem
   m_TagString: Untagged
@@ -436,7 +436,7 @@ MonoBehaviour:
   _totalExperience: {fileID: 1825314474684467714}
   _imageAvatar: {fileID: 7314973765911610317}
   _position: {fileID: 8207684123066625187}
---- !u!114 &3039832068689399528
+--- !u!114 &1320469778021137218
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -445,11 +445,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4814994009729033310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Script: {fileID: 11500000, guid: 723a78f4ac109fe439f7f94697667ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: 3}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
   m_DrawTop: 0
   m_DrawBottom: 1
