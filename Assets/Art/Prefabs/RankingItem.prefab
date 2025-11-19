@@ -449,8 +449,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectDistance: {x: 2, y: 3}
   m_UseGraphicAlpha: 1
+  m_DrawTop: 0
+  m_DrawBottom: 1
+  m_DrawLeft: 0
+  m_DrawRight: 0
 --- !u!1 &7256138348534969855
 GameObject:
   m_ObjectHideFlags: 0
